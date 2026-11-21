@@ -3,7 +3,7 @@
 Carte des places libres dans les refuges FFCAM (et du Parc national de la Vanoise) pour le
 prochain week-end, mise à jour automatiquement, avec l'historique des disponibilités.
 
-Carte : https://jor-di.github.io/ffcam-huts/
+Carte : https://dernierecouchette.fr/
 
 ## Fonctionnement
 
