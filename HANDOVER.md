@@ -8,7 +8,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - **Code** : Python standard sans dépendance + une page HTML Leaflet.
 - **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), une fois par jour sinon.
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
-- **État** : voir [État en cours et prochaines étapes](#état-en-cours-et-prochaines-étapes) — une partie de ce qui est décrit ici est prêt en local mais pas encore publié.
+- **État** : tout ce qui est décrit ici est en ligne ; voir [État en cours et prochaines étapes](#état-en-cours-et-prochaines-étapes).
 
 ## Sommaire
 
@@ -225,9 +225,7 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 
 ## État en cours et prochaines étapes
 
-Le site en ligne (commit `19f0859`) n'a pas encore les derniers changements : ils sont testés en local mais ni commités ni poussés.
-
-**En local, non publié**
+Tout est publié (commit `01acb68`, 21/11/2026). Dernier lot mis en ligne :
 
 - Mode « Avant-dernière couchette » (clic logo, `#avant-derniere`) et relevé des nuits du week-end suivant.
 - Mise en page téléphone : panneau qui défile d'un bloc, filtres repliés, panneau à 90 %.
@@ -236,8 +234,8 @@ Le site en ligne (commit `19f0859`) n'a pas encore les derniers changements : il
 
 **À faire**
 
-- [ ] Vérifier le rendu des refuges Open System sur une date d'ouverture (ex. `--date 2027-02-20`) avant de publier
-- [ ] Commit + push du lot ci-dessus, puis contrôler le premier relevé en ligne
+- [x] Vérifier le rendu des refuges Open System sur une date d'ouverture (`--date 2027-02-20` : Leisse 25 places, Bois 45, Femma 40, Vallonbrun 27)
+- [x] Publier le lot ci-dessus et contrôler le premier relevé en ligne (140 refuges, 5 portails)
 - [ ] Tester le panneau téléphone au doigt sur un vrai téléphone
 - [ ] Cocher « Enforce HTTPS » dans Settings → Pages si ce n'est pas déjà fait
 - [ ] Choisir le marqueur définitif (talon de billet retenu par défaut ; alternatives : silhouette de refuge, étoile)
