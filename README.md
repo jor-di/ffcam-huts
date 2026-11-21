@@ -1,7 +1,7 @@
 # Refuges FFCAM — disponibilités
 
-Carte des places libres dans les refuges FFCAM (et du Parc national de la Vanoise) pour le
-prochain week-end, mise à jour automatiquement, avec l'historique des disponibilités.
+Carte des places libres dans une partie des refuges CAF pour le
+prochain week-end, mise à jour automatiquement.
 
 Carte : https://dernierecouchette.fr/
 
