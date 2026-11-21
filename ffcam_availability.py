@@ -4,7 +4,7 @@
 Run ./refresh_huts.py first to create huts.json.
 
 Usage:
-  ./ffcam_availability.py                       # next weekend: Friday, Saturday and Sunday nights
+  ./ffcam_availability.py                       # this weekend's nights from tonight on (Fri, Sat, Sun)
   ./ffcam_availability.py --date 2027-07-03 --nights 2
   ./ffcam_availability.py --date 2027-07-03 -o out.csv
 """
@@ -30,23 +30,31 @@ def hut_url(hut, osm_website):
     return None
 
 
-def next_saturday(today=None):
+def weekend_nights(today=None):
+    """The Friday, Saturday and Sunday nights of the current weekend that are not over yet.
+
+    Mon-Fri: the coming Fri, Sat, Sun. Saturday: Sat (tonight), Sun. Sunday: Sun (tonight).
+    The display moves to the next weekend on Monday.
+    """
     today = today or dt.date.today()
-    return today + dt.timedelta(days=(5 - today.weekday()) % 7 or 7)
+    friday = today + dt.timedelta(days=4 - today.weekday())  # Mon=0 ... Fri=4, Sat/Sun go back
+    return [d for d in (friday + dt.timedelta(days=i) for i in range(3)) if d >= today]
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--date", type=dt.date.fromisoformat, help="first night (default: Friday before next Saturday)")
-    p.add_argument("--nights", type=int, help="number of consecutive nights (default: 3 for the weekend, 1 with --date)")
+    p.add_argument("--date", type=dt.date.fromisoformat, help="first night (default: this weekend, from tonight)")
+    p.add_argument("--nights", type=int, help="number of consecutive nights with --date (default: 1)")
     p.add_argument("-o", "--output", help="CSV path (default: ffcam_<date>.csv)")
     p.add_argument("--workers", type=int, default=4, help="parallel requests (default: 4)")
     p.add_argument("--no-history", action="store_true", help="don't record changes in history/ (see history.py)")
     args = p.parse_args()
 
-    start = args.date or next_saturday() - dt.timedelta(days=1)
-    nights = args.nights or (1 if args.date else 3)
-    dates = [start + dt.timedelta(days=i) for i in range(nights)]
+    if args.date:
+        dates = [args.date + dt.timedelta(days=i) for i in range(args.nights or 1)]
+    else:
+        dates = weekend_nights()
+    start = dates[0]
     output = args.output or f"ffcam_{start.isoformat()}.csv"
     # FFCAM returns the requested date's month + the next one. By default ask from today, so the
     # history always covers today -> end of next month (the next weekend is always inside);

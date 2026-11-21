@@ -3,147 +3,168 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Refuges FFCAM</title>
+<title>Dernière couchette</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
+  /* "Crêtes" look: cream paper tickets on a light ground, pine-green ridges. Deliberately light-only. */
   :root {
-    --ok:#16a34a; --low:#f59e0b; --full:#dc2626; --closed:#94a3b8;
-    --bg:#ffffff; --bg-soft:#f4f6f8; --fg:#0f172a; --muted:#64748b; --line:#e2e8f0;
-    --accent:#0f4c81; --accent-soft:#e6eef7; --shadow:0 10px 30px rgba(15,23,42,.18);
-    --radius:14px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg:#111827; --bg-soft:#1f2937; --fg:#f1f5f9; --muted:#94a3b8; --line:#2b3646;
-      --accent:#7cb4f0; --accent-soft:#1c2c42; --shadow:0 10px 30px rgba(0,0,0,.5); --closed:#64748b;
-    }
+    --ground:#f5f2ea; --paper:#fffdf7; --ink:#1f2a24; --ink-2:#66716b; --rule:#ddd8cc; --perf:#d3cbb8;
+    --pine:#24493a; --pine-soft:#dfe9e1; --glow:#d98a2b;
+    --ok:#2f8a57; --low:#d98a2b; --full:#c8473d; --closed:#9aa29c;
+    --shadow:0 10px 30px rgba(20,30,25,.18); --radius:12px;
+    --display:Fraunces, Georgia, serif; --body:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    color-scheme:light;
   }
   * { box-sizing:border-box; }
-  html, body { margin:0; height:100%; background:var(--bg); color:var(--fg);
-    font:14px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; -webkit-font-smoothing:antialiased; }
+  html, body { margin:0; height:100%; background:var(--ground); color:var(--ink); font:14px/1.45 var(--body); -webkit-font-smoothing:antialiased; }
   .app { display:grid; grid-template-columns:380px 1fr; height:100%; }
-  #map { height:100%; background:var(--bg-soft); }
+  #map { height:100%; background:#e9ede4; }
 
   /* ---------- sidebar ---------- */
-  aside { display:flex; flex-direction:column; min-height:0; background:var(--bg); border-right:1px solid var(--line); z-index:1000; }
+  aside { display:flex; flex-direction:column; min-height:0; background:var(--ground); border-right:1px solid var(--rule); z-index:1000; }
   .hero, .controls, .list-head { flex:none; }
-  .hero { padding:22px 22px 18px; color:#fff; position:relative; overflow:hidden;
-    background:linear-gradient(160deg,#0f4c81 0%,#1e6fb3 55%,#3a8fd1 100%); }
-  .hero svg.peaks { position:absolute; left:0; right:0; bottom:-1px; width:100%; height:70px; opacity:.28; }
-  .hero .eyebrow { font-size:11px; letter-spacing:.14em; text-transform:uppercase; opacity:.8; font-weight:600; }
-  .hero h1 { font-family:Fraunces, Georgia, serif; font-weight:600; font-size:28px; line-height:1.1; margin:4px 0 6px; }
-  .hero .meta { font-size:12px; opacity:.85; position:relative; }
+  .hero { position:relative; overflow:hidden; padding:20px 20px 52px; background:linear-gradient(180deg,var(--pine-soft) 0%,var(--ground) 100%); }
+  .hero svg.ridge { position:absolute; left:0; right:0; bottom:-1px; width:100%; height:58px; pointer-events:none; }
+  .brand { position:relative; display:flex; align-items:center; gap:10px; }
+  .brand svg { width:36px; height:36px; flex:none; }
+  .brand h1 { margin:0; font:700 25px/1 var(--display); letter-spacing:-.01em; color:var(--ink); }
+  .brand .meta { display:block; font:500 10.5px/1.3 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2); margin-top:5px; }
   .hero .handle { display:none; }
 
-  .controls { padding:16px 20px 6px; display:grid; gap:14px; }
-  .label { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:6px; }
-  /* night carousel: selected night centered, neighbours half visible */
-  .carousel { position:relative; overflow:hidden; margin:0 -20px; padding:2px 0;
-    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.15) 0,#000 20%,#000 80%,rgba(0,0,0,.15) 100%);
-            mask-image:linear-gradient(90deg,rgba(0,0,0,.15) 0,#000 20%,#000 80%,rgba(0,0,0,.15) 100%); }
-  .track { display:flex; gap:10px; transition:transform .35s cubic-bezier(.2,.8,.2,1); will-change:transform; }
-  .track button { flex:0 0 42%; border:1px solid var(--line); background:var(--bg); color:var(--fg); cursor:pointer;
-    padding:10px 12px; border-radius:14px; font:inherit; text-align:center; transition:all .25s; transform:scale(.92); opacity:.85; }
-  .track button b { display:block; font-size:17px; font-weight:700; text-transform:capitalize; }
-  .track button small { display:block; font-size:12px; opacity:.8; }
-  .track button .mini { display:block; font-size:11px; margin-top:4px; font-weight:600; color:var(--ok); }
-  .track button[aria-pressed=true] { transform:scale(1); opacity:1; background:var(--accent); border-color:var(--accent); color:var(--bg);
-    box-shadow:0 6px 18px rgba(15,76,129,.35); }
-  .track button[aria-pressed=true] .mini { color:inherit; opacity:.9; }
-  .track button:not([aria-pressed=true]):hover { opacity:1; border-color:var(--accent); }
-  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
-  .stat { background:var(--bg-soft); border-radius:12px; padding:10px 12px; }
-  .stat b { display:block; font-size:22px; font-weight:700; font-variant-numeric:tabular-nums; }
-  .stat span { font-size:12px; color:var(--muted); display:flex; align-items:center; gap:6px; }
-  .switch { display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; color:var(--fg); }
-  .switch input { appearance:none; width:34px; height:20px; border-radius:20px; background:var(--line); position:relative; cursor:pointer; transition:.2s; margin:0; flex:none; }
-  .switch input::after { content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; transition:.2s; box-shadow:0 1px 2px rgba(0,0,0,.3); }
-  .switch input:checked { background:var(--accent); }
-  .switch input:checked::after { left:16px; }
-  .switch input:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-  .chipset { display:flex; flex-wrap:wrap; gap:6px; }
-  .tchip { border:1px solid var(--line); background:var(--bg); color:var(--muted); border-radius:999px; padding:5px 11px;
-    font:inherit; font-size:13px; font-weight:500; cursor:pointer; transition:all .15s; }
-  .tchip:hover { border-color:var(--accent); color:var(--fg); }
-  .tchip[aria-pressed=true] { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); }
-  .tchip i { font-style:normal; opacity:.7; margin-left:4px; font-variant-numeric:tabular-nums; }
-  .badge { font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; color:#fff; white-space:nowrap; }
+  .controls { padding:4px 16px 6px; display:grid; grid-template-columns:minmax(0, 1fr); gap:14px; }
+  .label { font:600 10.5px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2); margin-bottom:7px; }
+
+  /* night carousel: tickets, selected one centered, neighbours half visible */
+  .carousel { position:relative; overflow:hidden; margin:0 -16px; padding:6px 0 4px; }
+  .track { display:flex; gap:12px; transition:transform .4s cubic-bezier(.2,.8,.2,1); will-change:transform; }
+  .track button { flex:0 0 52%; padding:0; border:0; background:none; font:inherit; color:inherit; cursor:pointer; text-align:left;
+    transform:scale(.9); opacity:.55; transition:transform .3s, opacity .3s; }
+  .track button[aria-pressed=true] { transform:scale(1); opacity:1; }
+  .track button:not([aria-pressed=true]):hover { opacity:.8; }
+  .ticket { display:grid; grid-template-columns:1fr auto; background:var(--paper); border:1px solid var(--rule); border-radius:8px; position:relative; }
+  .ticket .main { padding:10px 12px; border-right:2px dashed var(--perf); }
+  .ticket .k { font:600 9.5px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2); }
+  .ticket .d { font:700 21px/1.05 var(--display); text-transform:capitalize; margin:5px 0 1px; }
+  .ticket .dt { font:400 11.5px/1.2 var(--mono); color:var(--ink-2); }
+  .ticket .stub { display:grid; place-content:center; text-align:center; padding:8px 10px; min-width:58px; }
+  .ticket .stub b { font:600 20px/1 var(--mono); color:var(--pine); font-variant-numeric:tabular-nums; }
+  .ticket .stub small { font:500 9px/1.15 var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-2); }
+  .ticket::before, .ticket::after { content:""; position:absolute; right:56px; width:12px; height:12px; border-radius:50%; background:var(--ground); border:1px solid var(--rule); }
+  .ticket::before { top:-7px; } .ticket::after { bottom:-7px; }
+  [aria-pressed=true] .ticket { border-color:var(--pine); box-shadow:0 8px 20px rgba(36,73,58,.2); }
+
+  /* key numbers: one ticket, three stubs */
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); background:var(--paper); border:1px solid var(--rule); border-radius:8px; }
+  .stat { padding:9px 10px; min-width:0; }
+  .stat + .stat { border-left:2px dashed var(--perf); }
+  .stat b { display:block; font:600 21px/1.1 var(--mono); font-variant-numeric:tabular-nums; }
+  .stat span { font-size:11.5px; color:var(--ink-2); display:flex; align-items:center; gap:5px; }
 
   .filters { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-  .stepper { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-  .stepper button { border:0; background:var(--bg-soft); color:var(--fg); width:32px; height:32px; font-size:16px; cursor:pointer; }
-  .stepper output { min-width:66px; text-align:center; font-weight:600; font-variant-numeric:tabular-nums; }
-  .search { width:100%; border:1px solid var(--line); background:var(--bg); color:var(--fg); border-radius:10px; padding:9px 12px; font:inherit; }
-  .search:focus, .tchip:focus-visible, .track button:focus-visible, .stepper button:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+  .stepper { display:inline-flex; align-items:center; border:1px solid var(--rule); border-radius:8px; background:var(--paper); overflow:hidden; }
+  .stepper button { border:0; background:none; color:var(--ink); width:30px; height:30px; font-size:16px; cursor:pointer; }
+  .stepper button:hover { background:var(--pine-soft); }
+  .stepper output { font:600 12.5px/1 var(--mono); min-width:74px; text-align:center; }
+  .switch { display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; color:var(--ink); font-size:13px; }
+  .switch input { appearance:none; width:34px; height:20px; border-radius:20px; background:var(--rule); position:relative; cursor:pointer; transition:.2s; margin:0; flex:none; }
+  .switch input::after { content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; transition:.2s; box-shadow:0 1px 2px rgba(0,0,0,.3); }
+  .switch input:checked { background:var(--pine); }
+  .switch input:checked::after { left:16px; }
 
-  .list-head { display:flex; justify-content:space-between; align-items:baseline; padding:12px 20px 6px; }
+  .chipset { display:flex; flex-wrap:wrap; gap:6px; }
+  .tchip { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--rule); background:transparent; color:var(--ink-2); border-radius:999px;
+    padding:5px 10px 5px 7px; font:500 12.5px/1 var(--body); cursor:pointer; transition:all .15s; }
+  .tchip svg { width:18px; height:18px; }
+  .tchip i { font:600 11px/1 var(--mono); font-style:normal; opacity:.7; }
+  .tchip:hover { border-color:var(--pine); color:var(--ink); }
+  .tchip[aria-pressed=true] { background:var(--paper); border-color:var(--pine); color:var(--ink); }
+  .search { width:100%; border:1px solid var(--rule); background:var(--paper); color:var(--ink); border-radius:8px; padding:8px 10px; font:inherit; }
+  .search:focus, .tchip:focus-visible, .track button:focus-visible, .stepper button:focus-visible, .switch input:focus-visible, ul.huts li:focus-visible {
+    outline:2px solid var(--glow); outline-offset:2px; }
+
+  .list-head { display:flex; justify-content:space-between; align-items:baseline; padding:12px 16px 6px; }
   .list-head .label { margin:0; }
-  .list-head small { color:var(--muted); }
-  ul.huts { list-style:none; margin:0; padding:0 12px 16px; overflow-y:auto; flex:1; min-height:0; }
-  ul.huts li { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; padding:10px; border-radius:12px; cursor:pointer; transition:background .12s; }
-  ul.huts li:hover, ul.huts li.active { background:var(--bg-soft); }
-  ul.huts .name { font-weight:600; line-height:1.3; }
-  ul.huts .sub { font-size:12px; color:var(--muted); }
-  ul.huts .beds { text-align:right; font-variant-numeric:tabular-nums; }
-  ul.huts .beds b { font-size:16px; }
-  ul.huts .beds small { color:var(--muted); display:block; font-size:11px; }
-  .bar { height:4px; border-radius:4px; background:var(--line); overflow:hidden; margin-top:5px; }
+  .list-head small { font:400 11px/1 var(--mono); color:var(--ink-2); }
+  ul.huts { list-style:none; margin:0; padding:0 16px 16px; overflow-y:auto; flex:1; min-height:0; display:grid; gap:8px; align-content:start; }
+  ul.huts li { display:grid; grid-template-columns:36px 1fr auto; align-items:center; background:var(--paper); border:1px solid var(--rule);
+    border-radius:8px; cursor:pointer; transition:border-color .12s, box-shadow .12s; }
+  ul.huts li:hover, ul.huts li.active { border-color:var(--pine); box-shadow:0 4px 12px rgba(36,73,58,.12); }
+  ul.huts .ic { display:grid; place-items:center; padding-left:6px; }
+  ul.huts .ic svg { width:24px; height:24px; }
+  ul.huts .nm { padding:8px; min-width:0; }
+  ul.huts .name { font-weight:600; font-size:13.5px; line-height:1.25; }
+  ul.huts .sub { font:400 11px/1.3 var(--mono); color:var(--ink-2); }
+  ul.huts .bd { border-left:2px dashed var(--perf); padding:6px 10px; text-align:center; min-width:62px; align-self:stretch; display:grid; place-content:center; }
+  ul.huts .bd b { font:600 17px/1 var(--mono); font-variant-numeric:tabular-nums; }
+  ul.huts .bd small { font:400 10px/1.2 var(--mono); color:var(--ink-2); }
+  ul.huts .bd .tag { font:700 9.5px/1.1 var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+  ul.huts li.empty { display:block; cursor:default; text-align:center; color:var(--ink-2); padding:24px 16px; background:none; border-style:dashed; }
+  .dot { width:8px; height:8px; border-radius:50%; display:inline-block; flex:none; }
+  .bar { height:4px; border-radius:4px; background:var(--rule); overflow:hidden; }
   .bar i { display:block; height:100%; border-radius:4px; }
-  .empty { color:var(--muted); text-align:center; padding:30px 20px; }
-  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex:none; }
 
-  /* ---------- markers ---------- */
-  .pin { display:grid; place-items:center; border-radius:999px; color:#fff; font-weight:700; font-size:12px;
-    border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.35); transition:transform .15s; font-variant-numeric:tabular-nums; }
-  .pin:hover, .pin.active { transform:scale(1.25); z-index:1000; }
-  .pin.closed { border-width:1.5px; box-shadow:0 1px 3px rgba(0,0,0,.3); opacity:.85; }
-  .leaflet-marker-icon.leaflet-div-icon { background:none; border:0; }
+  /* ---------- markers: ticket stubs ---------- */
+  .leaflet-marker-icon.leaflet-div-icon, .tpin-wrap { background:none; border:0; }
+  .tpin { position:absolute; left:0; top:0; transform:translate(-50%, calc(-100% - 6px)); display:inline-flex; align-items:stretch; white-space:nowrap;
+    background:var(--paper); border:1px solid #cfc7b5; border-radius:5px; box-shadow:0 3px 8px rgba(0,0,0,.22);
+    font:600 12px/1 var(--mono); color:var(--ink); transition:transform .15s; font-variant-numeric:tabular-nums; }
+  .tpin span { padding:4px 5px; }
+  .tpin span + span { border-left:1.5px dashed #cfc7b5; font-size:9px; display:grid; place-items:center; }
+  .tpin::after { content:""; position:absolute; left:50%; bottom:-5px; width:8px; height:8px; transform:translateX(-50%) rotate(45deg);
+    background:var(--paper); border-right:1px solid #cfc7b5; border-bottom:1px solid #cfc7b5; }
+  .tpin:hover, .tpin.active { transform:translate(-50%, calc(-100% - 6px)) scale(1.2); z-index:1000; }
+  .tpin.active { border-color:var(--pine); }
+  .cpin { position:absolute; left:0; top:0; width:10px; height:10px; transform:translate(-50%,-50%); border-radius:50%;
+    background:var(--closed); border:1.5px solid var(--paper); box-shadow:0 1px 3px rgba(0,0,0,.3); }
+  .cpin.active { transform:translate(-50%,-50%) scale(1.5); }
   /* IGN serves the ski touring traces in red only: shift them to blue, as on the IGN site */
   .ski-traces { filter:hue-rotate(205deg) saturate(1.6) brightness(.9); }
 
-  /* ---------- popup ---------- */
-  .leaflet-popup-content-wrapper { border-radius:var(--radius); box-shadow:var(--shadow); background:var(--bg); color:var(--fg); padding:0; overflow:hidden; }
-  .leaflet-popup-tip { background:var(--bg); }
+  /* ---------- popup: a larger ticket ---------- */
+  .leaflet-popup-content-wrapper { border-radius:var(--radius); box-shadow:var(--shadow); background:var(--paper); color:var(--ink); padding:0; overflow:hidden; border:1px solid var(--rule); }
+  .leaflet-popup-tip { background:var(--paper); }
   .leaflet-popup-content { margin:0; width:300px !important; font:inherit; }
-  .leaflet-container a.leaflet-popup-close-button { color:#fff; top:8px; right:8px; font-size:20px; }
-  .card-head { padding:14px 16px 12px; color:#fff; }
-  .card-head h3 { margin:0; font-size:16px; line-height:1.25; padding-right:18px; }
-  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
-  .chip { font-size:11px; font-weight:600; padding:3px 8px; border-radius:999px; background:rgba(255,255,255,.22); }
-  .card-body { padding:12px 16px 14px; }
-  .night { display:grid; grid-template-columns:78px 1fr auto; gap:10px; align-items:center; padding:6px 0; border-bottom:1px solid var(--line); }
+  .leaflet-container a.leaflet-popup-close-button { color:var(--ink-2); top:8px; right:8px; font-size:20px; }
+  .card-head { padding:14px 16px 12px; border-bottom:2px dashed var(--perf); display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; }
+  .card-head .ic svg { width:30px; height:30px; }
+  .card-head h3 { margin:0; font:700 17px/1.2 var(--display); padding-right:18px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; }
+  .chip { font:500 10.5px/1 var(--mono); padding:4px 7px; border-radius:999px; background:var(--ground); color:var(--ink-2); border:1px solid var(--rule); }
+  .card-body { padding:10px 16px 14px; }
+  .night { display:grid; grid-template-columns:100px 1fr auto; gap:10px; align-items:center; padding:6px 0; border-bottom:1px solid var(--rule); }
   .night:last-of-type { border-bottom:0; }
-  .night.sel .d { font-weight:700; }
-  .night .d { font-size:12px; text-transform:capitalize; }
-  .night .st { font-size:11px; color:var(--muted); }
-  .night .n { font-weight:600; font-variant-numeric:tabular-nums; font-size:13px; }
+  .night.sel .d { font-weight:700; color:var(--pine); }
+  .night .d { font:500 11.5px/1.2 var(--mono); text-transform:capitalize; white-space:nowrap; }
+  .night .st { font-size:11px; color:var(--ink-2); }
+  .night .n { font:600 13px/1 var(--mono); font-variant-numeric:tabular-nums; }
   .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-  .actions a.primary { flex-basis:100%; }
-  .actions a { flex:1; text-align:center; text-decoration:none; padding:8px; border-radius:10px; font-weight:600; font-size:13px; }
-  .actions a.primary { background:var(--accent); color:var(--bg) !important; }
-  .actions a.ghost { background:var(--bg-soft); color:var(--fg) !important; }
+  .actions a { flex:1; text-align:center; text-decoration:none; padding:8px; border-radius:8px; font-weight:600; font-size:13px; }
+  .actions a.primary { flex-basis:100%; background:var(--pine); color:#fff !important; }
+  .actions a.ghost { background:var(--ground); color:var(--ink) !important; border:1px solid var(--rule); }
 
-  .leaflet-control-layers, .leaflet-bar { border:0 !important; border-radius:12px !important; box-shadow:var(--shadow) !important; overflow:hidden; }
-  .leaflet-bar a { background:var(--bg); color:var(--fg); border-color:var(--line); }
-  .leaflet-control-layers { background:var(--bg); color:var(--fg); }
+  .leaflet-control-layers, .leaflet-bar { border:1px solid var(--rule) !important; border-radius:10px !important; box-shadow:var(--shadow) !important; overflow:hidden; }
+  .leaflet-bar a { background:var(--paper); color:var(--ink); border-color:var(--rule); }
+  .leaflet-control-layers { background:var(--paper); color:var(--ink); }
+  .leaflet-tooltip { font:12px/1.35 var(--body); border-radius:6px; }
 
   /* ---------- mobile: bottom sheet ---------- */
   @media (max-width:760px) {
     .app { grid-template-columns:1fr; }
     #map { position:fixed; inset:0; }
-    aside { position:fixed; left:0; right:0; bottom:0; max-height:72vh; border-right:0; border-radius:18px 18px 0 0;
+    aside { position:fixed; left:0; right:0; bottom:0; max-height:74vh; border-right:0; border-radius:18px 18px 0 0;
       box-shadow:0 -8px 30px rgba(0,0,0,.25); transition:transform .25s; overflow:hidden; }
-    aside.collapsed { transform:translateY(calc(100% - 118px)); }
-    .hero { padding:10px 16px 14px; cursor:pointer; }
-    .hero .handle { display:block; width:40px; height:4px; border-radius:4px; background:rgba(255,255,255,.6); margin:0 auto 10px; }
-    .hero h1 { font-size:22px; }
-    .controls { padding:14px 16px 4px; }
-    .list-head { padding:10px 16px 4px; }
+    aside.collapsed { transform:translateY(calc(100% - 104px)); }
+    .hero { padding:10px 16px 40px; cursor:pointer; }
+    .hero .handle { display:block; width:40px; height:4px; border-radius:4px; background:rgba(36,73,58,.35); margin:0 auto 10px; }
+    .brand h1 { font-size:22px; }
+    .hero svg.ridge { height:44px; }
   }
+  @media (prefers-reduced-motion: reduce) { .track, .track button, aside { transition:none; } }
 </style>
 </head>
 <body>
@@ -151,24 +172,29 @@
   <aside id="sheet">
     <div class="hero" id="hero">
       <div class="handle"></div>
-      <div class="eyebrow">Disponibilités</div>
-      <h1>Refuges FFCAM</h1>
-      <div class="meta" id="meta"></div>
-      <svg class="peaks" viewBox="0 0 400 70" preserveAspectRatio="none" aria-hidden="true">
-        <path fill="#fff" d="M0 70 L40 38 L62 50 L104 12 L138 44 L160 30 L200 58 L236 20 L262 36 L300 4 L340 46 L366 32 L400 52 L400 70 Z"/>
+      <div class="brand">
+        <svg viewBox="0 0 34 34" fill="none" stroke="#24493a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 31V12M28 31V12"/><path d="M6 19h22M6 27h22"/><path d="M9 19v-3.5h7V19M9 27v-3.5h7V27"/>
+          <path d="m22 3 1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="#d98a2b" stroke="none"/></svg>
+        <div><h1>Dernière couchette</h1><span class="meta" id="meta"></span></div>
+      </div>
+      <svg class="ridge" viewBox="0 0 380 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 60 L0 34 L30 26 L52 32 L84 10 L106 22 L128 16 L160 36 L190 18 L214 26 L246 2 L270 20 L292 14 L318 30 L346 22 L380 32 L380 60 Z" fill="#24493a" opacity=".22"/>
+        <path d="M0 60 L0 44 L40 38 L70 44 L104 30 L140 42 L178 34 L212 46 L250 32 L286 42 L322 36 L356 44 L380 40 L380 60 Z" fill="#24493a" opacity=".45"/>
+        <path d="M0 60 L0 52 L50 48 L96 54 L150 47 L200 53 L262 46 L320 52 L380 49 L380 60 Z" fill="#f5f2ea"/>
       </svg>
     </div>
     <div class="controls">
       <div>
-        <div class="label">Nuit</div>
+        <div class="label">Nuit du</div>
         <div class="carousel" id="carousel"><div class="track" id="nights"></div></div>
       </div>
       <div class="stats" id="stats"></div>
       <div class="filters">
         <div class="stepper" aria-label="Places libres minimum">
-          <button id="minus" aria-label="Moins">−</button>
-          <output id="minFree">1+ pl.</output>
-          <button id="plus" aria-label="Plus">+</button>
+          <button id="minus" aria-label="Moins de places">−</button>
+          <output id="minFree">1+ places</output>
+          <button id="plus" aria-label="Plus de places">+</button>
         </div>
         <label class="switch"><input type="checkbox" id="showClosed"> Afficher les fermés</label>
       </div>
@@ -176,7 +202,7 @@
         <div class="label">Type</div>
         <div class="chipset" id="types"></div>
       </div>
-      <input class="search" id="search" type="search" placeholder="Rechercher un refuge…" autocomplete="off">
+      <input class="search" id="search" type="search" placeholder="Chercher un refuge…" autocomplete="off" aria-label="Chercher un refuge">
     </div>
     <div class="list-head"><div class="label" id="listTitle">Refuges</div><small id="listCount"></small></div>
     <ul class="huts" id="list"></ul>
@@ -185,14 +211,22 @@
 </div>
 <script>
 const DATA = __DATA__;
-const COLORS = { ok:'#16a34a', low:'#f59e0b', full:'#dc2626', closed:'#94a3b8' };
-const HEAD = { ok:'linear-gradient(135deg,#15803d,#22c55e)', low:'linear-gradient(135deg,#d97706,#f59e0b)',
-               full:'linear-gradient(135deg,#b91c1c,#ef4444)', closed:'linear-gradient(135deg,#475569,#94a3b8)' };
+const COLORS = { ok:'#2f8a57', low:'#d98a2b', full:'#c8473d', closed:'#9aa29c' };
+// hut-type icons (inline SVG, coloured with currentColor)
+const HUT_ICONS = {
+  // guarded hut: chimney smoke
+  refuge: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 12 12 4l9 8"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/><path d="M16 6.5V4.5h2V8"/><path d="M17 3c.6-.8 1.6-.8 2.2-1.6"/></svg>',
+  // unguarded / winter room: no smoke, a small star
+  refuge_non_garde: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 12 12 4l9 8"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/><path d="m19 2.5.5 1.2 1.2.5-1.2.5-.5 1.2-.5-1.2-1.2-.5 1.2-.5z" fill="currentColor" stroke="none"/></svg>',
+  // chalets, centres: wide chalet with balcony
+  autre: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M2 11.5 12 5l10 6.5"/><path d="M4.5 10v9.5h15V10"/><path d="M4.5 14.5h15"/><path d="M8 14.5v5M12 14.5v5M16 14.5v5"/></svg>',
+};
 const STATUS = { ok:'Places dispo', low:'Presque complet', full:'Complet', closed:'Fermé' };
 const OPENING = { OPEN:'Ouvert', CLOSE:'Fermé', UNGUARDED:'Non gardé' };
 const TYPES = { refuge:'Refuge gardé', refuge_non_garde:'Non gardé', chalet:'Chalet', centre:'Centre' };
 const TYPE_CHIPS = { refuge:'Gardé', refuge_non_garde:'Non gardé', autre:'Autre' };
 const chipOf = type => type in TYPE_CHIPS ? type : 'autre'; // chalets, centres… go to « Autre »
+const hutIcon = type => HUT_ICONS[chipOf(type)];
 const GROUP = { ok:'bookable', low:'bookable', full:'full', closed:'closed' };
 const GROUPS = { bookable:['Réservables', COLORS.ok], full:['Complets', COLORS.full], closed:['Fermés', COLORS.closed] };
 const BOOKING_URL = 'https://www.ffcam.fr/reserver-votre-refuge-en-ligne.html';
@@ -249,11 +283,12 @@ map.fitBounds(ALPS, { paddingBottomRight: isMobile() ? [0, 120] : [0, 0] });
 const markers = new Map();
 const markerLayer = L.layerGroup().addTo(map);
 
+// markers: a small ticket stub (free beds | status dot) pointing at the hut; closed huts are a grey dot.
+// The icon is a 0x0 box at the hut's position; the visible pin is positioned around it in CSS.
 function icon(h, s, n) {
-  if (s === 'closed') return L.divIcon({ className:'', html:`<div class="pin closed" style="width:12px;height:12px;background:${COLORS.closed}"></div>`, iconSize:[12,12] });
-  const size = s === 'full' ? 22 : Math.min(40, 24 + Math.sqrt(n.free) * 2.2);
-  return L.divIcon({ className:'', iconSize:[size, size],
-    html:`<div class="pin" style="width:${size}px;height:${size}px;background:${COLORS[s]}">${s === 'full' ? '0' : n.free}</div>` });
+  if (s === 'closed') return L.divIcon({ className:'tpin-wrap', iconSize:[0, 0], html:'<div class="cpin"></div>' });
+  return L.divIcon({ className:'tpin-wrap', iconSize:[0, 0],
+    html:`<div class="tpin"><span>${s === 'full' ? 0 : n.free}</span><span style="color:${COLORS[s]}">●</span></div>` });
 }
 
 function popup(h) {
@@ -265,14 +300,14 @@ function popup(h) {
       <div><div class="d">${esc(day(d, { weekday:'short', day:'numeric', month:'short' }))}</div>
         <div class="st">${esc(st === 'closed' ? (OPENING[n.opening] || 'Pas de données') : STATUS[st])}</div></div>
       <div class="bar"><i style="width:${pct}%;background:${COLORS[st]}"></i></div>
-      <div class="n">${st === 'closed' ? '–' : `${n.free}<span style="color:var(--muted);font-weight:400"> / ${n.capacity}</span>`}</div>
+      <div class="n">${st === 'closed' ? '–' : `<span style="color:${COLORS[st]}">${n.free}</span><span style="color:var(--ink-2);font-weight:400"> / ${n.capacity}</span>`}</div>
     </div>`;
   }).join('');
-  return `<div class="card-head" style="background:${HEAD[s]}">
-      <h3>${esc(shortName(h))}</h3>
+  return `<div class="card-head"><span class="ic" style="color:${COLORS[s]}">${hutIcon(h.type)}</span>
+      <div><h3>${esc(shortName(h))}</h3>
       <div class="chips"><span class="chip">${esc(TYPES[h.type] || h.type)}</span>
         ${h.ele ? `<span class="chip">▲ ${h.ele} m</span>` : ''}
-        ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div>
+        ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div></div>
     </div>
     <div class="card-body">${nights}
       <div class="actions">
@@ -290,8 +325,10 @@ const nightsEl = document.getElementById('nights');
 DATA.dates.forEach(d => {
   const b = document.createElement('button');
   const bookable = DATA.huts.filter(h => ['ok', 'low'].includes(status(h.nights[d]))).length;
-  b.innerHTML = `<b>${esc(day(d, { weekday:'long' }))}</b><small>${esc(day(d, { day:'numeric', month:'long' }))}</small>
-    <span class="mini">${bookable} réservables</span>`;
+  b.innerHTML = `<div class="ticket"><div class="main"><div class="k">Nuit du</div><div class="d">${esc(day(d, { weekday:'long' }))}</div>
+    <div class="dt">${esc(day(d, { day:'2-digit', month:'2-digit' }))}</div></div>
+    <div class="stub"><b>${bookable}</b><small>refuges<br>libres</small></div></div>`;
+  b.setAttribute('aria-label', `Nuit du ${day(d, { weekday:'long', day:'numeric', month:'long' })}, ${bookable} refuges réservables`);
   b.onclick = () => selectNight(d);
   b.dataset.date = d;
   nightsEl.append(b);
@@ -305,7 +342,7 @@ function centerCarousel() {
   nightsEl.style.transform = `translateX(${box / 2 - (btn.offsetLeft + btn.offsetWidth / 2)}px)`;
 }
 document.addEventListener('keydown', e => {
-  if (e.target.matches('input') || e.target.closest('#map')) return; // keep Leaflet's arrow-key panning
+  if (e.target.matches('input') || e.target.closest('#map, #list')) return; // keep Leaflet's arrow-key panning
   if (e.key === 'ArrowLeft') stepNight(-1);
   if (e.key === 'ArrowRight') stepNight(1);
 });
@@ -319,7 +356,7 @@ nightsEl.addEventListener('touchend', e => {
 });
 window.addEventListener('resize', centerCarousel);
 document.getElementById('meta').textContent =
-  `${DATA.huts.length} refuges · mis à jour le ${new Date(DATA.fetchedAt).toLocaleString('fr-FR', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })}`;
+  `${DATA.huts.length} refuges · màj ${new Date(DATA.fetchedAt).toLocaleString('fr-FR', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })}`;
 
 function focusHut(h, fly = true) {
   state.active = h.id;
@@ -336,7 +373,7 @@ function highlight() {
 function render() {
   [...nightsEl.children].forEach(b => b.setAttribute('aria-pressed', b.dataset.date === state.night));
   centerCarousel();
-  document.getElementById('minFree').textContent = `${state.minFree}+ pl.`;
+  document.getElementById('minFree').textContent = `${state.minFree}+ place${state.minFree > 1 ? 's' : ''}`;
 
   const q = norm(state.q);
   const rows = DATA.huts
@@ -355,7 +392,7 @@ function render() {
     const m = L.marker([h.lat, h.lon], { icon: icon(h, s, n), zIndexOffset: order[s] * 1000, riseOnHover: true, alt: shortName(h) })
       .bindPopup(() => popup(h), { maxWidth: 320, minWidth: 300, autoPanPaddingTopLeft: [20, 20] })
       .bindTooltip(`<b>${esc(shortName(h))}</b><br>${s === 'closed' ? STATUS.closed : s === 'full' ? `Complet (${n.capacity} pl.)` : `${n.free} / ${n.capacity} places`}`,
-        { direction: 'top', offset: [0, -10] })
+        { direction: 'top', offset: [0, s === 'closed' ? -6 : -30] })
       .on('click', () => { state.active = h.id; highlight(); })
       .addTo(markerLayer);
     markers.set(h.id, m);
@@ -376,7 +413,7 @@ function renderList() {
   viewRows.forEach(r => counts[GROUP[r.s]]++);
   const beds = viewRows.filter(r => GROUP[r.s] === 'bookable').reduce((a, r) => a + r.n.free, 0);
   document.getElementById('stats').innerHTML = [
-    [counts.bookable, 'réservables', COLORS.ok], [beds, 'places libres', COLORS.low], [counts.full, 'complets', COLORS.full],
+    [counts.bookable, 'réservables', COLORS.ok], [beds, 'places', COLORS.low], [counts.full, 'complets', COLORS.full],
   ].map(([v, l, c]) => `<div class="stat"><b>${v}</b><span><i class="dot" style="background:${c}"></i>${l}</span></div>`).join('');
 
   // type chips: huts in the map view, for the current night and status filters
@@ -384,7 +421,7 @@ function renderList() {
   typesEl.innerHTML = Object.entries(TYPE_CHIPS).map(([t, label]) => {
     const n = DATA.huts.filter(h => chipOf(h.type) === t && bounds.contains([h.lat, h.lon])
       && state.groups.has(GROUP[status(h.nights[state.night])])).length;
-    return `<button class="tchip" data-type="${t}" aria-pressed="${state.types.has(t)}">${label}<i>${n}</i></button>`;
+    return `<button class="tchip" data-type="${t}" aria-pressed="${state.types.has(t)}">${HUT_ICONS[t]}${label}<i>${n}</i></button>`;
   }).join('');
   typesEl.querySelectorAll('.tchip').forEach(b => b.onclick = () => toggle(state.types, b.dataset.type, Object.keys(TYPE_CHIPS)));
 
@@ -398,20 +435,23 @@ function renderList() {
     `${listed.length} dans la vue${hidden ? ` · ${hidden} hors cadre` : ''}`;
   const list = document.getElementById('list');
   list.innerHTML = listed.length ? listed.map(({ h, n, s }) => {
-    const right = GROUP[s] === 'bookable' ? `<div class="beds"><b>${n.free}</b><small>/ ${n.capacity}</small></div>`
-      : s === 'full' ? `<span class="badge" style="background:${COLORS.full}">Complet · ${n.capacity}</span>`
-      : `<span class="badge" style="background:${COLORS.closed}">${esc(OPENING[n?.opening] || 'Fermé')}</span>`;
-    return `<li data-id="${esc(h.id)}" title="${esc(h.name)}">
-      <span class="dot" style="background:${COLORS[s]}"></span>
-      <div style="min-width:0"><div class="name">${esc(shortName(h))}</div>
-        <div class="sub">${esc(TYPES[h.type] || h.type)}${h.ele ? ` · ${h.ele} m` : ''}</div>
-        ${GROUP[s] === 'bookable' ? `<div class="bar"><i style="width:${Math.round(100 * n.free / n.capacity)}%;background:${COLORS[s]}"></i></div>` : ''}</div>
-      ${right}
+    const stub = GROUP[s] === 'bookable' ? `<b style="color:${COLORS[s]}">${n.free}</b><small>/ ${n.capacity}</small>`
+      : s === 'full' ? `<span class="tag" style="color:${COLORS.full}">Complet</span><small>${n.capacity} pl.</small>`
+      : `<span class="tag" style="color:${COLORS.closed}">${esc(OPENING[n?.opening] || 'Fermé')}</span>`;
+    return `<li data-id="${esc(h.id)}" title="${esc(h.name)}" tabindex="0">
+      <span class="ic" style="color:${COLORS[s]}">${hutIcon(h.type)}</span>
+      <div class="nm"><div class="name">${esc(shortName(h))}</div>
+        <div class="sub">${esc((TYPES[h.type] || h.type).toLowerCase())}${h.ele ? ` · ${h.ele} m` : ''}</div></div>
+      <div class="bd">${stub}</div>
     </li>`;
-  }).join('') : `<li class="empty" style="display:block;cursor:default">${hidden
+  }).join('') : `<li class="empty">${hidden
       ? `Aucun refuge dans cette zone de la carte.<br>Dézoome ou déplace la carte (${hidden} hors cadre).`
       : 'Aucun refuge ne correspond à ces critères.'}</li>`;
-  list.querySelectorAll('li[data-id]').forEach(li => li.onclick = () => focusHut(DATA.huts.find(h => h.id === li.dataset.id)));
+  list.querySelectorAll('li[data-id]').forEach(li => {
+    const open = () => focusHut(DATA.huts.find(h => h.id === li.dataset.id));
+    li.onclick = open;
+    li.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } };
+  });
   highlight();
 }
 
