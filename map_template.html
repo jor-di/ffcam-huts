@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refuges FFCAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    --ok:#16a34a; --low:#f59e0b; --full:#dc2626; --closed:#94a3b8;
+    --bg:#ffffff; --bg-soft:#f4f6f8; --fg:#0f172a; --muted:#64748b; --line:#e2e8f0;
+    --accent:#0f4c81; --accent-soft:#e6eef7; --shadow:0 10px 30px rgba(15,23,42,.18);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#111827; --bg-soft:#1f2937; --fg:#f1f5f9; --muted:#94a3b8; --line:#2b3646;
+      --accent:#7cb4f0; --accent-soft:#1c2c42; --shadow:0 10px 30px rgba(0,0,0,.5); --closed:#64748b;
+    }
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--fg);
+    font:14px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; -webkit-font-smoothing:antialiased; }
+  .app { display:grid; grid-template-columns:380px 1fr; height:100%; }
+  #map { height:100%; background:var(--bg-soft); }
+
+  /* ---------- sidebar ---------- */
+  aside { display:flex; flex-direction:column; min-height:0; background:var(--bg); border-right:1px solid var(--line); z-index:1000; }
+  .hero, .controls, .list-head { flex:none; }
+  .hero { padding:22px 22px 18px; color:#fff; position:relative; overflow:hidden;
+    background:linear-gradient(160deg,#0f4c81 0%,#1e6fb3 55%,#3a8fd1 100%); }
+  .hero svg.peaks { position:absolute; left:0; right:0; bottom:-1px; width:100%; height:70px; opacity:.28; }
+  .hero .eyebrow { font-size:11px; letter-spacing:.14em; text-transform:uppercase; opacity:.8; font-weight:600; }
+  .hero h1 { font-family:Fraunces, Georgia, serif; font-weight:600; font-size:28px; line-height:1.1; margin:4px 0 6px; }
+  .hero .meta { font-size:12px; opacity:.85; position:relative; }
+  .hero .handle { display:none; }
+
+  .controls { padding:16px 20px 6px; display:grid; gap:14px; }
+  .label { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:6px; }
+  /* night carousel: selected night centered, neighbours half visible */
+  .carousel { position:relative; overflow:hidden; margin:0 -20px; padding:2px 0;
+    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.15) 0,#000 20%,#000 80%,rgba(0,0,0,.15) 100%);
+            mask-image:linear-gradient(90deg,rgba(0,0,0,.15) 0,#000 20%,#000 80%,rgba(0,0,0,.15) 100%); }
+  .track { display:flex; gap:10px; transition:transform .35s cubic-bezier(.2,.8,.2,1); will-change:transform; }
+  .track button { flex:0 0 42%; border:1px solid var(--line); background:var(--bg); color:var(--fg); cursor:pointer;
+    padding:10px 12px; border-radius:14px; font:inherit; text-align:center; transition:all .25s; transform:scale(.92); opacity:.85; }
+  .track button b { display:block; font-size:17px; font-weight:700; text-transform:capitalize; }
+  .track button small { display:block; font-size:12px; opacity:.8; }
+  .track button .mini { display:block; font-size:11px; margin-top:4px; font-weight:600; color:var(--ok); }
+  .track button[aria-pressed=true] { transform:scale(1); opacity:1; background:var(--accent); border-color:var(--accent); color:var(--bg);
+    box-shadow:0 6px 18px rgba(15,76,129,.35); }
+  .track button[aria-pressed=true] .mini { color:inherit; opacity:.9; }
+  .track button:not([aria-pressed=true]):hover { opacity:1; border-color:var(--accent); }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .stat { background:var(--bg-soft); border-radius:12px; padding:10px 12px; }
+  .stat b { display:block; font-size:22px; font-weight:700; font-variant-numeric:tabular-nums; }
+  .stat span { font-size:12px; color:var(--muted); display:flex; align-items:center; gap:6px; }
+  .switch { display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; color:var(--fg); }
+  .switch input { appearance:none; width:34px; height:20px; border-radius:20px; background:var(--line); position:relative; cursor:pointer; transition:.2s; margin:0; flex:none; }
+  .switch input::after { content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; transition:.2s; box-shadow:0 1px 2px rgba(0,0,0,.3); }
+  .switch input:checked { background:var(--accent); }
+  .switch input:checked::after { left:16px; }
+  .switch input:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .chipset { display:flex; flex-wrap:wrap; gap:6px; }
+  .tchip { border:1px solid var(--line); background:var(--bg); color:var(--muted); border-radius:999px; padding:5px 11px;
+    font:inherit; font-size:13px; font-weight:500; cursor:pointer; transition:all .15s; }
+  .tchip:hover { border-color:var(--accent); color:var(--fg); }
+  .tchip[aria-pressed=true] { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); }
+  .tchip i { font-style:normal; opacity:.7; margin-left:4px; font-variant-numeric:tabular-nums; }
+  .badge { font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; color:#fff; white-space:nowrap; }
+
+  .filters { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .stepper { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .stepper button { border:0; background:var(--bg-soft); color:var(--fg); width:32px; height:32px; font-size:16px; cursor:pointer; }
+  .stepper output { min-width:66px; text-align:center; font-weight:600; font-variant-numeric:tabular-nums; }
+  .search { width:100%; border:1px solid var(--line); background:var(--bg); color:var(--fg); border-radius:10px; padding:9px 12px; font:inherit; }
+  .search:focus, .tchip:focus-visible, .track button:focus-visible, .stepper button:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+
+  .list-head { display:flex; justify-content:space-between; align-items:baseline; padding:12px 20px 6px; }
+  .list-head .label { margin:0; }
+  .list-head small { color:var(--muted); }
+  ul.huts { list-style:none; margin:0; padding:0 12px 16px; overflow-y:auto; flex:1; min-height:0; }
+  ul.huts li { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; padding:10px; border-radius:12px; cursor:pointer; transition:background .12s; }
+  ul.huts li:hover, ul.huts li.active { background:var(--bg-soft); }
+  ul.huts .name { font-weight:600; line-height:1.3; }
+  ul.huts .sub { font-size:12px; color:var(--muted); }
+  ul.huts .beds { text-align:right; font-variant-numeric:tabular-nums; }
+  ul.huts .beds b { font-size:16px; }
+  ul.huts .beds small { color:var(--muted); display:block; font-size:11px; }
+  .bar { height:4px; border-radius:4px; background:var(--line); overflow:hidden; margin-top:5px; }
+  .bar i { display:block; height:100%; border-radius:4px; }
+  .empty { color:var(--muted); text-align:center; padding:30px 20px; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex:none; }
+
+  /* ---------- markers ---------- */
+  .pin { display:grid; place-items:center; border-radius:999px; color:#fff; font-weight:700; font-size:12px;
+    border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.35); transition:transform .15s; font-variant-numeric:tabular-nums; }
+  .pin:hover, .pin.active { transform:scale(1.25); z-index:1000; }
+  .pin.closed { border-width:1.5px; box-shadow:0 1px 3px rgba(0,0,0,.3); opacity:.85; }
+  .leaflet-marker-icon.leaflet-div-icon { background:none; border:0; }
+  /* IGN serves the ski touring traces in red only: shift them to blue, as on the IGN site */
+  .ski-traces { filter:hue-rotate(205deg) saturate(1.6) brightness(.9); }
+
+  /* ---------- popup ---------- */
+  .leaflet-popup-content-wrapper { border-radius:var(--radius); box-shadow:var(--shadow); background:var(--bg); color:var(--fg); padding:0; overflow:hidden; }
+  .leaflet-popup-tip { background:var(--bg); }
+  .leaflet-popup-content { margin:0; width:300px !important; font:inherit; }
+  .leaflet-container a.leaflet-popup-close-button { color:#fff; top:8px; right:8px; font-size:20px; }
+  .card-head { padding:14px 16px 12px; color:#fff; }
+  .card-head h3 { margin:0; font-size:16px; line-height:1.25; padding-right:18px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .chip { font-size:11px; font-weight:600; padding:3px 8px; border-radius:999px; background:rgba(255,255,255,.22); }
+  .card-body { padding:12px 16px 14px; }
+  .night { display:grid; grid-template-columns:78px 1fr auto; gap:10px; align-items:center; padding:6px 0; border-bottom:1px solid var(--line); }
+  .night:last-of-type { border-bottom:0; }
+  .night.sel .d { font-weight:700; }
+  .night .d { font-size:12px; text-transform:capitalize; }
+  .night .st { font-size:11px; color:var(--muted); }
+  .night .n { font-weight:600; font-variant-numeric:tabular-nums; font-size:13px; }
+  .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .actions a.primary { flex-basis:100%; }
+  .actions a { flex:1; text-align:center; text-decoration:none; padding:8px; border-radius:10px; font-weight:600; font-size:13px; }
+  .actions a.primary { background:var(--accent); color:var(--bg) !important; }
+  .actions a.ghost { background:var(--bg-soft); color:var(--fg) !important; }
+
+  .leaflet-control-layers, .leaflet-bar { border:0 !important; border-radius:12px !important; box-shadow:var(--shadow) !important; overflow:hidden; }
+  .leaflet-bar a { background:var(--bg); color:var(--fg); border-color:var(--line); }
+  .leaflet-control-layers { background:var(--bg); color:var(--fg); }
+
+  /* ---------- mobile: bottom sheet ---------- */
+  @media (max-width:760px) {
+    .app { grid-template-columns:1fr; }
+    #map { position:fixed; inset:0; }
+    aside { position:fixed; left:0; right:0; bottom:0; max-height:72vh; border-right:0; border-radius:18px 18px 0 0;
+      box-shadow:0 -8px 30px rgba(0,0,0,.25); transition:transform .25s; overflow:hidden; }
+    aside.collapsed { transform:translateY(calc(100% - 118px)); }
+    .hero { padding:10px 16px 14px; cursor:pointer; }
+    .hero .handle { display:block; width:40px; height:4px; border-radius:4px; background:rgba(255,255,255,.6); margin:0 auto 10px; }
+    .hero h1 { font-size:22px; }
+    .controls { padding:14px 16px 4px; }
+    .list-head { padding:10px 16px 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside id="sheet">
+    <div class="hero" id="hero">
+      <div class="handle"></div>
+      <div class="eyebrow">Disponibilités</div>
+      <h1>Refuges FFCAM</h1>
+      <div class="meta" id="meta"></div>
+      <svg class="peaks" viewBox="0 0 400 70" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="#fff" d="M0 70 L40 38 L62 50 L104 12 L138 44 L160 30 L200 58 L236 20 L262 36 L300 4 L340 46 L366 32 L400 52 L400 70 Z"/>
+      </svg>
+    </div>
+    <div class="controls">
+      <div>
+        <div class="label">Nuit</div>
+        <div class="carousel" id="carousel"><div class="track" id="nights"></div></div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="filters">
+        <div class="stepper" aria-label="Places libres minimum">
+          <button id="minus" aria-label="Moins">−</button>
+          <output id="minFree">1+ pl.</output>
+          <button id="plus" aria-label="Plus">+</button>
+        </div>
+        <label class="switch"><input type="checkbox" id="showClosed"> Afficher les fermés</label>
+      </div>
+      <div>
+        <div class="label">Type</div>
+        <div class="chipset" id="types"></div>
+      </div>
+      <input class="search" id="search" type="search" placeholder="Rechercher un refuge…" autocomplete="off">
+    </div>
+    <div class="list-head"><div class="label" id="listTitle">Refuges</div><small id="listCount"></small></div>
+    <ul class="huts" id="list"></ul>
+  </aside>
+  <div id="map"></div>
+</div>
+<script>
+const DATA = __DATA__;
+const COLORS = { ok:'#16a34a', low:'#f59e0b', full:'#dc2626', closed:'#94a3b8' };
+const HEAD = { ok:'linear-gradient(135deg,#15803d,#22c55e)', low:'linear-gradient(135deg,#d97706,#f59e0b)',
+               full:'linear-gradient(135deg,#b91c1c,#ef4444)', closed:'linear-gradient(135deg,#475569,#94a3b8)' };
+const STATUS = { ok:'Places dispo', low:'Presque complet', full:'Complet', closed:'Fermé' };
+const OPENING = { OPEN:'Ouvert', CLOSE:'Fermé', UNGUARDED:'Non gardé' };
+const TYPES = { refuge:'Refuge gardé', refuge_non_garde:'Non gardé', chalet:'Chalet', centre:'Centre' };
+const TYPE_CHIPS = { refuge:'Gardé', refuge_non_garde:'Non gardé', autre:'Autre' };
+const chipOf = type => type in TYPE_CHIPS ? type : 'autre'; // chalets, centres… go to « Autre »
+const GROUP = { ok:'bookable', low:'bookable', full:'full', closed:'closed' };
+const GROUPS = { bookable:['Réservables', COLORS.ok], full:['Complets', COLORS.full], closed:['Fermés', COLORS.closed] };
+const BOOKING_URL = 'https://www.ffcam.fr/reserver-votre-refuge-en-ligne.html';
+// fallback booking page for huts of other portals without their own website
+const PORTAL_URLS = { VANOISE: 'https://www.refuges-vanoise.com/' };
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const day = (d, o) => new Date(d + 'T12:00:00').toLocaleDateString('fr-FR', o);
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const shortName = h => h.name.replace(/\s*\(FFCAM\)\s*/, '').replace(/\s+/g, ' ').trim();
+
+function status(n) {
+  if (!n || n.opening !== 'OPEN' || !n.capacity) return 'closed';
+  if (!n.free) return 'full';
+  return n.free <= Math.max(2, Math.round(n.capacity * 0.1)) ? 'low' : 'ok';
+}
+
+const defaultNight = DATA.dates.find(d => new Date(d + 'T12:00:00').getDay() === 6) || DATA.dates[0];
+const state = { night: defaultNight, minFree: 1, groups: new Set(['bookable']), types: new Set(Object.keys(TYPE_CHIPS)), q: '', active: null };
+
+/* ---------- map ---------- */
+const layers = {
+  'Relief (OpenTopoMap)': L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { maxZoom:17,
+    attribution:'&copy; OpenStreetMap, SRTM | &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }),
+  'Topo clair (Esri)': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom:19,
+    attribution:'Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' }),
+  'Satellite (Esri)': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom:18,
+    attribution:'Imagery &copy; Esri, Maxar, Earthstar Geographics' }),
+  'Plan IGN': L.tileLayer('https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&STYLE=normal&TILEMATRIXSET=PM_0_19&FORMAT=image/png&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+    { maxZoom:19, attribution:'&copy; <a href="https://www.ign.fr">IGN</a> Géoplateforme' }),
+  // OSM France tiles: tile.openstreetmap.org blocks pages opened from file:// (no Referer header)
+  'OpenStreetMap France': L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { maxZoom:20, subdomains:'abc',
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | tuiles <a href="https://www.openstreetmap.fr">OSM France</a>' }),
+};
+// IGN SCAN 25 (the paper 1:25 000 maps) needs a personal IGN API key: ./build_map.py --ign-key KEY
+if (DATA.ignKey) layers['IGN SCAN 25'] = L.tileLayer(
+  `https://data.geopf.fr/private/wmts?apikey=${encodeURIComponent(DATA.ignKey)}&SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN25TOUR&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}`,
+  { minZoom:6, maxZoom:16, attribution:'&copy; <a href="https://www.ign.fr">IGN</a> SCAN 25' });
+const map = L.map('map', { layers:[layers['Topo clair (Esri)']], zoomControl:false, zoomSnap:0.25 });
+L.control.zoom({ position:'topright' }).addTo(map);
+// overlays (checkboxes in the layer menu), drawn on top of any base map
+const overlays = {
+  'Traces ski de rando (IGN)': L.tileLayer('https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=TRACES.RANDO.HIVERNALE&STYLE=normal&TILEMATRIXSET=PM_6_16&FORMAT=image/png&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+    { minZoom:6, maxNativeZoom:16, maxZoom:20, opacity:0.9, className:'ski-traces', attribution:'Traces de randonnée hivernale &copy; IGN' }),
+};
+L.control.layers(layers, overlays, { position:'topright' }).addTo(map);
+L.control.scale({ imperial:false, position:'bottomright' }).addTo(map);
+// initial view: French Alps, from the Hautes-Alpes (south) to Lake Geneva (north)
+const ALPS = L.latLngBounds([44.7, 5.7], [46.42, 7.1]);
+const isMobile = () => window.innerWidth <= 760;
+if (isMobile()) document.getElementById('sheet').classList.add('collapsed');
+map.fitBounds(ALPS, { paddingBottomRight: isMobile() ? [0, 120] : [0, 0] });
+
+const markers = new Map();
+const markerLayer = L.layerGroup().addTo(map);
+
+function icon(h, s, n) {
+  if (s === 'closed') return L.divIcon({ className:'', html:`<div class="pin closed" style="width:12px;height:12px;background:${COLORS.closed}"></div>`, iconSize:[12,12] });
+  const size = s === 'full' ? 22 : Math.min(40, 24 + Math.sqrt(n.free) * 2.2);
+  return L.divIcon({ className:'', iconSize:[size, size],
+    html:`<div class="pin" style="width:${size}px;height:${size}px;background:${COLORS[s]}">${s === 'full' ? '0' : n.free}</div>` });
+}
+
+function popup(h) {
+  const s = status(h.nights[state.night]);
+  const nights = DATA.dates.map(d => {
+    const n = h.nights[d] || {}, st = status(n);
+    const pct = n.capacity ? Math.round(100 * (n.free || 0) / n.capacity) : 0;
+    return `<div class="night ${d === state.night ? 'sel' : ''}">
+      <div><div class="d">${esc(day(d, { weekday:'short', day:'numeric', month:'short' }))}</div>
+        <div class="st">${esc(st === 'closed' ? (OPENING[n.opening] || 'Pas de données') : STATUS[st])}</div></div>
+      <div class="bar"><i style="width:${pct}%;background:${COLORS[st]}"></i></div>
+      <div class="n">${st === 'closed' ? '–' : `${n.free}<span style="color:var(--muted);font-weight:400"> / ${n.capacity}</span>`}</div>
+    </div>`;
+  }).join('');
+  return `<div class="card-head" style="background:${HEAD[s]}">
+      <h3>${esc(shortName(h))}</h3>
+      <div class="chips"><span class="chip">${esc(TYPES[h.type] || h.type)}</span>
+        ${h.ele ? `<span class="chip">▲ ${h.ele} m</span>` : ''}
+        ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div>
+    </div>
+    <div class="card-body">${nights}
+      <div class="actions">
+        ${h.url
+          ? `<a class="primary" href="${esc(h.url)}" target="_blank" rel="noopener">${h.url.includes('.ffcam.fr') ? 'Fiche FFCAM' : 'Site du refuge'}</a>`
+          : `<a class="primary" href="${PORTAL_URLS[h.portal] || BOOKING_URL}" target="_blank" rel="noopener">Réserver</a>`}
+        ${h.c2c ? `<a class="ghost" href="${esc(h.c2c)}" target="_blank" rel="noopener">Camptocamp</a>` : ''}
+        ${h.skitour ? `<a class="ghost" href="${esc(h.skitour)}" target="_blank" rel="noopener">Skitour</a>` : ''}
+      </div>
+    </div>`;
+}
+
+/* ---------- sidebar ---------- */
+const nightsEl = document.getElementById('nights');
+DATA.dates.forEach(d => {
+  const b = document.createElement('button');
+  const bookable = DATA.huts.filter(h => ['ok', 'low'].includes(status(h.nights[d]))).length;
+  b.innerHTML = `<b>${esc(day(d, { weekday:'long' }))}</b><small>${esc(day(d, { day:'numeric', month:'long' }))}</small>
+    <span class="mini">${bookable} réservables</span>`;
+  b.onclick = () => selectNight(d);
+  b.dataset.date = d;
+  nightsEl.append(b);
+});
+function selectNight(d) { if (d && d !== state.night) { state.night = d; render(); } }
+function stepNight(delta) { selectNight(DATA.dates[DATA.dates.indexOf(state.night) + delta]); }
+function centerCarousel() {
+  const btn = [...nightsEl.children].find(b => b.dataset.date === state.night);
+  if (!btn) return;
+  const box = document.getElementById('carousel').clientWidth;
+  nightsEl.style.transform = `translateX(${box / 2 - (btn.offsetLeft + btn.offsetWidth / 2)}px)`;
+}
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input') || e.target.closest('#map')) return; // keep Leaflet's arrow-key panning
+  if (e.key === 'ArrowLeft') stepNight(-1);
+  if (e.key === 'ArrowRight') stepNight(1);
+});
+// swipe on touch screens
+let touchX = null;
+nightsEl.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+nightsEl.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 40) stepNight(dx < 0 ? 1 : -1);
+  touchX = null;
+});
+window.addEventListener('resize', centerCarousel);
+document.getElementById('meta').textContent =
+  `${DATA.huts.length} refuges · mis à jour le ${new Date(DATA.fetchedAt).toLocaleString('fr-FR', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })}`;
+
+function focusHut(h, fly = true) {
+  state.active = h.id;
+  if (fly) map.flyTo([h.lat, h.lon], Math.max(map.getZoom(), 12), { duration: .8 });
+  markers.get(h.id)?.openPopup();
+  if (window.innerWidth <= 760) document.getElementById('sheet').classList.add('collapsed');
+  highlight();
+}
+function highlight() {
+  document.querySelectorAll('ul.huts li').forEach(li => li.classList.toggle('active', li.dataset.id === state.active));
+  markers.forEach((m, id) => m.getElement()?.firstElementChild?.classList.toggle('active', id === state.active));
+}
+
+function render() {
+  [...nightsEl.children].forEach(b => b.setAttribute('aria-pressed', b.dataset.date === state.night));
+  centerCarousel();
+  document.getElementById('minFree').textContent = `${state.minFree}+ pl.`;
+
+  const q = norm(state.q);
+  const rows = DATA.huts
+    .map(h => ({ h, n: h.nights[state.night], s: status(h.nights[state.night]) }))
+    .filter(({ h }) => state.types.has(chipOf(h.type)) && (!q || norm(h.name).includes(q)));
+
+  state.rows = rows;
+
+
+  const visible = rows.filter(({ n, s }) =>
+    state.groups.has(GROUP[s]) && (GROUP[s] !== 'bookable' || n.free >= state.minFree));
+
+  markerLayer.clearLayers(); markers.clear();
+  const order = { closed:0, full:1, low:2, ok:3 };
+  visible.sort((a, b) => order[a.s] - order[b.s]).forEach(({ h, n, s }) => {
+    const m = L.marker([h.lat, h.lon], { icon: icon(h, s, n), zIndexOffset: order[s] * 1000, riseOnHover: true, alt: shortName(h) })
+      .bindPopup(() => popup(h), { maxWidth: 320, minWidth: 300, autoPanPaddingTopLeft: [20, 20] })
+      .bindTooltip(`<b>${esc(shortName(h))}</b><br>${s === 'closed' ? STATUS.closed : s === 'full' ? `Complet (${n.capacity} pl.)` : `${n.free} / ${n.capacity} places`}`,
+        { direction: 'top', offset: [0, -10] })
+      .on('click', () => { state.active = h.id; highlight(); })
+      .addTo(markerLayer);
+    markers.set(h.id, m);
+  });
+
+  state.visible = visible;
+  renderList();
+}
+
+// Sidebar list: only the huts inside the current map view (re-run on every pan/zoom)
+function renderList() {
+  const bounds = map.getBounds();
+  const inView = ({ h }) => bounds.contains([h.lat, h.lon]);
+
+  // key numbers: huts in the map view, within the current type/search filters
+  const viewRows = state.rows.filter(inView);
+  const counts = { bookable:0, full:0, closed:0 };
+  viewRows.forEach(r => counts[GROUP[r.s]]++);
+  const beds = viewRows.filter(r => GROUP[r.s] === 'bookable').reduce((a, r) => a + r.n.free, 0);
+  document.getElementById('stats').innerHTML = [
+    [counts.bookable, 'réservables', COLORS.ok], [beds, 'places libres', COLORS.low], [counts.full, 'complets', COLORS.full],
+  ].map(([v, l, c]) => `<div class="stat"><b>${v}</b><span><i class="dot" style="background:${c}"></i>${l}</span></div>`).join('');
+
+  // type chips: huts in the map view, for the current night and status filters
+  const typesEl = document.getElementById('types');
+  typesEl.innerHTML = Object.entries(TYPE_CHIPS).map(([t, label]) => {
+    const n = DATA.huts.filter(h => chipOf(h.type) === t && bounds.contains([h.lat, h.lon])
+      && state.groups.has(GROUP[status(h.nights[state.night])])).length;
+    return `<button class="tchip" data-type="${t}" aria-pressed="${state.types.has(t)}">${label}<i>${n}</i></button>`;
+  }).join('');
+  typesEl.querySelectorAll('.tchip').forEach(b => b.onclick = () => toggle(state.types, b.dataset.type, Object.keys(TYPE_CHIPS)));
+
+  const gOrder = { bookable:0, full:1, closed:2 };
+  const listed = state.visible.filter(inView).sort((a, b) => gOrder[GROUP[a.s]] - gOrder[GROUP[b.s]]
+    || (b.n?.free || 0) - (a.n?.free || 0) || a.h.name.localeCompare(b.h.name, 'fr'));
+  document.getElementById('listTitle').textContent =
+    state.groups.size === 1 ? `Refuges ${GROUPS[[...state.groups][0]][0].toLowerCase()}` : 'Refuges';
+  const hidden = state.visible.length - listed.length;
+  document.getElementById('listCount').textContent =
+    `${listed.length} dans la vue${hidden ? ` · ${hidden} hors cadre` : ''}`;
+  const list = document.getElementById('list');
+  list.innerHTML = listed.length ? listed.map(({ h, n, s }) => {
+    const right = GROUP[s] === 'bookable' ? `<div class="beds"><b>${n.free}</b><small>/ ${n.capacity}</small></div>`
+      : s === 'full' ? `<span class="badge" style="background:${COLORS.full}">Complet · ${n.capacity}</span>`
+      : `<span class="badge" style="background:${COLORS.closed}">${esc(OPENING[n?.opening] || 'Fermé')}</span>`;
+    return `<li data-id="${esc(h.id)}" title="${esc(h.name)}">
+      <span class="dot" style="background:${COLORS[s]}"></span>
+      <div style="min-width:0"><div class="name">${esc(shortName(h))}</div>
+        <div class="sub">${esc(TYPES[h.type] || h.type)}${h.ele ? ` · ${h.ele} m` : ''}</div>
+        ${GROUP[s] === 'bookable' ? `<div class="bar"><i style="width:${Math.round(100 * n.free / n.capacity)}%;background:${COLORS[s]}"></i></div>` : ''}</div>
+      ${right}
+    </li>`;
+  }).join('') : `<li class="empty" style="display:block;cursor:default">${hidden
+      ? `Aucun refuge dans cette zone de la carte.<br>Dézoome ou déplace la carte (${hidden} hors cadre).`
+      : 'Aucun refuge ne correspond à ces critères.'}</li>`;
+  list.querySelectorAll('li[data-id]').forEach(li => li.onclick = () => focusHut(DATA.huts.find(h => h.id === li.dataset.id)));
+  highlight();
+}
+
+document.getElementById('minus').onclick = () => { state.minFree = Math.max(1, state.minFree - 1); render(); };
+document.getElementById('plus').onclick = () => { state.minFree = Math.min(30, state.minFree + 1); render(); };
+// Filter click: when every option is selected, keep only the clicked one;
+// otherwise toggle it. An empty selection falls back to the defaults.
+function toggle(set, value, all, defaults = all) {
+  if (all.every(v => set.has(v))) { set.clear(); set.add(value); }
+  else if (set.has(value)) set.delete(value);
+  else set.add(value);
+  if (!set.size) defaults.forEach(v => set.add(v));
+  render();
+}
+// "Afficher les fermés": also show full and closed huts (map + list)
+document.getElementById('showClosed').onchange = e => {
+  state.groups = new Set(e.target.checked ? Object.keys(GROUPS) : ['bookable']);
+  render();
+};
+document.getElementById('search').oninput = e => { state.q = e.target.value; render(); };
+document.getElementById('hero').onclick = () => { if (window.innerWidth <= 760) document.getElementById('sheet').classList.toggle('collapsed'); };
+map.on('popupclose', () => { state.active = null; highlight(); });
+map.on('moveend', renderList);
+render();
+</script>
+</body>
+</html>

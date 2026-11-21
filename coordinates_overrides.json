@@ -1,0 +1,33 @@
+{
+  "_comment": "Manual coordinates for huts that cannot be matched to an OSM hut automatically. Keyed by FFCAM hut id; applied to the 'Non Gardé' sibling too.",
+  "BK_STRUCTURE:53": {
+    "name": "Refuge d'Averole",
+    "lat": 45.2971696,
+    "lon": 7.0843286,
+    "osm": "way/55693707",
+    "note": "tagged amenity=shelter in OSM"
+  },
+  "BK_STRUCTURE:xxxl0tm6umg": {
+    "name": "Refuge d'Averole Non Gardé",
+    "lat": 45.2971696,
+    "lon": 7.0843286,
+    "osm": "way/55693707",
+    "note": "tagged amenity=shelter in OSM"
+  },
+  "BK_STRUCTURE:11": {
+    "name": "Chalet-refuge du Ratou",
+    "lat": 46.2968372,
+    "lon": 5.9463385,
+    "osm": "node/10901439850",
+    "note": "approximate: position of the 'Chalet du Ratou' signpost, the hut itself is not in OSM"
+  },
+  "BK_STRUCTURE:5a1njyztnljl": {
+    "name": "Refuge du Roc",
+    "lat": 45.3278498,
+    "lon": 6.6912452,
+    "ele": 1911,
+    "osm": "way/47600502",
+    "website": "https://www.refugeduroc.com/",
+    "note": "ex Refuge du Roc de la Pêche (Pralognan), renamed: see refugeduroc.com"
+  }
+}

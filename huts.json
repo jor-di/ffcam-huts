@@ -1,0 +1,1874 @@
+{
+  "refreshed_at": "2026-11-20T18:08:45",
+  "huts": [
+    {
+      "id": "BK_STRUCTURE:47ntr9jg1dif",
+      "portal": "FFCAM",
+      "name": "Chalet alpin l'Eychauda  (FFCAM)",
+      "short_name": "Eychauda",
+      "type": "centre",
+      "email_user": "chaletleychauda",
+      "max_pax_per_booking": 25,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletleychauda.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:46",
+      "portal": "FFCAM",
+      "name": "Chalet de Bonneval sur Arc  (FFCAM)",
+      "short_name": "Bonneval sur Arc",
+      "type": "chalet",
+      "email_user": "refuges",
+      "max_pax_per_booking": 15,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:123",
+      "portal": "FFCAM",
+      "name": "Chalet de Gourette  (FFCAM)",
+      "short_name": "Gourette",
+      "type": "refuge",
+      "email_user": "chaletdegourette",
+      "max_pax_per_booking": 16,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletdegourette.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:98",
+      "portal": "FFCAM",
+      "name": "Chalet de Maljasset  (FFCAM)",
+      "short_name": "Maljasset",
+      "type": "refuge",
+      "email_user": "chaletmaljasset",
+      "max_pax_per_booking": 8,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletmaljasset.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:103",
+      "portal": "FFCAM",
+      "name": "Chalet de Saint Guilhem le Désert  (FFCAM)",
+      "short_name": "Saint-Guilhem-le-Désert",
+      "type": "chalet",
+      "email_user": "refugestguilhemledesert",
+      "max_pax_per_booking": 18,
+      "max_nights": 15,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugestguilhemledesert.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:104",
+      "portal": "FFCAM",
+      "name": "Chalet de Vauchignon  (FFCAM)",
+      "short_name": "Vauchignon",
+      "type": "chalet",
+      "email_user": "chaletvauchignon",
+      "max_pax_per_booking": 24,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletvauchignon.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:87",
+      "portal": "FFCAM",
+      "name": "Chalet de la Madone de Fenestre  (FFCAM)",
+      "short_name": "Madone de Fenestre",
+      "type": "refuge",
+      "email_user": "chaletmadonedefenestre",
+      "max_pax_per_booking": 56,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletmadonedefenestre.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:100",
+      "portal": "FFCAM",
+      "name": "Chalet de la Maline - Verdon  (FFCAM)",
+      "short_name": "La Maline",
+      "type": "centre",
+      "email_user": "chaletlamaline",
+      "max_pax_per_booking": 44,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletlamaline.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:4m2wkebwwg2f",
+      "portal": "FFCAM",
+      "name": "Chalet des Contamines  (FFCAM)",
+      "short_name": "Contamines",
+      "type": "refuge",
+      "email_user": "chaletdescontamines",
+      "max_pax_per_booking": 12,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletdescontamines.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:9",
+      "portal": "FFCAM",
+      "name": "Chalet des Tuffes  (FFCAM)",
+      "short_name": "Tuffes",
+      "type": "centre",
+      "email_user": "chaletlestuffes",
+      "max_pax_per_booking": 6,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletlestuffes.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:15",
+      "portal": "FFCAM",
+      "name": "Chalet du Graydon  (FFCAM)",
+      "short_name": "Graydon",
+      "type": "chalet",
+      "email_user": "chaletdegraydon",
+      "max_pax_per_booking": 99,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletdegraydon.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5",
+      "portal": "FFCAM",
+      "name": "Chalet du Langenberg  (FFCAM)",
+      "short_name": "Langenberg",
+      "type": "chalet",
+      "email_user": "chaletlangenberg",
+      "max_pax_per_booking": 26,
+      "max_nights": 10,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletlangenberg.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:4",
+      "portal": "FFCAM",
+      "name": "Chalet du Plain du Canon  (FFCAM)",
+      "short_name": "Plain du Canon",
+      "type": "chalet",
+      "email_user": "chaletplainducanon",
+      "max_pax_per_booking": 12,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletplainducanon.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:36",
+      "portal": "FFCAM",
+      "name": "Chalet du Plan de la Lai  (FFCAM)",
+      "short_name": "Plan de la Lai",
+      "type": "refuge",
+      "email_user": "chaletplandelalai",
+      "max_pax_per_booking": 16,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletplandelalai.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:101",
+      "portal": "FFCAM",
+      "name": "Chalet du Sancy  (FFCAM)",
+      "short_name": "Sancy",
+      "type": "centre",
+      "email_user": "chaletdusancy",
+      "max_pax_per_booking": 8,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletdusancy.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:116",
+      "portal": "FFCAM",
+      "name": "Chalet la Grange de Holle  (FFCAM)",
+      "short_name": "Grange de Holle",
+      "type": "centre",
+      "email_user": "chaletlagrangedeholle",
+      "max_pax_per_booking": 10,
+      "max_nights": 10,
+      "booking_delay_days": "450",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletlagrangedeholle.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:2",
+      "portal": "FFCAM",
+      "name": "Chalet-refuge des Trois-Fours  (FFCAM)",
+      "short_name": "Trois Fours",
+      "type": "centre",
+      "email_user": "chaletrefuge3fours",
+      "max_pax_per_booking": 12,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletrefuge3fours.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:11",
+      "portal": "FFCAM",
+      "name": "Chalet-refuge du Ratou  (FFCAM)",
+      "short_name": "Ratou",
+      "type": "refuge",
+      "email_user": "chaletleratou",
+      "max_pax_per_booking": 30,
+      "max_nights": 99,
+      "booking_delay_days": "200",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:22",
+      "portal": "FFCAM",
+      "name": "Refuge Albert 1er  (FFCAM)",
+      "short_name": "Albert 1er",
+      "type": "refuge",
+      "email_user": "refugealbert1er",
+      "max_pax_per_booking": 30,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugealbert1er.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u87ub79d",
+      "portal": "FFCAM",
+      "name": "Refuge Albert 1er Non Gardé (FFCAM)",
+      "short_name": "Albert 1er Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refuges.caf.chamonix",
+      "max_pax_per_booking": 5,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugealbert1er.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5h5skpilec4l",
+      "portal": "VANOISE",
+      "name": "Refuge Entre-Deux-Eaux",
+      "short_name": "Entre-Deux-Eaux",
+      "type": "refuge",
+      "email_user": "refuge.entre2eaux",
+      "max_pax_per_booking": 38,
+      "max_nights": 10,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:BIVOUAC"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:54",
+      "portal": "FFCAM",
+      "name": "Refuge d'Ambin  (FFCAM)",
+      "short_name": "Ambin",
+      "type": "refuge",
+      "email_user": "refugedambin",
+      "max_pax_per_booking": 30,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedambin.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8838n0j",
+      "portal": "FFCAM",
+      "name": "Refuge d'Argentière Non Gardé (FFCAM)",
+      "short_name": "Argentière Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refuges.caf.chamonix",
+      "max_pax_per_booking": 5,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:124",
+      "portal": "FFCAM",
+      "name": "Refuge d'Arrémoulit  (FFCAM)",
+      "short_name": "Arrémoulit",
+      "type": "refuge",
+      "email_user": "refugedarremoulit",
+      "max_pax_per_booking": 9,
+      "max_nights": 3,
+      "booking_delay_days": "120",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedarremoulit.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u884qc8h",
+      "portal": "FFCAM",
+      "name": "Refuge d'Arrémoulit Non Gardé (FFCAM)",
+      "short_name": "Arrémoulit Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedarremoulit",
+      "max_pax_per_booking": 5,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedarremoulit.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:53",
+      "portal": "FFCAM",
+      "name": "Refuge d'Averole  (FFCAM)",
+      "short_name": "Averole",
+      "type": "refuge",
+      "email_user": "refugedaverole",
+      "max_pax_per_booking": 50,
+      "max_nights": 7,
+      "booking_delay_days": "300",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedaverole.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxxl0tm6umg",
+      "portal": "FFCAM",
+      "name": "Refuge d'Averole Non Gardé (FFCAM)",
+      "short_name": "Averole Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedaverole",
+      "max_pax_per_booking": 3,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedaverole.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:111",
+      "portal": "FFCAM",
+      "name": "Refuge d'Espingo  (FFCAM)",
+      "short_name": "Espingo",
+      "type": "refuge",
+      "email_user": "refugedespingo",
+      "max_pax_per_booking": 6,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedespingo.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:107",
+      "portal": "FFCAM",
+      "name": "Refuge de Bayssellance  (FFCAM)",
+      "short_name": "Bayssellance",
+      "type": "refuge",
+      "email_user": "refugebayssellance",
+      "max_pax_per_booking": 8,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugebayssellance.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:113",
+      "portal": "FFCAM",
+      "name": "Refuge de Campana de Cloutou  (FFCAM)",
+      "short_name": "Campana de Cloutou",
+      "type": "refuge",
+      "email_user": "refugecampanadecloutou",
+      "max_pax_per_booking": 16,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugecampanadecloutou.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8934wt7",
+      "portal": "FFCAM",
+      "name": "Refuge de Campana de Cloutou Non Gardé (FFCAM)",
+      "short_name": "Campana de Cloutou Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugecampanadecloutou",
+      "max_pax_per_booking": 12,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugecampanadecloutou.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:63",
+      "portal": "FFCAM",
+      "name": "Refuge de Chabourneou  (FFCAM)",
+      "short_name": "Chabournéou",
+      "type": "refuge",
+      "email_user": "refugechabourneou",
+      "max_pax_per_booking": 12,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugechabourneou.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:97",
+      "portal": "FFCAM",
+      "name": "Refuge de Chambeyron  (FFCAM)",
+      "short_name": "Chambeyron",
+      "type": "refuge",
+      "email_user": "refugeduchambeyron",
+      "max_pax_per_booking": 20,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeduchambeyron.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:91",
+      "portal": "FFCAM",
+      "name": "Refuge de Cougourde  (FFCAM)",
+      "short_name": "Cougourde",
+      "type": "refuge",
+      "email_user": "refugelacougourde",
+      "max_pax_per_booking": 40,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugelacougourde.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:71",
+      "portal": "FFCAM",
+      "name": "Refuge de Font Turbat  (FFCAM)",
+      "short_name": "Font Turbat",
+      "type": "refuge",
+      "email_user": "refugefontturbat",
+      "max_pax_per_booking": 11,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugefontturbat.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:94",
+      "portal": "FFCAM",
+      "name": "Refuge de Gialorgues  (FFCAM)",
+      "short_name": "Gialorgues",
+      "type": "chalet",
+      "email_user": "refugedegialorgues",
+      "max_pax_per_booking": 12,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedegialorgues.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:18",
+      "portal": "FFCAM",
+      "name": "Refuge de La Pointe Percée - Gramusset (FFCAM)",
+      "short_name": "Pointe Percée - Gramusset",
+      "type": "refuge",
+      "email_user": "refugelapointepercee",
+      "max_pax_per_booking": 14,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugelapointepercee.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8nnte7d",
+      "portal": "FFCAM",
+      "name": "Refuge de La Pointe Percée - Gramusset Non Gardé (FFCAM)",
+      "short_name": "Pointe Percée - Gramusset Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugelapointepercee",
+      "max_pax_per_booking": 16,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugelapointepercee.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:121",
+      "portal": "FFCAM",
+      "name": "Refuge de Larribet  (FFCAM)",
+      "short_name": "Larribet",
+      "type": "refuge",
+      "email_user": "refugedelarribet",
+      "max_pax_per_booking": 15,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedelarribet.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8l3ommd",
+      "portal": "FFCAM",
+      "name": "Refuge de Leschaux Non Gardé (FFCAM)",
+      "short_name": "Leschaux Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refuges.caf.chamonix",
+      "max_pax_per_booking": 5,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:90",
+      "portal": "FFCAM",
+      "name": "Refuge de Nice  (FFCAM)",
+      "short_name": "Nice",
+      "type": "refuge",
+      "email_user": "refugedenice",
+      "max_pax_per_booking": 54,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedenice.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8mjvfvz",
+      "portal": "FFCAM",
+      "name": "Refuge de Nice Non Gardé (FFCAM)",
+      "short_name": "Nice Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedenice",
+      "max_pax_per_booking": 10,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedenice.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5a1mymmzijik",
+      "portal": "VANOISE",
+      "name": "Refuge de Plan Sec",
+      "short_name": "Plan sec",
+      "type": "refuge",
+      "email_user": "refuge.plansec",
+      "max_pax_per_booking": 49,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:BIVOUAC"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8nmpryk",
+      "portal": "FFCAM",
+      "name": "Refuge de Platé Non Gardé (FFCAM)",
+      "short_name": "Platé Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedeplate",
+      "max_pax_per_booking": 4,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedeplate.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:106",
+      "portal": "FFCAM",
+      "name": "Refuge de Pombie  (FFCAM)",
+      "short_name": "Pombie",
+      "type": "refuge",
+      "email_user": "refugedepombie",
+      "max_pax_per_booking": 15,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:BIVOUAC",
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedepombie.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:37",
+      "portal": "FFCAM",
+      "name": "Refuge de Presset  (FFCAM)",
+      "short_name": "Presset",
+      "type": "refuge",
+      "email_user": "refugedepresset",
+      "max_pax_per_booking": 30,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedepresset.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8xp8y6e",
+      "portal": "FFCAM",
+      "name": "Refuge de Presset Non Gardé (FFCAM)",
+      "short_name": "Presset Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 12,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedepresset.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:50",
+      "portal": "FFCAM",
+      "name": "Refuge de Péclet-Polset",
+      "short_name": "Péclet-Polset",
+      "type": "refuge",
+      "email_user": "refugepecletpolset",
+      "max_pax_per_booking": 84,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugepecletpolset.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8mon63z",
+      "portal": "FFCAM",
+      "name": "Refuge de Péclet-Polset Non Gardé",
+      "short_name": "Péclet-Polset Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugepecletpolset",
+      "max_pax_per_booking": 16,
+      "max_nights": 6,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugepecletpolset.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:93",
+      "portal": "FFCAM",
+      "name": "Refuge de Rabuons  (FFCAM)",
+      "short_name": "Rabuons",
+      "type": "refuge",
+      "email_user": "refugederabuons",
+      "max_pax_per_booking": 25,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugederabuons.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:80",
+      "portal": "FFCAM",
+      "name": "Refuge de Temple Ecrins  (FFCAM)",
+      "short_name": "Temple Ecrins",
+      "type": "refuge",
+      "email_user": "refugetempleecrins",
+      "max_pax_per_booking": 20,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugetempleecrins.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5wdwmtq8a",
+      "portal": "FFCAM",
+      "name": "Refuge de Tête Rousse Non Gardé (FFCAM)",
+      "short_name": "Tête Rousse Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "montblanc.resas",
+      "max_pax_per_booking": 3,
+      "max_nights": 1,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:108",
+      "portal": "FFCAM",
+      "name": "Refuge de Vénasque  (FFCAM)",
+      "short_name": "Vénasque",
+      "type": "refuge",
+      "email_user": "refugedevenasque",
+      "max_pax_per_booking": 8,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedevenasque.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8xycgku",
+      "portal": "FFCAM",
+      "name": "Refuge de Vénasque Non Gardé (FFCAM)",
+      "short_name": "Vénasque Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 12,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedevenasque.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:85",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Aigle (FFCAM)",
+      "short_name": "Aigle",
+      "type": "refuge",
+      "email_user": "refugedelaigle",
+      "max_pax_per_booking": 4,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:RESTAURATION"
+      ],
+      "site": "https://refugedelaigle.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u84snc9p",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Aigle Non Gardé (FFCAM)",
+      "short_name": "Aigle Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedelaigle",
+      "max_pax_per_booking": 4,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedelaigle.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:74",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Alpe de Villar d'Arène (FFCAM)",
+      "short_name": "Alpe de Villar d Arène",
+      "type": "refuge",
+      "email_user": "refugeava",
+      "max_pax_per_booking": 20,
+      "max_nights": 10,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:xxxld3htkpn",
+      "portal": "VANOISE",
+      "name": "Refuge de l'Arpont",
+      "short_name": "Arpont",
+      "type": "refuge",
+      "email_user": "refuge.arpont",
+      "max_pax_per_booking": 15,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:BIVOUAC"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:26",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Envers des Aiguilles  (FFCAM)",
+      "short_name": "Envers des Aiguilles",
+      "type": "refuge",
+      "email_user": "refugelenversdesaiguilles",
+      "max_pax_per_booking": 15,
+      "max_nights": 10,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugelenversdesaiguilles.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8jmexys",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Envers des Aiguilles Non Gardé (FFCAM)",
+      "short_name": "Envers des Aiguilles Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refuges.caf.chamonix",
+      "max_pax_per_booking": 5,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugelenversdesaiguilles.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:126",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Etang Fourcat  (FFCAM)",
+      "short_name": "Etang Fourcat",
+      "type": "refuge",
+      "email_user": "refugeetangfourcat",
+      "max_pax_per_booking": 8,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeetangfourcat.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:127",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Etang Pinet  (FFCAM)",
+      "short_name": "Etang Pinet",
+      "type": "refuge",
+      "email_user": "refugeetangpinet",
+      "max_pax_per_booking": 12,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeetangpinet.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:128",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Etang d'Araing  (FFCAM)",
+      "short_name": "Etang d Araing",
+      "type": "refuge",
+      "email_user": "refugeetangdaraing",
+      "max_pax_per_booking": 8,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeetangdaraing.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:57",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Etendard  (FFCAM)",
+      "short_name": "Etendard",
+      "type": "refuge",
+      "email_user": "refugedeletendard",
+      "max_pax_per_booking": 64,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedeletendard.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:70",
+      "portal": "FFCAM",
+      "name": "Refuge de l'Olan  (FFCAM)",
+      "short_name": "Olan",
+      "type": "refuge",
+      "email_user": "refugedelolan",
+      "max_pax_per_booking": 15,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedelolan.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5a1nrby5i831",
+      "portal": "VANOISE",
+      "name": "Refuge de l'Orgère",
+      "short_name": "Orgère",
+      "type": "refuge",
+      "email_user": "refuge.orgere",
+      "max_pax_per_booking": 62,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:BIVOUAC"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:112",
+      "portal": "FFCAM",
+      "name": "Refuge de la Brèche de Roland - Les Sarradets (FFCAM)",
+      "short_name": "Brèche de Roland - Les Sarradets",
+      "type": "refuge",
+      "email_user": "refugebrechederoland",
+      "max_pax_per_booking": 8,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugebrechederoland.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:52",
+      "portal": "FFCAM",
+      "name": "Refuge de la Dent Parrachée",
+      "short_name": "Dent Parrachée",
+      "type": "refuge",
+      "email_user": "refugeladentparrachee",
+      "max_pax_per_booking": 43,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeladentparrachee.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:13",
+      "portal": "FFCAM",
+      "name": "Refuge de la Dent d'Oche  (FFCAM)",
+      "short_name": "Dent d'Oche",
+      "type": "refuge",
+      "email_user": "refugeladentdoche",
+      "max_pax_per_booking": 10,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeladentdoche.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5a1ngkc39duv",
+      "portal": "VANOISE",
+      "name": "Refuge de la Fournache",
+      "short_name": "Fournache",
+      "type": "refuge",
+      "email_user": "refuge.fournache",
+      "max_pax_per_booking": 34,
+      "max_nights": 10,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:139",
+      "portal": "FFCAM",
+      "name": "Refuge de la Glère  (FFCAM)",
+      "short_name": "La Glère",
+      "type": "refuge",
+      "email_user": "refugedelaglere",
+      "max_pax_per_booking": 15,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedelaglere.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:76",
+      "portal": "FFCAM",
+      "name": "Refuge de la Lavey  (FFCAM)",
+      "short_name": "La Lavey",
+      "type": "refuge",
+      "email_user": "refugelalavey",
+      "max_pax_per_booking": 18,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugelalavey.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:56",
+      "portal": "FFCAM",
+      "name": "Refuge de la Pra  (FFCAM)",
+      "short_name": "La Pra",
+      "type": "refuge",
+      "email_user": "refugedelapra",
+      "max_pax_per_booking": 23,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedelapra.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8l09uta",
+      "portal": "FFCAM",
+      "name": "Refuge de la Pra Non Gardé",
+      "short_name": "La Pra Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 10,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedelapra.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5a1novae31ez",
+      "portal": "VANOISE",
+      "name": "Refuge de la Valette",
+      "short_name": "Valette",
+      "type": "refuge",
+      "email_user": "refuge.valette",
+      "max_pax_per_booking": 14,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:BIVOUAC"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:89",
+      "portal": "FFCAM",
+      "name": "Refuge de la Valmasque  (FFCAM)",
+      "short_name": "Valmasque",
+      "type": "refuge",
+      "email_user": "refugedevalmasque",
+      "max_pax_per_booking": 20,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedevalmasque.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8xxgiou",
+      "portal": "FFCAM",
+      "name": "Refuge de la Valmasque Non Gardé (FFCAM)",
+      "short_name": "Valmasque Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedevalmasque",
+      "max_pax_per_booking": 3,
+      "max_nights": 10,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedevalmasque.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:58",
+      "portal": "FFCAM",
+      "name": "Refuge des Aiguilles d'Arves  (FFCAM)",
+      "short_name": "Aiguilles d'Arves",
+      "type": "refuge",
+      "email_user": "refugedesaiguillesdarves",
+      "max_pax_per_booking": 39,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesaiguillesdarves.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:68",
+      "portal": "FFCAM",
+      "name": "Refuge des Bans  (FFCAM)",
+      "short_name": "Bans",
+      "type": "refuge",
+      "email_user": "refugedesbans",
+      "max_pax_per_booking": 22,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesbans.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:125",
+      "portal": "FFCAM",
+      "name": "Refuge des Bésines  (FFCAM)",
+      "short_name": "Bésines",
+      "type": "refuge",
+      "email_user": "refugedesbesines",
+      "max_pax_per_booking": 12,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesbesines.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:34",
+      "portal": "FFCAM",
+      "name": "Refuge des Conscrits  (FFCAM)",
+      "short_name": "Conscrits",
+      "type": "refuge",
+      "email_user": "refugedesconscrits",
+      "max_pax_per_booking": 12,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesconscrits.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:129",
+      "portal": "FFCAM",
+      "name": "Refuge des Cortalets  (FFCAM)",
+      "short_name": "Cortalets",
+      "type": "refuge",
+      "email_user": "refugedescortalets",
+      "max_pax_per_booking": 10,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedescortalets.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:59",
+      "portal": "FFCAM",
+      "name": "Refuge des Drayères  (FFCAM)",
+      "short_name": "Drayères",
+      "type": "refuge",
+      "email_user": "refugedesdrayeres",
+      "max_pax_per_booking": 15,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesdrayeres.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:82",
+      "portal": "FFCAM",
+      "name": "Refuge des Ecrins (FFCAM)",
+      "short_name": "Ecrins",
+      "type": "refuge",
+      "email_user": "refugedesecrins",
+      "max_pax_per_booking": 40,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesecrins.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:47",
+      "portal": "FFCAM",
+      "name": "Refuge des Evettes  (FFCAM)",
+      "short_name": "Evettes",
+      "type": "refuge",
+      "email_user": "refugedesevettes",
+      "max_pax_per_booking": 36,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesevettes.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxxualkeru9",
+      "portal": "FFCAM",
+      "name": "Refuge des Evettes Non Gardé (FFCAM)",
+      "short_name": "Evettes Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedesevettes",
+      "max_pax_per_booking": 11,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesevettes.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:28",
+      "portal": "FFCAM",
+      "name": "Refuge des Grands Mulets",
+      "short_name": "Grands Mulets",
+      "type": "refuge",
+      "email_user": "refugedesgrandsmulets",
+      "max_pax_per_booking": 9,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesgrandsmulets.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8kr9qqd",
+      "portal": "FFCAM",
+      "name": "Refuge des Grands Mulets Non Gardé",
+      "short_name": "Grands Mulets Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refuges.caf.chamonix",
+      "max_pax_per_booking": 5,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesgrandsmulets.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:95",
+      "portal": "FFCAM",
+      "name": "Refuge des Lacs de Vens  (FFCAM)",
+      "short_name": "Vens",
+      "type": "refuge",
+      "email_user": "refugedevens",
+      "max_pax_per_booking": 35,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedevens.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:88",
+      "portal": "FFCAM",
+      "name": "Refuge des Merveilles  (FFCAM)",
+      "short_name": "Merveilles",
+      "type": "refuge",
+      "email_user": "refugedesmerveilles",
+      "max_pax_per_booking": 30,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedesmerveilles.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:117",
+      "portal": "FFCAM",
+      "name": "Refuge des Oulettes de Gaube  (FFCAM)",
+      "short_name": "Oulettes de Gaube",
+      "type": "refuge",
+      "email_user": "refugeoulettesdegaube",
+      "max_pax_per_booking": 20,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeoulettesdegaube.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8mmakxx",
+      "portal": "FFCAM",
+      "name": "Refuge des Oulettes de Gaube Non Gardé (FFCAM)",
+      "short_name": "Oulettes de Gaube Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugeoulettesdegaube",
+      "max_pax_per_booking": 6,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeoulettesdegaube.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:65",
+      "portal": "FFCAM",
+      "name": "Refuge des Souffles  (FFCAM)",
+      "short_name": "Les Souffles",
+      "type": "refuge",
+      "email_user": "refugedessouffles",
+      "max_pax_per_booking": 15,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedessouffles.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:48",
+      "portal": "FFCAM",
+      "name": "Refuge du Carro  (FFCAM)",
+      "short_name": "Carro",
+      "type": "refuge",
+      "email_user": "refugeducarro",
+      "max_pax_per_booking": 12,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeducarro.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5ualjg1ab",
+      "portal": "FFCAM",
+      "name": "Refuge du Carro Non Gardé (FFCAM)",
+      "short_name": "Carro Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugeducarro",
+      "max_pax_per_booking": 4,
+      "max_nights": 2,
+      "booking_delay_days": "30",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeducarro.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:67",
+      "portal": "FFCAM",
+      "name": "Refuge du Clot - Xavier Blanc  (FFCAM)",
+      "short_name": "Clot-Xavier Blanc",
+      "type": "refuge",
+      "email_user": "chaletduclot",
+      "max_pax_per_booking": 40,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://chaletduclot.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:45",
+      "portal": "FFCAM",
+      "name": "Refuge du Col de la Vanoise",
+      "short_name": "Col de la Vanoise",
+      "type": "refuge",
+      "email_user": "refugecoldelavanoise",
+      "max_pax_per_booking": 90,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugecoldelavanoise.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5snuwv3sr",
+      "portal": "FFCAM",
+      "name": "Refuge du Col de la Vanoise Non Gardé",
+      "short_name": "Col de la Vanoise Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 26,
+      "max_nights": 6,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugecoldelavanoise.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:24",
+      "portal": "FFCAM",
+      "name": "Refuge du Couvercle  (FFCAM)",
+      "short_name": "Couvercle",
+      "type": "refuge",
+      "email_user": "refugeducouvercle",
+      "max_pax_per_booking": 8,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeducouvercle.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8jh7i7h",
+      "portal": "FFCAM",
+      "name": "Refuge du Couvercle Non Gardé (FFCAM)",
+      "short_name": "Couvercle Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refuges.caf.chamonix",
+      "max_pax_per_booking": 5,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeducouvercle.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:51",
+      "portal": "FFCAM",
+      "name": "Refuge du Fond d'Aussois",
+      "short_name": "Fond d Aussois",
+      "type": "refuge",
+      "email_user": "refugefonddaussois",
+      "max_pax_per_booking": 52,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugefonddaussois.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:72",
+      "portal": "FFCAM",
+      "name": "Refuge du Glacier Blanc  (FFCAM)",
+      "short_name": "Glacier Blanc",
+      "type": "refuge",
+      "email_user": "refugeduglacierblanc",
+      "max_pax_per_booking": 99,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeduglacierblanc.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5wd7n2ct0",
+      "portal": "FFCAM",
+      "name": "Refuge du Goûter Non Gardé (FFCAM)",
+      "short_name": "Goûter Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "montblanc.resas",
+      "max_pax_per_booking": 3,
+      "max_nights": 1,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:44",
+      "portal": "FFCAM",
+      "name": "Refuge du Grand Bec  (FFCAM)",
+      "short_name": "Grand Bec",
+      "type": "refuge",
+      "email_user": "refugedugrandbec",
+      "max_pax_per_booking": 36,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedugrandbec.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8koph3e",
+      "portal": "FFCAM",
+      "name": "Refuge du Grand Bec Non Gardé (FFCAM)",
+      "short_name": "Grand Bec Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 12,
+      "max_nights": 6,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedugrandbec.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:110",
+      "portal": "FFCAM",
+      "name": "Refuge du Maupas (FFCAM)",
+      "short_name": "Maupas",
+      "type": "refuge",
+      "email_user": "refugedumaupas",
+      "max_pax_per_booking": 5,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedumaupas.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:38",
+      "portal": "FFCAM",
+      "name": "Refuge du Mont Pourri  (FFCAM)",
+      "short_name": "Mont Pourri",
+      "type": "refuge",
+      "email_user": "refugedumontpourri",
+      "max_pax_per_booking": 8,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedumontpourri.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:60",
+      "portal": "FFCAM",
+      "name": "Refuge du Mont Thabor  (FFCAM)",
+      "short_name": "Mont Thabor",
+      "type": "refuge",
+      "email_user": "refugedumontthabor",
+      "max_pax_per_booking": 40,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedumontthabor.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:17",
+      "portal": "FFCAM",
+      "name": "Refuge du Parmelan  (FFCAM)",
+      "short_name": "Parmelan",
+      "type": "refuge",
+      "email_user": "refugeduparmelan",
+      "max_pax_per_booking": 12,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeduparmelan.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:84",
+      "portal": "FFCAM",
+      "name": "Refuge du Pavé  (FFCAM)",
+      "short_name": "Pavé",
+      "type": "refuge",
+      "email_user": "refugedupave",
+      "max_pax_per_booking": 99,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedupave.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8mnoqrq",
+      "portal": "FFCAM",
+      "name": "Refuge du Pavé Non Gardé (FFCAM)",
+      "short_name": "Pavé Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 16,
+      "max_nights": 6,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedupave.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:79",
+      "portal": "FFCAM",
+      "name": "Refuge du Pelvoux  (FFCAM)",
+      "short_name": "Pelvoux",
+      "type": "refuge",
+      "email_user": "refugedupelvoux",
+      "max_pax_per_booking": 99,
+      "max_nights": 4,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedupelvoux.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:69",
+      "portal": "FFCAM",
+      "name": "Refuge du Pigeonnier  (FFCAM)",
+      "short_name": "Pigeonnier",
+      "type": "refuge",
+      "email_user": "refugedupigeonnier",
+      "max_pax_per_booking": 11,
+      "max_nights": 5,
+      "booking_delay_days": "270",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedupigeonnier.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:40",
+      "portal": "FFCAM",
+      "name": "Refuge du Plan des Gouilles  (FFCAM)",
+      "short_name": "Plan des Gouilles",
+      "type": "refuge",
+      "email_user": "refugeplandesgouilles",
+      "max_pax_per_booking": 40,
+      "max_nights": 99,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeplandesgouilles.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8mueov1",
+      "portal": "FFCAM",
+      "name": "Refuge du Plan des Gouilles Non Gardé (FFCAM)",
+      "short_name": "Plan des Gouilles Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "resas",
+      "max_pax_per_booking": 28,
+      "max_nights": 6,
+      "booking_delay_days": "90",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeplandesgouilles.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:109",
+      "portal": "FFCAM",
+      "name": "Refuge du Portillon  (FFCAM)",
+      "short_name": "Portillon",
+      "type": "refuge",
+      "email_user": "refugeduportillon",
+      "max_pax_per_booking": 12,
+      "max_nights": 5,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeduportillon.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:75",
+      "portal": "FFCAM",
+      "name": "Refuge du Promontoire  (FFCAM)",
+      "short_name": "Promontoire",
+      "type": "refuge",
+      "email_user": "refugedupromontoire",
+      "max_pax_per_booking": 6,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedupromontoire.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5u8xqew2j",
+      "portal": "FFCAM",
+      "name": "Refuge du Promontoire Non Gardé (FFCAM)",
+      "short_name": "Promontoire Non Gardé",
+      "type": "refuge_non_garde",
+      "email_user": "refugedupromontoire",
+      "max_pax_per_booking": 4,
+      "max_nights": 3,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugedupromontoire.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:61",
+      "portal": "FFCAM",
+      "name": "Refuge du Pré la Chaumette  (FFCAM)",
+      "short_name": "Pré la Chaumette",
+      "type": "refuge",
+      "email_user": "refugepredelachaumette",
+      "max_pax_per_booking": 9,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugepredelachaumette.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:5a1njyztnljl",
+      "portal": "VANOISE",
+      "name": "Refuge du Roc",
+      "short_name": "Refuge du Roc",
+      "type": "refuge",
+      "email_user": "gardien",
+      "max_pax_per_booking": 20,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:5a1nww29smum",
+      "portal": "VANOISE",
+      "name": "Refuge du Saut",
+      "short_name": "Saut",
+      "type": "refuge",
+      "email_user": "refugedusaut",
+      "max_pax_per_booking": 10,
+      "max_nights": 2,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:BIVOUAC"
+      ],
+      "site": null
+    },
+    {
+      "id": "BK_STRUCTURE:78",
+      "portal": "FFCAM",
+      "name": "Refuge du Sélé  (FFCAM)",
+      "short_name": "Sélé",
+      "type": "refuge",
+      "email_user": "refugedusele",
+      "max_pax_per_booking": 18,
+      "max_nights": 6,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE",
+        "BK_PRODUCTCATEGORY:RESTAURATION"
+      ],
+      "site": "https://refugedusele.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:96",
+      "portal": "FFCAM",
+      "name": "Refuge du Viso  (FFCAM)",
+      "short_name": "Viso",
+      "type": "refuge",
+      "email_user": "refugeduviso",
+      "max_pax_per_booking": 40,
+      "max_nights": 2,
+      "booking_delay_days": "300",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": "https://refugeduviso.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:xxx5xjr51ovb",
+      "portal": "VANOISE",
+      "name": "Refuge l' Auberge de Bellecombe",
+      "short_name": "Bellecombe",
+      "type": "refuge",
+      "email_user": "aubergedebellebe",
+      "max_pax_per_booking": 8,
+      "max_nights": 4,
+      "booking_delay_days": "330",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    }
+  ]
+}
