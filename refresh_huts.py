@@ -32,7 +32,7 @@ def main():
     with ThreadPoolExecutor(max_workers=6) as pool:
         sites = dict(zip(users, pool.map(hut_site, users)))
     for h in huts:
-        h["site"] = sites.get(h.get("email_user"))
+        h["site"] = h.get("site") or sites.get(h.get("email_user"))  # Open System huts already have theirs
     for h in huts:  # winter rooms with a generic email: use the guarded hut's site
         if not h["site"]:
             h["site"] = next((o["site"] for o in huts if o["site"] and norm(o["name"]) == norm(h["name"])), None)
@@ -50,7 +50,7 @@ def main():
     )
     per_portal = {pt: sum(h["portal"] == pt for h in huts) for pt in args.portals}
     print(f"Huts per portal: {per_portal}", file=sys.stderr)
-    print(f"Wrote {len(huts)} huts to {HUTS_FILE} ({sum(bool(h['site']) for h in huts)} with an FFCAM website)", file=sys.stderr)
+    print(f"Wrote {len(huts)} huts to {HUTS_FILE} ({sum(bool(h['site']) for h in huts)} with a website)", file=sys.stderr)
     for h in huts:
         if not h["site"]:
             print(f"  no website found: {h['name']}", file=sys.stderr)

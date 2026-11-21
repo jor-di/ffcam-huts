@@ -168,6 +168,19 @@
   "BK_STRUCTURE:11": {
     "name": "Chalet-refuge du Ratou  (FFCAM)"
   },
+  "BK_STRUCTURE:5e92vrpttey6": {
+    "name": "Gîte du Boréon",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/113133",
+      "name": "Gîte du Boréon",
+      "distance_m": 14
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/330",
+      "name": "Gîte du Boréon",
+      "distance_m": 3
+    }
+  },
   "BK_STRUCTURE:22": {
     "name": "Refuge Albert 1er  (FFCAM)",
     "c2c": {
@@ -207,12 +220,12 @@
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/104034",
       "name": "Refuge d'Ambin",
-      "distance_m": 19
+      "distance_m": 18
     },
     "skitour": {
       "url": "https://skitour.fr/refuges/49",
       "name": "Refuge d'Ambin",
-      "distance_m": 28
+      "distance_m": 27
     }
   },
   "BK_STRUCTURE:xxx5u8838n0j": {
@@ -270,6 +283,19 @@
       "distance_m": 3
     }
   },
+  "BK_STRUCTURE:xxx5ybjcpt6a": {
+    "name": "Refuge d'Aygues-Cluses",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/344220",
+      "name": "Cabane Aygues-Cluses",
+      "distance_m": 175
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/406",
+      "name": "Cabane d'Aygues Cluses",
+      "distance_m": 176
+    }
+  },
   "BK_STRUCTURE:111": {
     "name": "Refuge d'Espingo  (FFCAM)",
     "c2c": {
@@ -281,6 +307,14 @@
       "url": "https://skitour.fr/refuges/492",
       "name": "Refuge d'Espingo",
       "distance_m": 2
+    }
+  },
+  "BK_STRUCTURE:iyuctdomm9k": {
+    "name": "Refuge d'Orédon",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/1467264",
+      "name": "Refuge d'Orédon",
+      "distance_m": 3
     }
   },
   "BK_STRUCTURE:107": {
@@ -444,12 +478,12 @@
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/113130",
       "name": "Refuge de Nice",
-      "distance_m": 2
+      "distance_m": 1
     },
     "skitour": {
       "url": "https://skitour.fr/refuges/80",
       "name": "Refuge de Nice",
-      "distance_m": 2
+      "distance_m": 1
     }
   },
   "BK_STRUCTURE:xxx5u8mjvfvz": {
@@ -457,11 +491,24 @@
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/113130",
       "name": "Refuge de Nice",
-      "distance_m": 2
+      "distance_m": 1
     },
     "skitour": {
       "url": "https://skitour.fr/refuges/80",
       "name": "Refuge de Nice",
+      "distance_m": 1
+    }
+  },
+  "OPRF-93151": {
+    "name": "Refuge de Plaisance",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104055",
+      "name": "Refuge de Plaisance",
+      "distance_m": 3
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/145",
+      "name": "Refuge de Plaisance",
       "distance_m": 2
     }
   },
@@ -471,6 +518,19 @@
       "url": "https://www.camptocamp.org/waypoints/543076",
       "name": "Refuge de Plan Sec",
       "distance_m": 4
+    }
+  },
+  "OPRF-92949": {
+    "name": "Refuge de Plan du Lac",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104162",
+      "name": "Refuge du Plan du Lac",
+      "distance_m": 6
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/545",
+      "name": "Refuge du Plan du Lac",
+      "distance_m": 1
     }
   },
   "BK_STRUCTURE:xxx5u8nmpryk": {
@@ -492,6 +552,19 @@
       "url": "https://skitour.fr/refuges/484",
       "name": "Refuge de Pombie",
       "distance_m": 0
+    }
+  },
+  "OPRF-93152": {
+    "name": "Refuge de Prariond",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104057",
+      "name": "Refuge de Prariond",
+      "distance_m": 4
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/36",
+      "name": "Refuge de Prariond",
+      "distance_m": 3
     }
   },
   "BK_STRUCTURE:37": {
@@ -559,6 +632,14 @@
       "distance_m": 19
     }
   },
+  "OPRF-93149": {
+    "name": "Refuge de Rosuel",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/144512",
+      "name": "Refuge de Rosuel",
+      "distance_m": 4
+    }
+  },
   "BK_STRUCTURE:80": {
     "name": "Refuge de Temple Ecrins  (FFCAM)",
     "c2c": {
@@ -572,6 +653,19 @@
       "distance_m": 15
     }
   },
+  "OPRF-93145": {
+    "name": "Refuge de Turia",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104065",
+      "name": "Refuge de Turia",
+      "distance_m": 2
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/379",
+      "name": "Refuge de Turia",
+      "distance_m": 8
+    }
+  },
   "BK_STRUCTURE:xxx5wdwmtq8a": {
     "name": "Refuge de Tête Rousse Non Gardé (FFCAM)",
     "c2c": {
@@ -583,6 +677,19 @@
       "url": "https://skitour.fr/refuges/244",
       "name": "Refuge Tete Rousse",
       "distance_m": 35
+    }
+  },
+  "OPRF-92996": {
+    "name": "Refuge de Vallonbrun",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104200",
+      "name": "Refuge de Vallonbrun",
+      "distance_m": 13
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/68",
+      "name": "Refuge de Vallonbrun",
+      "distance_m": 6
     }
   },
   "BK_STRUCTURE:108": {
@@ -726,6 +833,19 @@
       "distance_m": 4
     }
   },
+  "BK_STRUCTURE:xxx5ylsjmuv1": {
+    "name": "Refuge de l'OULE",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104079",
+      "name": "Refuge de l'Oule (Antoine Cros)",
+      "distance_m": 16
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/11",
+      "name": "Refuge de l'Oule (Antoine Cros)",
+      "distance_m": 2
+    }
+  },
   "BK_STRUCTURE:70": {
     "name": "Refuge de l'Olan  (FFCAM)",
     "c2c": {
@@ -783,7 +903,20 @@
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/104087",
       "name": "Refuge de la Dent d'Oche",
-      "distance_m": 0
+      "distance_m": 2
+    }
+  },
+  "OPRF-92951": {
+    "name": "Refuge de la Femma",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104089",
+      "name": "Refuge de la Femma",
+      "distance_m": 3
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/137",
+      "name": "Refuge de la Femma",
+      "distance_m": 4
     }
   },
   "BK_STRUCTURE:5a1ngkc39duv": {
@@ -818,6 +951,32 @@
       "url": "https://skitour.fr/refuges/2",
       "name": "Refuge de la Lavey",
       "distance_m": 2
+    }
+  },
+  "OPRF-92948": {
+    "name": "Refuge de la Leisse",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104094",
+      "name": "Refuge de la Leisse",
+      "distance_m": 30
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/278",
+      "name": "Refuge de la Leisse",
+      "distance_m": 31
+    }
+  },
+  "OPRF-93146": {
+    "name": "Refuge de la Martin",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104096",
+      "name": "Refuge de la Martin",
+      "distance_m": 13
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/188",
+      "name": "Refuge de la Martin",
+      "distance_m": 29
     }
   },
   "BK_STRUCTURE:56": {
@@ -981,7 +1140,7 @@
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/104116",
       "name": "Refuge des Évettes",
-      "distance_m": 3
+      "distance_m": 4
     },
     "skitour": {
       "url": "https://skitour.fr/refuges/6",
@@ -994,7 +1153,7 @@
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/104116",
       "name": "Refuge des Évettes",
-      "distance_m": 3
+      "distance_m": 4
     },
     "skitour": {
       "url": "https://skitour.fr/refuges/6",
@@ -1093,6 +1252,14 @@
       "distance_m": 16
     }
   },
+  "OPRF-93150": {
+    "name": "Refuge du Bois",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/135708",
+      "name": "Refuge du Bois",
+      "distance_m": 8
+    }
+  },
   "BK_STRUCTURE:48": {
     "name": "Refuge du Carro  (FFCAM)",
     "c2c": {
@@ -1158,6 +1325,19 @@
       "distance_m": 26
     }
   },
+  "OPRF-93148": {
+    "name": "Refuge du Col du Palet",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104174",
+      "name": "Refuge du Col du Palet",
+      "distance_m": 16
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/587",
+      "name": "Refuge du Col du Palet",
+      "distance_m": 4
+    }
+  },
   "BK_STRUCTURE:24": {
     "name": "Refuge du Couvercle  (FFCAM)",
     "c2c": {
@@ -1195,6 +1375,19 @@
       "url": "https://skitour.fr/refuges/170",
       "name": "Refuge du fond d'Aussois",
       "distance_m": 4
+    }
+  },
+  "OPRF-93147": {
+    "name": "Refuge du Fond des Fours",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104142",
+      "name": "Refuge du Fond des Fours",
+      "distance_m": 9
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/138",
+      "name": "Refuge du Fond des Fours",
+      "distance_m": 11
     }
   },
   "BK_STRUCTURE:72": {

@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dernière couchette</title>
+<!-- favicon: the logo (bunk beds under a star) on a cream tile, readable on light and dark tabs -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%23f5f2ea'/%3E%3Cg fill='none' stroke='%2324493a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 31V12M28 31V12'/%3E%3Cpath d='M6 19h22M6 27h22'/%3E%3Cpath d='M9 19v-3.5h7V19M9 27v-3.5h7V27'/%3E%3C/g%3E%3Cpath d='m22 3 1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z' fill='%23d98a2b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -27,11 +29,25 @@
 
   /* ---------- sidebar ---------- */
   aside { display:flex; flex-direction:column; min-height:0; background:var(--ground); border-right:1px solid var(--rule); z-index:1000; }
-  .hero, .controls, .list-head { flex:none; }
+  .topbar, .controls, .list-head { flex:none; }
+  .nightbar { padding:4px 16px 0; }
+  .filterbox { display:grid; grid-template-columns:minmax(0, 1fr); gap:14px; }
+  .filters-toggle { display:none; }
   .hero { position:relative; overflow:hidden; padding:20px 20px 52px; background:linear-gradient(180deg,var(--pine-soft) 0%,var(--ground) 100%); }
   .hero svg.ridge { position:absolute; left:0; right:0; bottom:-1px; width:100%; height:58px; pointer-events:none; }
   .brand { position:relative; display:flex; align-items:center; gap:10px; }
   .brand svg { width:36px; height:36px; flex:none; }
+  /* the logo is the (discreet) switch to the "avant-dernière couchette" mode */
+  .logo { border:0; background:none; padding:0; margin:0; cursor:pointer; line-height:0; border-radius:8px; transition:transform .2s; }
+  .logo:hover { transform:rotate(-6deg) scale(1.06); }
+  .logo:focus-visible { outline:2px solid var(--glow); outline-offset:3px; }
+  .logo .star { transition:transform .4s; transform-origin:22px 7px; }
+  /* "avant-dernière couchette": dusk tint, star turned over */
+  .penultimate .hero { background:linear-gradient(180deg,#f1dcc4 0%,var(--ground) 100%); }
+  .penultimate .logo .star { transform:rotate(180deg); }
+  .penultimate .brand h1 { font-size:22px; }
+  .mode-note { display:none; font:500 10.5px/1.3 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--glow); margin-top:4px; }
+  .penultimate .mode-note { display:block; }
   .brand h1 { margin:0; font:700 25px/1 var(--display); letter-spacing:-.01em; color:var(--ink); }
   .brand .meta { display:block; font:500 10.5px/1.3 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2); margin-top:5px; }
   .hero .handle { display:none; }
@@ -156,13 +172,43 @@
   @media (max-width:760px) {
     .app { grid-template-columns:1fr; }
     #map { position:fixed; inset:0; }
-    aside { position:fixed; left:0; right:0; bottom:0; max-height:74vh; border-right:0; border-radius:18px 18px 0 0;
-      box-shadow:0 -8px 30px rgba(0,0,0,.25); transition:transform .25s; overflow:hidden; }
-    aside.collapsed { transform:translateY(calc(100% - 104px)); }
-    .hero { padding:10px 16px 40px; cursor:pointer; }
-    .hero .handle { display:block; width:40px; height:4px; border-radius:4px; background:rgba(36,73,58,.35); margin:0 auto 10px; }
-    .brand h1 { font-size:22px; }
-    .hero svg.ridge { height:44px; }
+    /* 3. the sheet can rise to 90% of the screen */
+    aside { position:fixed; left:0; right:0; bottom:0; max-height:90vh; max-height:90dvh; border-right:0; border-radius:18px 18px 0 0;
+      box-shadow:0 -8px 30px rgba(0,0,0,.25); transition:transform .25s;
+      /* 1. the whole sheet scrolls as one block; only the top bar stays */
+      display:block; overflow-y:auto; overscroll-behavior:contain; }
+    aside.collapsed { transform:translateY(calc(100% - 78px)); overflow:hidden; }
+    .topbar { position:sticky; top:0; z-index:5; background:var(--ground); box-shadow:0 6px 10px -8px rgba(20,30,25,.35); }
+    .hero { padding:8px 16px 18px; cursor:pointer; }
+    .hero .handle { display:block; width:40px; height:4px; border-radius:4px; background:rgba(36,73,58,.35); margin:0 auto 8px; }
+    .brand svg { width:28px; height:28px; }
+    .brand h1, .penultimate .brand h1 { font-size:19px; }
+    .brand .meta { margin-top:3px; }
+    .mode-note { font-size:9.5px; margin-top:2px; }
+    .hero svg.ridge { height:20px; }
+    /* compact night tickets in the top bar */
+    .nightbar { padding:0 16px 8px; }
+    .nightbar .label { display:none; }
+    .carousel { padding:4px 0 2px; }
+    .ticket .main { padding:6px 10px; }
+    .ticket .k { display:none; }
+    .ticket .d { font-size:16px; margin:0 0 1px; }
+    .ticket .dt { font-size:10.5px; }
+    .ticket .stub { padding:4px 8px; min-width:50px; }
+    .ticket .stub b { font-size:16px; }
+    .ticket .stub small { font-size:8px; }
+    .ticket::before, .ticket::after { right:48px; }
+    .controls { padding-top:10px; gap:10px; }
+    /* 2. filters folded behind a button */
+    .filters-toggle { display:flex; align-items:center; gap:8px; width:100%; border:1px solid var(--rule); background:var(--paper); color:var(--ink);
+      border-radius:8px; padding:9px 12px; font:600 13px/1 var(--body); cursor:pointer; }
+    .filters-toggle svg { width:18px; height:18px; color:var(--pine); }
+    .filters-toggle .chev { margin-left:auto; color:var(--ink-2); transition:transform .2s; }
+    .filters-toggle[aria-expanded=true] .chev { transform:rotate(180deg); }
+    .filters-toggle.active { border-color:var(--pine); }
+    .filterbox { display:none; padding:2px 0 4px; }
+    .filterbox.open { display:grid; }
+    ul.huts { overflow:visible; padding-bottom:max(16px, env(safe-area-inset-bottom, 0px)); }
   }
   @media (prefers-reduced-motion: reduce) { .track, .track button, aside { transition:none; } }
 </style>
@@ -170,13 +216,17 @@
 <body>
 <div class="app">
   <aside id="sheet">
+    <div class="topbar">
     <div class="hero" id="hero">
       <div class="handle"></div>
       <div class="brand">
+        <button class="logo" id="logo" type="button" title="Psst… et le week-end d'après ?" aria-pressed="false"
+          aria-label="Avant-dernière couchette : voir le week-end suivant">
         <svg viewBox="0 0 34 34" fill="none" stroke="#24493a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M6 31V12M28 31V12"/><path d="M6 19h22M6 27h22"/><path d="M9 19v-3.5h7V19M9 27v-3.5h7V27"/>
-          <path d="m22 3 1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="#d98a2b" stroke="none"/></svg>
-        <div><h1>Dernière couchette</h1><span class="meta" id="meta"></span></div>
+          <path class="star" d="m22 3 1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="#d98a2b" stroke="none"/></svg></button>
+        <div><h1 id="title">Dernière couchette</h1><span class="meta" id="meta"></span>
+          <span class="mode-note">Week-end suivant</span></div>
       </div>
       <svg class="ridge" viewBox="0 0 380 60" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0 60 L0 34 L30 26 L52 32 L84 10 L106 22 L128 16 L160 36 L190 18 L214 26 L246 2 L270 20 L292 14 L318 30 L346 22 L380 32 L380 60 Z" fill="#24493a" opacity=".22"/>
@@ -184,12 +234,17 @@
         <path d="M0 60 L0 52 L50 48 L96 54 L150 47 L200 53 L262 46 L320 52 L380 49 L380 60 Z" fill="#f5f2ea"/>
       </svg>
     </div>
+    <div class="nightbar">
+      <div class="label">Nuit du</div>
+      <div class="carousel" id="carousel"><div class="track" id="nights"></div></div>
+    </div>
+    </div>
     <div class="controls">
-      <div>
-        <div class="label">Nuit du</div>
-        <div class="carousel" id="carousel"><div class="track" id="nights"></div></div>
-      </div>
       <div class="stats" id="stats"></div>
+      <button class="filters-toggle" id="filtersToggle" type="button" aria-expanded="false" aria-controls="filterbox">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        <span id="filtersLabel">Filtres</span><span class="chev" aria-hidden="true">▾</span></button>
+      <div class="filterbox" id="filterbox">
       <div class="filters">
         <div class="stepper" aria-label="Places libres minimum">
           <button id="minus" aria-label="Moins de places">−</button>
@@ -203,6 +258,7 @@
         <div class="chipset" id="types"></div>
       </div>
       <input class="search" id="search" type="search" placeholder="Chercher un refuge…" autocomplete="off" aria-label="Chercher un refuge">
+      </div>
     </div>
     <div class="list-head"><div class="label" id="listTitle">Refuges</div><small id="listCount"></small></div>
     <ul class="huts" id="list"></ul>
@@ -239,13 +295,20 @@ const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const shortName = h => h.name.replace(/\s*\(FFCAM\)\s*/, '').replace(/\s+/g, ' ').trim();
 
 function status(n) {
-  if (!n || n.opening !== 'OPEN' || !n.capacity) return 'closed';
+  // capacity is null for Open System huts (only free beds are known): unknown, not closed
+  if (!n || n.opening !== 'OPEN' || n.capacity === 0 || (n.capacity == null && n.free == null)) return 'closed';
   if (!n.free) return 'full';
-  return n.free <= Math.max(2, Math.round(n.capacity * 0.1)) ? 'low' : 'ok';
+  return n.free <= Math.max(2, Math.round((n.capacity || 0) * 0.1)) ? 'low' : 'ok';
 }
 
-const defaultNight = DATA.dates.find(d => new Date(d + 'T12:00:00').getDay() === 6) || DATA.dates[0];
-const state = { night: defaultNight, minFree: 1, groups: new Set(['bookable']), types: new Set(Object.keys(TYPE_CHIPS)), q: '', active: null };
+// The data holds this weekend's remaining nights and the next weekend. Group them by weekend (Friday).
+const fridayOf = d => { const t = new Date(d + 'T12:00:00'); t.setDate(t.getDate() - (t.getDay() + 2) % 7); return t.toISOString().slice(0, 10); };
+const WEEKENDS = Object.values(DATA.dates.reduce((acc, d) => ((acc[fridayOf(d)] ||= []).push(d), acc), {}));
+// mode "last" = dernière couchette (this weekend), "penultimate" = avant-dernière (next weekend)
+const weekendDates = mode => (mode === 'penultimate' && WEEKENDS[1]) || WEEKENDS[0] || [];
+const defaultNightOf = dates => dates.find(d => new Date(d + 'T12:00:00').getDay() === 6) || dates[0];
+const startMode = location.hash === '#avant-derniere' && WEEKENDS[1] ? 'penultimate' : 'last';
+const state = { mode: startMode, night: defaultNightOf(weekendDates(startMode)), minFree: 1, groups: new Set(['bookable']), types: new Set(Object.keys(TYPE_CHIPS)), q: '', active: null };
 
 /* ---------- map ---------- */
 const layers = {
@@ -293,14 +356,14 @@ function icon(h, s, n) {
 
 function popup(h) {
   const s = status(h.nights[state.night]);
-  const nights = DATA.dates.map(d => {
+  const nights = weekendDates(state.mode).map(d => {
     const n = h.nights[d] || {}, st = status(n);
-    const pct = n.capacity ? Math.round(100 * (n.free || 0) / n.capacity) : 0;
+    const pct = n.capacity ? Math.round(100 * (n.free || 0) / n.capacity) : (st === 'closed' || st === 'full' ? 0 : 100);
     return `<div class="night ${d === state.night ? 'sel' : ''}">
       <div><div class="d">${esc(day(d, { weekday:'short', day:'numeric', month:'short' }))}</div>
         <div class="st">${esc(st === 'closed' ? (OPENING[n.opening] || 'Pas de données') : STATUS[st])}</div></div>
       <div class="bar"><i style="width:${pct}%;background:${COLORS[st]}"></i></div>
-      <div class="n">${st === 'closed' ? '–' : `<span style="color:${COLORS[st]}">${n.free}</span><span style="color:var(--ink-2);font-weight:400"> / ${n.capacity}</span>`}</div>
+      <div class="n">${st === 'closed' ? '–' : `<span style="color:${COLORS[st]}">${n.free}</span><span style="color:var(--ink-2);font-weight:400"> ${n.capacity != null ? `/ ${n.capacity}` : 'pl.'}</span>`}</div>
     </div>`;
   }).join('');
   return `<div class="card-head"><span class="ic" style="color:${COLORS[s]}">${hutIcon(h.type)}</span>
@@ -322,7 +385,9 @@ function popup(h) {
 
 /* ---------- sidebar ---------- */
 const nightsEl = document.getElementById('nights');
-DATA.dates.forEach(d => {
+function buildNights() {
+ nightsEl.replaceChildren();
+ weekendDates(state.mode).forEach(d => {
   const b = document.createElement('button');
   const bookable = DATA.huts.filter(h => ['ok', 'low'].includes(status(h.nights[d]))).length;
   b.innerHTML = `<div class="ticket"><div class="main"><div class="k">Nuit du</div><div class="d">${esc(day(d, { weekday:'long' }))}</div>
@@ -332,9 +397,30 @@ DATA.dates.forEach(d => {
   b.onclick = () => selectNight(d);
   b.dataset.date = d;
   nightsEl.append(b);
-});
+ });
+}
+buildNights();
 function selectNight(d) { if (d && d !== state.night) { state.night = d; render(); } }
-function stepNight(delta) { selectNight(DATA.dates[DATA.dates.indexOf(state.night) + delta]); }
+function stepNight(delta) { const ds = weekendDates(state.mode); selectNight(ds[ds.indexOf(state.night) + delta]); }
+
+// "avant-dernière couchette": the logo switches to next weekend (and back); #avant-derniere in the URL opens it directly
+function setMode(mode) {
+  if (mode === 'penultimate' && !WEEKENDS[1]) return;
+  state.mode = mode;
+  state.night = defaultNightOf(weekendDates(mode));
+  const pen = mode === 'penultimate';
+  document.getElementById('sheet').classList.toggle('penultimate', pen);
+  document.getElementById('title').textContent = pen ? 'Avant-dernière couchette' : 'Dernière couchette';
+  document.title = pen ? 'Avant-dernière couchette' : 'Dernière couchette';
+  const logo = document.getElementById('logo');
+  logo.setAttribute('aria-pressed', pen);
+  logo.title = pen ? 'Revenir à ce week-end' : "Psst… et le week-end d'après ?";
+  history.replaceState(null, '', pen ? '#avant-derniere' : location.pathname + location.search);
+  buildNights();
+  render();
+}
+document.getElementById('logo').onclick = e => { e.stopPropagation(); setMode(state.mode === 'last' ? 'penultimate' : 'last'); };
+if (!WEEKENDS[1]) document.getElementById('logo').disabled = true;
 function centerCarousel() {
   const btn = [...nightsEl.children].find(b => b.dataset.date === state.night);
   if (!btn) return;
@@ -383,15 +469,17 @@ function render() {
   state.rows = rows;
 
 
-  const visible = rows.filter(({ n, s }) =>
-    state.groups.has(GROUP[s]) && (GROUP[s] !== 'bookable' || n.free >= state.minFree));
+  // a name search ignores the status filters (and, in the list, the map frame): typing a name finds that hut
+  state.searching = q !== '';
+  const visible = rows.filter(({ n, s }) => state.searching ||
+    (state.groups.has(GROUP[s]) && (GROUP[s] !== 'bookable' || n.free >= state.minFree)));
 
   markerLayer.clearLayers(); markers.clear();
   const order = { closed:0, full:1, low:2, ok:3 };
   visible.sort((a, b) => order[a.s] - order[b.s]).forEach(({ h, n, s }) => {
     const m = L.marker([h.lat, h.lon], { icon: icon(h, s, n), zIndexOffset: order[s] * 1000, riseOnHover: true, alt: shortName(h) })
       .bindPopup(() => popup(h), { maxWidth: 320, minWidth: 300, autoPanPaddingTopLeft: [20, 20] })
-      .bindTooltip(`<b>${esc(shortName(h))}</b><br>${s === 'closed' ? STATUS.closed : s === 'full' ? `Complet (${n.capacity} pl.)` : `${n.free} / ${n.capacity} places`}`,
+      .bindTooltip(`<b>${esc(shortName(h))}</b><br>${s === 'closed' ? STATUS.closed : s === 'full' ? `Complet${n.capacity ? ` (${n.capacity} pl.)` : ''}` : `${n.free}${n.capacity != null ? ` / ${n.capacity}` : ''} places`}`,
         { direction: 'top', offset: [0, s === 'closed' ? -6 : -30] })
       .on('click', () => { state.active = h.id; highlight(); })
       .addTo(markerLayer);
@@ -400,6 +488,7 @@ function render() {
 
   state.visible = visible;
   renderList();
+  updateFiltersLabel();
 }
 
 // Sidebar list: only the huts inside the current map view (re-run on every pan/zoom)
@@ -426,17 +515,18 @@ function renderList() {
   typesEl.querySelectorAll('.tchip').forEach(b => b.onclick = () => toggle(state.types, b.dataset.type, Object.keys(TYPE_CHIPS)));
 
   const gOrder = { bookable:0, full:1, closed:2 };
-  const listed = state.visible.filter(inView).sort((a, b) => gOrder[GROUP[a.s]] - gOrder[GROUP[b.s]]
+  const listed = state.visible.filter(r => state.searching || inView(r)).sort((a, b) => gOrder[GROUP[a.s]] - gOrder[GROUP[b.s]]
     || (b.n?.free || 0) - (a.n?.free || 0) || a.h.name.localeCompare(b.h.name, 'fr'));
-  document.getElementById('listTitle').textContent =
-    state.groups.size === 1 ? `Refuges ${GROUPS[[...state.groups][0]][0].toLowerCase()}` : 'Refuges';
+  document.getElementById('listTitle').textContent = state.searching ? 'Recherche'
+    : state.groups.size === 1 ? `Refuges ${GROUPS[[...state.groups][0]][0].toLowerCase()}` : 'Refuges';
   const hidden = state.visible.length - listed.length;
-  document.getElementById('listCount').textContent =
-    `${listed.length} dans la vue${hidden ? ` · ${hidden} hors cadre` : ''}`;
+  document.getElementById('listCount').textContent = state.searching
+    ? `${listed.length} résultat${listed.length > 1 ? 's' : ''}`
+    : `${listed.length} dans la vue${hidden ? ` · ${hidden} hors cadre` : ''}`;
   const list = document.getElementById('list');
   list.innerHTML = listed.length ? listed.map(({ h, n, s }) => {
-    const stub = GROUP[s] === 'bookable' ? `<b style="color:${COLORS[s]}">${n.free}</b><small>/ ${n.capacity}</small>`
-      : s === 'full' ? `<span class="tag" style="color:${COLORS.full}">Complet</span><small>${n.capacity} pl.</small>`
+    const stub = GROUP[s] === 'bookable' ? `<b style="color:${COLORS[s]}">${n.free}</b><small>${n.capacity != null ? `/ ${n.capacity}` : 'places'}</small>`
+      : s === 'full' ? `<span class="tag" style="color:${COLORS.full}">Complet</span>${n.capacity ? `<small>${n.capacity} pl.</small>` : ''}`
       : `<span class="tag" style="color:${COLORS.closed}">${esc(OPENING[n?.opening] || 'Fermé')}</span>`;
     return `<li data-id="${esc(h.id)}" title="${esc(h.name)}" tabindex="0">
       <span class="ic" style="color:${COLORS[s]}">${hutIcon(h.type)}</span>
@@ -472,10 +562,26 @@ document.getElementById('showClosed').onchange = e => {
   render();
 };
 document.getElementById('search').oninput = e => { state.q = e.target.value; render(); };
-document.getElementById('hero').onclick = () => { if (window.innerWidth <= 760) document.getElementById('sheet').classList.toggle('collapsed'); };
+document.getElementById('hero').onclick = () => {
+  if (window.innerWidth > 760) return;
+  const sheet = document.getElementById('sheet');
+  if (!sheet.classList.contains('collapsed')) sheet.scrollTop = 0;
+  sheet.classList.toggle('collapsed');
+};
+// phone: filters folded behind a button that shows how many are active
+document.getElementById('filtersToggle').onclick = () => {
+  const box = document.getElementById('filterbox');
+  const open = box.classList.toggle('open');
+  document.getElementById('filtersToggle').setAttribute('aria-expanded', open);
+};
+function updateFiltersLabel() {
+  const n = (state.minFree > 1) + (state.groups.size > 1) + (state.types.size < Object.keys(TYPE_CHIPS).length) + (state.q.trim() !== '');
+  document.getElementById('filtersLabel').textContent = n ? `Filtres · ${n} actif${n > 1 ? 's' : ''}` : 'Filtres';
+  document.getElementById('filtersToggle').classList.toggle('active', n > 0);
+}
 map.on('popupclose', () => { state.active = null; highlight(); });
 map.on('moveend', renderList);
-render();
+if (state.mode === 'penultimate') setMode('penultimate'); else render();
 </script>
 </body>
 </html>

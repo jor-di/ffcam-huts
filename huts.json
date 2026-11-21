@@ -1,5 +1,5 @@
 {
-  "refreshed_at": "2026-11-20T18:08:45",
+  "refreshed_at": "2026-11-21T23:19:43",
   "huts": [
     {
       "id": "BK_STRUCTURE:47ntr9jg1dif",
@@ -272,6 +272,21 @@
       "site": null
     },
     {
+      "id": "BK_STRUCTURE:5e92vrpttey6",
+      "portal": "BOREON",
+      "name": "Gîte du Boréon",
+      "short_name": "Boréon",
+      "type": "refuge",
+      "email_user": "contact",
+      "max_pax_per_booking": 99,
+      "max_nights": 8,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
       "id": "BK_STRUCTURE:22",
       "portal": "FFCAM",
       "name": "Refuge Albert 1er  (FFCAM)",
@@ -408,6 +423,21 @@
       "site": "https://refugedaverole.ffcam.fr/"
     },
     {
+      "id": "BK_STRUCTURE:xxx5ybjcpt6a",
+      "portal": "NEOUVIELLE",
+      "name": "Refuge d'Aygues-Cluses",
+      "short_name": "Aygues-Cluses",
+      "type": "refuge",
+      "email_user": "refuge.ayguescluses",
+      "max_pax_per_booking": 20,
+      "max_nights": 2,
+      "booking_delay_days": "360",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
       "id": "BK_STRUCTURE:111",
       "portal": "FFCAM",
       "name": "Refuge d'Espingo  (FFCAM)",
@@ -421,6 +451,21 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugedespingo.ffcam.fr/"
+    },
+    {
+      "id": "BK_STRUCTURE:iyuctdomm9k",
+      "portal": "NEOUVIELLE",
+      "name": "Refuge d'Orédon",
+      "short_name": "Orédon",
+      "type": "refuge",
+      "email_user": "info",
+      "max_pax_per_booking": 18,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
     },
     {
       "id": "BK_STRUCTURE:107",
@@ -633,6 +678,19 @@
       "site": "https://refugedenice.ffcam.fr/"
     },
     {
+      "id": "OPRF-93151",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de Plaisance",
+      "short_name": "Plaisance",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-plaisance.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:5a1mymmzijik",
       "portal": "VANOISE",
       "name": "Refuge de Plan Sec",
@@ -647,6 +705,19 @@
         "BK_PRODUCTCATEGORY:BIVOUAC"
       ],
       "site": null
+    },
+    {
+      "id": "OPRF-92949",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de Plan du Lac",
+      "short_name": "Plan du Lac",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-plandulac.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:xxx5u8nmpryk",
@@ -678,6 +749,19 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugedepombie.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-93152",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de Prariond",
+      "short_name": "Prariond",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-prariond.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:37",
@@ -755,6 +839,19 @@
       "site": "https://refugederabuons.ffcam.fr/"
     },
     {
+      "id": "OPRF-93149",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de Rosuel",
+      "short_name": "Rosuel",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-rosuel.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:80",
       "portal": "FFCAM",
       "name": "Refuge de Temple Ecrins  (FFCAM)",
@@ -770,6 +867,19 @@
       "site": "https://refugetempleecrins.ffcam.fr/"
     },
     {
+      "id": "OPRF-93145",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de Turia",
+      "short_name": "Turia",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-turia.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:xxx5wdwmtq8a",
       "portal": "FFCAM",
       "name": "Refuge de Tête Rousse Non Gardé (FFCAM)",
@@ -783,6 +893,19 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": null
+    },
+    {
+      "id": "OPRF-92996",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de Vallonbrun",
+      "short_name": "Vallonbrun",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-vallonbrun.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:108",
@@ -967,6 +1090,21 @@
       "site": "https://refugedeletendard.ffcam.fr/"
     },
     {
+      "id": "BK_STRUCTURE:xxx5ylsjmuv1",
+      "portal": "NEOUVIELLE",
+      "name": "Refuge de l'OULE",
+      "short_name": "Oule",
+      "type": "refuge",
+      "email_user": "oule",
+      "max_pax_per_booking": 99,
+      "max_nights": 7,
+      "booking_delay_days": "365",
+      "product_categories": [
+        "BK_PRODUCTCATEGORY:NUITEE"
+      ],
+      "site": null
+    },
+    {
       "id": "BK_STRUCTURE:70",
       "portal": "FFCAM",
       "name": "Refuge de l'Olan  (FFCAM)",
@@ -1043,6 +1181,19 @@
       "site": "https://refugeladentdoche.ffcam.fr/"
     },
     {
+      "id": "OPRF-92951",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de la Femma",
+      "short_name": "Femma",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-femma.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:5a1ngkc39duv",
       "portal": "VANOISE",
       "name": "Refuge de la Fournache",
@@ -1086,6 +1237,32 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugelalavey.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-92948",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de la Leisse",
+      "short_name": "Leisse",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-leisse.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
+      "id": "OPRF-93146",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge de la Martin",
+      "short_name": "Martin",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-lamartin.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:56",
@@ -1404,6 +1581,19 @@
       "site": "https://refugedessouffles.ffcam.fr/"
     },
     {
+      "id": "OPRF-93150",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge du Bois",
+      "short_name": "Bois",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-dubois.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:48",
       "portal": "FFCAM",
       "name": "Refuge du Carro  (FFCAM)",
@@ -1479,6 +1669,19 @@
       "site": "https://refugecoldelavanoise.ffcam.fr/"
     },
     {
+      "id": "OPRF-93148",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge du Col du Palet",
+      "short_name": "Col du Palet",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-coldupalet.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:24",
       "portal": "FFCAM",
       "name": "Refuge du Couvercle  (FFCAM)",
@@ -1522,6 +1725,19 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugefonddaussois.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-93147",
+      "portal": "OPENSYSTEM",
+      "name": "Refuge du Fond des Fours",
+      "short_name": "Fond des Fours",
+      "type": "refuge",
+      "email_user": null,
+      "site": "https://refuge-fonddesfours.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:72",

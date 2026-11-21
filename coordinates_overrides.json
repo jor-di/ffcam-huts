@@ -29,5 +29,19 @@
     "osm": "way/47600502",
     "website": "https://www.refugeduroc.com/",
     "note": "ex Refuge du Roc de la Pêche (Pralognan), renamed: see refugeduroc.com"
+  },
+  "BK_STRUCTURE:5e92vrpttey6": {
+    "name": "Gîte du Boréon",
+    "lat": 44.1143694,
+    "lon": 7.288035,
+    "osm": "way/704079297",
+    "note": "OSM name 'Gite d'Étape du Boréon' (Saint-Martin-Vésubie)"
+  },
+  "BK_STRUCTURE:iyuctdomm9k": {
+    "name": "Refuge d'Orédon",
+    "lat": 42.8263598,
+    "lon": 0.1683302,
+    "osm": "node/4488887328",
+    "note": "tagged amenity=restaurant in OSM (Aragnouet, lac d'Orédon)"
   }
 }

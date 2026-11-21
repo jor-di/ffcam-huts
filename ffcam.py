@@ -12,8 +12,16 @@ How the FFCAM booking widget works (https://www.ffcam.fr/reserver-votre-refuge-e
 The same server runs other booking portals, chosen with `apporigin`. Each portal lists its
 own huts (some shared with FFCAM), e.g. VANOISE adds the Vanoise national park huts.
 Availability must be requested through a portal that lists the hut.
+
+Open System (portal "OPENSYSTEM"): 12 Vanoise national park huts (Leisse, Fond des Fours...)
+book through Open System / Alliance Réseaux instead. Their sites (refuge-xxx.vanoise.com) embed
+a widget with a product id `ui:"OPRF-92948"`, whose planning is a public JSON(P) endpoint:
+  https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92948,<date>
+returning 30 days, from <date> - 15 days to <date> + 14 days: [{"s": free beds,
+"f": 1 if closed, "d": days *before* <date>}] (the day is <date> - d). No capacity is given.
 """
 
+import datetime as dt
 import html as htmllib
 import json
 import os
@@ -27,9 +35,12 @@ from pathlib import Path
 BASE_URL = "https://centrale.ffcam.fr/index.php"
 HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) ffcam-huts-script"}
 HUTS_FILE = Path(__file__).with_name("huts.json")
-# Portals (apporigin) to collect huts from. Others exist: NEOUVIELLE (3 huts), BOREON (1),
+# Portals (apporigin) to collect huts from. Others exist:
 # ENTREPYRPYRENEES (Spanish/Andorran Pyrenees), ITFFCAM (all of them + Morocco).
-DEFAULT_PORTALS = ["FFCAM", "VANOISE"]
+DEFAULT_PORTALS = ["FFCAM", "VANOISE", "NEOUVIELLE", "BOREON", "OPENSYSTEM"]
+# Open System huts are discovered from this site's "other huts" menu (all the park's huts)
+OPENSYSTEM_ENTRY = "https://refuge-leisse.vanoise.com/"
+OPENSYSTEM_PLANNING = "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q={num},{date}"
 TYPES = {
     "BK_STRUCTURECATEGORY:REFUGE": "refuge",
     "BK_STRUCTURECATEGORY:REFUGEHG_withBooking": "refuge_non_garde",
@@ -62,6 +73,17 @@ def http(params, method="GET", retries=3):
     for attempt in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except Exception:
+            if attempt == retries - 1:
+                raise
+            time.sleep(2 * (attempt + 1))
+
+
+def get_url(url, retries=3):
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=30) as resp:
                 return resp.read().decode("utf-8", errors="replace")
         except Exception:
             if attempt == retries - 1:
@@ -102,9 +124,35 @@ def email_user(raw):
     return re.sub(r"<[^>]*>", "", user) or None
 
 
+def fetch_opensystem_huts(entry=OPENSYSTEM_ENTRY):
+    """Vanoise park huts booked through Open System: id OPRF-<n>, name, site."""
+    page = get_url(entry)
+    sites = {u.rstrip("/"): htmllib.unescape(n).strip()
+             for u, n in re.findall(r'href="(https://refuge-[a-z-]+\.vanoise\.com)/?"[^>]*>\s*([^<]+?)\s*<', page)}
+    # the entry hut is not in its own menu: take its name from the page title ("Accueil | Refuge de la Leisse")
+    title = re.search(r"<title>([^<]+)</title>", page)
+    parts = [t.strip() for t in htmllib.unescape(title.group(1)).split("|")] if title else [entry]
+    sites.setdefault(entry.rstrip("/"), next((t for t in parts if t.lower().startswith("refuge")), parts[-1]))
+    huts = []
+    for site, name in sorted(sites.items()):
+        html = get_url(site + "/")
+        m = re.search(r'ui:"OPRF-(\d+)"', html)
+        if not m:
+            continue  # this hut books through the FFCAM centrale (VANOISE portal) instead
+        huts.append({
+            "id": f"OPRF-{m.group(1)}", "portal": "OPENSYSTEM", "name": name,
+            "short_name": re.sub(r"^Refuge (de la |de l'|du |des |de |d')", "", name),
+            "type": "refuge", "email_user": None, "site": site + "/",
+            "max_pax_per_booking": None, "max_nights": None, "booking_delay_days": None, "product_categories": [],
+        })
+    return huts
+
+
 def fetch_huts(portals=DEFAULT_PORTALS):
     """Fetch the hut lists of the given portals, as compact dicts (first portal listing a hut wins)."""
     structures = {}
+    extra = fetch_opensystem_huts() if "OPENSYSTEM" in portals else []
+    portals = [p for p in portals if p != "OPENSYSTEM"]
     for portal in portals:
         html = http({"mode": "FORM", "_lang": "FR", "init": 1, "apporigin": portal})
         found = js_var(html, "structuresList")
@@ -126,7 +174,7 @@ def fetch_huts(portals=DEFAULT_PORTALS):
             "product_categories": [p.get("oid") for p in s.get("productsCategories", [])],
         }
         for hut_id, (portal, s) in structures.items()
-    ]
+    ] + extra
 
 
 def load_huts(path=HUTS_FILE):
@@ -135,8 +183,24 @@ def load_huts(path=HUTS_FILE):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def fetch_opensystem_availability(hut_id, date):
+    """Open System planning: 30 days from `date` (capacity unknown, so None)."""
+    query = date + dt.timedelta(days=15)  # the answer covers query-15 .. query+14
+    text = get_url(OPENSYSTEM_PLANNING.format(num=hut_id.split("-", 1)[1], date=query.isoformat()))
+    data = json.loads(text[text.index("(") + 1:text.rindex(")")])
+    out = {"free": {}, "capacity": {}, "opening": {}}
+    for e in (data[0]["planning"] if data else []):
+        day = (query - dt.timedelta(days=e["d"])).isoformat()
+        out["free"][day] = e["s"]
+        out["capacity"][day] = None
+        out["opening"][day] = "CLOSE" if e["f"] else "OPEN"
+    return out
+
+
 def fetch_availability(hut_id, date, portal="FFCAM"):
     """Return free beds / capacity / opening status per day, for 2 months from date's month."""
+    if portal == "OPENSYSTEM":
+        return fetch_opensystem_availability(hut_id, date)
     html = http(
         {
             "action": "availability",

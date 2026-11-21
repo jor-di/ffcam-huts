@@ -4,7 +4,7 @@
 Run ./refresh_huts.py first to create huts.json.
 
 Usage:
-  ./ffcam_availability.py                       # this weekend's nights from tonight on (Fri, Sat, Sun)
+  ./ffcam_availability.py                       # this weekend from tonight on + next weekend (Fri, Sat, Sun)
   ./ffcam_availability.py --date 2027-07-03 --nights 2
   ./ffcam_availability.py --date 2027-07-03 -o out.csv
 """
@@ -41,6 +41,14 @@ def weekend_nights(today=None):
     return [d for d in (friday + dt.timedelta(days=i) for i in range(3)) if d >= today]
 
 
+def next_weekend_nights(today=None):
+    """Friday, Saturday and Sunday nights of the weekend after the current one (the map's
+    "avant-dernière couchette" mode). Always inside the fetched window (today -> end of next month)."""
+    today = today or dt.date.today()
+    friday = today + dt.timedelta(days=4 - today.weekday() + 7)
+    return [friday + dt.timedelta(days=i) for i in range(3)]
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--date", type=dt.date.fromisoformat, help="first night (default: this weekend, from tonight)")
@@ -53,7 +61,7 @@ def main():
     if args.date:
         dates = [args.date + dt.timedelta(days=i) for i in range(args.nights or 1)]
     else:
-        dates = weekend_nights()
+        dates = weekend_nights() + next_weekend_nights()
     start = dates[0]
     output = args.output or f"ffcam_{start.isoformat()}.csv"
     # FFCAM returns the requested date's month + the next one. By default ask from today, so the
