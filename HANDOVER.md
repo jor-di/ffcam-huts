@@ -19,6 +19,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - [Mise en ligne](#mise-en-ligne)
 - [Opérations courantes](#opérations-courantes)
 - [Tests](#tests)
+- [En suspens](#en-suspens)
 - [Pièges connus et décisions](#pièges-connus-et-décisions)
 - [Annexe : source de chaque refuge](#annexe--source-de-chaque-refuge)
 
@@ -330,6 +331,14 @@ Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relev
 - `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
 
 Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
+
+## En suspens
+
+Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est réglée.
+
+| Sujet | Ce qui manque | Pour le régler |
+| --- | --- | --- |
+| Refuge de la Coire : saison d’été | Seule la [page d’hiver](https://www.refugedelacoire.fr/reservations-hiver/) est lue. La [page d’été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers WP Booking System (14 et 15, à partir de juin 2027) dont on ne sait pas encore à quoi chacun correspond (dortoir / bivouac ?). Aujourd’hui, si une page a plusieurs calendriers, un jour est pris dans le premier, sans additionner les places. | Décider comment combiner les deux calendriers (n’en garder qu’un avec `calendars`, ou additionner les places, ce qui demande une petite évolution de `Ffcam.fetch_wpbs_availability`), puis ajouter `{"url": "https://www.refugedelacoire.fr/reservations-ete/"}` à la liste `wpbs` de la Coire dans `manual_huts.json`. À faire au printemps, avant l’ouverture des réservations d’été. |
 
 ## Pièges connus et décisions
 
