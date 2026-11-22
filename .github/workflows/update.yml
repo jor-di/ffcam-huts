@@ -4,11 +4,13 @@ on:
   schedule:
     # times are UTC. Season (Dec-Apr, Jun-Sep): every hour at minute 7.
     - cron: "7 * * 12,1-4,6-9 *"
-    # Off season (May, Oct, Nov): once a day, ~8-9h in Paris.
-    - cron: "7 7 * 5,10,11 *"
-  # "Run workflow" button in the Actions tab, and cron-job.org (exact times; GitHub's schedule
-  # can run hours late): POST /repos/jor-di/ffcam-huts/actions/workflows/update.yml/dispatches
-  #   {"ref": "main", "inputs": {"source": "cron-job.org"}}
+    # Off season (May, Oct, Nov): 3 slots a day (GitHub's schedule can run hours late or skip a
+    # run; with 3 slots one usually lands in the morning): 6:07, 7:37 and 12:07 UTC.
+    - cron: "7 6,12 * 5,10,11 *"
+    - cron: "37 7 * 5,10,11 *"
+  # "Run workflow" button in the Actions tab. An external scheduler could also start it via
+  # POST /repos/jor-di/ffcam-huts/actions/workflows/update.yml/dispatches
+  #   {"ref": "main", "inputs": {"source": "<name shown on /releves/>"}}
   workflow_dispatch:
     inputs:
       source:
@@ -36,7 +38,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     env:
       TZ: Europe/Paris # history timestamps and "today" in French time
-      TRIGGER_SOURCE: ${{ inputs.source }} # set by workflow_dispatch (cron-job.org or the button)
+      TRIGGER_SOURCE: ${{ inputs.source }} # set by workflow_dispatch (the button, or an external scheduler)
     steps:
       - uses: actions/checkout@v4
 

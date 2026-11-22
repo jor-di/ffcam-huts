@@ -6,7 +6,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 
 - **Couverture** : 154 refuges, venant de 4 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
 - **Code** : Python standard sans dépendance + une page HTML Leaflet.
-- **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), une fois par jour sinon.
+- **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), trois fois par jour sinon (6h07, 7h37, 12h07 UTC).
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
 
 ## Sommaire
@@ -255,7 +255,7 @@ Le site est publié par GitHub Actions sur GitHub Pages, derrière le domaine de
 | Élément | Réglage |
 | --- | --- |
 | Dépôt | `jor-di/ffcam-huts`, public, branche par défaut `main` (obligatoire pour les tâches planifiées et la publication Pages) |
-| Tâche | `.github/workflows/update.yml` : `7 * * 12,1-4,6-9 *` (saison) et `7 7 * 5,10,11 *` (hors saison), heures UTC ; aussi à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
+| Tâche | `.github/workflows/update.yml` : `7 * * 12,1-4,6-9 *` (saison), `7 6,12 * 5,10,11 *` et `37 7 * 5,10,11 *` (hors saison : 3 créneaux, le planning GitHub pouvant prendre des heures de retard ou sauter un passage), heures UTC ; aussi à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
 | Étapes | checkout `main` + checkout `data` dans `history/` → `ffcam_availability.py` → `build_map.py` → commit de `history/` si changement → déploiement Pages |
 | Pages | Settings → Pages → Source = GitHub Actions ; Custom domain = `dernierecouchette.fr` ; « Enforce HTTPS » à cocher une fois le certificat prêt |
 | DNS (OVH) | 4 × A `@` → `185.199.108-111.153`, 4 × AAAA `@` → `2606:50c0:8000-8003::153`, CNAME `www` → `jor-di.github.io.`, TXT `_github-pages-challenge-jor-di` (domaine vérifié) ; NS, MX et SPF d'origine conservés |
@@ -287,7 +287,7 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 - Un refuge peut avoir des places libres et être fermé (`CLOSE`) : « réservable » = `OPEN` **et** places > 0.
 - Les « Non Gardé » sont des entrées séparées de leur refuge gardé (salle hors-sac) ; en hiver ce sont presque les seuls réservables.
 - Les emails des refuges sont obfusqués (`name<a></a><ff></ff>…`) : seule la partie avant @ est fiable ; elle donne le site `name.ffcam.fr`.
-- Les tâches planifiées GitHub partent avec retard (minutes, parfois plus) et sont désactivées après 60 jours sans activité (les commits de données devraient suffire).
+- Les tâches planifiées GitHub partent avec retard (minutes, parfois des heures : 8 h le 22/11/2026) et sont désactivées après 60 jours sans activité (les commits de données devraient suffire).
 - Le dépôt peut être modifié directement sur GitHub (ça a été le cas du README) : faire `git pull --rebase` avant de pousser.
 - Le Ratou n'a ni site ni position exacte (panneau « Chalet du Ratou ») ; Averole et Orédon sont tagués autrement qu'en refuge dans OSM.
 
