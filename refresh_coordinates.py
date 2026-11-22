@@ -97,7 +97,10 @@ def main():
     result, unmatched = {}, []
     for hut in huts:
         hid, key = hut["id"], norm(hut["name"])
-        if hid in overrides:
+        if hut.get("lat") is not None and hut.get("lon") is not None:  # manual huts carry their position
+            coords = {"lat": hut["lat"], "lon": hut["lon"], "ele": hut.get("ele"), "osm": None,
+                      "osm_name": None, "website": hut.get("site"), "match": "manual"}
+        elif hid in overrides:
             o = overrides[hid]
             coords = {"lat": o["lat"], "lon": o["lon"], "ele": o.get("ele"), "osm": o.get("osm"),
                       "osm_name": o.get("name"), "website": o.get("website"), "match": "override"}

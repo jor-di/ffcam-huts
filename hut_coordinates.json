@@ -1398,5 +1398,145 @@
     "osm_name": "Auberge de Bellecombe",
     "website": "https://www.aubergedebellecombe.com/",
     "match": "name"
+  },
+  "MANUAL-coire": {
+    "name": "Refuge de la Coire",
+    "lat": 45.61831,
+    "lon": 6.60856,
+    "ele": 2059,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.refugedelacoire.fr/reservations-hiver/",
+    "match": "manual"
+  },
+  "MANUAL-selle": {
+    "name": "Refuge de la Selle",
+    "lat": 44.98228,
+    "lon": 6.24913,
+    "ele": 2673,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.refugedelaselle.com/contact/",
+    "match": "manual"
+  },
+  "MANUAL-nant-du-beurre": {
+    "name": "Refuge du Nant du Beurre",
+    "lat": 45.58297,
+    "lon": 6.56117,
+    "ele": 2085,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refugedunantdubeurre.fr/",
+    "match": "manual"
+  },
+  "RP-refuge-buffere": {
+    "name": "Refuge Buffère",
+    "lat": 45.01264,
+    "lon": 6.57066,
+    "ele": 2076,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/refuge-buffere",
+    "match": "manual"
+  },
+  "RP-refuge-de-terre-rouge": {
+    "name": "Refuge de Terre Rouge",
+    "lat": 45.13067,
+    "lon": 6.51245,
+    "ele": 2182,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge",
+    "match": "manual"
+  },
+  "RP-re-magi": {
+    "name": "Refuge I Re Magi",
+    "lat": 45.07072,
+    "lon": 6.62263,
+    "ele": 1768,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/re-magi",
+    "match": "manual"
+  },
+  "RP-laval": {
+    "name": "Refuge Laval",
+    "lat": 45.05746,
+    "lon": 6.52988,
+    "ele": 2000,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/laval",
+    "match": "manual"
+  },
+  "RP-ricou": {
+    "name": "Refuge Ricou",
+    "lat": 45.04636,
+    "lon": 6.54402,
+    "ele": 2115,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/ricou",
+    "match": "manual"
+  },
+  "RP-terzo-alpini": {
+    "name": "Refuge Terzo Alpini",
+    "lat": 45.06963,
+    "lon": 6.62306,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/terzo-alpini",
+    "match": "manual"
+  },
+  "RP-marches": {
+    "name": "Refuge des Marches",
+    "lat": 45.15734,
+    "lon": 6.56546,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/marches",
+    "match": "manual"
+  },
+  "RP-chardonnet": {
+    "name": "Refuge du Chardonnet",
+    "lat": 45.02571,
+    "lon": 6.53188,
+    "ele": 2223,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/chardonnet",
+    "match": "manual"
+  },
+  "RP-refuge-du-clot-des-vaches": {
+    "name": "Refuge du Clôt des Vaches",
+    "lat": 45.03196,
+    "lon": 6.48454,
+    "ele": 2253,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches",
+    "match": "manual"
+  },
+  "RP-galibier": {
+    "name": "Refuge du Galibier",
+    "lat": 45.06259,
+    "lon": 6.40647,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/galibier",
+    "match": "manual"
+  },
+  "RP-rifugio-guido-rey": {
+    "name": "Rifugio Guido Rey",
+    "lat": 45.02731,
+    "lon": 6.75619,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/rifugio-guido-rey",
+    "match": "manual"
   }
 }

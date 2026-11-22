@@ -207,12 +207,77 @@
       "distance_m": 19
     }
   },
+  "RP-refuge-buffere": {
+    "name": "Refuge Buffère",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104020",
+      "name": "Refuge de Buffère",
+      "distance_m": 18
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/151",
+      "name": "Refuge Buffère",
+      "distance_m": 18
+    }
+  },
   "BK_STRUCTURE:5h5skpilec4l": {
     "name": "Refuge Entre-Deux-Eaux",
     "c2c": {
       "url": "https://www.camptocamp.org/waypoints/104038",
       "name": "Refuge d'Entre Deux Eaux",
       "distance_m": 2
+    }
+  },
+  "RP-re-magi": {
+    "name": "Refuge I Re Magi",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104026",
+      "name": "Refuge I Re Magi",
+      "distance_m": 17
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/285",
+      "name": "Refuge I re Magi",
+      "distance_m": 2
+    }
+  },
+  "RP-laval": {
+    "name": "Refuge Laval",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104053",
+      "name": "Refuge de Laval",
+      "distance_m": 1
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/576",
+      "name": "Refuge de Laval",
+      "distance_m": 6
+    }
+  },
+  "RP-ricou": {
+    "name": "Refuge Ricou",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104060",
+      "name": "Refuge de Ricou",
+      "distance_m": 17
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/150",
+      "name": "Refuge de Ricou",
+      "distance_m": 5
+    }
+  },
+  "RP-terzo-alpini": {
+    "name": "Refuge Terzo Alpini",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104030",
+      "name": "Refuge Terzo Alpini (Vallée Etroite)",
+      "distance_m": 1
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/523",
+      "name": "Refuge de Tré Alpini.",
+      "distance_m": 4
     }
   },
   "BK_STRUCTURE:54": {
@@ -653,6 +718,19 @@
       "distance_m": 15
     }
   },
+  "RP-refuge-de-terre-rouge": {
+    "name": "Refuge de Terre Rouge",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/971501",
+      "name": "Refuge de Terre Rouge",
+      "distance_m": 17
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/651",
+      "name": "refuge de Terre Rouge",
+      "distance_m": 6
+    }
+  },
   "OPRF-93145": {
     "name": "Refuge de Turia",
     "c2c": {
@@ -885,6 +963,19 @@
       "distance_m": 1
     }
   },
+  "MANUAL-coire": {
+    "name": "Refuge de la Coire",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104084",
+      "name": "Refuge de la Coire",
+      "distance_m": 17
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/35",
+      "name": "Refuge de la Coire",
+      "distance_m": 19
+    }
+  },
   "BK_STRUCTURE:52": {
     "name": "Refuge de la Dent Parrachée",
     "c2c": {
@@ -1003,6 +1094,19 @@
       "url": "https://skitour.fr/refuges/9",
       "name": "Refuge de la Pra",
       "distance_m": 20
+    }
+  },
+  "MANUAL-selle": {
+    "name": "Refuge de la Selle",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104105",
+      "name": "Refuge de la Selle",
+      "distance_m": 8
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/160",
+      "name": "Refuge de la Selle",
+      "distance_m": 4
     }
   },
   "BK_STRUCTURE:5a1novae31ez": {
@@ -1200,6 +1304,19 @@
       "distance_m": 4
     }
   },
+  "RP-marches": {
+    "name": "Refuge des Marches",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/433596",
+      "name": "Refuge des Marches",
+      "distance_m": 12
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/543",
+      "name": "Refuge des marches",
+      "distance_m": 17
+    }
+  },
   "BK_STRUCTURE:88": {
     "name": "Refuge des Merveilles  (FFCAM)",
     "c2c": {
@@ -1286,6 +1403,19 @@
       "distance_m": 12
     }
   },
+  "RP-chardonnet": {
+    "name": "Refuge du Chardonnet",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104131",
+      "name": "Refuge du Chardonnet",
+      "distance_m": 20
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/115",
+      "name": "Refuge du Chardonnet",
+      "distance_m": 14
+    }
+  },
   "BK_STRUCTURE:67": {
     "name": "Refuge du Clot - Xavier Blanc  (FFCAM)",
     "c2c": {
@@ -1297,6 +1427,14 @@
       "url": "https://skitour.fr/refuges/242",
       "name": "Refuge du Clot Xavier Blanc",
       "distance_m": 12
+    }
+  },
+  "RP-refuge-du-clot-des-vaches": {
+    "name": "Refuge du Clôt des Vaches",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/1711301",
+      "name": "Refuge du Clot des vaches",
+      "distance_m": 8
     }
   },
   "BK_STRUCTURE:45": {
@@ -1390,6 +1528,19 @@
       "distance_m": 11
     }
   },
+  "RP-galibier": {
+    "name": "Refuge du Galibier",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/1379728",
+      "name": "Refuge du Galibier",
+      "distance_m": 5
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/669",
+      "name": "Refuge du Galibier",
+      "distance_m": 1
+    }
+  },
   "BK_STRUCTURE:72": {
     "name": "Refuge du Glacier Blanc  (FFCAM)",
     "c2c": {
@@ -1464,6 +1615,19 @@
       "url": "https://skitour.fr/refuges/50",
       "name": "Refuge du Mont Thabor",
       "distance_m": 7
+    }
+  },
+  "MANUAL-nant-du-beurre": {
+    "name": "Refuge du Nant du Beurre",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/104153",
+      "name": "Refuge du Nant du Beurre",
+      "distance_m": 9
+    },
+    "skitour": {
+      "url": "https://skitour.fr/refuges/555",
+      "name": "Refuge du Nant du Beurre",
+      "distance_m": 15
     }
   },
   "BK_STRUCTURE:17": {
@@ -1663,5 +1827,13 @@
   },
   "BK_STRUCTURE:xxx5xjr51ovb": {
     "name": "Refuge l' Auberge de Bellecombe"
+  },
+  "RP-rifugio-guido-rey": {
+    "name": "Rifugio Guido Rey",
+    "c2c": {
+      "url": "https://www.camptocamp.org/waypoints/1623063",
+      "name": "Rifugio Guido Rey",
+      "distance_m": 2
+    }
   }
 }

@@ -32,7 +32,7 @@ def record(results, fetched_at, today=None):
     changes = []
     for hut, data, err in results:
         if err or not data:
-            continue  # a failed fetch says nothing about availability
+            continue  # a failed fetch (or a manual hut, nothing fetched) says nothing about availability
         days = set(data["opening"]) | set(data["free"]) | set(data["capacity"])
         for day in sorted(d for d in days if d >= today):
             value = [data["opening"].get(day), data["free"].get(day), data["capacity"].get(day)]

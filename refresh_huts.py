@@ -48,7 +48,7 @@ def main():
         + "\n",
         encoding="utf-8",
     )
-    per_portal = {pt: sum(h["portal"] == pt for h in huts) for pt in args.portals}
+    per_portal = {pt: sum(h["portal"] == pt for h in huts) for pt in dict.fromkeys(h["portal"] for h in huts)}
     print(f"Huts per portal: {per_portal}", file=sys.stderr)
     print(f"Wrote {len(huts)} huts to {HUTS_FILE} ({sum(bool(h['site']) for h in huts)} with a website)", file=sys.stderr)
     for h in huts:

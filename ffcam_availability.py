@@ -80,7 +80,7 @@ def main():
 
     def work(hut):
         try:
-            return hut, fetch_availability(hut["id"], fetch_from, hut.get("portal", "FFCAM")), None
+            return hut, fetch_availability(hut["id"], fetch_from, hut.get("portal", "FFCAM"), hut.get("refugepro")), None
         except Exception as e:  # keep going, record the error
             return hut, None, str(e)
 
@@ -100,6 +100,9 @@ def main():
             free = data["free"].get(key) if data else None
             capacity = data["capacity"].get(key) if data else None
             opening = data["opening"].get(key) if data else None
+            booking = (data.get("booking") or {}).get(key) if data else None
+            if hut.get("portal") == "MANUAL":
+                booking = "request"  # no online booking: phone / mail / form
             rows.append(
                 {
                     "date": key,
@@ -114,6 +117,8 @@ def main():
                     "capacity": capacity,
                     "booked": capacity - free if isinstance(free, int) and isinstance(capacity, int) else None,
                     "bookable": bool(opening == "OPEN" and free),
+                    # online | waitlist (full, waiting list) | phone (FFCAM: no longer sold online) | request (manual hut)
+                    "booking": booking,
                     "max_pax_per_booking": hut["max_pax_per_booking"],
                     "lat": coords.get(hut["id"], {}).get("lat"),
                     "lon": coords.get(hut["id"], {}).get("lon"),
@@ -121,6 +126,8 @@ def main():
                     "hut_url": hut_url(hut, coords.get(hut["id"], {}).get("website")),
                     "c2c_url": (links.get(hut["id"], {}).get("c2c") or {}).get("url"),
                     "skitour_url": (links.get(hut["id"], {}).get("skitour") or {}).get("url"),
+                    "phone": hut.get("phone"),
+                    "email": hut.get("email"),
                     "fetched_at": fetched_at,
                     "error": err,
                 }

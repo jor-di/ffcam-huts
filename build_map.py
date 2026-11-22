@@ -46,11 +46,11 @@ def main():
             hut = huts.setdefault(r["hut_id"], {
                 "id": r["hut_id"], "name": r["name"], "type": r["type"],
                 "lat": float(r["lat"]), "lon": float(r["lon"]), "ele": to_int(r["ele"]),
-                "maxPax": to_int(r["max_pax_per_booking"]), "url": r.get("hut_url") or None, "c2c": r.get("c2c_url") or None, "skitour": r.get("skitour_url") or None, "portal": r.get("portal") or "FFCAM", "nights": {},
+                "maxPax": to_int(r["max_pax_per_booking"]), "url": r.get("hut_url") or None, "phone": r.get("phone") or None, "email": r.get("email") or None, "c2c": r.get("c2c_url") or None, "skitour": r.get("skitour_url") or None, "portal": r.get("portal") or "FFCAM", "nights": {},
             })
             hut["nights"][r["date"]] = {
                 "opening": r["opening"] or None, "free": to_int(r["free_beds"]),
-                "capacity": to_int(r["capacity"]), "error": r["error"] or None,
+                "capacity": to_int(r["capacity"]), "error": r["error"] or None, "booking": r.get("booking") or None,
             }
 
     data = {"dates": sorted(dates), "fetchedAt": fetched_at, "source": path.name, "huts": list(huts.values()),

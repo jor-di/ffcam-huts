@@ -4,7 +4,7 @@ _État au 21/11/2026._
 
 Dernière couchette est une carte des places libres dans les refuges de montagne pour le week-end en cours, en ligne sur [dernierecouchette.fr](https://dernierecouchette.fr/) et mise à jour automatiquement par GitHub Actions.
 
-- **Couverture** : 140 refuges — 115 FFCAM, 9 + 12 du Parc national de la Vanoise, 3 du Néouvielle, le Gîte du Boréon.
+- **Couverture** : 154 refuges, venant de 4 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
 - **Code** : Python standard sans dépendance + une page HTML Leaflet.
 - **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), une fois par jour sinon.
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
@@ -21,6 +21,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - [Opérations courantes](#opérations-courantes)
 - [État en cours et prochaines étapes](#état-en-cours-et-prochaines-étapes)
 - [Pièges connus et décisions](#pièges-connus-et-décisions)
+- [Annexe : source de chaque refuge](#annexe--source-de-chaque-refuge)
 
 ## Architecture
 
@@ -29,7 +30,7 @@ Deux rythmes : trois scripts « de référence » lancés à la main de temps en
 ```mermaid
 flowchart LR
   subgraph local["De temps en temps, en local (résultats commités sur main)"]
-    huts["refresh_huts.py<br/>centrale FFCAM (4 portails) + Open System<br/>→ huts.json"]
+    huts["refresh_huts.py<br/>centrale FFCAM (4 portails) + Open System + manual_huts.json<br/>→ huts.json"]
     coords["refresh_coordinates.py<br/>OpenStreetMap + corrections<br/>→ hut_coordinates.json"]
     links["refresh_links.py<br/>Camptocamp + Skitour<br/>→ hut_links.json"]
     huts --> coords --> links
@@ -50,9 +51,10 @@ flowchart LR
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
-| `huts.json` | 140 refuges : id, nom, type, portail, site | `refresh_huts.py` | oui (main) |
+| `huts.json` | 154 refuges : id, nom, type, portail, site | `refresh_huts.py` | oui (main) |
 | `hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `refresh_coordinates.py` | oui (main) |
 | `coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
+| `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) s'ils en ont un | à la main | oui (main) |
 | `hut_links.json` | liens Camptocamp et Skitour | `refresh_links.py` | oui (main) |
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places | `ffcam_availability.py` | oui (branche `data`) |
@@ -62,23 +64,24 @@ flowchart LR
 
 ## Sources de données
 
-Les places viennent de deux systèmes de réservation publics, interrogés sans clé ; le reste (GPS, liens, fonds de carte) vient de services ouverts.
+Les places viennent de trois systèmes de réservation, lus là où les refuges les publient eux-mêmes, sans clé ; le reste (GPS, liens, fonds de carte) vient de services ouverts.
 
 | Source | Ce qu'on en tire | Accès | Particularités |
 | --- | --- | --- | --- |
 | [Centrale FFCAM](https://centrale.ffcam.fr/index.php) | liste des refuges + places par nuit | sans clé | voir [les requêtes](#1-centrale-ffcam-portails-ffcam-vanoise-neouvielle-boreon) |
 | Portails de la centrale (`apporigin`) | refuges hors liste FFCAM | sans clé | FFCAM (115), VANOISE (+9), NEOUVIELLE (+3), BOREON (+1). Disponibles non utilisés : ENTREPYRPYRENEES (52, Espagne/Andorre), ITFFCAM (tout + Maroc). |
 | Open System (Alliance Réseaux) | 12 refuges du Parc de la Vanoise (Leisse, Fond des Fours…) | sans clé | voir [les requêtes](#2-open-system-12-refuges-du-parc-de-la-vanoise-portal--opensystem). **Pas de capacité.** |
+| [Refuge Pro](https://refuge-pro.com) | 11 refuges privés (Clarée, Vallée Étroite, Galibier, Maurienne…) : places, capacité, liste d'attente | sans clé | Calendrier « embed » que chaque refuge intègre à son site ; voir [les requêtes](#3-refuge-pro-11-refuges-portal--refugepro). ~1 an de nuits. |
 | OpenStreetMap (Overpass) | GPS, altitude, site web | sans clé | Souvent surchargé : le script essaie 3 serveurs et réessaie (jusqu'à plusieurs minutes). Appariement par site `*.ffcam.fr`, puis par nom, puis corrections manuelles. |
 | Nominatim (OSM) | recherche ponctuelle d'un refuge introuvable | sans clé | Utilisé à la main pour remplir `coordinates_overrides.json`. |
-| [Camptocamp](https://www.camptocamp.org) | lien fiche refuge | API publique | Recherche dans un rayon de 1,5 km, acceptée si < 400 m ou nom proche. 136/140 trouvés. |
-| [Skitour](https://skitour.fr/api/) | lien fiche refuge | clé perso (gratuite, 1000 req/j) | `GET /api/refuges` avec en-tête `cle`. 113/140 trouvés. Les conditions demandent un lien vers skitour.fr. |
+| [Camptocamp](https://www.camptocamp.org) | lien fiche refuge | API publique | Recherche dans un rayon de 1,5 km, acceptée si < 400 m ou nom proche. 150/154 trouvés. |
+| [Skitour](https://skitour.fr/api/) | lien fiche refuge | clé perso (gratuite, 1000 req/j) | `GET /api/refuges` avec en-tête `cle`. 125/154 trouvés. Les conditions demandent un lien vers skitour.fr. |
 | IGN Géoplateforme | fonds Plan IGN, traces ski de rando | sans clé | Couche `TRACES.RANDO.HIVERNALE` (rouge, recolorée en bleu en CSS). SCAN 25 = clé privée : code prêt, jamais testé. |
 | Esri, OpenTopoMap, OSM France | fonds de carte | sans clé | `tile.openstreetmap.org` refuse les pages sans `Referer` (fichier local) : on utilise OSM France. CARTO exige désormais une clé : abandonné. |
 
 ## Récupérer les disponibilités : les requêtes
 
-Deux systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `fetch_availability()` dans `ffcam.py`). Aucun des deux ne demande de clé ni de cookie.
+Trois systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `fetch_availability()` dans `ffcam.py`). Aucun ne demande de clé ni de cookie.
 
 ### 1. Centrale FFCAM (portails FFCAM, VANOISE, NEOUVIELLE, BOREON)
 
@@ -149,6 +152,46 @@ Les deux fonctions renvoient le même dictionnaire, ce qui permet au reste (CSV,
 
 Pour ajouter un nouveau système : une fonction qui renvoie ce dictionnaire, un `portal` dédié dans `huts.json`, et une branche dans `fetch_availability()`.
 
+### Mode de réservation d'une nuit (`booking`)
+
+La centrale FFCAM dit aussi, nuit par nuit, **comment** réserver, via les classes CSS des cases du calendrier renvoyé (`<div class="day …"><a data-date="2026-12-12" …>`, lu par `booking_modes()`) :
+
+| Classe de la case | `booking` | Signification |
+| --- | --- | --- |
+| `day dispo` | `online` | réservable en ligne |
+| `day complet waitinglistday` | `waitlist` | complet, inscription en liste d'attente possible |
+| `day completWeb completWebInfo` | `phone` | plus vendu en ligne (souvent ce soir, après le délai de réservation) : « Réserver par téléphone / mail » |
+
+Refuge Pro fournit l'équivalent (voir plus bas). Les refuges `MANUAL` ne sont pas interrogés : toutes leurs nuits valent `request`. Open System ne fournit pas cette information.
+
+### 3. Refuge Pro (11 refuges, `portal = REFUGEPRO`)
+
+Refuge Pro est le logiciel de réservation que ces refuges utilisent ; il fournit un calendrier à intégrer dans le site du refuge. On lit cette page « embed » (pas la vitrine tierce refuge.camp, ni son API) :
+
+```
+GET https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge
+```
+
+C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1,"…"])`. Une fois concaténés et décodés, on y trouve un objet JSON `"availability": {…}` (lu avec `json.JSONDecoder().raw_decode`) :
+
+```
+{"defaultCapacity":35, "bookingCutoffDays":1, "waitlistEnabled":true,
+ "nextSeasonOpening":{"premiereNuit":"2027-06-12","ouvreLe":"2027-01-15"},
+ "openingRanges":[{"from":"2027-01-09","to":"2027-04-10"}, …],
+ "data":[{"date":"2027-01-23","capacity":35,"booked":35,"free":0,"status":"open","isFull":true}, …]}
+```
+
+- `data` couvre **environ un an** (346 nuits), avec capacité, réservé et libre par nuit.
+- `booking` : complet + `waitlistEnabled` → `waitlist` ; nuit avant aujourd'hui + `bookingCutoffDays`, ou au-delà de `premiereNuit` tant que `ouvreLe` n'est pas passé → `phone` (places mises à 0) ; sinon `online`.
+- Le slug est l'adresse du calendrier ; il est noté dans `manual_huts.json` (champ `refugepro`). Il n'y a pas de liste publique des refuges Refuge Pro : les 11 slugs ont été trouvés en essayant le nom du refuge (`chardonnet`, `refuge-du-clot-des-vaches`…) ; une page inexistante répond 404.
+- La page donne aussi le téléphone du refuge (`telephoneRefuge`) mais **pas sa position** : position et altitude viennent d'OpenStreetMap (Nominatim), notées dans `manual_huts.json`.
+- Lien principal sur la carte = ce calendrier (bouton « Réserver ») ; le site propre du refuge, quand il existe, est dans le champ `website`.
+- **Pas de vitrine tierce** : ces refuges sont aussi vendus sur refuge.camp (même éditeur), qu'on n'utilise pas ; on lit le calendrier du refuge.
+
+### 4. Refuges sans réservation en ligne lisible (`portal = MANUAL`)
+
+Coire, Nant du Beurre, Selle : ajoutés à la main dans `manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : toutes leurs nuits valent `request`.
+
 ## La carte
 
 Une seule page HTML (`map_template.html` + les données injectées par `build_map.py`), Leaflet 1.9.4, sans serveur, design « Crêtes » : billets de couchette en papier crème, vert sapin, thème clair uniquement.
@@ -175,6 +218,8 @@ Une seule page HTML (`map_template.html` + les données injectées par `build_ma
 **Téléphone** : tout le panneau défile d'un bloc avec un bandeau collant (titre + billets compacts), filtres repliés derrière « Filtres · n actifs », panneau jusqu'à 90 % de l'écran. Testé en simulation seulement, pas au doigt.
 
 **Refuges sans capacité connue** (Open System) : affichés « 25 places » au lieu de « 25 / 32 ».
+
+**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur `…`) ou à réserver par téléphone / mail (`☎`), et refuges de `manual_huts.json` (`☎`). La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; les vrais complets et les fermés restent derrière « Afficher les fermés ».
 
 ## Historique des disponibilités
 
@@ -218,6 +263,8 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 | Forcer une mise à jour en ligne | onglet Actions → « Update availability » → Run workflow | |
 | Rafraîchir la liste des refuges (quelques fois par an) | `./refresh_huts.py && ./refresh_coordinates.py && ./refresh_links.py`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
 | Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `refresh_coordinates.py` | 6 corrections aujourd'hui |
+| Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `./refresh_huts.py && ./refresh_links.py` | voir l'annexe |
+| Ajouter un refuge réservable seulement par téléphone | entrée dans `manual_huts.json` sans `refugepro` (position, site, téléphone, email) | |
 | Ajouter un portail de la centrale | `./refresh_huts.py --portals FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM ENTREPYRPYRENEES` | ou modifier `DEFAULT_PORTALS` dans `ffcam.py` |
 | Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec historique |
 | Tester une autre date | `./ffcam_availability.py --date 2027-02-20 --nights 2 --no-history` | |
@@ -238,6 +285,7 @@ Tout est publié (commit `01acb68`, 21/11/2026). Dernier lot mis en ligne :
 - [x] Publier le lot ci-dessus et contrôler le premier relevé en ligne (140 refuges, 5 portails)
 - [ ] Tester le panneau téléphone au doigt sur un vrai téléphone
 - [ ] Cocher « Enforce HTTPS » dans Settings → Pages si ce n'est pas déjà fait
+- [ ] Compléter `manual_huts.json` au fil des demandes (refuges privés réservables seulement par téléphone)
 - [ ] Choisir le marqueur définitif (talon de billet retenu par défaut ; alternatives : silhouette de refuge, étoile)
 
 **Pistes évoquées, non commencées**
@@ -266,3 +314,85 @@ Tout est publié (commit `01acb68`, 21/11/2026). Dernier lot mis en ligne :
 - Une seule requête par refuge et par relevé (charge FFCAM ~3 000 requêtes/jour en saison) ; pas de 2e requête pour voir plus loin.
 - Clés : la clé d'exemple de la doc Skitour et les accès privés IGN n'ont pas été utilisés ; uniquement des clés personnelles.
 - Les noms « FFCAM » / « CAF » sont évités dans le nom du site (marques de la fédération).
+
+## Annexe : source de chaque refuge
+
+Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `refresh_huts.py` (liste des refuges) puis `ffcam_availability.py` (places), qui appellent les fonctions de `ffcam.py` indiquées.
+
+| `portal` | Refuges | Liste des refuges (dans `refresh_huts.py`) | Places (dans `ffcam_availability.py`) | Identifiant |
+| --- | --- | --- | --- | --- |
+| `FFCAM` | 115 | `fetch_huts()` : `structuresList` de la centrale, `apporigin=FFCAM` | `fetch_availability()` : POST `action=availability`, calendrier HTML | `BK_STRUCTURE:<n>` |
+| `VANOISE` | 9 | idem, `apporigin=VANOISE` (refuges absents du portail FFCAM) | idem, `apporigin=VANOISE` | `BK_STRUCTURE:<n>` |
+| `NEOUVIELLE` | 3 | idem, `apporigin=NEOUVIELLE` | idem | `BK_STRUCTURE:<n>` |
+| `BOREON` | 1 | idem, `apporigin=BOREON` | idem | `BK_STRUCTURE:<n>` |
+| `OPENSYSTEM` | 12 | `fetch_opensystem_huts()` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site | `fetch_opensystem_availability()` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
+| `REFUGEPRO` | 11 | `manual_huts.json` (entrées avec `refugepro`) | `fetch_refugepro_availability()` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
+| `MANUAL` | 3 | `manual_huts.json` (entrées sans `refugepro`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
+
+Coordonnées : `refresh_coordinates.py` (OpenStreetMap, ou position donnée dans `manual_huts.json`, ou `coordinates_overrides.json`). Liens : `refresh_links.py` (Camptocamp, Skitour).
+
+Les 115 refuges du portail FFCAM sont listés dans `huts.json` (nom, id, site `*.ffcam.fr`) et ne sont pas répétés ici. Tous les autres :
+
+### Portail VANOISE de la centrale FFCAM (Parc national de la Vanoise)
+
+| Refuge | Identifiant |
+| --- | --- |
+| Refuge Entre-Deux-Eaux | `BK_STRUCTURE:5h5skpilec4l` |
+| Refuge de Plan Sec | `BK_STRUCTURE:5a1mymmzijik` |
+| Refuge de l'Arpont | `BK_STRUCTURE:xxxld3htkpn` |
+| Refuge de l'Orgère | `BK_STRUCTURE:5a1nrby5i831` |
+| Refuge de la Fournache | `BK_STRUCTURE:5a1ngkc39duv` |
+| Refuge de la Valette | `BK_STRUCTURE:5a1novae31ez` |
+| Refuge du Roc | `BK_STRUCTURE:5a1njyztnljl` |
+| Refuge du Saut | `BK_STRUCTURE:5a1nww29smum` |
+| Refuge l' Auberge de Bellecombe | `BK_STRUCTURE:xxx5xjr51ovb` |
+
+### Portails NEOUVIELLE et BOREON de la centrale FFCAM
+
+| Refuge | Identifiant |
+| --- | --- |
+| Refuge d'Aygues-Cluses | `BK_STRUCTURE:xxx5ybjcpt6a` |
+| Refuge d'Orédon | `BK_STRUCTURE:iyuctdomm9k` |
+| Refuge de l'OULE | `BK_STRUCTURE:xxx5ylsjmuv1` |
+| Gîte du Boréon | `BK_STRUCTURE:5e92vrpttey6` |
+
+### Open System (Parc national de la Vanoise)
+
+| Refuge | Identifiant (`ui:` du widget) |
+| --- | --- |
+| Refuge de Plaisance | `OPRF-93151` |
+| Refuge de Plan du Lac | `OPRF-92949` |
+| Refuge de Prariond | `OPRF-93152` |
+| Refuge de Rosuel | `OPRF-93149` |
+| Refuge de Turia | `OPRF-93145` |
+| Refuge de Vallonbrun | `OPRF-92996` |
+| Refuge de la Femma | `OPRF-92951` |
+| Refuge de la Leisse | `OPRF-92948` |
+| Refuge de la Martin | `OPRF-93146` |
+| Refuge du Bois | `OPRF-93150` |
+| Refuge du Col du Palet | `OPRF-93148` |
+| Refuge du Fond des Fours | `OPRF-93147` |
+
+### Refuge Pro (ajoutés dans `manual_huts.json`)
+
+| Refuge | Calendrier |
+| --- | --- |
+| Refuge Buffère | [`refuge-buffere`](https://refuge-pro.com/embed/calendrier/refuge-buffere) |
+| Refuge I Re Magi | [`re-magi`](https://refuge-pro.com/embed/calendrier/re-magi) |
+| Refuge Laval | [`laval`](https://refuge-pro.com/embed/calendrier/laval) |
+| Refuge Ricou | [`ricou`](https://refuge-pro.com/embed/calendrier/ricou) |
+| Refuge Terzo Alpini | [`terzo-alpini`](https://refuge-pro.com/embed/calendrier/terzo-alpini) |
+| Refuge de Terre Rouge | [`refuge-de-terre-rouge`](https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge) |
+| Refuge des Marches | [`marches`](https://refuge-pro.com/embed/calendrier/marches) |
+| Refuge du Chardonnet | [`chardonnet`](https://refuge-pro.com/embed/calendrier/chardonnet) |
+| Refuge du Clôt des Vaches | [`refuge-du-clot-des-vaches`](https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches) |
+| Refuge du Galibier | [`galibier`](https://refuge-pro.com/embed/calendrier/galibier) |
+| Rifugio Guido Rey | [`rifugio-guido-rey`](https://refuge-pro.com/embed/calendrier/rifugio-guido-rey) |
+
+### Sans réservation en ligne lisible (ajoutés dans `manual_huts.json`)
+
+| Refuge | Comment réserver |
+| --- | --- |
+| Refuge de la Coire | bonjour@refugedelacoire.fr · [site](https://www.refugedelacoire.fr/reservations-hiver/) |
+| Refuge de la Selle | tél. 09 70 02 03 83 · [site](https://www.refugedelaselle.com/contact/) |
+| Refuge du Nant du Beurre | tél. 06 82 70 26 99 · refugedunantdubeurre@etik.com · [site](https://refugedunantdubeurre.fr/) |

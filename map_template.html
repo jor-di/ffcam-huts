@@ -135,6 +135,10 @@
     background:var(--paper); border-right:1px solid #cfc7b5; border-bottom:1px solid #cfc7b5; }
   .tpin:hover, .tpin.active { transform:translate(-50%, calc(-100% - 6px)) scale(1.2); z-index:1000; }
   .tpin.active { border-color:var(--pine); }
+  .tpin.req span:first-child { color:#6b5ca5; }
+  .contact { display:flex; flex-wrap:wrap; gap:4px 14px; margin-top:10px; font:500 12.5px/1.3 var(--mono); }
+  .contact a { color:var(--pine); text-decoration:none; }
+  .contact a:hover { text-decoration:underline; }
   .cpin { position:absolute; left:0; top:0; width:10px; height:10px; transform:translate(-50%,-50%); border-radius:50%;
     background:var(--closed); border:1.5px solid var(--paper); box-shadow:0 1px 3px rgba(0,0,0,.3); }
   .cpin.active { transform:translate(-50%,-50%) scale(1.5); }
@@ -267,7 +271,11 @@
 </div>
 <script>
 const DATA = __DATA__;
-const COLORS = { ok:'#2f8a57', low:'#d98a2b', full:'#c8473d', closed:'#9aa29c' };
+const COLORS = { ok:'#2f8a57', low:'#d98a2b', request:'#6b5ca5', full:'#c8473d', closed:'#9aa29c' };
+// "Sur demande": why a night is not bookable online but still worth a call
+const REQUEST = { waitlist:"Liste d'attente", phone:'Par téléphone / mail', request:'Contacter le refuge' };
+const REQUEST_SHORT = { waitlist:"liste d'attente", phone:'tél. / mail', request:'tél. / mail' };
+const REQUEST_GLYPH = { waitlist:'…', phone:'☎', request:'☎' };
 // hut-type icons (inline SVG, coloured with currentColor)
 const HUT_ICONS = {
   // guarded hut: chimney smoke
@@ -277,14 +285,15 @@ const HUT_ICONS = {
   // chalets, centres: wide chalet with balcony
   autre: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M2 11.5 12 5l10 6.5"/><path d="M4.5 10v9.5h15V10"/><path d="M4.5 14.5h15"/><path d="M8 14.5v5M12 14.5v5M16 14.5v5"/></svg>',
 };
-const STATUS = { ok:'Places dispo', low:'Presque complet', full:'Complet', closed:'Fermé' };
+const STATUS = { ok:'Places dispo', low:'Presque complet', request:'Sur demande', full:'Complet', closed:'Fermé' };
 const OPENING = { OPEN:'Ouvert', CLOSE:'Fermé', UNGUARDED:'Non gardé' };
 const TYPES = { refuge:'Refuge gardé', refuge_non_garde:'Non gardé', chalet:'Chalet', centre:'Centre' };
 const TYPE_CHIPS = { refuge:'Gardé', refuge_non_garde:'Non gardé', autre:'Autre' };
 const chipOf = type => type in TYPE_CHIPS ? type : 'autre'; // chalets, centres… go to « Autre »
 const hutIcon = type => HUT_ICONS[chipOf(type)];
-const GROUP = { ok:'bookable', low:'bookable', full:'full', closed:'closed' };
-const GROUPS = { bookable:['Réservables', COLORS.ok], full:['Complets', COLORS.full], closed:['Fermés', COLORS.closed] };
+const GROUP = { ok:'bookable', low:'bookable', request:'request', full:'full', closed:'closed' };
+const GROUPS = { bookable:['Réservables', COLORS.ok], request:['Sur demande', COLORS.request], full:['Complets', COLORS.full], closed:['Fermés', COLORS.closed] };
+const DEFAULT_GROUPS = ['bookable', 'request'];
 const BOOKING_URL = 'https://www.ffcam.fr/reserver-votre-refuge-en-ligne.html';
 // fallback booking page for huts of other portals without their own website
 const PORTAL_URLS = { VANOISE: 'https://www.refuges-vanoise.com/' };
@@ -295,6 +304,9 @@ const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const shortName = h => h.name.replace(/\s*\(FFCAM\)\s*/, '').replace(/\s+/g, ' ').trim();
 
 function status(n) {
+  // manual huts (phone / mail only), and FFCAM nights in waiting list or no longer sold online
+  if (n?.booking === 'request') return 'request';
+  if (n && (n.booking === 'waitlist' || n.booking === 'phone') && !n.free && n.opening !== 'CLOSE') return 'request';
   // capacity is null for Open System huts (only free beds are known): unknown, not closed
   if (!n || n.opening !== 'OPEN' || n.capacity === 0 || (n.capacity == null && n.free == null)) return 'closed';
   if (!n.free) return 'full';
@@ -308,7 +320,7 @@ const WEEKENDS = Object.values(DATA.dates.reduce((acc, d) => ((acc[fridayOf(d)] 
 const weekendDates = mode => (mode === 'penultimate' && WEEKENDS[1]) || WEEKENDS[0] || [];
 const defaultNightOf = dates => dates.find(d => new Date(d + 'T12:00:00').getDay() === 6) || dates[0];
 const startMode = location.hash === '#avant-derniere' && WEEKENDS[1] ? 'penultimate' : 'last';
-const state = { mode: startMode, night: defaultNightOf(weekendDates(startMode)), minFree: 1, groups: new Set(['bookable']), types: new Set(Object.keys(TYPE_CHIPS)), q: '', active: null };
+const state = { mode: startMode, night: defaultNightOf(weekendDates(startMode)), minFree: 1, groups: new Set(DEFAULT_GROUPS), types: new Set(Object.keys(TYPE_CHIPS)), q: '', active: null };
 
 /* ---------- map ---------- */
 const layers = {
@@ -350,20 +362,21 @@ const markerLayer = L.layerGroup().addTo(map);
 // The icon is a 0x0 box at the hut's position; the visible pin is positioned around it in CSS.
 function icon(h, s, n) {
   if (s === 'closed') return L.divIcon({ className:'tpin-wrap', iconSize:[0, 0], html:'<div class="cpin"></div>' });
+  const label = s === 'request' ? REQUEST_GLYPH[n.booking] : s === 'full' ? 0 : n.free;
   return L.divIcon({ className:'tpin-wrap', iconSize:[0, 0],
-    html:`<div class="tpin"><span>${s === 'full' ? 0 : n.free}</span><span style="color:${COLORS[s]}">●</span></div>` });
+    html:`<div class="tpin${s === 'request' ? ' req' : ''}"><span>${label}</span><span style="color:${COLORS[s]}">●</span></div>` });
 }
 
 function popup(h) {
   const s = status(h.nights[state.night]);
   const nights = weekendDates(state.mode).map(d => {
     const n = h.nights[d] || {}, st = status(n);
-    const pct = n.capacity ? Math.round(100 * (n.free || 0) / n.capacity) : (st === 'closed' || st === 'full' ? 0 : 100);
+    const pct = n.capacity ? Math.round(100 * (n.free || 0) / n.capacity) : (st === 'closed' || st === 'full' || st === 'request' ? 0 : 100);
     return `<div class="night ${d === state.night ? 'sel' : ''}">
       <div><div class="d">${esc(day(d, { weekday:'short', day:'numeric', month:'short' }))}</div>
-        <div class="st">${esc(st === 'closed' ? (OPENING[n.opening] || 'Pas de données') : STATUS[st])}</div></div>
+        <div class="st">${esc(st === 'closed' ? (OPENING[n.opening] || 'Pas de données') : st === 'request' ? REQUEST[n.booking] : STATUS[st])}</div></div>
       <div class="bar"><i style="width:${pct}%;background:${COLORS[st]}"></i></div>
-      <div class="n">${st === 'closed' ? '–' : `<span style="color:${COLORS[st]}">${n.free}</span><span style="color:var(--ink-2);font-weight:400"> ${n.capacity != null ? `/ ${n.capacity}` : 'pl.'}</span>`}</div>
+      <div class="n">${st === 'closed' || st === 'request' ? '–' : `<span style="color:${COLORS[st]}">${n.free}</span><span style="color:var(--ink-2);font-weight:400"> ${n.capacity != null ? `/ ${n.capacity}` : 'pl.'}</span>`}</div>
     </div>`;
   }).join('');
   return `<div class="card-head"><span class="ic" style="color:${COLORS[s]}">${hutIcon(h.type)}</span>
@@ -373,9 +386,11 @@ function popup(h) {
         ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div></div>
     </div>
     <div class="card-body">${nights}
+      ${h.phone || h.email ? `<div class="contact">${h.phone ? `<a href="tel:${esc(h.phone.replace(/[^+0-9]/g, ''))}">☎ ${esc(h.phone)}</a>` : ''}
+        ${h.email ? `<a href="mailto:${esc(h.email)}">${esc(h.email)}</a>` : ''}</div>` : ''}
       <div class="actions">
         ${h.url
-          ? `<a class="primary" href="${esc(h.url)}" target="_blank" rel="noopener">${h.url.includes('.ffcam.fr') ? 'Fiche FFCAM' : 'Site du refuge'}</a>`
+          ? `<a class="primary" href="${esc(h.url)}" target="_blank" rel="noopener">${h.url.includes('.ffcam.fr') ? 'Fiche FFCAM' : h.url.includes('refuge-pro.com') ? 'Réserver' : 'Site du refuge'}</a>`
           : `<a class="primary" href="${PORTAL_URLS[h.portal] || BOOKING_URL}" target="_blank" rel="noopener">Réserver</a>`}
         ${h.c2c ? `<a class="ghost" href="${esc(h.c2c)}" target="_blank" rel="noopener">Camptocamp</a>` : ''}
         ${h.skitour ? `<a class="ghost" href="${esc(h.skitour)}" target="_blank" rel="noopener">Skitour</a>` : ''}
@@ -475,11 +490,11 @@ function render() {
     (state.groups.has(GROUP[s]) && (GROUP[s] !== 'bookable' || n.free >= state.minFree)));
 
   markerLayer.clearLayers(); markers.clear();
-  const order = { closed:0, full:1, low:2, ok:3 };
+  const order = { closed:0, full:1, request:2, low:3, ok:4 };
   visible.sort((a, b) => order[a.s] - order[b.s]).forEach(({ h, n, s }) => {
     const m = L.marker([h.lat, h.lon], { icon: icon(h, s, n), zIndexOffset: order[s] * 1000, riseOnHover: true, alt: shortName(h) })
       .bindPopup(() => popup(h), { maxWidth: 320, minWidth: 300, autoPanPaddingTopLeft: [20, 20] })
-      .bindTooltip(`<b>${esc(shortName(h))}</b><br>${s === 'closed' ? STATUS.closed : s === 'full' ? `Complet${n.capacity ? ` (${n.capacity} pl.)` : ''}` : `${n.free}${n.capacity != null ? ` / ${n.capacity}` : ''} places`}`,
+      .bindTooltip(`<b>${esc(shortName(h))}</b><br>${s === 'closed' ? STATUS.closed : s === 'request' ? `Sur demande · ${REQUEST[n.booking]}` : s === 'full' ? `Complet${n.capacity ? ` (${n.capacity} pl.)` : ''}` : `${n.free}${n.capacity != null ? ` / ${n.capacity}` : ''} places`}`,
         { direction: 'top', offset: [0, s === 'closed' ? -6 : -30] })
       .on('click', () => { state.active = h.id; highlight(); })
       .addTo(markerLayer);
@@ -498,11 +513,11 @@ function renderList() {
 
   // key numbers: huts in the map view, within the current type/search filters
   const viewRows = state.rows.filter(inView);
-  const counts = { bookable:0, full:0, closed:0 };
+  const counts = { bookable:0, request:0, full:0, closed:0 };
   viewRows.forEach(r => counts[GROUP[r.s]]++);
   const beds = viewRows.filter(r => GROUP[r.s] === 'bookable').reduce((a, r) => a + r.n.free, 0);
   document.getElementById('stats').innerHTML = [
-    [counts.bookable, 'réservables', COLORS.ok], [beds, 'places', COLORS.low], [counts.full, 'complets', COLORS.full],
+    [counts.bookable, 'réservables', COLORS.ok], [beds, 'places', COLORS.low], [counts.request, 'sur demande', COLORS.request],
   ].map(([v, l, c]) => `<div class="stat"><b>${v}</b><span><i class="dot" style="background:${c}"></i>${l}</span></div>`).join('');
 
   // type chips: huts in the map view, for the current night and status filters
@@ -514,11 +529,11 @@ function renderList() {
   }).join('');
   typesEl.querySelectorAll('.tchip').forEach(b => b.onclick = () => toggle(state.types, b.dataset.type, Object.keys(TYPE_CHIPS)));
 
-  const gOrder = { bookable:0, full:1, closed:2 };
+  const gOrder = { bookable:0, request:1, full:2, closed:3 };
   const listed = state.visible.filter(r => state.searching || inView(r)).sort((a, b) => gOrder[GROUP[a.s]] - gOrder[GROUP[b.s]]
     || (b.n?.free || 0) - (a.n?.free || 0) || a.h.name.localeCompare(b.h.name, 'fr'));
   document.getElementById('listTitle').textContent = state.searching ? 'Recherche'
-    : state.groups.size === 1 ? `Refuges ${GROUPS[[...state.groups][0]][0].toLowerCase()}` : 'Refuges';
+    : state.groups.size === DEFAULT_GROUPS.length ? 'Disponibles' : 'Refuges';
   const hidden = state.visible.length - listed.length;
   document.getElementById('listCount').textContent = state.searching
     ? `${listed.length} résultat${listed.length > 1 ? 's' : ''}`
@@ -526,6 +541,7 @@ function renderList() {
   const list = document.getElementById('list');
   list.innerHTML = listed.length ? listed.map(({ h, n, s }) => {
     const stub = GROUP[s] === 'bookable' ? `<b style="color:${COLORS[s]}">${n.free}</b><small>${n.capacity != null ? `/ ${n.capacity}` : 'places'}</small>`
+      : s === 'request' ? `<span class="tag" style="color:${COLORS.request}">Sur demande</span><small>${REQUEST_SHORT[n.booking]}</small>`
       : s === 'full' ? `<span class="tag" style="color:${COLORS.full}">Complet</span>${n.capacity ? `<small>${n.capacity} pl.</small>` : ''}`
       : `<span class="tag" style="color:${COLORS.closed}">${esc(OPENING[n?.opening] || 'Fermé')}</span>`;
     return `<li data-id="${esc(h.id)}" title="${esc(h.name)}" tabindex="0">
@@ -558,7 +574,7 @@ function toggle(set, value, all, defaults = all) {
 }
 // "Afficher les fermés": also show full and closed huts (map + list)
 document.getElementById('showClosed').onchange = e => {
-  state.groups = new Set(e.target.checked ? Object.keys(GROUPS) : ['bookable']);
+  state.groups = new Set(e.target.checked ? Object.keys(GROUPS) : DEFAULT_GROUPS);
   render();
 };
 document.getElementById('search').oninput = e => { state.q = e.target.value; render(); };
@@ -575,7 +591,7 @@ document.getElementById('filtersToggle').onclick = () => {
   document.getElementById('filtersToggle').setAttribute('aria-expanded', open);
 };
 function updateFiltersLabel() {
-  const n = (state.minFree > 1) + (state.groups.size > 1) + (state.types.size < Object.keys(TYPE_CHIPS).length) + (state.q.trim() !== '');
+  const n = (state.minFree > 1) + (state.groups.size > DEFAULT_GROUPS.length) + (state.types.size < Object.keys(TYPE_CHIPS).length) + (state.q.trim() !== '');
   document.getElementById('filtersLabel').textContent = n ? `Filtres · ${n} actif${n > 1 ? 's' : ''}` : 'Filtres';
   document.getElementById('filtersToggle').classList.toggle('active', n > 0);
 }

@@ -37,7 +37,12 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) ffcam-huts-script"}
 HUTS_FILE = Path(__file__).with_name("huts.json")
 # Portals (apporigin) to collect huts from. Others exist:
 # ENTREPYRPYRENEES (Spanish/Andorran Pyrenees), ITFFCAM (all of them + Morocco).
-DEFAULT_PORTALS = ["FFCAM", "VANOISE", "NEOUVIELLE", "BOREON", "OPENSYSTEM"]
+DEFAULT_PORTALS = ["FFCAM", "VANOISE", "NEOUVIELLE", "BOREON", "OPENSYSTEM", "MANUAL"]
+# MANUAL: huts listed by hand in manual_huts.json. Those with a "refugepro" slug book through
+# Refuge Pro (the hut's own booking software) and get availability (portal REFUGEPRO);
+# the others have no online booking we can read (phone / mail / form).
+MANUAL_HUTS_FILE = Path(__file__).with_name("manual_huts.json")
+REFUGEPRO_EMBED = "https://refuge-pro.com/embed/calendrier/{slug}"
 # Open System huts are discovered from this site's "other huts" menu (all the park's huts)
 OPENSYSTEM_ENTRY = "https://refuge-leisse.vanoise.com/"
 OPENSYSTEM_PLANNING = "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q={num},{date}"
@@ -152,7 +157,11 @@ def fetch_huts(portals=DEFAULT_PORTALS):
     """Fetch the hut lists of the given portals, as compact dicts (first portal listing a hut wins)."""
     structures = {}
     extra = fetch_opensystem_huts() if "OPENSYSTEM" in portals else []
-    portals = [p for p in portals if p != "OPENSYSTEM"]
+    if "MANUAL" in portals and MANUAL_HUTS_FILE.exists():
+        for h in json.loads(MANUAL_HUTS_FILE.read_text(encoding="utf-8"))["huts"]:
+            extra.append({**h, "portal": "REFUGEPRO" if h.get("refugepro") else "MANUAL", "email_user": None, "max_pax_per_booking": None,
+                          "max_nights": None, "booking_delay_days": None, "product_categories": []})
+    portals = [p for p in portals if p not in ("OPENSYSTEM", "MANUAL")]
     for portal in portals:
         html = http({"mode": "FORM", "_lang": "FR", "init": 1, "apporigin": portal})
         found = js_var(html, "structuresList")
@@ -197,8 +206,62 @@ def fetch_opensystem_availability(hut_id, date):
     return out
 
 
-def fetch_availability(hut_id, date, portal="FFCAM"):
-    """Return free beds / capacity / opening status per day, for 2 months from date's month."""
+# How a night can be booked, read from the classes of each day of the FFCAM calendar:
+#   "day dispo"                      -> online
+#   "day complet waitinglistday"     -> waitlist (full, waiting list open)
+#   "day completWeb completWebInfo"  -> phone (no longer sold online: "Réserver par téléphone / mail")
+BOOKING_CLASSES = [("waitinglistday", "waitlist"), ("completWeb", "phone"), ("dispo", "online")]
+
+
+def booking_modes(html):
+    modes = {}
+    for classes, day in re.findall(r'<div class="(day[^"]*)">\s*<a [^>]*data-date="(\d{4}-\d{2}-\d{2})"', html):
+        for token, mode in BOOKING_CLASSES:
+            if token in classes.split():
+                modes[day] = mode
+                break
+    return modes
+
+
+def fetch_refugepro_availability(slug, today=None):
+    """Refuge Pro: the calendar a hut embeds on its site (refuge-pro.com/embed/calendrier/<slug>).
+    The page is a Next.js render whose payload holds availability.data = about a year of
+    {"date", "capacity", "booked", "free", "status": open|closed, "isFull"}, plus the hut's rules."""
+    page = get_url(REFUGEPRO_EMBED.format(slug=slug))
+    chunks = re.findall(r'self\.__next_f\.push\(\[1,"((?:[^"\\]|\\.)*)"\]\)', page)
+    flight = "".join(json.loads(f'"{c}"') for c in chunks)
+    start = flight.find('"availability":{')
+    if start < 0:
+        raise RuntimeError(f"no availability in the Refuge Pro calendar of {slug}")
+    # the availability object is plain JSON: read it with a decoder from its first brace
+    info, _ = json.JSONDecoder().raw_decode(flight, start + len('"availability":'))
+    today = today or dt.date.today()
+    cutoff = (today + dt.timedelta(days=info.get("bookingCutoffDays") or 0)).isoformat()
+    season = info.get("nextSeasonOpening") or {}
+    not_yet = season.get("ouvreLe") and today.isoformat() < season["ouvreLe"]
+    out = {"free": {}, "capacity": {}, "opening": {}, "booking": {}}
+    for d in info.get("data", []):
+        day, is_open = d["date"], d.get("status") == "open"
+        out["free"][day], out["capacity"][day] = d.get("free"), d.get("capacity")
+        out["opening"][day] = "OPEN" if is_open else "CLOSE"
+        if not is_open:
+            continue
+        if d.get("isFull") or not d.get("free"):
+            out["booking"][day] = "waitlist" if info.get("waitlistEnabled") else None
+        elif day < cutoff or (not_yet and day >= season.get("premiereNuit", "9999")):
+            out["booking"][day] = "phone"  # not (or no longer) open to online booking
+            out["free"][day] = 0
+        else:
+            out["booking"][day] = "online"
+    return out
+
+
+def fetch_availability(hut_id, date, portal="FFCAM", slug=None):
+    """Return free beds / capacity / opening status / booking mode per day, for 2 months from date's month."""
+    if portal == "REFUGEPRO":
+        return fetch_refugepro_availability(slug)
+    if portal == "MANUAL":
+        return None  # no online availability: shown as "Sur demande"
     if portal == "OPENSYSTEM":
         return fetch_opensystem_availability(hut_id, date)
     html = http(
@@ -216,4 +279,5 @@ def fetch_availability(hut_id, date, portal="FFCAM"):
         "free": js_var(html, "BK.availability") or {},
         "capacity": js_var(html, "BK.totalAvailability") or {},
         "opening": js_var(html, "BK.openingCalendar") or {},
+        "booking": booking_modes(html),
     }
