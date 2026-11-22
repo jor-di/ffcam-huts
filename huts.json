@@ -1275,7 +1275,7 @@
       "site": "https://refugebrechederoland.ffcam.fr/"
     },
     {
-      "id": "MANUAL-coire",
+      "id": "WPBS-coire",
       "name": "Refuge de la Coire",
       "short_name": "Coire",
       "type": "refuge",
@@ -1285,8 +1285,13 @@
       "site": "https://www.refugedelacoire.fr/reservations-hiver/",
       "phone": null,
       "email": "bonjour@refugedelacoire.fr",
-      "note": "Beaufortain. Booking request form on the hut site; reservation compulsory all year.",
-      "portal": "MANUAL",
+      "note": "Beaufortain. WP Booking System calendar (winter page) on the hut site; reservation compulsory all year.",
+      "wpbs": [
+        {
+          "url": "https://www.refugedelacoire.fr/reservations-hiver/"
+        }
+      ],
+      "portal": "WPBS",
       "email_user": null,
       "max_pax_per_booking": null,
       "max_nights": null,

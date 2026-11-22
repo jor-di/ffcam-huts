@@ -2480,6 +2480,14 @@
   "status": 200,
   "url": "https://refugeduglacierblanc.ffcam.fr/"
  },
+ "c3721d0fc365cc4d11329c0a8e538d0e4a70c065": {
+  "body": null,
+  "file": "bodies/c3721d0fc365cc4d11329c0a8e538d0e4a70c065.gz",
+  "final_url": "https://www.refugedelacoire.fr/reservations-hiver/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://www.refugedelacoire.fr/reservations-hiver/"
+ },
  "c5c5b392c7b36662a006c7ef01b5bfa8948a89de": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A111&productCategory=nomatter&pax=1&date=2026-11-22",
   "file": "bodies/c5c5b392c7b36662a006c7ef01b5bfa8948a89de.gz",

@@ -904,6 +904,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "c3721d0fc365cc4d11329c0a8e538d0e4a70c065": {
+  "body": null,
+  "file": "bodies/c3721d0fc365cc4d11329c0a8e538d0e4a70c065.gz",
+  "final_url": "https://www.refugedelacoire.fr/reservations-hiver/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://www.refugedelacoire.fr/reservations-hiver/"
+ },
  "c6cf5e6ae249c077781667f4406c087b13568133": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A4&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/c6cf5e6ae249c077781667f4406c087b13568133.gz",

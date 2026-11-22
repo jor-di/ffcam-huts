@@ -15,7 +15,7 @@ tests/unit.sh                 # tous les tests de tests/unit/ (minitest), quelqu
 tests/unit.sh -n /polite/     # seulement les tests dont le nom correspond
 ```
 
-Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-end pour chaque jour de la semaine et autour des fins de mois et d'année, formats des fichiers (`Py.float_repr`, `Py.round`, `Py.dumps`, CSV aller-retour, entités HTML), modes de réservation (classes du calendrier FFCAM, règles Refuge Pro : délai de réservation, liste d'attente, `nextSeasonOpening`), dates Open System, `FetchLog.classify` et la rotation des relevés, détection des changements et oubli des nuits passées de l'historique, limiteur de politesse (2 requêtes simultanées et 0,3 s entre deux départs par site, pas de blocage avec 8 fils et une exception), erreurs HTTP, délais et redirections (petit serveur local), essais 2 s puis 4 s, erreurs de ligne de commande, et `rb/ffcam_availability.rb` qui n'écrit ni `history/` ni le journal des relevés sans `--history` (lancé sur une copie de `rb/` dans un dossier temporaire, avec un seul refuge sans requête). Ils n'utilisent ni le réseau ni les fichiers de données du dépôt (l'historique et le journal des relevés sont écrits dans un dossier temporaire) ; `unit.sh` retire `FFCAM_NOW`, `FFCAM_REPLAY_DIR` et `FFCAM_RECORD_DIR` de l'environnement. minitest est livré avec Ruby (gem fournie avec Ruby 4.0, chargeable sans Bundler).
+Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-end pour chaque jour de la semaine et autour des fins de mois et d'année, formats des fichiers (`Py.float_repr`, `Py.round`, `Py.dumps`, CSV aller-retour, entités HTML), modes de réservation (classes du calendrier FFCAM, règles Refuge Pro : délai de réservation, liste d'attente, `nextSeasonOpening`), calendrier WP Booking System (`test_wpbs.rb`, sur `unit/fixtures/wpbs_calendar.html`, une copie réduite de la vraie page de la Coire dont les jours ont été modifiés pour couvrir chaque cas : états de la légende, places, réservable sans places, complet, fermé, jours passés, passage décembre → janvier, plusieurs calendriers ou pages, page sans calendrier), dates Open System, `FetchLog.classify` et la rotation des relevés, détection des changements et oubli des nuits passées de l'historique, limiteur de politesse (2 requêtes simultanées et 0,3 s entre deux départs par site, pas de blocage avec 8 fils et une exception), erreurs HTTP, délais et redirections (petit serveur local), essais 2 s puis 4 s, erreurs de ligne de commande, et `rb/ffcam_availability.rb` qui n'écrit ni `history/` ni le journal des relevés sans `--history` (lancé sur une copie de `rb/` dans un dossier temporaire, avec un seul refuge sans requête). Ils n'utilisent ni le réseau ni les fichiers de données du dépôt (l'historique et le journal des relevés sont écrits dans un dossier temporaire) ; `unit.sh` retire `FFCAM_NOW`, `FFCAM_REPLAY_DIR` et `FFCAM_RECORD_DIR` de l'environnement. minitest est livré avec Ruby (gem fournie avec Ruby 4.0, chargeable sans Bundler).
 
 ## Contenu
 
@@ -26,7 +26,7 @@ Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-e
 | `golden/run1/`, `golden/run2/` | les sorties de référence, produites par la version Python d'origine en rejouant ces enregistrements |
 | `golden/<run>/stderr/<script>.log` | la sortie d'erreur de chaque script (lignes de résumé), le dossier de travail remplacé par `<work>` ; pour information seulement |
 | `check.sh` | rejoue les deux scénarios et compare |
-| `unit.sh`, `unit/` | tests unitaires (minitest) |
+| `unit.sh`, `unit/` | tests unitaires (minitest) ; `unit/fixtures/` : pages réduites qu'ils lisent |
 
 ## Variables d'environnement
 
@@ -54,15 +54,15 @@ fixtures/run1/bodies/<id>.gz     corps de la réponse (octets tels que reçus), 
   - réponse : `{"method", "url", "body" (corps envoyé ou null), "status", "final_url" (après redirections), "file": "bodies/<id>.gz"}` ;
   - échec : `{"method", "url", "body", "error": {"type": "TimeoutError", "message": "The read operation timed out"}}`. Au rejeu, la requête lève une exception de ce nom avec ce message : le texte `"<type>: <message>"` se retrouve tel quel dans le CSV et dans `fetch_log.json`. Les erreurs HTTP (404…) sont des échecs (`HTTPError`, `HTTP Error 404: Not Found`) ; ces noms et messages sont ceux de la version Python (`urllib`), gardés tels quels.
 - Une même requête n'a qu'une réponse : à l'enregistrement, le dernier essai l'emporte (un échec suivi d'un succès donne le succès) ; au rejeu, chaque essai reçoit cette réponse (un échec est donc rejoué à chaque essai).
-- Les corps sont stockés compressés (gzip niveau 9, sans date dans l'en-tête, donc un même corps donne le même fichier) : 79,7 Mo en clair, 13,4 Mo compressés. Pour en lire un : `zcat tests/fixtures/run1/bodies/<id>.gz`. Un corps sans `.gz` dans `file` est lu tel quel.
+- Les corps sont stockés compressés (gzip niveau 9, sans date dans l'en-tête, donc un même corps donne le même fichier) : 81,7 Mo en clair, 13,7 Mo compressés. Pour en lire un : `zcat tests/fixtures/run1/bodies/<id>.gz`. Un corps sans `.gz` dans `file` est lu tel quel.
 - Les scripts décodent ensuite les corps comme en production (UTF-8, caractères invalides remplacés, ou JSON).
 
 ## Les deux scénarios
 
 | Scénario | Requêtes enregistrées | Taille |
 | --- | --- | --- |
-| run1 | 400 (398 réponses + 2 échecs Overpass : `overpass.kumi.systems` délai dépassé, `overpass.private.coffee` 504) | 7,7 Mo (44 Mo décompressés) |
-| run2 | 151 (150 réponses dont 1 modifiée à la main, 1 échec ajouté à la main) | 5,7 Mo (35 Mo décompressés) |
+| run1 | 401 (399 réponses + 2 échecs Overpass : `overpass.kumi.systems` délai dépassé, `overpass.private.coffee` 504) | 7,8 Mo (45 Mo décompressés) |
+| run2 | 152 (151 réponses dont 1 modifiée à la main, 1 échec ajouté à la main) | 5,9 Mo (36 Mo décompressés) |
 
 À l'enregistrement de run1, `overpass-api.de` a d'abord répondu 502, puis a réussi au 2e tour : seul le succès est gardé, donc au rejeu le premier serveur répond tout de suite et les deux échecs enregistrés ne servent pas.
 
@@ -80,6 +80,19 @@ Pour couvrir les chemins d'erreur de façon reproductible, deux réponses enregi
 Les deux refuges apparaissent donc en erreur dans le CSV (colonne `error`), dans `fetch_log.json` (`problems`, `last_success` inchangé pour eux) et sur `releves/index.html`, et l'historique n'enregistre rien pour eux.
 
 Toute nouvelle réception de run2 doit refaire ces deux modifications.
+
+### Réponse ajoutée après coup : le calendrier de la Coire
+
+La page `GET https://www.refugedelacoire.fr/reservations-hiver/` (refuge `WPBS-coire`, entrée `c3721d0fc365cc4d11329c0a8e538d0e4a70c065`) a été enregistrée seule le 22/11/2026 au soir, puis copiée telle quelle dans les deux scénarios (même entrée d'index, même corps). Son calendrier montre novembre et décembre 2026 avec le 22/11 comme aujourd'hui : cohérent avec les horloges des deux scénarios (run2, le 23/11, ignore simplement le 22).
+
+Pour ajouter ainsi **une seule réponse** sans tout réenregistrer : l'enregistrer dans un dossier vide avec `FFCAM_RECORD_DIR` (dans une copie du projet, en appelant directement la méthode concernée), par exemple
+
+```sh
+W=/tmp/ffcam-one && rm -rf $W && mkdir -p $W && cp -r rb $W/
+FFCAM_RECORD_DIR=$W/rec ruby -e 'require ARGV[0]; Ffcam.fetch_wpbs_availability([{"url" => ARGV[1]}])' $W/rb/ffcam.rb https://www.refugedelacoire.fr/reservations-hiver/
+```
+
+puis fusionner son `index.json` dans celui de chaque scénario (en le réécrivant avec le même format : `Py.dumps(index, ensure_ascii: false, indent: 1, sort_keys: true)` + saut de ligne) et copier `bodies/<id>.gz` ; enfin `tests/check.sh --update`, relire le diff de `golden/`, et `tests/check.sh`.
 
 ## Ce que compare `check.sh`
 

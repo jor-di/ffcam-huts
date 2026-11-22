@@ -103,7 +103,7 @@ def main
   work = lambda do |hut|
     t0 = Ffcam.monotonic # durations are 0 with FFCAM_NOW (tests)
     begin
-      [hut, Ffcam.fetch_availability(hut["id"], fetch_from, hut.fetch("portal", "FFCAM"), hut["refugepro"]), nil]
+      [hut, Ffcam.fetch_availability(hut["id"], fetch_from, hut.fetch("portal", "FFCAM"), hut["refugepro"] || hut["wpbs"]), nil]
     rescue StandardError => e # keep going, record the error
       [hut, nil, Ffcam.error_text(e)]
     ensure
@@ -155,7 +155,8 @@ def main
         "capacity" => capacity,
         "booked" => free.is_a?(Integer) && capacity.is_a?(Integer) ? capacity - free : nil,
         "bookable" => opening == "OPEN" && Py.truthy?(free),
-        # online | waitlist (full, waiting list) | phone (FFCAM: no longer sold online) | request (manual hut)
+        # online | waitlist (full, waiting list) | phone (FFCAM: no longer sold online) | request (manual hut;
+        # WPBS: bookable, places not shown)
         "booking" => booking,
         "max_pax_per_booking" => hut.fetch("max_pax_per_booking"),
         "lat" => coord["lat"],

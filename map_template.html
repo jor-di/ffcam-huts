@@ -392,7 +392,7 @@ function popup(h) {
         ${h.email ? `<a href="mailto:${esc(h.email)}">${esc(h.email)}</a>` : ''}</div>` : ''}
       <div class="actions">
         ${h.url
-          ? `<a class="primary" href="${esc(h.url)}" target="_blank" rel="noopener">${h.url.includes('.ffcam.fr') ? 'Fiche FFCAM' : h.url.includes('refuge-pro.com') ? 'Réserver' : 'Site du refuge'}</a>`
+          ? `<a class="primary" href="${esc(h.url)}" target="_blank" rel="noopener">${h.url.includes('.ffcam.fr') ? 'Fiche FFCAM' : h.url.includes('refuge-pro.com') || h.portal === 'WPBS' ? 'Réserver' : 'Site du refuge'}</a>`
           : `<a class="primary" href="${PORTAL_URLS[h.portal] || BOOKING_URL}" target="_blank" rel="noopener">Réserver</a>`}
         ${h.c2c ? `<a class="ghost" href="${esc(h.c2c)}" target="_blank" rel="noopener">Camptocamp</a>` : ''}
         ${h.skitour ? `<a class="ghost" href="${esc(h.skitour)}" target="_blank" rel="noopener">Skitour</a>` : ''}

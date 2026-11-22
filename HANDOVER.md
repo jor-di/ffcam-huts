@@ -4,7 +4,7 @@ _État au 22/11/2026._
 
 Dernière couchette est une carte des places libres dans les refuges de montagne pour le week-end en cours, en ligne sur [dernierecouchette.fr](https://dernierecouchette.fr/) et mise à jour automatiquement par GitHub Actions.
 
-- **Couverture** : 154 refuges, venant de 4 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
+- **Couverture** : 154 refuges, venant de 5 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro, WP Booking System) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
 - **Code** : Ruby, bibliothèque standard seulement (aucune gem), scripts dans `rb/` + une page HTML Leaflet. Version : `.ruby-version` (4.0.9, utilisée par GitHub Actions) ; le code tourne aussi sur Ruby 3.1 à 3.3 (vérifié avec les tests).
 - **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), trois fois par jour sinon (6h07, 7h37, 12h07 UTC).
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
@@ -46,14 +46,14 @@ flowchart LR
   build -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
 ```
 
-Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
+Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro, WP Booking System), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
 | `huts.json` | 154 refuges : id, nom, type, portail, site | `rb/refresh_huts.rb` | oui (main) |
 | `hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `rb/refresh_coordinates.rb` | oui (main) |
 | `coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
-| `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) s'ils en ont un | à la main | oui (main) |
+| `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) ou `wpbs` (pages du calendrier WordPress) s'ils en ont un | à la main | oui (main) |
 | `hut_links.json` | liens Camptocamp et Skitour | `rb/refresh_links.rb` | oui (main) |
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places + `fetch_log.json` (journal des relevés) | `rb/ffcam_availability.rb --history` | oui (branche `data`) |
@@ -66,7 +66,7 @@ Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne 
 
 ## Sources de données
 
-Les places viennent de trois systèmes de réservation, lus là où les refuges les publient eux-mêmes, sans clé ; le reste (GPS, liens, fonds de carte) vient de services ouverts.
+Les places viennent de quatre systèmes de réservation, lus là où les refuges les publient eux-mêmes, sans clé ; le reste (GPS, liens, fonds de carte) vient de services ouverts.
 
 | Source | Ce qu'on en tire | Accès | Particularités |
 | --- | --- | --- | --- |
@@ -74,6 +74,7 @@ Les places viennent de trois systèmes de réservation, lus là où les refuges 
 | Portails de la centrale (`apporigin`) | refuges hors liste FFCAM | sans clé | FFCAM (115), VANOISE (+9), NEOUVIELLE (+3), BOREON (+1). Disponibles non utilisés : ENTREPYRPYRENEES (52, Espagne/Andorre), ITFFCAM (tout + Maroc). |
 | Open System (Alliance Réseaux) | 12 refuges du Parc de la Vanoise (Leisse, Fond des Fours…) | sans clé | voir [les requêtes](#2-open-system-12-refuges-du-parc-de-la-vanoise-portal--opensystem). **Pas de capacité.** |
 | [Refuge Pro](https://refuge-pro.com) | 11 refuges privés (Clarée, Vallée Étroite, Galibier, Maurienne…) : places, capacité, liste d'attente | sans clé | Calendrier « embed » que chaque refuge intègre à son site ; voir [les requêtes](#3-refuge-pro-11-refuges-portal--refugepro). ~1 an de nuits. |
+| WP Booking System | Refuge de la Coire : places par nuit | sans clé | Extension WordPress dont le calendrier est dans la page du site du refuge ; voir [les requêtes](#4-wp-booking-system-refuge-de-la-coire-portal--wpbs). Deux mois (le mois en cours et le suivant). **Pas de capacité.** |
 | OpenStreetMap (Overpass) | GPS, altitude, site web | sans clé | Souvent surchargé : le script essaie 3 serveurs et réessaie (jusqu'à plusieurs minutes). Appariement par site `*.ffcam.fr`, puis par nom, puis corrections manuelles. |
 | Nominatim (OSM) | recherche ponctuelle d'un refuge introuvable | sans clé | Utilisé à la main pour remplir `coordinates_overrides.json`. |
 | [Camptocamp](https://www.camptocamp.org) | lien fiche refuge | API publique | Recherche dans un rayon de 1,5 km, acceptée si < 400 m ou nom proche. 150/154 trouvés. |
@@ -83,7 +84,7 @@ Les places viennent de trois systèmes de réservation, lus là où les refuges 
 
 ## Récupérer les disponibilités : les requêtes
 
-Trois systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `Ffcam.fetch_availability` dans `rb/ffcam.rb`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Ffcam.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
+Quatre systèmes, un appel par refuge et par relevé (par page pour WP Booking System), choisi selon le champ `portal` du refuge dans `huts.json` (code : `Ffcam.fetch_availability` dans `rb/ffcam.rb`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Ffcam.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
 
 ### 1. Centrale FFCAM (portails FFCAM, VANOISE, NEOUVIELLE, BOREON)
 
@@ -164,7 +165,15 @@ La centrale FFCAM dit aussi, nuit par nuit, **comment** réserver, via les class
 | `day complet waitinglistday` | `waitlist` | complet, inscription en liste d'attente possible |
 | `day completWeb completWebInfo` | `phone` | plus vendu en ligne (souvent ce soir, après le délai de réservation) : « Réserver par téléphone / mail » |
 
-Refuge Pro fournit l'équivalent (voir plus bas). Les refuges `MANUAL` ne sont pas interrogés : toutes leurs nuits valent `request`. Open System ne fournit pas cette information.
+Refuge Pro fournit l'équivalent, WP Booking System en partie (voir plus bas). Les refuges `MANUAL` ne sont pas interrogés : toutes leurs nuits valent `request`. Open System ne fournit pas cette information.
+
+| Source | `online` | `waitlist` | `phone` | `request` |
+| --- | --- | --- | --- | --- |
+| Centrale FFCAM | `day dispo` | `waitinglistday` | `completWeb` | — |
+| Refuge Pro | places > 0 | complet + `waitlistEnabled` | délai dépassé, saison pas encore ouverte | — |
+| WP Booking System | réservable, « N pl. » affiché | — | — | réservable sans nombre de places affiché |
+| Open System | — (rien) | — | — | — |
+| `MANUAL` | — | — | — | toutes les nuits |
 
 ### 3. Refuge Pro (11 refuges, `portal = REFUGEPRO`)
 
@@ -190,9 +199,35 @@ C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1
 - Lien principal sur la carte = ce calendrier (bouton « Réserver ») ; le site propre du refuge, quand il existe, est dans le champ `website`.
 - **Pas de vitrine tierce** : ces refuges sont aussi vendus sur refuge.camp (même éditeur), qu'on n'utilise pas ; on lit le calendrier du refuge.
 
-### 4. Refuges sans réservation en ligne lisible (`portal = MANUAL`)
+### 4. WP Booking System (Refuge de la Coire, `portal = WPBS`)
 
-Coire, Nant du Beurre, Selle : ajoutés à la main dans `manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : toutes leurs nuits valent `request`.
+[WP Booking System](https://www.wpbookingsystem.com/) (extension WordPress « wp-booking-system-premium ») affiche un calendrier dans une page du site du refuge. Le calendrier est rendu côté serveur, dans le HTML de la page :
+
+```
+GET https://www.refugedelacoire.fr/reservations-hiver/
+
+<div class="wpbs-container ... wpbs-calendar-12 " data-id="12" data-months_to_show="2"
+     data-current_year="2026" data-current_month="11" data-changeover_start="58" data-changeover_end="59" ...>
+  <div class="wpbs-date wpbs-legend-item-66 wpbs-is-bookable " data-year="2026" data-month="11" data-day="28" ...>
+     ... <span class="wpbs-inventory">1 pl.</span> ...
+  ...
+  <div class="wpbs-legend"><div class="wpbs-legend-item"><div class="wpbs-legend-item-icon wpbs-legend-item-icon-66" ...>
+     <span class=wpbs-legend-item-name>Disponible (non-gardé)</span></div> ...
+```
+
+- Une case par jour : `wpbs-legend-item-<n>` = l'état du jour, `wpbs-is-bookable` = sélectionnable, `wpbs-inventory` = places restantes (« N pl. », ou `wpbs-full` « Complet » ; souvent absent sur les jours passés).
+- Les noms des états sont lus dans la légende du calendrier (les numéros changent d'un site et d'un calendrier à l'autre) et classés par sens (`Ffcam.wpbs_meaning`) : « Disponible… » = disponible, « Complet » = complet, « Non-disponible », « Voir refuge été », « Fermé » = fermé. Coire, calendrier 12 : 56 « Disponible (selon conditions) », 66 « Disponible (non-gardé) », 57 « Complet », 60 « Voir refuge été », 67 « Non-disponible » ; 58 et 59 (`data-changeover_start` / `_end`, absents de la légende) = début et fin d'une réservation sur plusieurs jours : la nuit du début est prise, celle de la fin est libre.
+- Règles (`Ffcam.parse_wpbs`), dans l'ordre, jours passés ignorés : inventaire « Complet » ou « 0 pl. » → `OPEN`, 0 place (complet) ; état fermé → `CLOSE` ; réservable avec « N pl. » → `OPEN`, N places, `online` ; état complet (dont début de réservation) → `OPEN`, 0 ; non réservable → `CLOSE` ; **réservable sans nombre de places affiché → `OPEN`, places inconnues (vide), `request`** (affiché « Sur demande » : on sait que la nuit est ouverte, pas combien il reste de places). La différence « Disponible (selon conditions) » / « non-gardé » n'est pas reprise sur la carte.
+- Pas de capacité (comme Open System) : la carte affiche « N places » sans total.
+- Couverture : les mois présents dans la page seulement (Coire : le mois en cours et le suivant, assez pour les deux week-ends affichés). Les autres mois sont chargés par le site via `admin-ajax.php` : non utilisé.
+- Page sans calendrier `wpbs-container`, ou calendrier sans aucune case datée → erreur (`err` sur `/releves/`, « RuntimeError: no WP Booking System calendar on <url> » / « no day in the WP Booking System calendar of <url> »).
+- Configuration dans `manual_huts.json`, champ `wpbs` : une liste de pages `[{"url": "…", "calendars": [14]}]` (`calendars` facultatif : sinon tous les calendriers de la page) ; un jour présent dans plusieurs calendriers ou pages est pris dans le premier. Une requête par page.
+- **Été pas encore lu** : la page [réservations été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers (14 et 15, à partir de juin 2027, autres numéros d'états : 70, 74, 76, 80). Il suffira d'ajouter la page à `wpbs` quand on saura comment combiner ses deux calendriers (aujourd'hui : le premier l'emporte, sans addition des places).
+- Lien principal sur la carte = la page de réservation (bouton « Réserver »).
+
+### 5. Refuges sans réservation en ligne lisible (`portal = MANUAL`)
+
+Nant du Beurre, Selle : ajoutés à la main dans `manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : toutes leurs nuits valent `request`.
 
 ## La carte
 
@@ -219,9 +254,9 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 
 **Téléphone** : tout le panneau défile d'un bloc avec un bandeau collant (titre + billets compacts), filtres repliés derrière « Filtres · n actifs », panneau jusqu'à 90 % de l'écran. Testé en simulation seulement, pas au doigt.
 
-**Refuges sans capacité connue** (Open System) : affichés « 25 places » au lieu de « 25 / 32 ».
+**Refuges sans capacité connue** (Open System, WP Booking System) : affichés « 25 places » au lieu de « 25 / 32 ».
 
-**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur `…`) ou à réserver par téléphone / mail (`☎`), et refuges de `manual_huts.json` (`☎`). La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; les vrais complets et les fermés restent derrière « Afficher les fermés ».
+**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur `…`) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; les vrais complets et les fermés restent derrière « Afficher les fermés ».
 
 ## Suivi des relevés (`/releves/`)
 
@@ -247,7 +282,7 @@ Chaque relevé ajoute une ligne par changement de places, pour toutes les nuits 
 
 **Limites**
 
-- Fenêtre suivie : d'aujourd'hui à la fin du mois suivant (FFCAM) ou 30 jours (Open System). Les réservations plus lointaines ne sont vues qu'en entrant dans la fenêtre ; une 2e requête par refuge l'élargirait mais a été écartée (charge x2).
+- Fenêtre suivie : d'aujourd'hui à la fin du mois suivant (FFCAM, WP Booking System) ou 30 jours (Open System). Les réservations plus lointaines ne sont vues qu'en entrant dans la fenêtre ; une 2e requête par refuge l'élargirait mais a été écartée (charge x2).
 - FFCAM décale parfois la fenêtre vers les premières dates réservables d'un refuge : des nuits lointaines (jusqu'en juillet) apparaissent pour certains.
 - Une requête en erreur n'enregistre rien (pas de faux « 0 place »).
 - Lancer `rb/ffcam_availability.rb --history` en local sans `git pull` dans `history/` fait diverger l'historique : ne le faire que volontairement, après `git pull`.
@@ -278,7 +313,8 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 | Rafraîchir la liste des refuges (quelques fois par an) | `rb/refresh_huts.rb && rb/refresh_coordinates.rb && rb/refresh_links.rb`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
 | Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `rb/refresh_coordinates.rb` | 6 corrections aujourd'hui |
 | Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `rb/refresh_huts.rb && rb/refresh_links.rb` | voir l'annexe |
-| Ajouter un refuge réservable seulement par téléphone | entrée dans `manual_huts.json` sans `refugepro` (position, site, téléphone, email) | |
+| Ajouter un refuge WP Booking System | page du site contenant `wpbs-container` : entrée dans `manual_huts.json` avec `"wpbs": [{"url": "<page>"}]`, id `WPBS-<nom>`, position, site, téléphone, email, puis `rb/refresh_huts.rb && rb/refresh_links.rb` | ajouter aussi sa réponse aux deux scénarios de `tests/fixtures/` (voir [tests/README.md](tests/README.md)) |
+| Ajouter un refuge réservable seulement par téléphone | entrée dans `manual_huts.json` sans `refugepro` ni `wpbs` (position, site, téléphone, email) | |
 | Ajouter un portail de la centrale | `rb/refresh_huts.rb --portals FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM ENTREPYRPYRENEES` | ou modifier `Ffcam::DEFAULT_PORTALS` dans `rb/ffcam.rb` |
 | Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec `--history` |
 | Tester une autre date | `rb/ffcam_availability.rb --date 2027-02-20 --nights 2` | |
@@ -290,7 +326,7 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 
 Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relevé (un échec arrête le relevé avant l'historique et la publication) :
 
-- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, historique et journal, limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
+- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
 - `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
 
 Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
@@ -311,7 +347,7 @@ Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregist
 - Pas de base de données : fichiers JSON/CSV versionnés ; une base hébergée seulement si on affiche l'historique de façon interactive.
 - Hébergement GitHub Pages plutôt qu'un VPS (gratuit, sans maintenance) ; dépôt public accepté.
 - Une seule requête par refuge et par relevé (charge FFCAM ~3 000 requêtes/jour en saison) ; pas de 2e requête pour voir plus loin.
-- Politesse envers les sites interrogés (`Ffcam.polite` dans `rb/ffcam.rb`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (151 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
+- Politesse envers les sites interrogés (`Ffcam.polite` dans `rb/ffcam.rb`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (152 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
 - Clés : la clé d'exemple de la doc Skitour et les accès privés IGN n'ont pas été utilisés ; uniquement des clés personnelles.
 - Les noms « FFCAM » / « CAF » sont évités dans le nom du site (marques de la fédération).
 - Réécriture en Ruby (novembre 2026) : le code Python d'origine a été porté script par script dans `rb/`, vérifié en rejouant les mêmes réponses HTTP et en comparant chaque fichier produit octet par octet (`tests/check.sh`), puis supprimé. Toujours sans dépendance (bibliothèque standard seulement).
@@ -329,7 +365,8 @@ Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et
 | `BOREON` | 1 | idem, `apporigin=BOREON` | idem | `BK_STRUCTURE:<n>` |
 | `OPENSYSTEM` | 12 | `Ffcam.fetch_opensystem_huts` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site | `Ffcam.fetch_opensystem_availability` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
 | `REFUGEPRO` | 11 | `manual_huts.json` (entrées avec `refugepro`) | `Ffcam.fetch_refugepro_availability` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
-| `MANUAL` | 3 | `manual_huts.json` (entrées sans `refugepro`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
+| `WPBS` | 1 | `manual_huts.json` (entrées avec `wpbs`) | `Ffcam.fetch_wpbs_availability` : calendrier WP Booking System de la page du site (`Ffcam.parse_wpbs`) | `WPBS-<nom>` |
+| `MANUAL` | 2 | `manual_huts.json` (entrées sans `refugepro` ni `wpbs`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
 
 Coordonnées : `rb/refresh_coordinates.rb` (OpenStreetMap, ou position donnée dans `manual_huts.json`, ou `coordinates_overrides.json`). Liens : `rb/refresh_links.rb` (Camptocamp, Skitour).
 
@@ -391,10 +428,15 @@ Les 115 refuges du portail FFCAM sont listés dans `huts.json` (nom, id, site `*
 | Refuge du Galibier | [`galibier`](https://refuge-pro.com/embed/calendrier/galibier) |
 | Rifugio Guido Rey | [`rifugio-guido-rey`](https://refuge-pro.com/embed/calendrier/rifugio-guido-rey) |
 
+### WP Booking System (ajoutés dans `manual_huts.json`)
+
+| Refuge | Identifiant | Calendrier |
+| --- | --- | --- |
+| Refuge de la Coire | `WPBS-coire` | [réservations hiver](https://www.refugedelacoire.fr/reservations-hiver/) (calendrier 12) ; été pas encore lu |
+
 ### Sans réservation en ligne lisible (ajoutés dans `manual_huts.json`)
 
 | Refuge | Comment réserver |
 | --- | --- |
-| Refuge de la Coire | bonjour@refugedelacoire.fr · [site](https://www.refugedelacoire.fr/reservations-hiver/) |
 | Refuge de la Selle | tél. 09 70 02 03 83 · [site](https://www.refugedelaselle.com/contact/) |
 | Refuge du Nant du Beurre | tél. 06 82 70 26 99 · refugedunantdubeurre@etik.com · [site](https://refugedunantdubeurre.fr/) |

@@ -1,5 +1,5 @@
 {
-  "_comment": "Huts listed by hand. With a \"refugepro\" slug: availability read from the Refuge Pro calendar the hut embeds (refuge-pro.com/embed/calendrier/<slug>). Without: no online booking we can read, shown as 'Sur demande'. Positions from refuges.info; contacts from each hut's own website unless noted.",
+  "_comment": "Huts listed by hand. With a \"refugepro\" slug: availability read from the Refuge Pro calendar the hut embeds (refuge-pro.com/embed/calendrier/<slug>). With \"wpbs\" pages ([{\"url\", \"calendars\" (optional ids)}]): availability read from the WP Booking System calendar of the hut's WordPress site. Without either: no online booking we can read, shown as 'Sur demande'. Positions from refuges.info; contacts from each hut's own website unless noted.",
   "huts": [
     {
       "id": "RP-refuge-de-terre-rouge",
@@ -32,7 +32,7 @@
       "website": "https://refugesclareethabor.com/"
     },
     {
-      "id": "MANUAL-coire",
+      "id": "WPBS-coire",
       "name": "Refuge de la Coire",
       "short_name": "Coire",
       "type": "refuge",
@@ -42,7 +42,12 @@
       "site": "https://www.refugedelacoire.fr/reservations-hiver/",
       "phone": null,
       "email": "bonjour@refugedelacoire.fr",
-      "note": "Beaufortain. Booking request form on the hut site; reservation compulsory all year."
+      "note": "Beaufortain. WP Booking System calendar (winter page) on the hut site; reservation compulsory all year.",
+      "wpbs": [
+        {
+          "url": "https://www.refugedelacoire.fr/reservations-hiver/"
+        }
+      ]
     },
     {
       "id": "MANUAL-nant-du-beurre",

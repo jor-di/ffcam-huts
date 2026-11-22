@@ -21,7 +21,7 @@ module FetchLog
 
   LOG_FILE = File.join(Ffcam::ROOT, "history", "fetch_log.json")
   MAX_RUNS = 48
-  SOURCE_ORDER = %w[FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM REFUGEPRO MANUAL].freeze
+  SOURCE_ORDER = %w[FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM REFUGEPRO WPBS MANUAL].freeze
 
   # -> [state, nights received, message]
   def classify(hut, data, err)
