@@ -8,6 +8,9 @@
 #        With --domain, the site only answers on that name: other projects can live on the
 #        same server under their own (sub)domains.
 # Options can be combined. Assumptions: Debian 12 / Ubuntu 24.04 (OVH images). Safe to re-run.
+# Ruby: the distribution's package (Debian 12: 3.1, Ubuntu 24.04: 3.2) is enough, even though
+# .ruby-version (used by GitHub Actions) names a newer one: the code only uses the standard
+# library and was checked on Ruby 3.1, 3.2, 3.3 and 4.0 (tests/unit.sh, tests/check.sh).
 set -eu
 
 DOMAIN= EMAIL= AUTH_USER=
@@ -28,7 +31,7 @@ USER_NAME=refuges
 
 echo "== packages"
 apt-get update -q
-apt-get install -y -q python3 nginx rsync apache2-utils
+apt-get install -y -q ruby nginx rsync apache2-utils
 [ -z "$DOMAIN" ] || apt-get install -y -q certbot python3-certbot-nginx
 
 echo "== timezone Europe/Paris (dates in history and 'today' follow French time)"
@@ -38,7 +41,7 @@ echo "== system user '$USER_NAME' (runs the updates, owns the data)"
 id "$USER_NAME" >/dev/null 2>&1 || useradd --system --home-dir "$APP" --shell /usr/sbin/nologin "$USER_NAME"
 mkdir -p "$WEB" /var/log/ffcam-huts "$APP/history" "$APP/data"
 chown -R "$USER_NAME:$USER_NAME" "$APP" "$WEB" /var/log/ffcam-huts
-chmod +x "$APP"/*.py "$APP"/deploy/*.sh
+chmod +x "$APP"/rb/*.rb "$APP"/deploy/*.sh
 
 echo "== nginx"
 cp "$APP/deploy/nginx.conf" /etc/nginx/sites-available/refuges

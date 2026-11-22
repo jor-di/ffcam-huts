@@ -1,0 +1,136 @@
+#!/usr/bin/env ruby
+# Associate GPS coordinates to each hut of huts.json, using OpenStreetMap data.
+#
+# FFCAM's booking data has no coordinates, so this downloads the huts in France from
+# OSM (Overpass API) and matches them, in order of confidence:
+#   1. override  coordinates_overrides.json (manual entries for huts OSM can't match)
+#   2. website   OSM `website` = https://<email_user>.ffcam.fr  (FFCAM email == site subdomain)
+#   3. name      same normalized name ("Non Gardé" winter rooms use their hut's name)
+#   4. fuzzy     close name, only among huts operated by the Club Alpin in OSM
+#
+# Writes hut_coordinates.json. Re-run after rb/refresh_huts.rb when huts are added.
+
+require "optparse"
+require_relative "ffcam"
+require_relative "difflib"
+
+OUTPUT = File.join(Ffcam::ROOT, "hut_coordinates.json")
+OVERRIDES = File.join(Ffcam::ROOT, "coordinates_overrides.json")
+OVERPASS_URLS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
+].freeze
+QUERY = <<~'OVERPASS'.chomp
+  [out:json][timeout:180];
+  area["ISO3166-1"="FR"][admin_level=2]->.fr;
+  ( nwr["tourism"~"^(alpine_hut|wilderness_hut)$"](area.fr);
+    nwr["website"~"ffcam\\.fr"](area.fr);
+    nwr["contact:website"~"ffcam\\.fr"](area.fr); );
+  out center tags;
+OVERPASS
+CLUB_ALPIN = /ffcam|\bcaf\b|club alpin/i
+
+def fetch_osm(attempts = 4)
+  body = Py.urlencode({ "data" => QUERY })
+  attempts.times do |attempt|
+    OVERPASS_URLS.each do |url|
+      return Py.loads(Ffcam.fetch(url, body, { "User-Agent" => "ffcam-huts-script" }, 240)[1]).fetch("elements")
+    rescue StandardError => e # servers are often busy: try the next one
+      warn "  #{url}: #{e.message}"
+    end
+    wait = 30 * 2**attempt
+    warn "All Overpass servers failed, retrying in #{wait}s..."
+    Ffcam.pause(wait)
+  end
+  abort("Could not reach the Overpass API, try again later.")
+end
+
+def ffcam_subdomain(url)
+  m = url.to_s.match(%r{https?://([a-z0-9.-]+)\.ffcam\.fr}i)
+  m && m[1].downcase
+end
+
+def to_coords(el, how)
+  tags, center = el["tags"], el.fetch("center", el)
+  ele = tags["ele"]
+  {
+    "lat" => Py.round(center["lat"], 6),
+    "lon" => Py.round(center["lon"], 6),
+    "ele" => Py.truthy?(ele) && ele.match?(/\A[\d.]+\z/) ? Py.float(ele).to_i : nil,
+    "osm" => "#{el['type']}/#{el['id']}",
+    "osm_name" => tags["name"],
+    "website" => Py.either(tags["website"], tags["contact:website"]),
+    "match" => how,
+  }
+end
+
+def main
+  Ffcam.parse_args(OptionParser.new("Usage: rb/refresh_coordinates.rb (no option)")) # --help only
+  huts = Ffcam.load_huts["huts"]
+  overrides = JSON.parse(File.read(OVERRIDES, encoding: "UTF-8")).reject { |k, _| k.start_with?("_") }
+
+  warn "Downloading OSM huts (can take a minute)..."
+  osm = fetch_osm.select { |e| Py.truthy?(e.fetch("tags", {})["name"]) && (Py.truthy?(e["center"]) || e.key?("lat")) }
+  warn "#{osm.size} OSM huts"
+
+  by_site, by_name = {}, {}
+  osm.each do |e|
+    t = e["tags"]
+    %w[website contact:website url].each do |key|
+      sub = ffcam_subdomain(t[key])
+      by_site[sub] = e if Py.truthy?(sub) && !by_site.key?(sub)
+    end
+    (by_name[Ffcam.norm(t["name"])] ||= []) << e
+  end
+  # when several OSM huts share a name, prefer the Club Alpin one
+  by_name.transform_values! { |cands| Py.sorted(cands) { |e| CLUB_ALPIN.match?(e["tags"].fetch("operator", "")) ? 0 : 1 } }
+  club_names = by_name.select { |_, c| CLUB_ALPIN.match?(c[0]["tags"].fetch("operator", "")) }.keys
+
+  result, unmatched = {}, []
+  huts.each do |hut|
+    hid, key = hut["id"], Ffcam.norm(hut["name"])
+    coords =
+      if !hut["lat"].nil? && !hut["lon"].nil? # manual huts carry their position
+        { "lat" => hut["lat"], "lon" => hut["lon"], "ele" => hut["ele"], "osm" => nil,
+          "osm_name" => nil, "website" => hut["site"], "match" => "manual" }
+      elsif overrides.key?(hid)
+        o = overrides[hid]
+        { "lat" => o["lat"], "lon" => o["lon"], "ele" => o["ele"], "osm" => o["osm"],
+          "osm_name" => o["name"], "website" => o["website"], "match" => "override" }
+      elsif by_site.key?(hut["email_user"])
+        to_coords(by_site[hut["email_user"]], "website")
+      elsif by_name.key?(key)
+        to_coords(by_name[key][0], "name")
+      elsif (close = Difflib.get_close_matches(key, club_names, n: 1, cutoff: 0.8)).any?
+        to_coords(by_name[close[0]][0], "fuzzy")
+      end
+    if coords
+      result[hid] = { "name" => hut["name"] }.merge(coords)
+    else
+      unmatched << hut
+    end
+  end
+
+  # "Non Gardé" winter rooms: reuse their guarded sibling when found
+  unmatched.dup.each do |hut|
+    sibling = huts.find do |h|
+      result.key?(h["id"]) && h["id"] != hut["id"] && Ffcam.norm(h["name"]) == Ffcam.norm(hut["name"])
+    end
+    next unless sibling
+    result[hut["id"]] = result[sibling["id"]].merge("name" => hut["name"], "match" => "sibling")
+    unmatched.delete(hut)
+  end
+
+  File.write(OUTPUT, Py.dumps(result, ensure_ascii: false, indent: 2) + "\n")
+  counts = result.values.map { |c| c["match"] }.tally
+  warn "Wrote #{result.size}/#{huts.size} hut coordinates to #{OUTPUT} #{Py.repr(counts)}"
+  result.each_value do |c|
+    warn "  check fuzzy match: #{c['name']} -> #{c['osm_name']}" if c["match"] == "fuzzy"
+  end
+  unmatched.each do |hut|
+    warn "  NOT FOUND: #{hut['id']} #{hut['name']} (add it to #{File.basename(OVERRIDES)})"
+  end
+end
+
+main if $PROGRAM_NAME == __FILE__

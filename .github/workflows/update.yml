@@ -42,6 +42,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Ruby (version from .ruby-version)
+        uses: ruby/setup-ruby@v1
+
+      # Offline tests first: if one fails, the job stops here, before the history (data
+      # branch) and the published map (Pages) are touched.
+      - name: Unit tests
+        run: tests/unit.sh
+
+      - name: Replay tests (recorded responses, outputs compared with tests/golden)
+        run: tests/check.sh
+
       - name: Check out the history (data branch)
         uses: actions/checkout@v4
         with:
@@ -51,10 +62,10 @@ jobs:
       - name: Fetch availability (and record history changes)
         run: |
           mkdir -p data site
-          python3 ffcam_availability.py -o data/latest.csv
+          rb/ffcam_availability.rb --history -o data/latest.csv
 
       - name: Build the map
-        run: python3 build_map.py data/latest.csv -o site/index.html
+        run: rb/build_map.rb data/latest.csv -o site/index.html
 
       - name: Commit history changes
         working-directory: history

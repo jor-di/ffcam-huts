@@ -11,7 +11,7 @@ SERVER=${1:?usage: deploy/push.sh user@server [--with-history]}
 APP=/opt/ffcam-huts
 cd "$(dirname "$0")/.."
 
-EXCLUDES="--exclude secrets.env --exclude __pycache__ --exclude ffcam_*.csv --exclude map.html --exclude data/"
+EXCLUDES="--exclude secrets.env --exclude ffcam_*.csv --exclude map.html --exclude data/"
 [ "${2:-}" = "--with-history" ] || EXCLUDES="$EXCLUDES --exclude history/"
 
 ssh "$SERVER" "sudo mkdir -p $APP"

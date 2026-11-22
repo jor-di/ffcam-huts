@@ -1,0 +1,1211 @@
+{
+ "002ae1683272c801767e04ac4689e12398a1965d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A117&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/002ae1683272c801767e04ac4689e12398a1965d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0191afceb9d2dfb5465bf549eac3a4ef55c78725": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A78&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0191afceb9d2dfb5465bf549eac3a4ef55c78725.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "03d4e19d0ff5cd4bccd5f55e2bcf06d1c6504fef": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8838n0j&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/03d4e19d0ff5cd4bccd5f55e2bcf06d1c6504fef.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0421ca4c807a2db9bcd36c7e9b28c93b9b677f58": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A82&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0421ca4c807a2db9bcd36c7e9b28c93b9b677f58.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0471160f9ecb50ceac53f9e0ad21a5b4f1fe2596": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3Axxx5xjr51ovb&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0471160f9ecb50ceac53f9e0ad21a5b4f1fe2596.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "071a9c5f90e037be244db24a32ff09cbe699fb08": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A89&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/071a9c5f90e037be244db24a32ff09cbe699fb08.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "07b09b697341f083075ba5e3b57544c7e131cb85": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A17&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/07b09b697341f083075ba5e3b57544c7e131cb85.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0ab6083042d2142f901eab46a5dfb96edf9f84a3": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A109&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0ab6083042d2142f901eab46a5dfb96edf9f84a3.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0b908d7b921d297b04e0a5fed1254d2bc73a7b13": {
+  "body": null,
+  "file": "bodies/0b908d7b921d297b04e0a5fed1254d2bc73a7b13.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/galibier",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/galibier"
+ },
+ "0c89f7a4456f656beafc97ee4c43fe52cf8a1e10": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A108&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0c89f7a4456f656beafc97ee4c43fe52cf8a1e10.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0cccf2d6560e429b10ac822d5515c993dbd26ecb": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A106&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0cccf2d6560e429b10ac822d5515c993dbd26ecb.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0d8fc978fa614f4346d7739b03007e660f955c9a": {
+  "body": null,
+  "file": "bodies/0d8fc978fa614f4346d7739b03007e660f955c9a.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/re-magi",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/re-magi"
+ },
+ "0ebe591622745ee29cace58069aebda3feac7976": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A36&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0ebe591622745ee29cace58069aebda3feac7976.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0f5d87c56d0ee3e8dd3c92afbede1a36adeaacfd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A74&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/0f5d87c56d0ee3e8dd3c92afbede1a36adeaacfd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "10737cae21fa331acbc66c80b3dc15bfc3cb2054": {
+  "body": null,
+  "file": "bodies/10737cae21fa331acbc66c80b3dc15bfc3cb2054.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge"
+ },
+ "121fa1b291c5db35b5c30db8662cb90868f58523": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A79&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/121fa1b291c5db35b5c30db8662cb90868f58523.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "164e5c8ca04992b0254abc7eaa92fba660f9b0e8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A53&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/164e5c8ca04992b0254abc7eaa92fba660f9b0e8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1703bb62c914b40b0ab652e07df38f87d3a30e08": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A5&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/1703bb62c914b40b0ab652e07df38f87d3a30e08.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "17ece1e0b6dd96c788f67a5ae208e212ac0851ef": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A110&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/17ece1e0b6dd96c788f67a5ae208e212ac0851ef.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1977ec9cf3107c63afaf4fce8b65879ab24b1ec5": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5wdwmtq8a&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/1977ec9cf3107c63afaf4fce8b65879ab24b1ec5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1c4717d012050e6847084e862bf0f6b2d28cb93d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A90&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/1c4717d012050e6847084e862bf0f6b2d28cb93d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1e71baf7c417980ad59f9cdc34c7c064c9653510": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mueov1&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/1e71baf7c417980ad59f9cdc34c7c064c9653510.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1f0afa3c46ad81e3a0056192e2f1508abe7edea0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A9&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/1f0afa3c46ad81e3a0056192e2f1508abe7edea0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "217daf6596695678a71f2ef8cc5e198d082572b4": {
+  "body": null,
+  "file": "bodies/217daf6596695678a71f2ef8cc5e198d082572b4.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/refuge-buffere",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/refuge-buffere"
+ },
+ "2294f8ead3aeeb7bdb4eb5f67f6d563b803480ce": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8jh7i7h&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/2294f8ead3aeeb7bdb4eb5f67f6d563b803480ce.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "236491b911b66832922f71c10ade8caa64fbd0fb": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A63&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/236491b911b66832922f71c10ade8caa64fbd0fb.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "23831cfa1199c925fe9f46531863d176c8002a72": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A60&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/23831cfa1199c925fe9f46531863d176c8002a72.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "23855ae756cfd5bca3d2d8cda5dd78a04aca05f8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A121&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/23855ae756cfd5bca3d2d8cda5dd78a04aca05f8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "27a63b51f10be50e096157b0491200e5b11fa4d9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A28&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/27a63b51f10be50e096157b0491200e5b11fa4d9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "2d872973c3ccb3314073f1eadcce8d6d664023d1": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A44&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/2d872973c3ccb3314073f1eadcce8d6d664023d1.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "312b32dd389064ec9de491a60a2bcd25fd76344d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mjvfvz&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/312b32dd389064ec9de491a60a2bcd25fd76344d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "33ec30a161ce14d08dee76e655265f207d37f0c8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxxualkeru9&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/33ec30a161ce14d08dee76e655265f207d37f0c8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "368f0c24acaa83a9d65ceb845bab4583a6b286f4": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A45&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/368f0c24acaa83a9d65ceb845bab4583a6b286f4.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "38f0474d2cc3316bbceb442a92d9681a4568c17c": {
+  "body": null,
+  "error": {
+   "message": "The read operation timed out",
+   "type": "TimeoutError"
+  },
+  "method": "GET",
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92948,2026-12-08"
+ },
+ "39d6f8db41b747783eea9177f361f8f2bad8e84b": {
+  "body": null,
+  "file": "bodies/39d6f8db41b747783eea9177f361f8f2bad8e84b.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches"
+ },
+ "3ab85c33d5bc5e6de514a14f7b3d9791f1550a2d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A96&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/3ab85c33d5bc5e6de514a14f7b3d9791f1550a2d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3b8aecca8e8a72adee4275445e7e0a3fe86c9bdd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A128&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/3b8aecca8e8a72adee4275445e7e0a3fe86c9bdd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3e35bd9591317ab27bf51a3e49c3f1943ee5fc7b": {
+  "body": null,
+  "file": "bodies/3e35bd9591317ab27bf51a3e49c3f1943ee5fc7b.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/terzo-alpini",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/terzo-alpini"
+ },
+ "3e38b3679b2e39b58deb70659ee2ad6843947a1d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8kr9qqd&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/3e38b3679b2e39b58deb70659ee2ad6843947a1d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3f7248d26861f1ce9cda92bbd35f1e0fa3b20aca": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A101&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/3f7248d26861f1ce9cda92bbd35f1e0fa3b20aca.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3feee71304807c363ed4f174f99e8f58467c1a93": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A123&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/3feee71304807c363ed4f174f99e8f58467c1a93.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "40a5add16da3eb9ca1c89686c7a58f6e1b9df3dc": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A18&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/40a5add16da3eb9ca1c89686c7a58f6e1b9df3dc.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "40c2ec2c3767a4709501fce5d870bb91f6050db9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A87&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/40c2ec2c3767a4709501fce5d870bb91f6050db9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "413e1d099392f1e5cce19d7a86c32d0fbedbc2b4": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A80&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/413e1d099392f1e5cce19d7a86c32d0fbedbc2b4.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "416e07405d28ee04fea597d6a5ffcfab4aa9d423": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A84&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/416e07405d28ee04fea597d6a5ffcfab4aa9d423.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4217ef3165a9b27bfdf14c39f609ab70fef9e3ae": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A15&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/4217ef3165a9b27bfdf14c39f609ab70fef9e3ae.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "42474c52bf91933e3866bef67c6e928d312aa5f8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A22&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/42474c52bf91933e3866bef67c6e928d312aa5f8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "42730260b2c750a6f1c3efcdfdc97ed19bfe3da9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxxl0tm6umg&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/42730260b2c750a6f1c3efcdfdc97ed19bfe3da9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "443702cfbf353ccfeddceff64e64313e4ea2837e": {
+  "body": null,
+  "file": "bodies/443702cfbf353ccfeddceff64e64313e4ea2837e.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93149,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93149,2026-12-08"
+ },
+ "462162befbbc4097c922d3662688effb57b43ccc": {
+  "body": null,
+  "file": "bodies/462162befbbc4097c922d3662688effb57b43ccc.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92949,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92949,2026-12-08"
+ },
+ "4b89a337ad30595034788418a48d4a8701c470c0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A127&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/4b89a337ad30595034788418a48d4a8701c470c0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4d1903256ed4593f8fd46546e11fcece06952491": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u884qc8h&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/4d1903256ed4593f8fd46546e11fcece06952491.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4eb2db9833b7ee0c2283d027741f573bceb72a65": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A98&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/4eb2db9833b7ee0c2283d027741f573bceb72a65.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "515876d9c6c96aa635003a073021f0572984cda1": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5ualjg1ab&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/515876d9c6c96aa635003a073021f0572984cda1.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "52867b94e562616c4153452fa46354d0367f0dea": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u87ub79d&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/52867b94e562616c4153452fa46354d0367f0dea.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "52dd736ca6734aeaece19bdc896bd7932eb2bb10": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A113&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/52dd736ca6734aeaece19bdc896bd7932eb2bb10.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "52e06c37c7a781e7855bd9db05694e6a7df5fbcf": {
+  "body": null,
+  "file": "bodies/52e06c37c7a781e7855bd9db05694e6a7df5fbcf.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92996,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92996,2026-12-08"
+ },
+ "5896d722d1154dac4833320001d5bb39ec30f4dd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A85&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/5896d722d1154dac4833320001d5bb39ec30f4dd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "598bca1317f775a3533b76962d871bec6e4c3ced": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A124&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/598bca1317f775a3533b76962d871bec6e4c3ced.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "5c0ca6c7ed8a3ca96e3b5d337eb0c7968e461990": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A95&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/5c0ca6c7ed8a3ca96e3b5d337eb0c7968e461990.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "5e6d473516893533b457b6c37248835f536ced83": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A100&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/5e6d473516893533b457b6c37248835f536ced83.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "609ae22994821dc2fd0e8cf292c4b642f58a2b67": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A88&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/609ae22994821dc2fd0e8cf292c4b642f58a2b67.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "60b1357a8c5b629cc5d69f1ed46c855315f8fd6f": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A76&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/60b1357a8c5b629cc5d69f1ed46c855315f8fd6f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "62a5971a1620d444b61a643a4249aacf4bab42c3": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A65&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/62a5971a1620d444b61a643a4249aacf4bab42c3.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "62ecfdb528cb60d8220026ad9505e2cb14695721": {
+  "body": "action=availability&apporigin=NEOUVIELLE&structure=BK_STRUCTURE%3Axxx5ylsjmuv1&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/62ecfdb528cb60d8220026ad9505e2cb14695721.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "64810fbc4f7ff36278e6344033a67c2c97c3e2e2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A47&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/64810fbc4f7ff36278e6344033a67c2c97c3e2e2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "649118daeccd69eb30b95908d181464ce16a1c6c": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A67&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/649118daeccd69eb30b95908d181464ce16a1c6c.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "67c82af369fb011322dc3ca00595eac1f09f39d4": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A107&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/67c82af369fb011322dc3ca00595eac1f09f39d4.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "67f740ecde69ddb7bf261589741ca8e50ee6658f": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A139&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/67f740ecde69ddb7bf261589741ca8e50ee6658f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "6b96a1865d5f1e0c54e62af65ce42431ddfb292f": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A56&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/6b96a1865d5f1e0c54e62af65ce42431ddfb292f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "6c9c32f8bdca81accea8f4be47b3065b8452914a": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A112&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/6c9c32f8bdca81accea8f4be47b3065b8452914a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "6c9fdb4e86b81f0d397f279fe862f86688ccc273": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8l09uta&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/6c9fdb4e86b81f0d397f279fe862f86688ccc273.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "6edd96a463cb6d3952cc37fc3169415e7f69ca86": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8nmpryk&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/6edd96a463cb6d3952cc37fc3169415e7f69ca86.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "71bd353e72bbe378bce076b649c8d97858eee2b9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A50&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/71bd353e72bbe378bce076b649c8d97858eee2b9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7875500fe96b67fd9a6721ff27722a0348f6b005": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A11&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/7875500fe96b67fd9a6721ff27722a0348f6b005.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7c9df5a769265af95277e25b5cdea18c1ff1d0f7": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8nnte7d&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/7c9df5a769265af95277e25b5cdea18c1ff1d0f7.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7db17f126540d9d0aec67f4b29cfb313c36211ec": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A70&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/7db17f126540d9d0aec67f4b29cfb313c36211ec.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "823447c4d251aba0002419961adc734518828148": {
+  "body": null,
+  "file": "bodies/823447c4d251aba0002419961adc734518828148.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93145,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93145,2026-12-08"
+ },
+ "82fb0f9fc142c25053d3ee2528796cc932408c0b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A94&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/82fb0f9fc142c25053d3ee2528796cc932408c0b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "870e0a6211fe0e94a287b0c87c656833aa7b98be": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A34&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/870e0a6211fe0e94a287b0c87c656833aa7b98be.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "88381bde8d9b2da30427141c43b5672fd6437abc": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A58&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/88381bde8d9b2da30427141c43b5672fd6437abc.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8907bf0033ad517359f33f2855b276fc272eeb94": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xycgku&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8907bf0033ad517359f33f2855b276fc272eeb94.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8a0bc50c4adb75b1b1f525d5cdf5f7a597d84b9d": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1nrby5i831&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8a0bc50c4adb75b1b1f525d5cdf5f7a597d84b9d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8a56299c76eac022c32ed33735ecbde2dc2ebaae": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A48&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8a56299c76eac022c32ed33735ecbde2dc2ebaae.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8baf9f78b83643c62c55e05e5d2c8de895754a2b": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1novae31ez&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8baf9f78b83643c62c55e05e5d2c8de895754a2b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8cf962a4f0f8f46e8e06ac167f7a36363960c073": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A4m2wkebwwg2f&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8cf962a4f0f8f46e8e06ac167f7a36363960c073.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8d921e673b8fd761011d7667151dcb9a31b4d948": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A2&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8d921e673b8fd761011d7667151dcb9a31b4d948.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8e1b4fd264760e814447dadd3b301f8b9ebd66c7": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5snuwv3sr&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8e1b4fd264760e814447dadd3b301f8b9ebd66c7.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8f60cff01031c8d4d82ae6eb90a623d9c33e1e82": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A38&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8f60cff01031c8d4d82ae6eb90a623d9c33e1e82.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8f8c810d030b9364d625614da68ffc8412bd9116": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A26&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/8f8c810d030b9364d625614da68ffc8412bd9116.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "947fdd2b5938a89928031b267cc6477dddae2d29": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A111&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/947fdd2b5938a89928031b267cc6477dddae2d29.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "94c8d72954d99ccda8356e94aae8a0ae7955a0de": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A13&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/94c8d72954d99ccda8356e94aae8a0ae7955a0de.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "98a98b8080652b4f8bd29fa6bbe8cd8c7f8cb3f1": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A47ntr9jg1dif&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/98a98b8080652b4f8bd29fa6bbe8cd8c7f8cb3f1.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9c1f944d64e4515ea1111d0dd80eb0da61d9708f": {
+  "body": null,
+  "file": "bodies/9c1f944d64e4515ea1111d0dd80eb0da61d9708f.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/ricou",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/ricou"
+ },
+ "9d17157d28de5584dd5620846b3bccf153d1e7b4": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A71&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/9d17157d28de5584dd5620846b3bccf153d1e7b4.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9dbab98504c71fa8e3acd1d55ae2fc920050ec8a": {
+  "body": "action=availability&apporigin=BOREON&structure=BK_STRUCTURE%3A5e92vrpttey6&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/9dbab98504c71fa8e3acd1d55ae2fc920050ec8a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9eb00704c43bb2099d39db1163965355f1f515f2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A93&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/9eb00704c43bb2099d39db1163965355f1f515f2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9f023458838408bb727404931553df67af05bd88": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A54&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/9f023458838408bb727404931553df67af05bd88.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "a84e8bc5c1bab457403fcfee651a0b257d65f9d7": {
+  "body": null,
+  "file": "bodies/a84e8bc5c1bab457403fcfee651a0b257d65f9d7.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93147,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93147,2026-12-08"
+ },
+ "adac3ee92b74a2f4d23edd6c6b90d076fc29cd23": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1ngkc39duv&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/adac3ee92b74a2f4d23edd6c6b90d076fc29cd23.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "af709205d9b092d9914cb4fa5de3fd47a7615333": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A57&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/af709205d9b092d9914cb4fa5de3fd47a7615333.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b0b8bf07552e9d7f16b54fe558e267fc48f2abd5": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1njyztnljl&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/b0b8bf07552e9d7f16b54fe558e267fc48f2abd5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b2298919b2bba296dde8852f7e39b29cd73b4007": {
+  "body": null,
+  "file": "bodies/b2298919b2bba296dde8852f7e39b29cd73b4007.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/laval",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/laval"
+ },
+ "b758c2dcc5acbb9c4798c5d4b7a42942c019826f": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A40&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/b758c2dcc5acbb9c4798c5d4b7a42942c019826f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b847a5b2196f7620484311a3584ce6231b56e8f2": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1nww29smum&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/b847a5b2196f7620484311a3584ce6231b56e8f2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b8859eec71025d8b088746d2ced1940aa3459a83": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5wd7n2ct0&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/b8859eec71025d8b088746d2ced1940aa3459a83.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b8fa0fc9f72cd94d2496ca496d1b047fa167e89d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A75&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/b8fa0fc9f72cd94d2496ca496d1b047fa167e89d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "ba08c105841efd6f79a60519cc8cf5b5c1da6cb4": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A51&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/ba08c105841efd6f79a60519cc8cf5b5c1da6cb4.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "bb99243ba550a4016b745cb902e8c8097f3a37a3": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A24&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/bb99243ba550a4016b745cb902e8c8097f3a37a3.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "bc151b0ea99ebcdae316b50569bcd984269f3f2a": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8l3ommd&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/bc151b0ea99ebcdae316b50569bcd984269f3f2a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "be921dc211500aa8c72336bce41129434a19c3b1": {
+  "body": null,
+  "file": "bodies/be921dc211500aa8c72336bce41129434a19c3b1.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93146,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93146,2026-12-08"
+ },
+ "c32618b06982b28540760a417d91f2894bc6d51a": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mnoqrq&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/c32618b06982b28540760a417d91f2894bc6d51a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c34f7fef08cca719f595ca2f16564ab346374989": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A129&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/c34f7fef08cca719f595ca2f16564ab346374989.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c6cf5e6ae249c077781667f4406c087b13568133": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A4&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/c6cf5e6ae249c077781667f4406c087b13568133.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c83497534f200fa32a4c7ee29c03b44e36449b7a": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A37&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/c83497534f200fa32a4c7ee29c03b44e36449b7a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "cb63b046c2d92f64628aa30b5ffc1ef644de54ae": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A69&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/cb63b046c2d92f64628aa30b5ffc1ef644de54ae.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "cd81b9285f9158e015ba637d5f693f7017779cd8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8koph3e&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/cd81b9285f9158e015ba637d5f693f7017779cd8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d006fa09ec3397dacdd3821b7554d270576e6514": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A46&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d006fa09ec3397dacdd3821b7554d270576e6514.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d1a9bf8d2044c343e20081ec9fe3247b6834134b": {
+  "body": "action=availability&apporigin=NEOUVIELLE&structure=BK_STRUCTURE%3Aiyuctdomm9k&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d1a9bf8d2044c343e20081ec9fe3247b6834134b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d1d59c62aa1fcb9d003bde534ce7af8d90090ea6": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A125&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d1d59c62aa1fcb9d003bde534ce7af8d90090ea6.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d22f1af2cad7f7eb6be2ffd3ca62a65e67be2c0d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8jmexys&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d22f1af2cad7f7eb6be2ffd3ca62a65e67be2c0d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d247f54b3f0dee6c2adf451eb85c980aeccbb586": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A104&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d247f54b3f0dee6c2adf451eb85c980aeccbb586.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d67660f12cf18c0a14b97ece12ff5a8d7d7f2f97": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3Axxxld3htkpn&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d67660f12cf18c0a14b97ece12ff5a8d7d7f2f97.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d73a489d86dfef6ff4af37178e80acead82c57df": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A126&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/d73a489d86dfef6ff4af37178e80acead82c57df.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "da0aab6f9594839477f23879f0952180921275cd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8934wt7&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/da0aab6f9594839477f23879f0952180921275cd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "da51720811b05285b22112b2d44b983b2163c5a7": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A52&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/da51720811b05285b22112b2d44b983b2163c5a7.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "db856fb2a09b7ac5794dcc99d9bd7671d8a18a09": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5h5skpilec4l&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/db856fb2a09b7ac5794dcc99d9bd7671d8a18a09.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "df914a980a9b1750ec93e83ce4c8cf47de0179d8": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1mymmzijik&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/df914a980a9b1750ec93e83ce4c8cf47de0179d8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e011276bb89831f9e3d82004ca21a104809d27f3": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A103&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/e011276bb89831f9e3d82004ca21a104809d27f3.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e98212946050bbb7dc2868a38ec11c5e1ed2a1f6": {
+  "body": null,
+  "file": "bodies/e98212946050bbb7dc2868a38ec11c5e1ed2a1f6.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/rifugio-guido-rey",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/rifugio-guido-rey"
+ },
+ "e99d30a3d5acc109c2d0a1fffd2f47671e28c5ff": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A59&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/e99d30a3d5acc109c2d0a1fffd2f47671e28c5ff.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "ea72fd68f8b15902283f4f42ad72f527c706e5fd": {
+  "body": null,
+  "file": "bodies/ea72fd68f8b15902283f4f42ad72f527c706e5fd.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93152,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93152,2026-12-08"
+ },
+ "eab9a447efc9d6b562ae53d8b7f95cc712911c58": {
+  "body": null,
+  "file": "bodies/eab9a447efc9d6b562ae53d8b7f95cc712911c58.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93150,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93150,2026-12-08"
+ },
+ "ed4e8f858ea3aa6f93d84686524a31c841b7108f": {
+  "body": null,
+  "file": "bodies/ed4e8f858ea3aa6f93d84686524a31c841b7108f.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93151,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93151,2026-12-08"
+ },
+ "ee0bd03599750dd04e73532c9fe6e3421e246c0a": {
+  "body": null,
+  "file": "bodies/ee0bd03599750dd04e73532c9fe6e3421e246c0a.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/marches",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/marches"
+ },
+ "eeba00d4d78797847ced104727af463d8c644e8b": {
+  "body": null,
+  "file": "bodies/eeba00d4d78797847ced104727af463d8c644e8b.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93148,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93148,2026-12-08"
+ },
+ "efa4a4143be58794875226eea126fe3b499cdb62": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xxgiou&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/efa4a4143be58794875226eea126fe3b499cdb62.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f10ec96f8c9e63af4142b61f08247a5815be857b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mmakxx&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f10ec96f8c9e63af4142b61f08247a5815be857b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f1a938cebab8cbc33fe3e2b394789e037948badb": {
+  "body": "action=availability&apporigin=NEOUVIELLE&structure=BK_STRUCTURE%3Axxx5ybjcpt6a&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f1a938cebab8cbc33fe3e2b394789e037948badb.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f2ebdb336a37f5fe7a48fd600f9cfd79ff8cc748": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A116&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f2ebdb336a37f5fe7a48fd600f9cfd79ff8cc748.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f368990333881e9a767da87b4f31c684d4ae87af": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A61&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f368990333881e9a767da87b4f31c684d4ae87af.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f37aec6bdbfcfc601ff5e7dce803e44851e73434": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A68&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f37aec6bdbfcfc601ff5e7dce803e44851e73434.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f3dfa58cc992e0461f666068d572bddb42f12019": {
+  "body": null,
+  "file": "bodies/f3dfa58cc992e0461f666068d572bddb42f12019.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92951,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92951,2026-12-08"
+ },
+ "f4baabdc44cadeb8d1eb3c74fac36eead43d0b8a": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A97&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f4baabdc44cadeb8d1eb3c74fac36eead43d0b8a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f975341594ff437b634d02dbc10bca0f21eca63d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xqew2j&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/f975341594ff437b634d02dbc10bca0f21eca63d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fb881669b9d19f86b159fa8791f7426d4f67ac85": {
+  "body": null,
+  "file": "bodies/fb881669b9d19f86b159fa8791f7426d4f67ac85.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/chardonnet",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/chardonnet"
+ },
+ "fbcb5090e5d4fd2db6705e7c924c2bff3e02c8ed": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mon63z&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/fbcb5090e5d4fd2db6705e7c924c2bff3e02c8ed.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fcb64b6637f3215ef2c175c44fbb2b748c224382": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u84snc9p&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/fcb64b6637f3215ef2c175c44fbb2b748c224382.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fcd8a0e5fe469b87226a160bd3dc16f8d64791f6": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A91&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/fcd8a0e5fe469b87226a160bd3dc16f8d64791f6.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fd0450d096488c5527b5c1e1207b9d7e0fc178cd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A72&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/fd0450d096488c5527b5c1e1207b9d7e0fc178cd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fd3081bc444190f64fc6572d5d8e5cde3155c9d8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xp8y6e&productCategory=nomatter&pax=1&date=2026-11-23",
+  "file": "bodies/fd3081bc444190f64fc6572d5d8e5cde3155c9d8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ }
+}

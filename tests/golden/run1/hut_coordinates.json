@@ -1,0 +1,1542 @@
+{
+  "BK_STRUCTURE:47ntr9jg1dif": {
+    "name": "Chalet alpin l'Eychauda  (FFCAM)",
+    "lat": 44.860619,
+    "lon": 6.492151,
+    "ele": 1267,
+    "osm": "way/64219490",
+    "osm_name": "Chalet Alpin L'Eychauda",
+    "website": "https://chaletleychauda.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:46": {
+    "name": "Chalet de Bonneval sur Arc  (FFCAM)",
+    "lat": 45.374114,
+    "lon": 7.053472,
+    "ele": 1830,
+    "osm": "way/100195472",
+    "osm_name": "Chalet de Bonneval-sur-Arc",
+    "website": "http://chaletbonnevalsurarc.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:123": {
+    "name": "Chalet de Gourette  (FFCAM)",
+    "lat": 42.959512,
+    "lon": -0.334083,
+    "ele": 1350,
+    "osm": "way/284550352",
+    "osm_name": "Chalet-Refuge CAF de Gourette",
+    "website": "https://chaletdegourette.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:98": {
+    "name": "Chalet de Maljasset  (FFCAM)",
+    "lat": 44.592697,
+    "lon": 6.842375,
+    "ele": 1905,
+    "osm": "way/128086926",
+    "osm_name": "Refuge CAF de Maljasset",
+    "website": "https://chaletmaljasset.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:103": {
+    "name": "Chalet de Saint Guilhem le Désert  (FFCAM)",
+    "lat": 43.734071,
+    "lon": 3.549249,
+    "ele": 89,
+    "osm": "way/54568744",
+    "osm_name": "Chalet de Saint-Guilhem-le-Désert",
+    "website": "https://refugestguilhemledesert.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:104": {
+    "name": "Chalet de Vauchignon  (FFCAM)",
+    "lat": 46.97654,
+    "lon": 4.643587,
+    "ele": 350,
+    "osm": "node/687026480",
+    "osm_name": "Chalet de Vauchignon",
+    "website": "https://chaletvauchignon.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:87": {
+    "name": "Chalet de la Madone de Fenestre  (FFCAM)",
+    "lat": 44.095768,
+    "lon": 7.356335,
+    "ele": 1903,
+    "osm": "way/115739771",
+    "osm_name": "Refuge de la Madone de Fenestre",
+    "website": "http://chaletmadonedefenestre.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:100": {
+    "name": "Chalet de la Maline - Verdon  (FFCAM)",
+    "lat": 43.746193,
+    "lon": 6.344881,
+    "ele": null,
+    "osm": "node/7782193312",
+    "osm_name": "Chalet de la Maline",
+    "website": "https://chaletlamaline.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:4m2wkebwwg2f": {
+    "name": "Chalet des Contamines  (FFCAM)",
+    "lat": 45.816843,
+    "lon": 6.724945,
+    "ele": 1164,
+    "osm": "node/30941606",
+    "osm_name": "Chalet du CAF Contamines",
+    "website": "https://chaletdescontamines.ffcam.fr",
+    "match": "website"
+  },
+  "BK_STRUCTURE:9": {
+    "name": "Chalet des Tuffes  (FFCAM)",
+    "lat": 46.450362,
+    "lon": 6.075606,
+    "ele": 1250,
+    "osm": "way/102786983",
+    "osm_name": "Chalet des Tuffes",
+    "website": "https://chaletlestuffes.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:15": {
+    "name": "Chalet du Graydon  (FFCAM)",
+    "lat": 46.2031,
+    "lon": 6.635942,
+    "ele": 1335,
+    "osm": "way/126078010",
+    "osm_name": "Refuge de Graydon",
+    "website": "http://chaletdegraydon.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:5": {
+    "name": "Chalet du Langenberg  (FFCAM)",
+    "lat": 47.806733,
+    "lon": 6.861698,
+    "ele": 1050,
+    "osm": "way/182764630",
+    "osm_name": "Chalet du Langenberg",
+    "website": "https://chaletlangenberg.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:4": {
+    "name": "Chalet du Plain du Canon  (FFCAM)",
+    "lat": 47.836721,
+    "lon": 6.824644,
+    "ele": 819,
+    "osm": "way/496320461",
+    "osm_name": "Chalet du Plain du Canon",
+    "website": "https://chaletplainducanon.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:36": {
+    "name": "Chalet du Plan de la Lai  (FFCAM)",
+    "lat": 45.693298,
+    "lon": 6.669075,
+    "ele": 1822,
+    "osm": "way/305700835",
+    "osm_name": "Refuge du Plan de la Lai",
+    "website": "https://chaletplandelalai.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:101": {
+    "name": "Chalet du Sancy  (FFCAM)",
+    "lat": 45.547103,
+    "lon": 2.815571,
+    "ele": 1275,
+    "osm": "way/144547800",
+    "osm_name": "Chalet du Sancy",
+    "website": "https://chaletdusancy.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:116": {
+    "name": "Chalet la Grange de Holle  (FFCAM)",
+    "lat": 42.739435,
+    "lon": -0.022671,
+    "ele": 1495,
+    "osm": "way/98660819",
+    "osm_name": "Chalet La Grange de Holle",
+    "website": "https://chaletlagrangedeholle.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:2": {
+    "name": "Chalet-refuge des Trois-Fours  (FFCAM)",
+    "lat": 48.053275,
+    "lon": 7.025743,
+    "ele": 1197,
+    "osm": "way/71262275",
+    "osm_name": "Chalet-refuge Les Trois Fours",
+    "website": "https://chaletrefuge3fours.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:11": {
+    "name": "Chalet-refuge du Ratou  (FFCAM)",
+    "lat": 46.2968372,
+    "lon": 5.9463385,
+    "ele": null,
+    "osm": "node/10901439850",
+    "osm_name": "Chalet-refuge du Ratou",
+    "website": null,
+    "match": "override"
+  },
+  "BK_STRUCTURE:5e92vrpttey6": {
+    "name": "Gîte du Boréon",
+    "lat": 44.1143694,
+    "lon": 7.288035,
+    "ele": null,
+    "osm": "way/704079297",
+    "osm_name": "Gîte du Boréon",
+    "website": null,
+    "match": "override"
+  },
+  "BK_STRUCTURE:22": {
+    "name": "Refuge Albert 1er  (FFCAM)",
+    "lat": 45.996754,
+    "lon": 6.986631,
+    "ele": 2704,
+    "osm": "way/226994017",
+    "osm_name": "Refuge Albert 1er",
+    "website": "https://refugealbert1er.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u87ub79d": {
+    "name": "Refuge Albert 1er Non Gardé (FFCAM)",
+    "lat": 45.996754,
+    "lon": 6.986631,
+    "ele": 2704,
+    "osm": "way/226994017",
+    "osm_name": "Refuge Albert 1er",
+    "website": "https://refugealbert1er.ffcam.fr/",
+    "match": "name"
+  },
+  "RP-refuge-buffere": {
+    "name": "Refuge Buffère",
+    "lat": 45.01264,
+    "lon": 6.57066,
+    "ele": 2076,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/refuge-buffere",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:5h5skpilec4l": {
+    "name": "Refuge Entre-Deux-Eaux",
+    "lat": 45.366644,
+    "lon": 6.839269,
+    "ele": null,
+    "osm": "way/108981729",
+    "osm_name": "Refuge d'Entre Deux Eaux",
+    "website": "https://www.refuges-vanoise.com/fiche-hebergement-entre-deux-eaux-tour-des-glaciers-de-la-vanoise-vanoise-60n5h5vonly9.html",
+    "match": "name"
+  },
+  "RP-re-magi": {
+    "name": "Refuge I Re Magi",
+    "lat": 45.07072,
+    "lon": 6.62263,
+    "ele": 1768,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/re-magi",
+    "match": "manual"
+  },
+  "RP-laval": {
+    "name": "Refuge Laval",
+    "lat": 45.05746,
+    "lon": 6.52988,
+    "ele": 2000,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/laval",
+    "match": "manual"
+  },
+  "RP-ricou": {
+    "name": "Refuge Ricou",
+    "lat": 45.04636,
+    "lon": 6.54402,
+    "ele": 2115,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/ricou",
+    "match": "manual"
+  },
+  "RP-terzo-alpini": {
+    "name": "Refuge Terzo Alpini",
+    "lat": 45.06963,
+    "lon": 6.62306,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/terzo-alpini",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:54": {
+    "name": "Refuge d'Ambin  (FFCAM)",
+    "lat": 45.163478,
+    "lon": 6.86504,
+    "ele": 2270,
+    "osm": "way/757447966",
+    "osm_name": "Refuge d'Ambin",
+    "website": "http://refugedambin.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8838n0j": {
+    "name": "Refuge d'Argentière Non Gardé (FFCAM)",
+    "lat": 45.946319,
+    "lon": 7.004765,
+    "ele": 2771,
+    "osm": "way/97317903",
+    "osm_name": "Refuge d'Argentière",
+    "website": "https://refugedargentiere.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:124": {
+    "name": "Refuge d'Arrémoulit  (FFCAM)",
+    "lat": 42.84605,
+    "lon": -0.329159,
+    "ele": 2265,
+    "osm": "way/300925781",
+    "osm_name": "Refuge d'Arrémoulit",
+    "website": "https://refugedarremoulit.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u884qc8h": {
+    "name": "Refuge d'Arrémoulit Non Gardé (FFCAM)",
+    "lat": 42.84605,
+    "lon": -0.329159,
+    "ele": 2265,
+    "osm": "way/300925781",
+    "osm_name": "Refuge d'Arrémoulit",
+    "website": "https://refugedarremoulit.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:53": {
+    "name": "Refuge d'Averole  (FFCAM)",
+    "lat": 45.2971696,
+    "lon": 7.0843286,
+    "ele": null,
+    "osm": "way/55693707",
+    "osm_name": "Refuge d'Averole",
+    "website": null,
+    "match": "override"
+  },
+  "BK_STRUCTURE:xxxl0tm6umg": {
+    "name": "Refuge d'Averole Non Gardé (FFCAM)",
+    "lat": 45.2971696,
+    "lon": 7.0843286,
+    "ele": null,
+    "osm": "way/55693707",
+    "osm_name": "Refuge d'Averole Non Gardé",
+    "website": null,
+    "match": "override"
+  },
+  "BK_STRUCTURE:xxx5ybjcpt6a": {
+    "name": "Refuge d'Aygues-Cluses",
+    "lat": 42.875719,
+    "lon": 0.15008,
+    "ele": 2145,
+    "osm": "way/1413578940",
+    "osm_name": "Refuge d'Aygues-Cluses",
+    "website": null,
+    "match": "name"
+  },
+  "BK_STRUCTURE:111": {
+    "name": "Refuge d'Espingo  (FFCAM)",
+    "lat": 42.730519,
+    "lon": 0.49957,
+    "ele": 1967,
+    "osm": "way/96705271",
+    "osm_name": "Refuge d'Espingo",
+    "website": "https://refugedespingo.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:iyuctdomm9k": {
+    "name": "Refuge d'Orédon",
+    "lat": 42.8263598,
+    "lon": 0.1683302,
+    "ele": null,
+    "osm": "node/4488887328",
+    "osm_name": "Refuge d'Orédon",
+    "website": null,
+    "match": "override"
+  },
+  "BK_STRUCTURE:107": {
+    "name": "Refuge de Bayssellance  (FFCAM)",
+    "lat": 42.7794,
+    "lon": -0.124203,
+    "ele": 2651,
+    "osm": "way/216881547",
+    "osm_name": "Refuge de Bayssellance",
+    "website": "https://refugebayssellance.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:113": {
+    "name": "Refuge de Campana de Cloutou  (FFCAM)",
+    "lat": 42.881596,
+    "lon": 0.205382,
+    "ele": 2226,
+    "osm": "way/70833186",
+    "osm_name": "Refuge de Campana de Cloutou",
+    "website": "https://refugecampanadecloutou.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8934wt7": {
+    "name": "Refuge de Campana de Cloutou Non Gardé (FFCAM)",
+    "lat": 42.881596,
+    "lon": 0.205382,
+    "ele": 2226,
+    "osm": "way/70833186",
+    "osm_name": "Refuge de Campana de Cloutou",
+    "website": "https://refugecampanadecloutou.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:63": {
+    "name": "Refuge de Chabourneou  (FFCAM)",
+    "lat": 44.809976,
+    "lon": 6.315006,
+    "ele": 1998,
+    "osm": "way/249159678",
+    "osm_name": "Refuge de Chabournéou",
+    "website": "https://refugechabourneou.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:97": {
+    "name": "Refuge de Chambeyron  (FFCAM)",
+    "lat": 44.530111,
+    "lon": 6.836067,
+    "ele": 2626,
+    "osm": "way/208049323",
+    "osm_name": "Refuge du Chambeyron",
+    "website": "https://refugeduchambeyron.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:91": {
+    "name": "Refuge de Cougourde  (FFCAM)",
+    "lat": 44.126341,
+    "lon": 7.330844,
+    "ele": 2100,
+    "osm": "way/115740095",
+    "osm_name": "Refuge de la Cougourde",
+    "website": "https://refugelacougourde.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:71": {
+    "name": "Refuge de Font Turbat  (FFCAM)",
+    "lat": 44.864948,
+    "lon": 6.177736,
+    "ele": 2178,
+    "osm": "way/302547403",
+    "osm_name": "Refuge de Font-Turbat",
+    "website": "https://www.fontturbat.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:94": {
+    "name": "Refuge de Gialorgues  (FFCAM)",
+    "lat": 44.23652,
+    "lon": 6.819759,
+    "ele": 2275,
+    "osm": "way/143722890",
+    "osm_name": "Refuge de Gialorgues",
+    "website": "https://refugedegialorgues.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:18": {
+    "name": "Refuge de La Pointe Percée - Gramusset (FFCAM)",
+    "lat": 45.955454,
+    "lon": 6.544452,
+    "ele": 2164,
+    "osm": "way/127033827",
+    "osm_name": "Refuge de la Pointe Percée - Gramusset",
+    "website": "https://refugelapointepercee.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8nnte7d": {
+    "name": "Refuge de La Pointe Percée - Gramusset Non Gardé (FFCAM)",
+    "lat": 45.955454,
+    "lon": 6.544452,
+    "ele": 2164,
+    "osm": "way/127033827",
+    "osm_name": "Refuge de la Pointe Percée - Gramusset",
+    "website": "https://refugelapointepercee.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:121": {
+    "name": "Refuge de Larribet  (FFCAM)",
+    "lat": 42.858207,
+    "lon": -0.288841,
+    "ele": 2072,
+    "osm": "way/193021745",
+    "osm_name": "Refuge de Larribet",
+    "website": "https://refugedelarribet.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8l3ommd": {
+    "name": "Refuge de Leschaux Non Gardé (FFCAM)",
+    "lat": 45.894856,
+    "lon": 6.980967,
+    "ele": 2447,
+    "osm": "way/97321426",
+    "osm_name": "Refuge de Leschaux",
+    "website": "https://refugeleschaux.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:90": {
+    "name": "Refuge de Nice  (FFCAM)",
+    "lat": 44.104394,
+    "lon": 7.400375,
+    "ele": 2232,
+    "osm": "way/112981194",
+    "osm_name": "Refuge de Nice",
+    "website": "https://refugedenice.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8mjvfvz": {
+    "name": "Refuge de Nice Non Gardé (FFCAM)",
+    "lat": 44.104394,
+    "lon": 7.400375,
+    "ele": 2232,
+    "osm": "way/112981194",
+    "osm_name": "Refuge de Nice",
+    "website": "https://refugedenice.ffcam.fr/",
+    "match": "website"
+  },
+  "OPRF-93151": {
+    "name": "Refuge de Plaisance",
+    "lat": 45.462986,
+    "lon": 6.79202,
+    "ele": null,
+    "osm": "way/154064160",
+    "osm_name": "Refuge de Plaisance",
+    "website": "https://refuge-plaisance.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:5a1mymmzijik": {
+    "name": "Refuge de Plan Sec",
+    "lat": 45.257268,
+    "lon": 6.730936,
+    "ele": null,
+    "osm": "way/112147855",
+    "osm_name": "Refuge de Plan Sec",
+    "website": null,
+    "match": "name"
+  },
+  "OPRF-92949": {
+    "name": "Refuge de Plan du Lac",
+    "lat": 45.346096,
+    "lon": 6.837466,
+    "ele": null,
+    "osm": "node/1026461883",
+    "osm_name": "Refuge du Plan du Lac",
+    "website": "https://refuge-plandulac.vanoise.com",
+    "match": "name"
+  },
+  "BK_STRUCTURE:xxx5u8nmpryk": {
+    "name": "Refuge de Platé Non Gardé (FFCAM)",
+    "lat": 45.965612,
+    "lon": 6.717284,
+    "ele": 2032,
+    "osm": "way/78665211",
+    "osm_name": "Refuge de Platé",
+    "website": "https://refugedeplate.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:106": {
+    "name": "Refuge de Pombie  (FFCAM)",
+    "lat": 42.835498,
+    "lon": -0.426946,
+    "ele": 2032,
+    "osm": "way/297038703",
+    "osm_name": "Refuge de Pombie",
+    "website": "https://refugedepombie.ffcam.fr/",
+    "match": "website"
+  },
+  "OPRF-93152": {
+    "name": "Refuge de Prariond",
+    "lat": 45.455581,
+    "lon": 7.070971,
+    "ele": 2324,
+    "osm": "way/140882871",
+    "osm_name": "Refuge de Prariond",
+    "website": "https://refuge-prariond.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:37": {
+    "name": "Refuge de Presset  (FFCAM)",
+    "lat": 45.648319,
+    "lon": 6.663869,
+    "ele": 2514,
+    "osm": "way/377945192",
+    "osm_name": "Refuge de Presset",
+    "website": "https://refugedepresset.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8xp8y6e": {
+    "name": "Refuge de Presset Non Gardé (FFCAM)",
+    "lat": 45.648319,
+    "lon": 6.663869,
+    "ele": 2514,
+    "osm": "way/377945192",
+    "osm_name": "Refuge de Presset",
+    "website": "https://refugedepresset.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:50": {
+    "name": "Refuge de Péclet-Polset",
+    "lat": 45.289338,
+    "lon": 6.659198,
+    "ele": 2479,
+    "osm": "way/47597059",
+    "osm_name": "Refuge de Péclet-Polset",
+    "website": "https://refugepecletpolset.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8mon63z": {
+    "name": "Refuge de Péclet-Polset Non Gardé",
+    "lat": 45.289338,
+    "lon": 6.659198,
+    "ele": 2479,
+    "osm": "way/47597059",
+    "osm_name": "Refuge de Péclet-Polset",
+    "website": "https://refugepecletpolset.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:93": {
+    "name": "Refuge de Rabuons  (FFCAM)",
+    "lat": 44.268444,
+    "lon": 6.978125,
+    "ele": 2523,
+    "osm": "way/143709481",
+    "osm_name": "Refuge de Rabuons",
+    "website": "https://refugederabuons.ffcam.fr/",
+    "match": "website"
+  },
+  "OPRF-93149": {
+    "name": "Refuge de Rosuel",
+    "lat": 45.518178,
+    "lon": 6.804749,
+    "ele": 1547,
+    "osm": "way/771896509",
+    "osm_name": "Refuge de Rosuel",
+    "website": "https://refuge-rosuel.vanoise.com",
+    "match": "name"
+  },
+  "BK_STRUCTURE:80": {
+    "name": "Refuge de Temple Ecrins  (FFCAM)",
+    "lat": 44.904249,
+    "lon": 6.332556,
+    "ele": 2410,
+    "osm": "way/787047596",
+    "osm_name": "Refuge Temple-Écrins",
+    "website": "http://refugetempleecrins.ffcam.fr/",
+    "match": "website"
+  },
+  "RP-refuge-de-terre-rouge": {
+    "name": "Refuge de Terre Rouge",
+    "lat": 45.13067,
+    "lon": 6.51245,
+    "ele": 2182,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge",
+    "match": "manual"
+  },
+  "OPRF-93145": {
+    "name": "Refuge de Turia",
+    "lat": 45.553394,
+    "lon": 6.873444,
+    "ele": null,
+    "osm": "way/140869105",
+    "osm_name": "Refuge de Turia",
+    "website": "https://refuge-turia.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:xxx5wdwmtq8a": {
+    "name": "Refuge de Tête Rousse Non Gardé (FFCAM)",
+    "lat": 45.854939,
+    "lon": 6.817525,
+    "ele": 3165,
+    "osm": "way/246399018",
+    "osm_name": "Refuge de Tête Rousse",
+    "website": "https://montblanc.ffcam.fr/refuge-home-2.html",
+    "match": "name"
+  },
+  "OPRF-92996": {
+    "name": "Refuge de Vallonbrun",
+    "lat": 45.310331,
+    "lon": 6.937255,
+    "ele": null,
+    "osm": "way/131211293",
+    "osm_name": "Refuge de Vallonbrun",
+    "website": "https://refuge-vallonbrun.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:108": {
+    "name": "Refuge de Vénasque  (FFCAM)",
+    "lat": 42.700241,
+    "lon": 0.641908,
+    "ele": 2249,
+    "osm": "way/1190012180",
+    "osm_name": "Refuge de Vénasque",
+    "website": "https://refugedevenasque.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8xycgku": {
+    "name": "Refuge de Vénasque Non Gardé (FFCAM)",
+    "lat": 42.700241,
+    "lon": 0.641908,
+    "ele": 2249,
+    "osm": "way/1190012180",
+    "osm_name": "Refuge de Vénasque",
+    "website": "https://refugedevenasque.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:85": {
+    "name": "Refuge de l'Aigle (FFCAM)",
+    "lat": 45.011278,
+    "lon": 6.32469,
+    "ele": 3440,
+    "osm": "way/173370969",
+    "osm_name": "Refuge de l'Aigle",
+    "website": "https://refugedelaigle.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u84snc9p": {
+    "name": "Refuge de l'Aigle Non Gardé (FFCAM)",
+    "lat": 45.011278,
+    "lon": 6.32469,
+    "ele": 3440,
+    "osm": "way/173370969",
+    "osm_name": "Refuge de l'Aigle",
+    "website": "https://refugedelaigle.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:74": {
+    "name": "Refuge de l'Alpe de Villar d'Arène (FFCAM)",
+    "lat": 44.996188,
+    "lon": 6.384542,
+    "ele": 2071,
+    "osm": "way/149039802",
+    "osm_name": "Refuge de l'Alpe de Villar-d'Arène",
+    "website": "https://refugealpedevillardarene.ffcam.fr/home.html",
+    "match": "name"
+  },
+  "BK_STRUCTURE:xxxld3htkpn": {
+    "name": "Refuge de l'Arpont",
+    "lat": 45.319092,
+    "lon": 6.793618,
+    "ele": 2309,
+    "osm": "way/1068984940",
+    "osm_name": "Refuge de l'Arpont",
+    "website": "https://refuge-arpont.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:26": {
+    "name": "Refuge de l'Envers des Aiguilles  (FFCAM)",
+    "lat": 45.899994,
+    "lon": 6.927543,
+    "ele": 2493,
+    "osm": "way/97322551",
+    "osm_name": "Refuge de L'Envers des Aiguilles",
+    "website": "https://refugelenversdesaiguilles.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8jmexys": {
+    "name": "Refuge de l'Envers des Aiguilles Non Gardé (FFCAM)",
+    "lat": 45.899994,
+    "lon": 6.927543,
+    "ele": 2493,
+    "osm": "way/97322551",
+    "osm_name": "Refuge de L'Envers des Aiguilles",
+    "website": "https://refugelenversdesaiguilles.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:126": {
+    "name": "Refuge de l'Etang Fourcat  (FFCAM)",
+    "lat": 42.665011,
+    "lon": 1.489758,
+    "ele": 2445,
+    "osm": "way/127287254",
+    "osm_name": "Refuge de l'Étang Fourcat",
+    "website": "https://refugeetangfourcat.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:127": {
+    "name": "Refuge de l'Etang Pinet  (FFCAM)",
+    "lat": 42.691328,
+    "lon": 1.396558,
+    "ele": 2240,
+    "osm": "way/170679115",
+    "osm_name": "Refuge du Pinet",
+    "website": "https://refugeetangpinet.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:128": {
+    "name": "Refuge de l'Etang d'Araing  (FFCAM)",
+    "lat": 42.83468,
+    "lon": 0.873405,
+    "ele": 1965,
+    "osm": "way/143417686",
+    "osm_name": "Refuge de l'etang d'Araing",
+    "website": "http://www.refuge-araing.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:57": {
+    "name": "Refuge de l'Etendard  (FFCAM)",
+    "lat": 45.203798,
+    "lon": 6.17534,
+    "ele": 2430,
+    "osm": "way/726966752",
+    "osm_name": "Refuge de l'Étendard",
+    "website": "https://refugedeletendard.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5ylsjmuv1": {
+    "name": "Refuge de l'OULE",
+    "lat": 45.314085,
+    "lon": 6.135429,
+    "ele": 1836,
+    "osm": "way/44890513",
+    "osm_name": "Refuge de l'Oule",
+    "website": "https://refugedeloule.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:70": {
+    "name": "Refuge de l'Olan  (FFCAM)",
+    "lat": 44.84149,
+    "lon": 6.204499,
+    "ele": 2344,
+    "osm": "way/757524503",
+    "osm_name": "Refuge de l'Olan",
+    "website": "https://refugedelolan.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:5a1nrby5i831": {
+    "name": "Refuge de l'Orgère",
+    "lat": 45.22923,
+    "lon": 6.67291,
+    "ele": 1935,
+    "osm": "way/95777693",
+    "osm_name": "Refuge de l'Orgère",
+    "website": "https://refuge-orgere.vanoise.com",
+    "match": "name"
+  },
+  "BK_STRUCTURE:112": {
+    "name": "Refuge de la Brèche de Roland - Les Sarradets (FFCAM)",
+    "lat": 42.695912,
+    "lon": -0.033313,
+    "ele": 2587,
+    "osm": "way/208907237",
+    "osm_name": "Refuge de la Breche de Roland",
+    "website": "https://refugebrechederoland.ffcam.fr/",
+    "match": "website"
+  },
+  "MANUAL-coire": {
+    "name": "Refuge de la Coire",
+    "lat": 45.61831,
+    "lon": 6.60856,
+    "ele": 2059,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.refugedelacoire.fr/reservations-hiver/",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:52": {
+    "name": "Refuge de la Dent Parrachée",
+    "lat": 45.269753,
+    "lon": 6.719049,
+    "ele": 2520,
+    "osm": "way/66691276",
+    "osm_name": "Refuge de la Dent Parrachée",
+    "website": "https://refugeladentparrachee.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:13": {
+    "name": "Refuge de la Dent d'Oche  (FFCAM)",
+    "lat": 46.352623,
+    "lon": 6.728377,
+    "ele": 2114,
+    "osm": "way/66934732",
+    "osm_name": "Refuge de la Dent d'Oche",
+    "website": "https://www.refugedeladentdoche.com/",
+    "match": "name"
+  },
+  "OPRF-92951": {
+    "name": "Refuge de la Femma",
+    "lat": 45.362763,
+    "lon": 6.929143,
+    "ele": 2352,
+    "osm": "way/111555477",
+    "osm_name": "Refuge de la Femma",
+    "website": "https://refuge-femma.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:5a1ngkc39duv": {
+    "name": "Refuge de la Fournache",
+    "lat": 45.265627,
+    "lon": 6.724983,
+    "ele": 2363,
+    "osm": "way/66693718",
+    "osm_name": "Refuge de la Fournache",
+    "website": null,
+    "match": "name"
+  },
+  "BK_STRUCTURE:139": {
+    "name": "Refuge de la Glère  (FFCAM)",
+    "lat": 42.860906,
+    "lon": 0.090546,
+    "ele": 2153,
+    "osm": "way/140895867",
+    "osm_name": "Refuge de la Glère",
+    "website": "https://refugedelaglere.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:76": {
+    "name": "Refuge de la Lavey  (FFCAM)",
+    "lat": 44.898617,
+    "lon": 6.206164,
+    "ele": 1797,
+    "osm": "way/34070981",
+    "osm_name": "Refuge de la Lavey",
+    "website": "https://refugelalavey.ffcam.fr/",
+    "match": "website"
+  },
+  "OPRF-92948": {
+    "name": "Refuge de la Leisse",
+    "lat": 45.396919,
+    "lon": 6.882436,
+    "ele": 2487,
+    "osm": "node/606374063",
+    "osm_name": "Refuge de la Leisse",
+    "website": "https://refuge-leisse.vanoise.com/",
+    "match": "name"
+  },
+  "OPRF-93146": {
+    "name": "Refuge de la Martin",
+    "lat": 45.523786,
+    "lon": 6.900026,
+    "ele": null,
+    "osm": "way/175915826",
+    "osm_name": "Refuge de La Martin",
+    "website": "https://refuge-lamartin.vanoise.com",
+    "match": "name"
+  },
+  "BK_STRUCTURE:56": {
+    "name": "Refuge de la Pra  (FFCAM)",
+    "lat": 45.161222,
+    "lon": 5.944485,
+    "ele": 2105,
+    "osm": "way/178452928",
+    "osm_name": "Refuge de La Pra",
+    "website": "http://refugedelapra.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8l09uta": {
+    "name": "Refuge de la Pra Non Gardé",
+    "lat": 45.161222,
+    "lon": 5.944485,
+    "ele": 2105,
+    "osm": "way/178452928",
+    "osm_name": "Refuge de La Pra",
+    "website": "http://refugedelapra.ffcam.fr/",
+    "match": "name"
+  },
+  "MANUAL-selle": {
+    "name": "Refuge de la Selle",
+    "lat": 44.98228,
+    "lon": 6.24913,
+    "ele": 2673,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.refugedelaselle.com/contact/",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:5a1novae31ez": {
+    "name": "Refuge de la Valette",
+    "lat": 45.353362,
+    "lon": 6.724095,
+    "ele": 2590,
+    "osm": "node/611845738",
+    "osm_name": "Refuge de la Valette",
+    "website": "https://refuge-valette.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:89": {
+    "name": "Refuge de la Valmasque  (FFCAM)",
+    "lat": 44.108152,
+    "lon": 7.446663,
+    "ele": 2233,
+    "osm": "way/192300091",
+    "osm_name": "Refuge de la Valmasque",
+    "website": "https://refugedevalmasque.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8xxgiou": {
+    "name": "Refuge de la Valmasque Non Gardé (FFCAM)",
+    "lat": 44.108152,
+    "lon": 7.446663,
+    "ele": 2233,
+    "osm": "way/192300091",
+    "osm_name": "Refuge de la Valmasque",
+    "website": "https://refugedevalmasque.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:58": {
+    "name": "Refuge des Aiguilles d'Arves  (FFCAM)",
+    "lat": 45.118204,
+    "lon": 6.375202,
+    "ele": 2260,
+    "osm": "way/757505411",
+    "osm_name": "Refuge des Aiguilles d'Arves",
+    "website": "https://refugedesaiguillesdarves.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:68": {
+    "name": "Refuge des Bans  (FFCAM)",
+    "lat": 44.834436,
+    "lon": 6.361157,
+    "ele": 2106,
+    "osm": "way/757522585",
+    "osm_name": "Refuge des Bans",
+    "website": "https://refugedesbans.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:125": {
+    "name": "Refuge des Bésines  (FFCAM)",
+    "lat": 42.603899,
+    "lon": 1.868528,
+    "ele": 2104,
+    "osm": "way/364735948",
+    "osm_name": "Refuge des Besines",
+    "website": "https://refugedesbesines.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:34": {
+    "name": "Refuge des Conscrits  (FFCAM)",
+    "lat": 45.786956,
+    "lon": 6.766036,
+    "ele": 2614,
+    "osm": "way/32571532",
+    "osm_name": "Refuge des Conscrits",
+    "website": "https://refugedesconscrits.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:129": {
+    "name": "Refuge des Cortalets  (FFCAM)",
+    "lat": 42.534333,
+    "lon": 2.465052,
+    "ele": 2148,
+    "osm": "way/242517594",
+    "osm_name": "Refuge des Cortalets",
+    "website": "https://refugedescortalets.ffcam.fr/home.html",
+    "match": "website"
+  },
+  "BK_STRUCTURE:59": {
+    "name": "Refuge des Drayères  (FFCAM)",
+    "lat": 45.081099,
+    "lon": 6.508047,
+    "ele": 2180,
+    "osm": "way/120461411",
+    "osm_name": "Refuge des Drayères",
+    "website": "https://refugedesdrayeres.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:82": {
+    "name": "Refuge des Ecrins (FFCAM)",
+    "lat": 44.947325,
+    "lon": 6.383024,
+    "ele": 3161,
+    "osm": "way/149470306",
+    "osm_name": "Refuge des Écrins",
+    "website": "https://refugedesecrins.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:47": {
+    "name": "Refuge des Evettes  (FFCAM)",
+    "lat": 45.368492,
+    "lon": 7.107386,
+    "ele": 2594,
+    "osm": "way/55693843",
+    "osm_name": "Refuge des Évettes",
+    "website": "https://refugedesevettes.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxxualkeru9": {
+    "name": "Refuge des Evettes Non Gardé (FFCAM)",
+    "lat": 45.368492,
+    "lon": 7.107386,
+    "ele": 2594,
+    "osm": "way/55693843",
+    "osm_name": "Refuge des Évettes",
+    "website": "https://refugedesevettes.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:28": {
+    "name": "Refuge des Grands Mulets",
+    "lat": 45.86659,
+    "lon": 6.861251,
+    "ele": 3051,
+    "osm": "way/97320083",
+    "osm_name": "Refuge des Grands Mulets",
+    "website": "https://refugedesgrandsmulets.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8kr9qqd": {
+    "name": "Refuge des Grands Mulets Non Gardé",
+    "lat": 45.86659,
+    "lon": 6.861251,
+    "ele": 3051,
+    "osm": "way/97320083",
+    "osm_name": "Refuge des Grands Mulets",
+    "website": "https://refugedesgrandsmulets.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:95": {
+    "name": "Refuge des Lacs de Vens  (FFCAM)",
+    "lat": 44.316733,
+    "lon": 6.941948,
+    "ele": 2380,
+    "osm": "way/143711861",
+    "osm_name": "Refuge des Lacs de Vens",
+    "website": "https://refugedevens.ffcam.fr/",
+    "match": "website"
+  },
+  "RP-marches": {
+    "name": "Refuge des Marches",
+    "lat": 45.15734,
+    "lon": 6.56546,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/marches",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:88": {
+    "name": "Refuge des Merveilles  (FFCAM)",
+    "lat": 44.057448,
+    "lon": 7.45183,
+    "ele": 2130,
+    "osm": "way/192300253",
+    "osm_name": "Refuge des Merveilles",
+    "website": "https://refugedesmerveilles.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:117": {
+    "name": "Refuge des Oulettes de Gaube  (FFCAM)",
+    "lat": 42.792914,
+    "lon": -0.141426,
+    "ele": 2151,
+    "osm": "way/70178402",
+    "osm_name": "Refuge des Oulettes de Gaube",
+    "website": "https://refugeoulettesdegaube.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8mmakxx": {
+    "name": "Refuge des Oulettes de Gaube Non Gardé (FFCAM)",
+    "lat": 42.792914,
+    "lon": -0.141426,
+    "ele": 2151,
+    "osm": "way/70178402",
+    "osm_name": "Refuge des Oulettes de Gaube",
+    "website": "https://refugeoulettesdegaube.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:65": {
+    "name": "Refuge des Souffles  (FFCAM)",
+    "lat": 44.844662,
+    "lon": 6.146537,
+    "ele": 1969,
+    "osm": "way/757524338",
+    "osm_name": "Refuge des Souffles",
+    "website": "https://refugedessouffles.ffcam.fr/",
+    "match": "website"
+  },
+  "OPRF-93150": {
+    "name": "Refuge du Bois",
+    "lat": 45.459549,
+    "lon": 6.744398,
+    "ele": null,
+    "osm": "node/1542875582",
+    "osm_name": "Refuge du Bois",
+    "website": "https://refuge-dubois.vanoise.com/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:48": {
+    "name": "Refuge du Carro  (FFCAM)",
+    "lat": 45.419858,
+    "lon": 7.123068,
+    "ele": 2764,
+    "osm": "way/100195244",
+    "osm_name": "Refuge du Carro",
+    "website": "https://refugeducarro.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5ualjg1ab": {
+    "name": "Refuge du Carro Non Gardé (FFCAM)",
+    "lat": 45.419858,
+    "lon": 7.123068,
+    "ele": 2764,
+    "osm": "way/100195244",
+    "osm_name": "Refuge du Carro",
+    "website": "https://refugeducarro.ffcam.fr/",
+    "match": "website"
+  },
+  "RP-chardonnet": {
+    "name": "Refuge du Chardonnet",
+    "lat": 45.02571,
+    "lon": 6.53188,
+    "ele": 2223,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/chardonnet",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:67": {
+    "name": "Refuge du Clot - Xavier Blanc  (FFCAM)",
+    "lat": 44.829249,
+    "lon": 6.275541,
+    "ele": 1397,
+    "osm": "way/181914850",
+    "osm_name": "Refuge du Clot - Xavier Blanc",
+    "website": "https://chaletduclot.ffcam.fr/",
+    "match": "website"
+  },
+  "RP-refuge-du-clot-des-vaches": {
+    "name": "Refuge du Clôt des Vaches",
+    "lat": 45.03196,
+    "lon": 6.48454,
+    "ele": 2253,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:45": {
+    "name": "Refuge du Col de la Vanoise",
+    "lat": 45.392022,
+    "lon": 6.790898,
+    "ele": 2518,
+    "osm": "way/519553611",
+    "osm_name": "Refuge du Col de la Vanoise",
+    "website": "https://refugecoldelavanoise.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5snuwv3sr": {
+    "name": "Refuge du Col de la Vanoise Non Gardé",
+    "lat": 45.392022,
+    "lon": 6.790898,
+    "ele": 2518,
+    "osm": "way/519553611",
+    "osm_name": "Refuge du Col de la Vanoise",
+    "website": "https://refugecoldelavanoise.ffcam.fr/",
+    "match": "name"
+  },
+  "OPRF-93148": {
+    "name": "Refuge du Col du Palet",
+    "lat": 45.458296,
+    "lon": 6.861183,
+    "ele": null,
+    "osm": "way/184939055",
+    "osm_name": "Refuge du Col du Palet",
+    "website": "https://refuge-coldupalet.vanoise.com",
+    "match": "name"
+  },
+  "BK_STRUCTURE:24": {
+    "name": "Refuge du Couvercle  (FFCAM)",
+    "lat": 45.910225,
+    "lon": 6.965303,
+    "ele": 2683,
+    "osm": "way/41222110",
+    "osm_name": "Refuge du Couvercle",
+    "website": "https://refugeducouvercle.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8jh7i7h": {
+    "name": "Refuge du Couvercle Non Gardé (FFCAM)",
+    "lat": 45.910225,
+    "lon": 6.965303,
+    "ele": 2683,
+    "osm": "way/41222110",
+    "osm_name": "Refuge du Couvercle",
+    "website": "https://refugeducouvercle.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:51": {
+    "name": "Refuge du Fond d'Aussois",
+    "lat": 45.276761,
+    "lon": 6.702478,
+    "ele": 2346,
+    "osm": "way/188379550",
+    "osm_name": "Refuge du Fond d'Aussois",
+    "website": "https://refugefonddaussois.ffcam.fr/",
+    "match": "website"
+  },
+  "OPRF-93147": {
+    "name": "Refuge du Fond des Fours",
+    "lat": 45.401554,
+    "lon": 6.99202,
+    "ele": 2537,
+    "osm": "relation/10992086",
+    "osm_name": "Refuge du Fond des Fours",
+    "website": "https://refuge-fonddesfours.vanoise.com/",
+    "match": "name"
+  },
+  "RP-galibier": {
+    "name": "Refuge du Galibier",
+    "lat": 45.06259,
+    "lon": 6.40647,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/galibier",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:72": {
+    "name": "Refuge du Glacier Blanc  (FFCAM)",
+    "lat": 44.937543,
+    "lon": 6.41163,
+    "ele": 2542,
+    "osm": "way/33058358",
+    "osm_name": "Refuge du Glacier Blanc",
+    "website": "https://refugeduglacierblanc.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5wd7n2ct0": {
+    "name": "Refuge du Goûter Non Gardé (FFCAM)",
+    "lat": 45.851088,
+    "lon": 6.830597,
+    "ele": 3815,
+    "osm": "way/246399016",
+    "osm_name": "Refuge du Goûter",
+    "website": "https://refugedugouter.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:44": {
+    "name": "Refuge du Grand Bec  (FFCAM)",
+    "lat": 45.4165,
+    "lon": 6.73283,
+    "ele": 2398,
+    "osm": "way/260901361",
+    "osm_name": "Refuge du Grand Bec",
+    "website": "https://refugedugrandbec.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8koph3e": {
+    "name": "Refuge du Grand Bec Non Gardé (FFCAM)",
+    "lat": 45.4165,
+    "lon": 6.73283,
+    "ele": 2398,
+    "osm": "way/260901361",
+    "osm_name": "Refuge du Grand Bec",
+    "website": "https://refugedugrandbec.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:110": {
+    "name": "Refuge du Maupas (FFCAM)",
+    "lat": 42.714821,
+    "lon": 0.549115,
+    "ele": 2430,
+    "osm": "way/267028254",
+    "osm_name": "Refuge du Maupas",
+    "website": "https://refugedumaupas.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:38": {
+    "name": "Refuge du Mont Pourri  (FFCAM)",
+    "lat": 45.52802,
+    "lon": 6.826804,
+    "ele": 2370,
+    "osm": "way/184939920",
+    "osm_name": "Refuge du Mont Pourri",
+    "website": "http://refugedumontpourri.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:60": {
+    "name": "Refuge du Mont Thabor  (FFCAM)",
+    "lat": 45.123466,
+    "lon": 6.599797,
+    "ele": 2490,
+    "osm": "way/243644031",
+    "osm_name": "Refuge du Mont Thabor",
+    "website": "https://refugedumontthabor.ffcam.fr/",
+    "match": "website"
+  },
+  "MANUAL-nant-du-beurre": {
+    "name": "Refuge du Nant du Beurre",
+    "lat": 45.58297,
+    "lon": 6.56117,
+    "ele": 2085,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refugedunantdubeurre.fr/",
+    "match": "manual"
+  },
+  "BK_STRUCTURE:17": {
+    "name": "Refuge du Parmelan  (FFCAM)",
+    "lat": 45.946339,
+    "lon": 6.240022,
+    "ele": 1825,
+    "osm": "relation/16079824",
+    "osm_name": "Refuge du Parmelan / Camille Dunant",
+    "website": "https://refugeduparmelan.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:84": {
+    "name": "Refuge du Pavé  (FFCAM)",
+    "lat": 44.985913,
+    "lon": 6.328583,
+    "ele": 2841,
+    "osm": "way/148974587",
+    "osm_name": "Refuge du Pavé",
+    "website": "https://refugedupave.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8mnoqrq": {
+    "name": "Refuge du Pavé Non Gardé (FFCAM)",
+    "lat": 44.985913,
+    "lon": 6.328583,
+    "ele": 2841,
+    "osm": "way/148974587",
+    "osm_name": "Refuge du Pavé",
+    "website": "https://refugedupave.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:79": {
+    "name": "Refuge du Pelvoux  (FFCAM)",
+    "lat": 44.882628,
+    "lon": 6.405657,
+    "ele": 2694,
+    "osm": "way/238656388",
+    "osm_name": "Refuge du Pelvoux",
+    "website": "https://refugedupelvoux.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:69": {
+    "name": "Refuge du Pigeonnier  (FFCAM)",
+    "lat": 44.854909,
+    "lon": 6.284929,
+    "ele": 2423,
+    "osm": "way/403703493",
+    "osm_name": "Refuge du Pigeonnier",
+    "website": "https://refugedupigeonnier.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:40": {
+    "name": "Refuge du Plan des Gouilles  (FFCAM)",
+    "lat": 45.444172,
+    "lon": 6.743187,
+    "ele": 2346,
+    "osm": "way/154064743",
+    "osm_name": "Refuge du Plan des Gouilles",
+    "website": "https://refugeplandesgouilles.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8mueov1": {
+    "name": "Refuge du Plan des Gouilles Non Gardé (FFCAM)",
+    "lat": 45.444172,
+    "lon": 6.743187,
+    "ele": 2346,
+    "osm": "way/154064743",
+    "osm_name": "Refuge du Plan des Gouilles",
+    "website": "https://refugeplandesgouilles.ffcam.fr/",
+    "match": "name"
+  },
+  "BK_STRUCTURE:109": {
+    "name": "Refuge du Portillon  (FFCAM)",
+    "lat": 42.703849,
+    "lon": 0.508113,
+    "ele": 2570,
+    "osm": "way/326817179",
+    "osm_name": "Refuge du Portillon",
+    "website": "https://refugeduportillon.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:75": {
+    "name": "Refuge du Promontoire  (FFCAM)",
+    "lat": 44.998436,
+    "lon": 6.303388,
+    "ele": 3092,
+    "osm": "way/260065646",
+    "osm_name": "Refuge du Promontoire",
+    "website": "https://refugedupromontoire.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5u8xqew2j": {
+    "name": "Refuge du Promontoire Non Gardé (FFCAM)",
+    "lat": 44.998436,
+    "lon": 6.303388,
+    "ele": 3092,
+    "osm": "way/260065646",
+    "osm_name": "Refuge du Promontoire",
+    "website": "https://refugedupromontoire.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:61": {
+    "name": "Refuge du Pré la Chaumette  (FFCAM)",
+    "lat": 44.765322,
+    "lon": 6.327574,
+    "ele": 1803,
+    "osm": "way/140893689",
+    "osm_name": "Refuge du Pré La Chaumette",
+    "website": "https://refugepredelachaumette.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:5a1njyztnljl": {
+    "name": "Refuge du Roc",
+    "lat": 45.3278498,
+    "lon": 6.6912452,
+    "ele": 1911,
+    "osm": "way/47600502",
+    "osm_name": "Refuge du Roc",
+    "website": "https://www.refugeduroc.com/",
+    "match": "override"
+  },
+  "BK_STRUCTURE:5a1nww29smum": {
+    "name": "Refuge du Saut",
+    "lat": 45.337137,
+    "lon": 6.632365,
+    "ele": 2126,
+    "osm": "way/686394450",
+    "osm_name": "Refuge du Saut",
+    "website": "https://www.refuges-vanoise.com/fiche-hebergement-le-saut-tour-des-glaciers-de-la-vanoise-vanoise-bql5a3s5xavw.html",
+    "match": "name"
+  },
+  "BK_STRUCTURE:78": {
+    "name": "Refuge du Sélé  (FFCAM)",
+    "lat": 44.873326,
+    "lon": 6.390484,
+    "ele": 2504,
+    "osm": "way/238656381",
+    "osm_name": "Refuge du Sélé",
+    "website": "http://refugedusele.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:96": {
+    "name": "Refuge du Viso  (FFCAM)",
+    "lat": 44.700435,
+    "lon": 7.051459,
+    "ele": 2460,
+    "osm": "way/181010670",
+    "osm_name": "Refuge du Viso",
+    "website": "https://refugeduviso.ffcam.fr/",
+    "match": "website"
+  },
+  "BK_STRUCTURE:xxx5xjr51ovb": {
+    "name": "Refuge l' Auberge de Bellecombe",
+    "lat": 45.329403,
+    "lon": 6.827107,
+    "ele": null,
+    "osm": "node/6698480729",
+    "osm_name": "Auberge de Bellecombe",
+    "website": "https://www.aubergedebellecombe.com/",
+    "match": "name"
+  },
+  "RP-rifugio-guido-rey": {
+    "name": "Rifugio Guido Rey",
+    "lat": 45.02731,
+    "lon": 6.75619,
+    "ele": null,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-pro.com/embed/calendrier/rifugio-guido-rey",
+    "match": "manual"
+  }
+}

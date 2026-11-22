@@ -1,11 +1,11 @@
 # Dernière couchette — handover
 
-_État au 21/11/2026._
+_État au 22/11/2026._
 
 Dernière couchette est une carte des places libres dans les refuges de montagne pour le week-end en cours, en ligne sur [dernierecouchette.fr](https://dernierecouchette.fr/) et mise à jour automatiquement par GitHub Actions.
 
 - **Couverture** : 154 refuges, venant de 4 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
-- **Code** : Python standard sans dépendance + une page HTML Leaflet.
+- **Code** : Ruby, bibliothèque standard seulement (aucune gem), scripts dans `rb/` + une page HTML Leaflet. Version : `.ruby-version` (4.0.9, utilisée par GitHub Actions) ; le code tourne aussi sur Ruby 3.1 à 3.3 (vérifié avec les tests).
 - **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), trois fois par jour sinon (6h07, 7h37, 12h07 UTC).
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
 
@@ -18,6 +18,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - [Historique des disponibilités](#historique-des-disponibilités)
 - [Mise en ligne](#mise-en-ligne)
 - [Opérations courantes](#opérations-courantes)
+- [Tests](#tests)
 - [Pièges connus et décisions](#pièges-connus-et-décisions)
 - [Annexe : source de chaque refuge](#annexe--source-de-chaque-refuge)
 
@@ -28,14 +29,14 @@ Deux rythmes : trois scripts « de référence » lancés à la main de temps en
 ```mermaid
 flowchart LR
   subgraph local["De temps en temps, en local (résultats commités sur main)"]
-    huts["refresh_huts.py<br/>centrale FFCAM (4 portails) + Open System + manual_huts.json<br/>→ huts.json"]
-    coords["refresh_coordinates.py<br/>OpenStreetMap + corrections<br/>→ hut_coordinates.json"]
-    links["refresh_links.py<br/>Camptocamp + Skitour<br/>→ hut_links.json"]
+    huts["rb/refresh_huts.rb<br/>centrale FFCAM (4 portails) + Open System + manual_huts.json<br/>→ huts.json"]
+    coords["rb/refresh_coordinates.rb<br/>OpenStreetMap + corrections<br/>→ hut_coordinates.json"]
+    links["rb/refresh_links.rb<br/>Camptocamp + Skitour<br/>→ hut_links.json"]
     huts --> coords --> links
   end
-  subgraph auto["Automatique, GitHub Actions"]
-    avail["ffcam_availability.py<br/>1 requête par refuge<br/>→ latest.csv + history.py"]
-    build["build_map.py<br/>map_template.html + données<br/>→ site/index.html"]
+  subgraph auto["Automatique, GitHub Actions (après tests/unit.sh et tests/check.sh)"]
+    avail["rb/ffcam_availability.rb --history<br/>1 requête par refuge<br/>→ latest.csv + history/"]
+    build["rb/build_map.rb<br/>map_template.html + données<br/>→ site/index.html + site/releves/"]
     avail -- CSV --> build
   end
   huts -- liste des refuges --> avail
@@ -45,19 +46,21 @@ flowchart LR
   build -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
 ```
 
-`ffcam.py` contient le code partagé (requêtes, portails, Open System) et `history.py` l'enregistrement de l'historique.
+Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
-| `huts.json` | 154 refuges : id, nom, type, portail, site | `refresh_huts.py` | oui (main) |
-| `hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `refresh_coordinates.py` | oui (main) |
+| `huts.json` | 154 refuges : id, nom, type, portail, site | `rb/refresh_huts.rb` | oui (main) |
+| `hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `rb/refresh_coordinates.rb` | oui (main) |
 | `coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
 | `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) s'ils en ont un | à la main | oui (main) |
-| `hut_links.json` | liens Camptocamp et Skitour | `refresh_links.py` | oui (main) |
+| `hut_links.json` | liens Camptocamp et Skitour | `rb/refresh_links.rb` | oui (main) |
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
-| `history/` | historique des places + `fetch_log.json` (journal des relevés) | `ffcam_availability.py` | oui (branche `data`) |
+| `history/` | historique des places + `fetch_log.json` (journal des relevés) | `rb/ffcam_availability.rb --history` | oui (branche `data`) |
 | `log_template.html` | page de suivi des relevés | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
+| `.ruby-version` | version de Ruby (GitHub Actions, mise / rbenv en local) | à la main | oui (main) |
+| `tests/` | tests unitaires et rejeu hors ligne (voir [Tests](#tests)) | à la main | oui (main) |
 | `ffcam_*.csv`, `map.html`, `releves/`, `data/`, `site/` | sorties générées | scripts | non (`.gitignore`) |
 | `deploy/` | plan B VPS OVH + nginx + certbot | — | oui, jamais utilisé |
 
@@ -80,7 +83,7 @@ Les places viennent de trois systèmes de réservation, lus là où les refuges 
 
 ## Récupérer les disponibilités : les requêtes
 
-Trois systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `fetch_availability()` dans `ffcam.py`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `polite()` : 2 simultanées au plus et 0,3 s entre deux départs par site.
+Trois systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `Ffcam.fetch_availability` dans `rb/ffcam.rb`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Ffcam.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
 
 ### 1. Centrale FFCAM (portails FFCAM, VANOISE, NEOUVIELLE, BOREON)
 
@@ -118,7 +121,7 @@ BK.openingCalendar   = {"2026-11-21": "OPEN", ...}     # OPEN | CLOSE | UNGUARDE
 
 ### 2. Open System (12 refuges du Parc de la Vanoise, `portal = OPENSYSTEM`)
 
-**Découverte des refuges** (dans `refresh_huts.py`) : la page d'accueil de [refuge-leisse.vanoise.com](https://refuge-leisse.vanoise.com/) liste les autres refuges du Parc (`https://refuge-xxx.vanoise.com`). Sur chaque site, le widget de réservation porte l'id produit :
+**Découverte des refuges** (dans `rb/refresh_huts.rb`, via `Ffcam.fetch_opensystem_huts`) : la page d'accueil de [refuge-leisse.vanoise.com](https://refuge-leisse.vanoise.com/) liste les autres refuges du Parc (`https://refuge-xxx.vanoise.com`). Sur chaque site, le widget de réservation porte l'id produit :
 
 ```
 AllianceReseaux.Widget.Instance("Produit", { idPanier: "AGwCAAA", idIntegration: "1110", ui: "OPRF-92948" })
@@ -143,17 +146,17 @@ GET https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-re
 
 ### Format commun en sortie
 
-Les deux fonctions renvoient le même dictionnaire, ce qui permet au reste (CSV, historique, carte) de ne pas distinguer les systèmes :
+Les méthodes de chaque système renvoient le même hash, ce qui permet au reste (CSV, historique, carte) de ne pas distinguer les systèmes :
 
 ```
 {"free": {"2026-11-21": 24, ...}, "capacity": {"2026-11-21": 24 ou None, ...}, "opening": {"2026-11-21": "OPEN", ...}}
 ```
 
-Pour ajouter un nouveau système : une fonction qui renvoie ce dictionnaire, un `portal` dédié dans `huts.json`, et une branche dans `fetch_availability()`.
+Pour ajouter un nouveau système : une méthode de `Ffcam` qui renvoie ce hash, un `portal` dédié dans `huts.json`, et une branche dans `Ffcam.fetch_availability`.
 
 ### Mode de réservation d'une nuit (`booking`)
 
-La centrale FFCAM dit aussi, nuit par nuit, **comment** réserver, via les classes CSS des cases du calendrier renvoyé (`<div class="day …"><a data-date="2026-12-12" …>`, lu par `booking_modes()`) :
+La centrale FFCAM dit aussi, nuit par nuit, **comment** réserver, via les classes CSS des cases du calendrier renvoyé (`<div class="day …"><a data-date="2026-12-12" …>`, lu par `Ffcam.booking_modes`) :
 
 | Classe de la case | `booking` | Signification |
 | --- | --- | --- |
@@ -171,7 +174,7 @@ Refuge Pro est le logiciel de réservation que ces refuges utilisent ; il fourni
 GET https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge
 ```
 
-C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1,"…"])`. Une fois concaténés et décodés, on y trouve un objet JSON `"availability": {…}` (lu avec `json.JSONDecoder().raw_decode`) :
+C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1,"…"])`. Une fois concaténés et décodés, on y trouve un objet JSON `"availability": {…}` (lu avec `Py.raw_decode`, qui lit un objet JSON à partir d'une position et ignore la suite) :
 
 ```
 {"defaultCapacity":35, "bookingCutoffDays":1, "waitlistEnabled":true,
@@ -193,7 +196,7 @@ Coire, Nant du Beurre, Selle : ajoutés à la main dans `manual_huts.json`, avec
 
 ## La carte
 
-Une seule page HTML (`map_template.html` + les données injectées par `build_map.py`), Leaflet 1.9.4, sans serveur, design « Crêtes » : billets de couchette en papier crème, vert sapin, thème clair uniquement.
+Une seule page HTML (`map_template.html` + les données injectées par `rb/build_map.rb`), Leaflet 1.9.4, sans serveur, design « Crêtes » : billets de couchette en papier crème, vert sapin, thème clair uniquement.
 
 **Panneau de gauche** (feuille glissante en bas sur téléphone)
 
@@ -224,18 +227,19 @@ Une seule page HTML (`map_template.html` + les données injectées par `build_ma
 
 Une page publique, [dernierecouchette.fr/releves/](https://dernierecouchette.fr/releves/) (lien sur la date de mise à jour de la carte), dit si la récupération des places s'est bien passée pour chaque refuge au dernier relevé.
 
-- **Production** : à chaque relevé, `ffcam_availability.py` appelle `fetch_log.record()` (module `fetch_log.py`), qui classe chaque refuge et met à jour `history/fetch_log.json` sur la branche `data`. `build_map.py` génère ensuite la page à partir de `log_template.html`, dans `releves/index.html` à côté de la carte (`site/releves/` en ligne).
+- **Production** : à chaque relevé, `rb/ffcam_availability.rb --history` appelle `FetchLog.record` (module `rb/fetch_log.rb`), qui classe chaque refuge et met à jour `history/fetch_log.json` sur la branche `data`. `rb/build_map.rb` génère ensuite la page à partir de `log_template.html`, dans `releves/index.html` à côté de la carte (`site/releves/` en ligne).
 - **États** : `ok` (nuits reçues ; une remarque si aucun calendrier d'ouverture n'est publié, normal pour un refuge fermé), `warn` « à vérifier » (réponse sans aucune nuit : souvent un changement de format), `err` (requête en échec : délai, erreur HTTP, page sans données ; le message de l'exception est gardé), `skip` « non relevé » (refuges `MANUAL`).
 - **`fetch_log.json`** : `last_run` (le dernier relevé, une entrée par refuge : état, nuits reçues, durée, message), `runs` (les 48 derniers relevés résumés par source, avec la liste des refuges en problème), `last_success` (dernier relevé réussi par refuge). Le déclencheur vient de `GITHUB_EVENT_NAME` (planifié, push, manuel) ou vaut « local ».
 - **Page** : le dernier relevé (durée, nombre de requêtes, déclencheur, résumé), un billet par source (refuges sans erreur / total, 24 derniers relevés en barres, durée cumulée, dernier succès), puis le tableau des refuges filtrable (À traiter, Erreurs, Remarques, Non relevés, Tous) avec recherche.
 - **Effet de bord** : ce fichier change à chaque relevé, donc la branche `data` reçoit un commit par relevé (et non plus seulement en cas de changement de places).
-- En local, `--no-history` n'écrit pas non plus le journal ; `--log <fichier>` permet de l'écrire ailleurs pour tester.
+- Sans `--history` (tout lancement à la main), le journal n'est pas écrit non plus ; `--log <fichier>` permet de l'écrire ailleurs pour tester.
 
 ## Historique des disponibilités
 
 Chaque relevé ajoute une ligne par changement de places, pour toutes les nuits à venir renvoyées (pas seulement le week-end) ; rien n'est encore affiché sur la carte.
 
 - **Où** : branche `data` du dépôt ; en local, le dossier `history/` est un worktree git de cette branche.
+- **Qui écrit** : seulement `rb/ffcam_availability.rb --history`, que passent le workflow et `deploy/run_update.sh`. Sans cette option (défaut), le script n'écrit ni l'historique ni le journal des relevés : un lancement à la main ne touche jamais `history/`. (`--no-history` est encore accepté et ne fait rien.) Le dossier est toujours `history/` à côté de `rb/` : une copie du projet a son propre `history/`.
 - **Fichiers** : `availability_AAAA-MM.csv` (un par mois de relevé) et `state.json` (dernier état connu par refuge/nuit, une ligne par clé pour des diffs git légers ; les nuits passées en sont retirées).
 - **Colonnes** : `fetched_at, hut_id, date, opening, free_beds, capacity` (heure de Paris).
 - **Lire** : l'état d'une nuit à un instant = la dernière ligne avant cet instant pour ce `hut_id` et cette `date`.
@@ -246,7 +250,7 @@ Chaque relevé ajoute une ligne par changement de places, pour toutes les nuits 
 - Fenêtre suivie : d'aujourd'hui à la fin du mois suivant (FFCAM) ou 30 jours (Open System). Les réservations plus lointaines ne sont vues qu'en entrant dans la fenêtre ; une 2e requête par refuge l'élargirait mais a été écartée (charge x2).
 - FFCAM décale parfois la fenêtre vers les premières dates réservables d'un refuge : des nuits lointaines (jusqu'en juillet) apparaissent pour certains.
 - Une requête en erreur n'enregistre rien (pas de faux « 0 place »).
-- Relancer `ffcam_availability.py` en local sans `git pull` dans `history/` fait diverger l'historique : utiliser `--no-history` pour les tests.
+- Lancer `rb/ffcam_availability.rb --history` en local sans `git pull` dans `history/` fait diverger l'historique : ne le faire que volontairement, après `git pull`.
 
 ## Mise en ligne
 
@@ -256,7 +260,7 @@ Le site est publié par GitHub Actions sur GitHub Pages, derrière le domaine de
 | --- | --- |
 | Dépôt | `jor-di/ffcam-huts`, public, branche par défaut `main` (obligatoire pour les tâches planifiées et la publication Pages) |
 | Tâche | `.github/workflows/update.yml` : `7 * * 12,1-4,6-9 *` (saison), `7 6,12 * 5,10,11 *` et `37 7 * 5,10,11 *` (hors saison : 3 créneaux, le planning GitHub pouvant prendre des heures de retard ou sauter un passage), heures UTC ; aussi à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
-| Étapes | checkout `main` + checkout `data` dans `history/` → `ffcam_availability.py` → `build_map.py` → commit de `history/` si changement → déploiement Pages |
+| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → déploiement Pages |
 | Pages | Settings → Pages → Source = GitHub Actions ; Custom domain = `dernierecouchette.fr` ; « Enforce HTTPS » à cocher une fois le certificat prêt |
 | DNS (OVH) | 4 × A `@` → `185.199.108-111.153`, 4 × AAAA `@` → `2606:50c0:8000-8003::153`, CNAME `www` → `jor-di.github.io.`, TXT `_github-pages-challenge-jor-di` (domaine vérifié) ; NS, MX et SPF d'origine conservés |
 | Compte | GitHub perso `jor-di` ; sur la machine, clé SSH dédiée `~/.ssh/id_ed25519_github_perso` via l'alias `github-perso` ; identité perso automatique sous `~/code/perso/` (`includeIf`) ; le compte pro reste en HTTPS via `gh` |
@@ -269,16 +273,27 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 | Quand | Commande | Notes |
 | --- | --- | --- |
 | Modifier le code ou la carte | éditer, puis `git commit` + `git push` | le push relance un relevé et republie |
-| Voir le résultat en local | `./ffcam_availability.py --no-history && ./build_map.py && xdg-open map.html` | `--no-history` évite de diverger de l'historique en ligne |
+| Voir le résultat en local | `rb/ffcam_availability.rb && rb/build_map.rb && xdg-open map.html` | sans `--history`, rien n'est écrit dans `history/` (pas de divergence avec l'historique en ligne) |
 | Forcer une mise à jour en ligne | onglet Actions → « Update availability » → Run workflow | |
-| Rafraîchir la liste des refuges (quelques fois par an) | `./refresh_huts.py && ./refresh_coordinates.py && ./refresh_links.py`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
-| Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `refresh_coordinates.py` | 6 corrections aujourd'hui |
-| Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `./refresh_huts.py && ./refresh_links.py` | voir l'annexe |
+| Rafraîchir la liste des refuges (quelques fois par an) | `rb/refresh_huts.rb && rb/refresh_coordinates.rb && rb/refresh_links.rb`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
+| Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `rb/refresh_coordinates.rb` | 6 corrections aujourd'hui |
+| Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `rb/refresh_huts.rb && rb/refresh_links.rb` | voir l'annexe |
 | Ajouter un refuge réservable seulement par téléphone | entrée dans `manual_huts.json` sans `refugepro` (position, site, téléphone, email) | |
-| Ajouter un portail de la centrale | `./refresh_huts.py --portals FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM ENTREPYRPYRENEES` | ou modifier `DEFAULT_PORTALS` dans `ffcam.py` |
-| Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec historique |
-| Tester une autre date | `./ffcam_availability.py --date 2027-02-20 --nights 2 --no-history` | |
-| Ajouter la couche IGN SCAN 25 | remplir `IGN_API_KEY` dans `secrets.env`, puis `./build_map.py` | la clé finit en clair dans la page publiée |
+| Ajouter un portail de la centrale | `rb/refresh_huts.rb --portals FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM ENTREPYRPYRENEES` | ou modifier `Ffcam::DEFAULT_PORTALS` dans `rb/ffcam.rb` |
+| Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec `--history` |
+| Tester une autre date | `rb/ffcam_availability.rb --date 2027-02-20 --nights 2` | |
+| Lancer les tests | `tests/unit.sh && tests/check.sh` | hors ligne, une quinzaine de secondes ; aussi au début de chaque relevé GitHub Actions |
+| Changer de version de Ruby | modifier `.ruby-version` (version proposée par `ruby/setup-ruby`), lancer les tests avec cette version | |
+| Ajouter la couche IGN SCAN 25 | remplir `IGN_API_KEY` dans `secrets.env`, puis `rb/build_map.rb` | la clé finit en clair dans la page publiée |
+
+## Tests
+
+Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relevé (un échec arrête le relevé avant l'historique et la publication) :
+
+- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, historique et journal, limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
+- `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
+
+Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
 
 ## Pièges connus et décisions
 
@@ -296,25 +311,27 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 - Pas de base de données : fichiers JSON/CSV versionnés ; une base hébergée seulement si on affiche l'historique de façon interactive.
 - Hébergement GitHub Pages plutôt qu'un VPS (gratuit, sans maintenance) ; dépôt public accepté.
 - Une seule requête par refuge et par relevé (charge FFCAM ~3 000 requêtes/jour en saison) ; pas de 2e requête pour voir plus loin.
-- Politesse envers les sites interrogés (`polite()` dans `ffcam.py`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (151 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
+- Politesse envers les sites interrogés (`Ffcam.polite` dans `rb/ffcam.rb`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (151 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
 - Clés : la clé d'exemple de la doc Skitour et les accès privés IGN n'ont pas été utilisés ; uniquement des clés personnelles.
 - Les noms « FFCAM » / « CAF » sont évités dans le nom du site (marques de la fédération).
+- Réécriture en Ruby (novembre 2026) : le code Python d'origine a été porté script par script dans `rb/`, vérifié en rejouant les mêmes réponses HTTP et en comparant chaque fichier produit octet par octet (`tests/check.sh`), puis supprimé. Toujours sans dépendance (bibliothèque standard seulement).
+- `rb/py.rb` écrit les fichiers exactement comme la version Python (nombres `1e+16`, arrondis, JSON `", "` / `": "` et échappements, CSV en `\r\n`, `True`) : l'historique de la branche `data` et les JSON du dépôt sont comparés et versionnés ligne à ligne, un changement de format aurait produit un énorme diff sans changement réel, et `tests/golden/` (sorties Python) reste la référence. Les noms et messages d'erreur (`TimeoutError: The read operation timed out`…) sont gardés pour la même raison (`fetch_log.json`, CSV).
 
 ## Annexe : source de chaque refuge
 
-Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `refresh_huts.py` (liste des refuges) puis `ffcam_availability.py` (places), qui appellent les fonctions de `ffcam.py` indiquées.
+Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `rb/refresh_huts.rb` (liste des refuges) puis `rb/ffcam_availability.rb` (places), qui appellent les méthodes du module `Ffcam` (`rb/ffcam.rb`) indiquées.
 
-| `portal` | Refuges | Liste des refuges (dans `refresh_huts.py`) | Places (dans `ffcam_availability.py`) | Identifiant |
+| `portal` | Refuges | Liste des refuges (dans `rb/refresh_huts.rb`) | Places (dans `rb/ffcam_availability.rb`) | Identifiant |
 | --- | --- | --- | --- | --- |
-| `FFCAM` | 115 | `fetch_huts()` : `structuresList` de la centrale, `apporigin=FFCAM` | `fetch_availability()` : POST `action=availability`, calendrier HTML | `BK_STRUCTURE:<n>` |
+| `FFCAM` | 115 | `Ffcam.fetch_huts` : `structuresList` de la centrale, `apporigin=FFCAM` | `Ffcam.fetch_availability` : POST `action=availability`, calendrier HTML | `BK_STRUCTURE:<n>` |
 | `VANOISE` | 9 | idem, `apporigin=VANOISE` (refuges absents du portail FFCAM) | idem, `apporigin=VANOISE` | `BK_STRUCTURE:<n>` |
 | `NEOUVIELLE` | 3 | idem, `apporigin=NEOUVIELLE` | idem | `BK_STRUCTURE:<n>` |
 | `BOREON` | 1 | idem, `apporigin=BOREON` | idem | `BK_STRUCTURE:<n>` |
-| `OPENSYSTEM` | 12 | `fetch_opensystem_huts()` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site | `fetch_opensystem_availability()` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
-| `REFUGEPRO` | 11 | `manual_huts.json` (entrées avec `refugepro`) | `fetch_refugepro_availability()` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
+| `OPENSYSTEM` | 12 | `Ffcam.fetch_opensystem_huts` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site | `Ffcam.fetch_opensystem_availability` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
+| `REFUGEPRO` | 11 | `manual_huts.json` (entrées avec `refugepro`) | `Ffcam.fetch_refugepro_availability` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
 | `MANUAL` | 3 | `manual_huts.json` (entrées sans `refugepro`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
 
-Coordonnées : `refresh_coordinates.py` (OpenStreetMap, ou position donnée dans `manual_huts.json`, ou `coordinates_overrides.json`). Liens : `refresh_links.py` (Camptocamp, Skitour).
+Coordonnées : `rb/refresh_coordinates.rb` (OpenStreetMap, ou position donnée dans `manual_huts.json`, ou `coordinates_overrides.json`). Liens : `rb/refresh_links.rb` (Camptocamp, Skitour).
 
 Les 115 refuges du portail FFCAM sont listés dans `huts.json` (nom, id, site `*.ffcam.fr`) et ne sont pas répétés ici. Tous les autres :
 

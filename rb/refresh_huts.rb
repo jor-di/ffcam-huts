@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+# Refresh huts.json with the current list of FFCAM huts (ids, names, types...).
+#
+# Also finds each hut's own FFCAM website (https://<name>.ffcam.fr/): <name> is usually the
+# part before @ of the hut's email; "Non Gardé" winter rooms share their guarded hut's site.
+#
+# Huts come from several booking portals (default: FFCAM + VANOISE, see Ffcam::DEFAULT_PORTALS).
+#
+# Run it once, then again whenever FFCAM adds or removes huts.
+#   rb/refresh_huts.rb
+#   rb/refresh_huts.rb --portals FFCAM VANOISE NEOUVIELLE
+
+require "optparse"
+require_relative "ffcam"
+
+def main
+  portals = nil
+  parser = OptionParser.new do |o|
+    o.banner = "Usage: rb/refresh_huts.rb [--portals PORTAL [PORTAL ...]]"
+    o.on("--portals PORTAL", "booking portals (default: #{Ffcam::DEFAULT_PORTALS.join(' ')})") { |v| portals = [v] }
+  end
+  rest = Ffcam.parse_args(parser, positional: ARGV.size)
+  Ffcam.usage_error(parser, "needless argument: #{rest.join(' ')}") if !portals && !rest.empty?
+  portals = portals ? portals + rest : Ffcam::DEFAULT_PORTALS # --portals takes the following words too
+
+  huts = Py.sorted(Ffcam.fetch_huts(portals)) { |h| h["name"] }
+
+  users = huts.map { |h| h["email_user"] }.select { |u| Py.truthy?(u) }.uniq.sort
+  sites = users.zip(Ffcam.pool_map(users, 6) { |u| Ffcam.hut_site(u) }).to_h
+  huts.each do |h|
+    h["site"] = Py.either(h["site"], sites[h["email_user"]]) # Open System huts already have theirs
+  end
+  huts.each do |h| # winter rooms with a generic email: use the guarded hut's site
+    next if Py.truthy?(h["site"])
+    h["site"] = huts.find { |o| Py.truthy?(o["site"]) && Ffcam.norm(o["name"]) == Ffcam.norm(h["name"]) }&.dig("site")
+  end
+  file = Ffcam::HUTS_FILE
+  old = File.exist?(file) ? JSON.parse(File.read(file, encoding: "UTF-8"))["huts"].map { |h| h["id"] } : []
+  new = huts.map { |h| h["id"] }
+
+  File.write(file, Py.dumps({ "refreshed_at" => Ffcam.isoformat(Ffcam.local_now), "huts" => huts },
+                            ensure_ascii: false, indent: 2) + "\n")
+  per_portal = huts.map { |h| h["portal"] }.tally
+  warn "Huts per portal: #{Py.repr(per_portal)}"
+  warn "Wrote #{huts.size} huts to #{file} (#{huts.count { |h| Py.truthy?(h['site']) }} with a website)"
+  huts.each { |h| warn "  no website found: #{h['name']}" unless Py.truthy?(h["site"]) }
+  return if old.empty?
+  names = huts.to_h { |h| [h["id"], h["name"]] }
+  (new - old).sort.each { |id| warn "  + #{id} #{names[id]}" }
+  (old - new).sort.each { |id| warn "  - #{id}" }
+end
+
+main if $PROGRAM_NAME == __FILE__

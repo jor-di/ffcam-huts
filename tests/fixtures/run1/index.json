@@ -1,0 +1,3204 @@
+{
+ "00085adaa1c78c3793e647e3f032f1322cbb2847": {
+  "body": null,
+  "file": "bodies/00085adaa1c78c3793e647e3f032f1322cbb2847.gz",
+  "final_url": "https://chaletduclot.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletduclot.ffcam.fr/"
+ },
+ "012606117bc60f2844affd30c32375f41f12d656": {
+  "body": null,
+  "file": "bodies/012606117bc60f2844affd30c32375f41f12d656.gz",
+  "final_url": "https://refuge-femma.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-femma.vanoise.com/"
+ },
+ "03018ddaf82487a97318a0b4785a320e1cc764bf": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A60&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/03018ddaf82487a97318a0b4785a320e1cc764bf.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "034d37e4ba116c3b89fb0675268bc3f7167d6511": {
+  "body": null,
+  "file": "bodies/034d37e4ba116c3b89fb0675268bc3f7167d6511.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=758203.5797482166,5754342.99495794,762553.5797482166,5758692.99495794&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=758203.5797482166,5754342.99495794,762553.5797482166,5758692.99495794&wtyp=hut,gite,shelter&limit=50"
+ },
+ "04022bb68626dfb7f8660e4a3065f8d758e9893f": {
+  "body": null,
+  "file": "bodies/04022bb68626dfb7f8660e4a3065f8d758e9893f.gz",
+  "final_url": "https://chaletplandelalai.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletplandelalai.ffcam.fr/"
+ },
+ "04937dc77b6f5d3839615cce726daeef6b16903e": {
+  "body": null,
+  "file": "bodies/04937dc77b6f5d3839615cce726daeef6b16903e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=773198.9830729278,5763799.365637142,777548.9830729278,5768149.365637142&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=773198.9830729278,5763799.365637142,777548.9830729278,5768149.365637142&wtyp=hut,gite,shelter&limit=50"
+ },
+ "04953e1c8b75526096261f728a123a43de4cfca2": {
+  "body": null,
+  "file": "bodies/04953e1c8b75526096261f728a123a43de4cfca2.gz",
+  "final_url": "https://refuge-dubois.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-dubois.vanoise.com/"
+ },
+ "0559064694912c09d4f6cfbbb6f3e6d214a0df47": {
+  "body": null,
+  "file": "bodies/0559064694912c09d4f6cfbbb6f3e6d214a0df47.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=758968.2333303691,5673997.777779765,763318.2333303691,5678347.777779765&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=758968.2333303691,5673997.777779765,763318.2333303691,5678347.777779765&wtyp=hut,gite,shelter&limit=50"
+ },
+ "06bc2aa4bc1655a5017295afe66182e9e5db1872": {
+  "body": null,
+  "file": "bodies/06bc2aa4bc1655a5017295afe66182e9e5db1872.gz",
+  "final_url": "https://refuge-plaisance.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-plaisance.vanoise.com/"
+ },
+ "08514e74156bdc74400e29bf814119cdea86802d": {
+  "body": null,
+  "file": "bodies/08514e74156bdc74400e29bf814119cdea86802d.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=272233.33338074264,5239184.053085448,276583.33338074264,5243534.053085448&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=272233.33338074264,5239184.053085448,276583.33338074264,5243534.053085448&wtyp=hut,gite,shelter&limit=50"
+ },
+ "0a03ea4d5e13201246cce2b3e1eb9dbe4d10d4b2": {
+  "body": null,
+  "file": "bodies/0a03ea4d5e13201246cce2b3e1eb9dbe4d10d4b2.gz",
+  "final_url": "https://chaletdusancy.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletdusancy.ffcam.fr/"
+ },
+ "0a6e2886564cb6296ab7b1f1aedf6ec77aa61d6d": {
+  "body": null,
+  "file": "bodies/0a6e2886564cb6296ab7b1f1aedf6ec77aa61d6d.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=720527.9433724408,5597430.424320935,724877.9433724408,5601780.424320935&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=720527.9433724408,5597430.424320935,724877.9433724408,5601780.424320935&wtyp=hut,gite,shelter&limit=50"
+ },
+ "0b908d7b921d297b04e0a5fed1254d2bc73a7b13": {
+  "body": null,
+  "file": "bodies/0b908d7b921d297b04e0a5fed1254d2bc73a7b13.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/galibier",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/galibier"
+ },
+ "0c3d8e06a65765b218ab728ce4f39a93492ad7bb": {
+  "body": null,
+  "file": "bodies/0c3d8e06a65765b218ab728ce4f39a93492ad7bb.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=722787.6177157388,5639941.313873678,727137.6177157388,5644291.313873678&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=722787.6177157388,5639941.313873678,727137.6177157388,5644291.313873678&wtyp=hut,gite,shelter&limit=50"
+ },
+ "0c8833370247c8b0744c0e865eb6d0ed3225485d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A63&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/0c8833370247c8b0744c0e865eb6d0ed3225485d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0d0fcf4a2d884dc5327e1163a8817ce4655f1527": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A112&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/0d0fcf4a2d884dc5327e1163a8817ce4655f1527.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0d8fc978fa614f4346d7739b03007e660f955c9a": {
+  "body": null,
+  "file": "bodies/0d8fc978fa614f4346d7739b03007e660f955c9a.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/re-magi",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/re-magi"
+ },
+ "0e25c6a452149ea3e3f61e17f34eeea00fa49f0d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A11&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/0e25c6a452149ea3e3f61e17f34eeea00fa49f0d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0e260032bbea04dfd7cb722b747604084b51bdab": {
+  "body": null,
+  "file": "bodies/0e260032bbea04dfd7cb722b747604084b51bdab.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=NEOUVIELLE",
+  "method": "GET",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=NEOUVIELLE"
+ },
+ "0e8432cec5af77b24894be4e6d257acfbfec49ed": {
+  "body": null,
+  "file": "bodies/0e8432cec5af77b24894be4e6d257acfbfec49ed.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=739643.5036898192,5721995.091365185,743993.5036898192,5726345.091365185&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=739643.5036898192,5721995.091365185,743993.5036898192,5726345.091365185&wtyp=hut,gite,shelter&limit=50"
+ },
+ "0f2ca992adfc70017c4090fb05aad35924841627": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A37&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/0f2ca992adfc70017c4090fb05aad35924841627.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1024157b19c4efce6cecadcca706b9cc0310dee0": {
+  "body": null,
+  "file": "bodies/1024157b19c4efce6cecadcca706b9cc0310dee0.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=726350.0640596093,5771038.563076099,730700.0640596093,5775388.563076099&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=726350.0640596093,5771038.563076099,730700.0640596093,5775388.563076099&wtyp=hut,gite,shelter&limit=50"
+ },
+ "10737cae21fa331acbc66c80b3dc15bfc3cb2054": {
+  "body": null,
+  "file": "bodies/10737cae21fa331acbc66c80b3dc15bfc3cb2054.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/refuge-de-terre-rouge"
+ },
+ "1247cbd0f77aa6d008f56712d2972070efb39764": {
+  "body": null,
+  "file": "bodies/1247cbd0f77aa6d008f56712d2972070efb39764.gz",
+  "final_url": "https://refugebayssellance.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugebayssellance.ffcam.fr/"
+ },
+ "128e6af2ce1b97ea7bdb2090e38e9965279042a5": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xp8y6e&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/128e6af2ce1b97ea7bdb2090e38e9965279042a5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "12ee346565b3b0949d296bd003759b015f1d1526": {
+  "body": null,
+  "file": "bodies/12ee346565b3b0949d296bd003759b015f1d1526.gz",
+  "final_url": "https://refugedumontthabor.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedumontthabor.ffcam.fr/"
+ },
+ "135dbe49ce0141aa5dc2344ca9da6de3ae99050c": {
+  "body": null,
+  "file": "bodies/135dbe49ce0141aa5dc2344ca9da6de3ae99050c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=770599.1163658128,5512413.892860493,774949.1163658128,5516763.892860493&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=770599.1163658128,5512413.892860493,774949.1163658128,5516763.892860493&wtyp=hut,gite,shelter&limit=50"
+ },
+ "138b683a567e0227f5c142bf37e3d3457490c5d6": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A100&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/138b683a567e0227f5c142bf37e3d3457490c5d6.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "156369265522c3ee16bdc063b2098394c747ea7d": {
+  "body": null,
+  "file": "bodies/156369265522c3ee16bdc063b2098394c747ea7d.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=704133.9219655974,5424073.607783311,708483.9219655974,5428423.607783311&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=704133.9219655974,5424073.607783311,708483.9219655974,5428423.607783311&wtyp=hut,gite,shelter&limit=50"
+ },
+ "15a341b386c2e7f9a888e7e38655826d459c5e73": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A4&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/15a341b386c2e7f9a888e7e38655826d459c5e73.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "15a9c9f19c52edfb6224461d3084229f81a2a7fc": {
+  "body": null,
+  "file": "bodies/15a9c9f19c52edfb6224461d3084229f81a2a7fc.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=745589.6342897142,5772665.229782005,749939.6342897142,5777015.229782005&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=745589.6342897142,5772665.229782005,749939.6342897142,5777015.229782005&wtyp=hut,gite,shelter&limit=50"
+ },
+ "161c527643d33234721514dc886e1029cf933b0b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A121&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/161c527643d33234721514dc886e1029cf933b0b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "164f634218ec3d10a5429a95d178bfe76763a187": {
+  "body": null,
+  "file": "bodies/164f634218ec3d10a5429a95d178bfe76763a187.gz",
+  "final_url": "https://chaletlagrangedeholle.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletlagrangedeholle.ffcam.fr/"
+ },
+ "172dd30879c00c80392b8d0d2c15fb6dc809f0d2": {
+  "body": null,
+  "file": "bodies/172dd30879c00c80392b8d0d2c15fb6dc809f0d2.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=693474.9694041344,5616557.265321526,697824.9694041344,5620907.265321526&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=693474.9694041344,5616557.265321526,697824.9694041344,5620907.265321526&wtyp=hut,gite,shelter&limit=50"
+ },
+ "185a03d8b529cfaa7096d380c2308fb6b40382a6": {
+  "body": null,
+  "file": "bodies/185a03d8b529cfaa7096d380c2308fb6b40382a6.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=736136.4944523561,5672578.881481666,740486.4944523561,5676928.881481666&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=736136.4944523561,5672578.881481666,740486.4944523561,5676928.881481666&wtyp=hut,gite,shelter&limit=50"
+ },
+ "18c5572cf8b1fc225fd2f613d96ff25744abade5": {
+  "body": null,
+  "file": "bodies/18c5572cf8b1fc225fd2f613d96ff25744abade5.gz",
+  "final_url": "https://chaletlangenberg.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletlangenberg.ffcam.fr/"
+ },
+ "18e5b5033f882dfab518ee8898fdc0cbd1ab8a47": {
+  "body": null,
+  "file": "bodies/18e5b5033f882dfab518ee8898fdc0cbd1ab8a47.gz",
+  "final_url": "https://refugedepresset.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedepresset.ffcam.fr/"
+ },
+ "18e817ffad55cc8b878344031662b9c0b211d007": {
+  "body": null,
+  "file": "bodies/18e817ffad55cc8b878344031662b9c0b211d007.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=697460.0958544881,5596533.724961607,701810.0958544881,5600883.724961607&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=697460.0958544881,5596533.724961607,701810.0958544881,5600883.724961607&wtyp=hut,gite,shelter&limit=50"
+ },
+ "18eaefed2e30303619b0238986f48bc657233032": {
+  "body": null,
+  "file": "bodies/18eaefed2e30303619b0238986f48bc657233032.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=774942.691576471,5761340.799614208,779292.691576471,5765690.799614208&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=774942.691576471,5761340.799614208,779292.691576471,5765690.799614208&wtyp=hut,gite,shelter&limit=50"
+ },
+ "198bdd0fca6c5dff9e3d85d95428e54a71fb4e9e": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A76&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/198bdd0fca6c5dff9e3d85d95428e54a71fb4e9e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1a4bc5ff57a042cf6f32d9ccabc4ada206f65f7a": {
+  "body": null,
+  "file": "bodies/1a4bc5ff57a042cf6f32d9ccabc4ada206f65f7a.gz",
+  "final_url": "https://refugedupelvoux.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedupelvoux.ffcam.fr/"
+ },
+ "1acd6607c85496f7d95efea348015d10795890e2": {
+  "body": null,
+  "file": "bodies/1acd6607c85496f7d95efea348015d10795890e2.gz",
+  "final_url": "https://refugeplandesgouilles.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeplandesgouilles.ffcam.fr/"
+ },
+ "1ae4a1caab92c53821ab089f6bfb1e4b1622171c": {
+  "body": null,
+  "file": "bodies/1ae4a1caab92c53821ab089f6bfb1e4b1622171c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=768995.559101159,5762162.645430493,773345.559101159,5766512.645430493&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=768995.559101159,5762162.645430493,773345.559101159,5766512.645430493&wtyp=hut,gite,shelter&limit=50"
+ },
+ "1b112c78ce526bce0a35dab5efce00414c8e5361": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A56&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/1b112c78ce526bce0a35dab5efce00414c8e5361.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1c48e765ff562d682cd962208c28a429e04bfca9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A44&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/1c48e765ff562d682cd962208c28a429e04bfca9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1cffc413aaba5d50079eece9239fd80b5c77527d": {
+  "body": null,
+  "file": "bodies/1cffc413aaba5d50079eece9239fd80b5c77527d.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93152,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93152,2026-12-07"
+ },
+ "1df1ba112dbf4fa9749a355e10a6e49a508ce645": {
+  "body": null,
+  "file": "bodies/1df1ba112dbf4fa9749a355e10a6e49a508ce645.gz",
+  "final_url": "https://refugeetangpinet.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeetangpinet.ffcam.fr/"
+ },
+ "2048a06fca6a5a54d782b2990882de285552ce7e": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mnoqrq&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/2048a06fca6a5a54d782b2990882de285552ce7e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "20ad6253f7b472a0c977bed4783f78fde2ecb6ca": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A65&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/20ad6253f7b472a0c977bed4783f78fde2ecb6ca.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "215182ee2ba53f255cac8dc2a54ce5d909e24c35": {
+  "body": null,
+  "file": "bodies/215182ee2ba53f255cac8dc2a54ce5d909e24c35.gz",
+  "final_url": "https://refugedesevettes.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesevettes.ffcam.fr/"
+ },
+ "217daf6596695678a71f2ef8cc5e198d082572b4": {
+  "body": null,
+  "file": "bodies/217daf6596695678a71f2ef8cc5e198d082572b4.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/refuge-buffere",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/refuge-buffere"
+ },
+ "22bb42c272b9acf571366b01d2cf92c568328865": {
+  "body": null,
+  "file": "bodies/22bb42c272b9acf571366b01d2cf92c568328865.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=702207.3155387065,5582476.590664672,706557.3155387065,5586826.590664672&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=702207.3155387065,5582476.590664672,706557.3155387065,5586826.590664672&wtyp=hut,gite,shelter&limit=50"
+ },
+ "22ebd4759d33b77e25585f2581994d114fe87f32": {
+  "body": null,
+  "file": "bodies/22ebd4759d33b77e25585f2581994d114fe87f32.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=821630.9765645972,5479436.632712669,825980.9765645972,5483786.632712669&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=821630.9765645972,5479436.632712669,825980.9765645972,5483786.632712669&wtyp=hut,gite,shelter&limit=50"
+ },
+ "256eb34f83d0ecde12b58e6c9f6f97ad298d3105": {
+  "body": null,
+  "file": "bodies/256eb34f83d0ecde12b58e6c9f6f97ad298d3105.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=742691.0083332498,5671108.2429282395,747041.0083332498,5675458.2429282395&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=742691.0083332498,5671108.2429282395,747041.0083332498,5675458.2429282395&wtyp=hut,gite,shelter&limit=50"
+ },
+ "25e0e2a1f24089dffc629d11a69035a716c85a1e": {
+  "body": null,
+  "file": "bodies/25e0e2a1f24089dffc629d11a69035a716c85a1e.gz",
+  "final_url": "https://refuge-lamartin.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-lamartin.vanoise.com/"
+ },
+ "26d3796c46295cb3f52133e74529c5ca6100270e": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1nww29smum&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/26d3796c46295cb3f52133e74529c5ca6100270e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "279190a120336049f5a32714622dd5ae40e442bc": {
+  "body": null,
+  "file": "bodies/279190a120336049f5a32714622dd5ae40e442bc.gz",
+  "final_url": "https://refugedumontpourri.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedumontpourri.ffcam.fr/"
+ },
+ "27aa9c8eb75b4ebf668865874648fd9edf7bc6c6": {
+  "body": null,
+  "file": "bodies/27aa9c8eb75b4ebf668865874648fd9edf7bc6c6.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=VANOISE",
+  "method": "GET",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=VANOISE"
+ },
+ "27b613e115d00b27f0c8c8d8b3f7fcebb87ee3d1": {
+  "body": null,
+  "file": "bodies/27b613e115d00b27f0c8c8d8b3f7fcebb87ee3d1.gz",
+  "final_url": "https://chaletdegraydon.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletdegraydon.ffcam.fr/"
+ },
+ "27fd338ab9eb792febc409d2cd8122ff049b499e": {
+  "body": null,
+  "file": "bodies/27fd338ab9eb792febc409d2cd8122ff049b499e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=761615.9674185185,5756820.887124305,765965.9674185185,5761170.887124305&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=761615.9674185185,5756820.887124305,765965.9674185185,5761170.887124305&wtyp=hut,gite,shelter&limit=50"
+ },
+ "28d7a754aa88aacb89524735e07dd02c6c6ade6d": {
+  "body": null,
+  "file": "bodies/28d7a754aa88aacb89524735e07dd02c6c6ade6d.gz",
+  "final_url": "https://refugedevalmasque.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedevalmasque.ffcam.fr/"
+ },
+ "2a1ee4e7ab3c9babd6f810221e016944d4ca4aa1": {
+  "body": null,
+  "file": "bodies/2a1ee4e7ab3c9babd6f810221e016944d4ca4aa1.gz",
+  "final_url": "https://refugeducarro.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeducarro.ffcam.fr/"
+ },
+ "2b5c76e47730f1cf1b51b49b228bfc7983f785ae": {
+  "body": null,
+  "file": "bodies/2b5c76e47730f1cf1b51b49b228bfc7983f785ae.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=816728.4661907437,5478099.481784521,821078.4661907437,5482449.481784521&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=816728.4661907437,5478099.481784521,821078.4661907437,5482449.481784521&wtyp=hut,gite,shelter&limit=50"
+ },
+ "2bc1a4be6a1e9885af8f40db5c9194aa8114d312": {
+  "body": null,
+  "file": "bodies/2bc1a4be6a1e9885af8f40db5c9194aa8114d312.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-38816.81226492255,5286393.366012969,-34466.81226492255,5290743.366012969&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-38816.81226492255,5286393.366012969,-34466.81226492255,5290743.366012969&wtyp=hut,gite,shelter&limit=50"
+ },
+ "2dbac166daac34b29eb2d4cb6dd6a14eaee513c6": {
+  "body": null,
+  "file": "bodies/2dbac166daac34b29eb2d4cb6dd6a14eaee513c6.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://oule.ffcam.fr/"
+ },
+ "2dd7c6e49497c40b02af1c465684b59fde4d5b16": {
+  "body": null,
+  "file": "bodies/2dd7c6e49497c40b02af1c465684b59fde4d5b16.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=757781.3449196965,5702859.0191076035,762131.3449196965,5707209.0191076035&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=757781.3449196965,5702859.0191076035,762131.3449196965,5707209.0191076035&wtyp=hut,gite,shelter&limit=50"
+ },
+ "2f030bc393fdaff5061c42817ab4b46280579211": {
+  "body": null,
+  "file": "bodies/2f030bc393fdaff5061c42817ab4b46280579211.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=685527.4256795458,5598110.310478156,689877.4256795458,5602460.310478156&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=685527.4256795458,5598110.310478156,689877.4256795458,5602460.310478156&wtyp=hut,gite,shelter&limit=50"
+ },
+ "301582850827e164c0890315bc5fa62e057ab5ae": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A53&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/301582850827e164c0890315bc5fa62e057ab5ae.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "30abb8d390995f19b0b123a10f033b56433e3897": {
+  "body": null,
+  "file": "bodies/30abb8d390995f19b0b123a10f033b56433e3897.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=659768.373812295,5825870.86011301,664118.373812295,5830220.86011301&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=659768.373812295,5825870.86011301,664118.373812295,5830220.86011301&wtyp=hut,gite,shelter&limit=50"
+ },
+ "3252e3d8265cf0493174a23cab85be61d880eb97": {
+  "body": null,
+  "file": "bodies/3252e3d8265cf0493174a23cab85be61d880eb97.gz",
+  "final_url": "https://refugedelarribet.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedelarribet.ffcam.fr/"
+ },
+ "3281518a693365b36285fa0b173b6afba011c046": {
+  "body": null,
+  "file": "bodies/3281518a693365b36285fa0b173b6afba011c046.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=762037.7569690755,5645119.571472784,766387.7569690755,5649469.571472784&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=762037.7569690755,5645119.571472784,766387.7569690755,5649469.571472784&wtyp=hut,gite,shelter&limit=50"
+ },
+ "33603e972090f76897a572afb3c76f129a75843a": {
+  "body": null,
+  "file": "bodies/33603e972090f76897a572afb3c76f129a75843a.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-49702.41130960911,5284791.389304396,-45352.41130960911,5289141.389304396&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-49702.41130960911,5284791.389304396,-45352.41130960911,5289141.389304396&wtyp=hut,gite,shelter&limit=50"
+ },
+ "337fc9eb34424048d83ae096bcb69324fc50e107": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A107&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/337fc9eb34424048d83ae096bcb69324fc50e107.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "33a5de7a3e797f9c0359ba7ed56fd190e80bba00": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A96&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/33a5de7a3e797f9c0359ba7ed56fd190e80bba00.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "33f4c3787478c8ef9a1cecc2e8734d23538490ba": {
+  "body": null,
+  "file": "bodies/33f4c3787478c8ef9a1cecc2e8734d23538490ba.gz",
+  "final_url": "https://chaletrefuge3fours.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletrefuge3fours.ffcam.fr/"
+ },
+ "3637f4e68d678e94cbb1c1233eace997a4fd907e": {
+  "body": null,
+  "file": "bodies/3637f4e68d678e94cbb1c1233eace997a4fd907e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=724950.5554215511,5623394.9072349155,729300.5554215511,5627744.9072349155&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=724950.5554215511,5623394.9072349155,729300.5554215511,5627744.9072349155&wtyp=hut,gite,shelter&limit=50"
+ },
+ "36c83ffc65956a05e562c6a4e744d7fdb2625741": {
+  "body": "data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3B%0Aarea%5B%22ISO3166-1%22%3D%22FR%22%5D%5Badmin_level%3D2%5D-%3E.fr%3B%0A%28+nwr%5B%22tourism%22~%22%5E%28alpine_hut%7Cwilderness_hut%29%24%22%5D%28area.fr%29%3B%0A++nwr%5B%22website%22~%22ffcam%5C%5C.fr%22%5D%28area.fr%29%3B%0A++nwr%5B%22contact%3Awebsite%22~%22ffcam%5C%5C.fr%22%5D%28area.fr%29%3B+%29%3B%0Aout+center+tags%3B",
+  "file": "bodies/36c83ffc65956a05e562c6a4e744d7fdb2625741.gz",
+  "final_url": "https://overpass-api.de/api/interpreter",
+  "method": "POST",
+  "status": 200,
+  "url": "https://overpass-api.de/api/interpreter"
+ },
+ "36ca13bc4e0a570d0ee4d5006c644c7513a20807": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A110&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/36ca13bc4e0a570d0ee4d5006c644c7513a20807.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3755c5c33b25366ca76204e310294b8d7814eec0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A104&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3755c5c33b25366ca76204e310294b8d7814eec0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "38075f0d4e7318cff670b4e13837955e186d49e5": {
+  "body": null,
+  "file": "bodies/38075f0d4e7318cff670b4e13837955e186d49e5.gz",
+  "final_url": "https://refugedesbans.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesbans.ffcam.fr/"
+ },
+ "38c746e83961162f7e311b67251e49817aa77b45": {
+  "body": null,
+  "file": "bodies/38c746e83961162f7e311b67251e49817aa77b45.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=770076.6939955929,5668334.777528705,774426.6939955929,5672684.777528705&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=770076.6939955929,5668334.777528705,774426.6939955929,5672684.777528705&wtyp=hut,gite,shelter&limit=50"
+ },
+ "38cfbc036689499633bd6c36474f24b739082fd6": {
+  "body": null,
+  "file": "bodies/38cfbc036689499633bd6c36474f24b739082fd6.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=692461.0714821304,5769579.172558298,696811.0714821304,5773929.172558298&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=692461.0714821304,5769579.172558298,696811.0714821304,5773929.172558298&wtyp=hut,gite,shelter&limit=50"
+ },
+ "392ebb16542dca9e56ccc45e2c1d4e853ec7c5ea": {
+  "body": null,
+  "file": "bodies/392ebb16542dca9e56ccc45e2c1d4e853ec7c5ea.gz",
+  "final_url": "https://chaletmaljasset.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletmaljasset.ffcam.fr/"
+ },
+ "393ed5ce24773986165f9d58076bb8b2a8782783": {
+  "body": null,
+  "file": "bodies/393ed5ce24773986165f9d58076bb8b2a8782783.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=757540.8948196165,6077558.885585425,761890.8948196165,6081908.885585425&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=757540.8948196165,6077558.885585425,761890.8948196165,6081908.885585425&wtyp=hut,gite,shelter&limit=50"
+ },
+ "39d6f8db41b747783eea9177f361f8f2bad8e84b": {
+  "body": null,
+  "file": "bodies/39d6f8db41b747783eea9177f361f8f2bad8e84b.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/refuge-du-clot-des-vaches"
+ },
+ "39f0a39a0401ee71d1fb773697390d3949b459a9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A15&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/39f0a39a0401ee71d1fb773697390d3949b459a9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3a1ff4995fb37999d399d9b9c54c18a21ac238a7": {
+  "body": null,
+  "file": "bodies/3a1ff4995fb37999d399d9b9c54c18a21ac238a7.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=16563.43214652149,5283404.272977683,20913.43214652149,5287754.272977683&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=16563.43214652149,5283404.272977683,20913.43214652149,5287754.272977683&wtyp=hut,gite,shelter&limit=50"
+ },
+ "3a360ac184d428541acb2c4b452b652f7a67a482": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A88&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3a360ac184d428541acb2c4b452b652f7a67a482.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3a63d26f18d9f7da67508757929eb316ef0d6cd9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A38&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3a63d26f18d9f7da67508757929eb316ef0d6cd9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3ad67df33653a80c2facc40f54a5ac232189cd90": {
+  "body": "action=availability&apporigin=NEOUVIELLE&structure=BK_STRUCTURE%3Axxx5ybjcpt6a&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3ad67df33653a80c2facc40f54a5ac232189cd90.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3bee2c746db5a8d26f98319936589dd29339af38": {
+  "body": null,
+  "file": "bodies/3bee2c746db5a8d26f98319936589dd29339af38.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=7904.534611964667,5288649.2285105195,12254.534611964667,5292999.2285105195&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=7904.534611964667,5288649.2285105195,12254.534611964667,5292999.2285105195&wtyp=hut,gite,shelter&limit=50"
+ },
+ "3c40c299e395b3d83e2bca596c3af808224603fe": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A48&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3c40c299e395b3d83e2bca596c3af808224603fe.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3ce1c9cb2997fcf4f564fbcf0ca0d23af0cd1a44": {
+  "body": null,
+  "file": "bodies/3ce1c9cb2997fcf4f564fbcf0ca0d23af0cd1a44.gz",
+  "final_url": "https://refugedenice.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedenice.ffcam.fr/"
+ },
+ "3dab6a1318abc3b32244ed1366bafa64952a9a73": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A51&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3dab6a1318abc3b32244ed1366bafa64952a9a73.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3e35bd9591317ab27bf51a3e49c3f1943ee5fc7b": {
+  "body": null,
+  "file": "bodies/3e35bd9591317ab27bf51a3e49c3f1943ee5fc7b.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/terzo-alpini",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/terzo-alpini"
+ },
+ "3ee1f87ed8f12b99f7873f00218045c9f6e09d26": {
+  "body": null,
+  "file": "bodies/3ee1f87ed8f12b99f7873f00218045c9f6e09d26.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=722297.4779978443,5632122.911720123,726647.4779978443,5636472.911720123&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=722297.4779978443,5632122.911720123,726647.4779978443,5636472.911720123&wtyp=hut,gite,shelter&limit=50"
+ },
+ "3f89e2fa36052479dd2aa6d71e3d9814534a544b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mon63z&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3f89e2fa36052479dd2aa6d71e3d9814534a544b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "3f8f87a958cb1cde0de933167abb3648b462767b": {
+  "body": null,
+  "file": "bodies/3f8f87a958cb1cde0de933167abb3648b462767b.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=726301.9740395932,5626647.873686376,730651.9740395932,5630997.873686376&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=726301.9740395932,5626647.873686376,730651.9740395932,5630997.873686376&wtyp=hut,gite,shelter&limit=50"
+ },
+ "3fe6a1dabb613f91ec34ca2ee94c8e73857fe694": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A116&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/3fe6a1dabb613f91ec34ca2ee94c8e73857fe694.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4005fda2ff86a18f6a50828d0f4da16b5cf3d68c": {
+  "body": null,
+  "file": "bodies/4005fda2ff86a18f6a50828d0f4da16b5cf3d68c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=743941.4379092584,5663022.582049648,748291.4379092584,5667372.582049648&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=743941.4379092584,5663022.582049648,748291.4379092584,5667372.582049648&wtyp=hut,gite,shelter&limit=50"
+ },
+ "400d6e2e6aa5ba3ac4bb878b701818d5aba369ca": {
+  "body": null,
+  "file": "bodies/400d6e2e6aa5ba3ac4bb878b701818d5aba369ca.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=701886.2701273034,5621122.1504662335,706236.2701273034,5625472.1504662335&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=701886.2701273034,5621122.1504662335,706236.2701273034,5625472.1504662335&wtyp=hut,gite,shelter&limit=50"
+ },
+ "40b4f693935fdec2b53b08700ca9183befea35bc": {
+  "body": null,
+  "file": "bodies/40b4f693935fdec2b53b08700ca9183befea35bc.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=765932.3806734269,5702186.259120699,770282.3806734269,5706536.259120699&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=765932.3806734269,5702186.259120699,770282.3806734269,5706536.259120699&wtyp=hut,gite,shelter&limit=50"
+ },
+ "40d837964b65c3b9b1e6b716c679c114aa3086a4": {
+  "body": null,
+  "file": "bodies/40d837964b65c3b9b1e6b716c679c114aa3086a4.gz",
+  "final_url": "https://refugecoldelavanoise.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugecoldelavanoise.ffcam.fr/"
+ },
+ "41e8fd272069cdca302b219cc92ea95c32a7a054": {
+  "body": null,
+  "file": "bodies/41e8fd272069cdca302b219cc92ea95c32a7a054.gz",
+  "final_url": "https://refugedeletendard.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedeletendard.ffcam.fr/"
+ },
+ "425b28a0400d5208ba7295b143216ed891189748": {
+  "body": null,
+  "file": "bodies/425b28a0400d5208ba7295b143216ed891189748.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=761665.7272308962,6072587.107171074,766015.7272308962,6076937.107171074&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=761665.7272308962,6072587.107171074,766015.7272308962,6076937.107171074&wtyp=hut,gite,shelter&limit=50"
+ },
+ "43657e81c90ae44101d80bb01989889d92c92cab": {
+  "body": null,
+  "file": "bodies/43657e81c90ae44101d80bb01989889d92c92cab.gz",
+  "final_url": "https://refugeduparmelan.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeduparmelan.ffcam.fr/"
+ },
+ "440331914a5b3d1e26ab8d25babe4ed0be5fde33": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A50&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/440331914a5b3d1e26ab8d25babe4ed0be5fde33.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "46159549f5a1a76c8a5ec3d52bd2bb77e09bb9ea": {
+  "body": null,
+  "file": "bodies/46159549f5a1a76c8a5ec3d52bd2bb77e09bb9ea.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=774626.3215836807,5504903.925710085,778976.3215836807,5509253.925710085&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=774626.3215836807,5504903.925710085,778976.3215836807,5509253.925710085&wtyp=hut,gite,shelter&limit=50"
+ },
+ "461dd28d1abb94294971a377913a5e03872eb7ff": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A125&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/461dd28d1abb94294971a377913a5e03872eb7ff.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "463cfed6c11568b69bdfd9875c5989d22a9a4a75": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A113&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/463cfed6c11568b69bdfd9875c5989d22a9a4a75.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "46c6e1f3d3d4bb6db1faa6d8c0250caed21e3feb": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A127&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/46c6e1f3d3d4bb6db1faa6d8c0250caed21e3feb.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "47811edcda3d3a961f5cca321c2d69e51c9e9909": {
+  "body": null,
+  "file": "bodies/47811edcda3d3a961f5cca321c2d69e51c9e9909.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=708548.9642893348,5618746.3839897,712898.9642893348,5623096.3839897&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=708548.9642893348,5618746.3839897,712898.9642893348,5623096.3839897&wtyp=hut,gite,shelter&limit=50"
+ },
+ "47959f383091372e4d27d6cd00cf5ed1a3f0db31": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A57&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/47959f383091372e4d27d6cd00cf5ed1a3f0db31.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "482541748eddbe24be192ead7796d485866ae759": {
+  "body": null,
+  "file": "bodies/482541748eddbe24be192ead7796d485866ae759.gz",
+  "final_url": "https://refugeduportillon.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeduportillon.ffcam.fr/"
+ },
+ "48e40f8dba90490d1077847e6c4569e81dad7dd0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A47&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/48e40f8dba90490d1077847e6c4569e81dad7dd0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "49df813d6a2e80af58ee5201a541cf44fb66df97": {
+  "body": null,
+  "file": "bodies/49df813d6a2e80af58ee5201a541cf44fb66df97.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=779927.1330955368,6113547.476527411,784277.1330955368,6117897.476527411&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=779927.1330955368,6113547.476527411,784277.1330955368,6117897.476527411&wtyp=hut,gite,shelter&limit=50"
+ },
+ "4a053564352f8f1c4a03af108e3d305e5a11a4cf": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8838n0j&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/4a053564352f8f1c4a03af108e3d305e5a11a4cf.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4b8c0644790a30e7ba9c31e17e8527283cc9a194": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A72&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/4b8c0644790a30e7ba9c31e17e8527283cc9a194.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4c602e5d5428380bcf43d8f4fff3a032b7685519": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A34&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/4c602e5d5428380bcf43d8f4fff3a032b7685519.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4c7e311cd88b6d303b06c2e7a1dd9cc512b74d79": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8934wt7&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/4c7e311cd88b6d303b06c2e7a1dd9cc512b74d79.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "4c94edeef199d3c89524066c9a40f10e5adaeb61": {
+  "body": null,
+  "file": "bodies/4c94edeef199d3c89524066c9a40f10e5adaeb61.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=702319.6369049012,5617129.048130595,706669.6369049012,5621479.048130595&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=702319.6369049012,5617129.048130595,706669.6369049012,5621479.048130595&wtyp=hut,gite,shelter&limit=50"
+ },
+ "4f022f2af256331566d03e1950854f9605c7987a": {
+  "body": null,
+  "file": "bodies/4f022f2af256331566d03e1950854f9605c7987a.gz",
+  "final_url": "https://refugechabourneou.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugechabourneou.ffcam.fr/"
+ },
+ "4f15cc640cbf856b549b008bf5a3f95a9df29049": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A109&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/4f15cc640cbf856b549b008bf5a3f95a9df29049.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "50019ab955334ff052e7190b2df0f0f6e513f22a": {
+  "body": null,
+  "file": "bodies/50019ab955334ff052e7190b2df0f0f6e513f22a.gz",
+  "final_url": "https://refuge-turia.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-turia.vanoise.com/"
+ },
+ "501843b1d74845a2791a6e22547b2bcb75065a32": {
+  "body": null,
+  "file": "bodies/501843b1d74845a2791a6e22547b2bcb75065a32.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=311252.9299686785,5705891.834541057,315602.9299686785,5710241.834541057&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=311252.9299686785,5705891.834541057,315602.9299686785,5710241.834541057&wtyp=hut,gite,shelter&limit=50"
+ },
+ "5130eb1bfc90e894baa21cf0ef649003eba5698e": {
+  "body": null,
+  "file": "bodies/5130eb1bfc90e894baa21cf0ef649003eba5698e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=826783.733153719,5480019.236413322,831133.733153719,5484369.236413322&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=826783.733153719,5480019.236413322,831133.733153719,5484369.236413322&wtyp=hut,gite,shelter&limit=50"
+ },
+ "51a0fec27c30c8676ba3226f0814c99bed0e61bd": {
+  "body": null,
+  "file": "bodies/51a0fec27c30c8676ba3226f0814c99bed0e61bd.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=699514.9423347551,5619100.268979404,703864.9423347551,5623450.268979404&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=699514.9423347551,5619100.268979404,703864.9423347551,5623450.268979404&wtyp=hut,gite,shelter&limit=50"
+ },
+ "526f4c48b6ad1bd66000f11272a1907006b0afb8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A47ntr9jg1dif&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/526f4c48b6ad1bd66000f11272a1907006b0afb8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "53172333072a3e7afc0f3b04ffcefdba924d499e": {
+  "body": null,
+  "file": "bodies/53172333072a3e7afc0f3b04ffcefdba924d499e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=205828.58546401953,5249699.265967681,210178.58546401953,5254049.265967681&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=205828.58546401953,5249699.265967681,210178.58546401953,5254049.265967681&wtyp=hut,gite,shelter&limit=50"
+ },
+ "5340722f5183b6b98241c84fd9e3009d4dbed374": {
+  "body": null,
+  "file": "bodies/5340722f5183b6b98241c84fd9e3009d4dbed374.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=514746.7402223088,5936070.64282952,519096.7402223088,5940420.64282952&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=514746.7402223088,5936070.64282952,519096.7402223088,5940420.64282952&wtyp=hut,gite,shelter&limit=50"
+ },
+ "56f358eb2fedaa7af2fe949cdebad16fdb9d502e": {
+  "body": null,
+  "file": "bodies/56f358eb2fedaa7af2fe949cdebad16fdb9d502e.gz",
+  "final_url": "https://chaletmadonedefenestre.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletmadonedefenestre.ffcam.fr/"
+ },
+ "56f3ef3199063f40ddaa0bc662abcd01beb1ca44": {
+  "body": null,
+  "file": "bodies/56f3ef3199063f40ddaa0bc662abcd01beb1ca44.gz",
+  "final_url": "https://refuge-arpont.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-arpont.vanoise.com/"
+ },
+ "578252362f6f5a42e6964c3583566455e79f4b6c": {
+  "body": null,
+  "file": "bodies/578252362f6f5a42e6964c3583566455e79f4b6c.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92996,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92996,2026-12-07"
+ },
+ "581d8457c40ad9098980742e1c69325d5ba6fca4": {
+  "body": null,
+  "file": "bodies/581d8457c40ad9098980742e1c69325d5ba6fca4.gz",
+  "final_url": "https://refugedesconscrits.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesconscrits.ffcam.fr/"
+ },
+ "5a4ea80b4001bcfd91279cfa23f51309c7ee1feb": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A9&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/5a4ea80b4001bcfd91279cfa23f51309c7ee1feb.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "5a6f4b6976690c776a5d2ce86cc8f52b53e3bea0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xycgku&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/5a6f4b6976690c776a5d2ce86cc8f52b53e3bea0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "5ab714ee20645e7c1524d05ff584779f3a846b41": {
+  "body": null,
+  "file": "bodies/5ab714ee20645e7c1524d05ff584779f3a846b41.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=753909.2077524823,5692531.04204294,758259.2077524823,5696881.04204294&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=753909.2077524823,5692531.04204294,758259.2077524823,5696881.04204294&wtyp=hut,gite,shelter&limit=50"
+ },
+ "5b25ed1f1c89d36da7406d1082a89e2879dc0cb3": {
+  "body": null,
+  "file": "bodies/5b25ed1f1c89d36da7406d1082a89e2879dc0cb3.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=751016.6821041123,5744099.250339608,755366.6821041123,5748449.250339608&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=751016.6821041123,5744099.250339608,755366.6821041123,5748449.250339608&wtyp=hut,gite,shelter&limit=50"
+ },
+ "5b42a0fa9e688d8c91bd81d51daed364249bc4ef": {
+  "body": null,
+  "file": "bodies/5b42a0fa9e688d8c91bd81d51daed364249bc4ef.gz",
+  "final_url": "https://refugedesbesines.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesbesines.ffcam.fr/"
+ },
+ "5bdea317172b69ddf74edcbfe92e184ba39d3ff7": {
+  "body": null,
+  "file": "bodies/5bdea317172b69ddf74edcbfe92e184ba39d3ff7.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=748473.143059331,5689545.434042477,752823.143059331,5693895.434042477&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=748473.143059331,5689545.434042477,752823.143059331,5693895.434042477&wtyp=hut,gite,shelter&limit=50"
+ },
+ "5c314649870263e7f4fac0da0ab8a95b56db1bb8": {
+  "body": null,
+  "file": "bodies/5c314649870263e7f4fac0da0ab8a95b56db1bb8.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=746824.5014009122,5834863.4965557335,751174.5014009122,5839213.4965557335&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=746824.5014009122,5834863.4965557335,751174.5014009122,5839213.4965557335&wtyp=hut,gite,shelter&limit=50"
+ },
+ "5d12c603249c62712b9e355254a2861e240d2b81": {
+  "body": null,
+  "file": "bodies/5d12c603249c62712b9e355254a2861e240d2b81.gz",
+  "final_url": "https://refugedambin.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedambin.ffcam.fr/"
+ },
+ "5d456edbd5b9a5c19708f64802a9621cd562ce81": {
+  "body": null,
+  "file": "bodies/5d456edbd5b9a5c19708f64802a9621cd562ce81.gz",
+  "final_url": "https://refugederabuons.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugederabuons.ffcam.fr/"
+ },
+ "5e73863965fdd26763fa4d3be2eda7e66ff74e8a": {
+  "body": null,
+  "file": "bodies/5e73863965fdd26763fa4d3be2eda7e66ff74e8a.gz",
+  "final_url": "https://refugedelolan.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedelolan.ffcam.fr/"
+ },
+ "606ea4ce366868fcf0f823f94e0ce21f5b73122e": {
+  "body": null,
+  "file": "bodies/606ea4ce366868fcf0f823f94e0ce21f5b73122e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=688692.0161633765,5603399.903005128,693042.0161633765,5607749.903005128&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=688692.0161633765,5603399.903005128,693042.0161633765,5607749.903005128&wtyp=hut,gite,shelter&limit=50"
+ },
+ "621463a2ade3f662f231d8d93f25fccbf4c19b87": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A69&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/621463a2ade3f662f231d8d93f25fccbf4c19b87.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "62871e0e44952fa94e4293ca2ee4cfd1e1ea8eeb": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A91&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/62871e0e44952fa94e4293ca2ee4cfd1e1ea8eeb.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "636de9ddc81c40117e0ee1502fdc82f91d236b48": {
+  "body": null,
+  "file": "bodies/636de9ddc81c40117e0ee1502fdc82f91d236b48.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://aubergedebellebe.ffcam.fr/"
+ },
+ "64cad79fccef6fbee27e064ec1266d78233fe97f": {
+  "body": null,
+  "file": "bodies/64cad79fccef6fbee27e064ec1266d78233fe97f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=776173.1059080377,5682786.031299301,780523.1059080377,5687136.031299301&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=776173.1059080377,5682786.031299301,780523.1059080377,5687136.031299301&wtyp=hut,gite,shelter&limit=50"
+ },
+ "6570a3cc22e9e2d98126981d25ad521411328877": {
+  "body": null,
+  "file": "bodies/6570a3cc22e9e2d98126981d25ad521411328877.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=685260.7041796423,5651487.57334205,689610.7041796423,5655837.57334205&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=685260.7041796423,5651487.57334205,689610.7041796423,5655837.57334205&wtyp=hut,gite,shelter&limit=50"
+ },
+ "65cad4fed3fca33e5f22c7100a7d1e1528daf045": {
+  "body": null,
+  "file": "bodies/65cad4fed3fca33e5f22c7100a7d1e1528daf045.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92951,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92951,2026-12-07"
+ },
+ "668e3ecf42ac8afcba871b8967376aefed31f151": {
+  "body": null,
+  "file": "bodies/668e3ecf42ac8afcba871b8967376aefed31f151.gz",
+  "final_url": "https://refugedusele.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedusele.ffcam.fr/"
+ },
+ "66aba4b7ae536aafcbc087ab63b4a61ba035c0e3": {
+  "body": null,
+  "file": "bodies/66aba4b7ae536aafcbc087ab63b4a61ba035c0e3.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=696415.0284750663,5592505.171378483,700765.0284750663,5596855.171378483&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=696415.0284750663,5592505.171378483,700765.0284750663,5596855.171378483&wtyp=hut,gite,shelter&limit=50"
+ },
+ "66bd866218d389d38830324b9de95c8665542930": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A74&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/66bd866218d389d38830324b9de95c8665542930.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "67528a784c4618ebcb6e8423c169f62596ded2de": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A126&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/67528a784c4618ebcb6e8423c169f62596ded2de.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "68cd9d672aa372058b4edd44ba5db839d566ecf2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A103&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/68cd9d672aa372058b4edd44ba5db839d566ecf2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "68f9b447705be34edce8e8b4eb6d351864d6cfa9": {
+  "body": null,
+  "file": "bodies/68f9b447705be34edce8e8b4eb6d351864d6cfa9.gz",
+  "final_url": "https://refugedesdrayeres.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesdrayeres.ffcam.fr/"
+ },
+ "69144d21d048b04b449faa43d955c874a1969c9a": {
+  "body": null,
+  "file": "bodies/69144d21d048b04b449faa43d955c874a1969c9a.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=758812.497362771,5545672.946267253,763162.497362771,5550022.946267253&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=758812.497362771,5545672.946267253,763162.497362771,5550022.946267253&wtyp=hut,gite,shelter&limit=50"
+ },
+ "6a6e9d361941c9e686181bab7518ae9dfbba82cf": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A22&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/6a6e9d361941c9e686181bab7518ae9dfbba82cf.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "6aacd922c28d5c9bcfabe3a3330cb70414e30a84": {
+  "body": null,
+  "file": "bodies/6aacd922c28d5c9bcfabe3a3330cb70414e30a84.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=746347.8313414018,5675148.707355229,750697.8313414018,5679498.707355229&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=746347.8313414018,5675148.707355229,750697.8313414018,5679498.707355229&wtyp=hut,gite,shelter&limit=50"
+ },
+ "6aeaf98645ca948240b17e6d65cd2a3fa68b8a42": {
+  "body": null,
+  "file": "bodies/6aeaf98645ca948240b17e6d65cd2a3fa68b8a42.gz",
+  "final_url": "https://refugedelaglere.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedelaglere.ffcam.fr/"
+ },
+ "6bcf8e4b7dc78a946df278f0457773bd31769eec": {
+  "body": null,
+  "file": "bodies/6bcf8e4b7dc78a946df278f0457773bd31769eec.gz",
+  "final_url": "https://refugelenversdesaiguilles.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugelenversdesaiguilles.ffcam.fr/"
+ },
+ "6c0afc540699e2a90d22392f4da0d8d900c7da38": {
+  "body": null,
+  "file": "bodies/6c0afc540699e2a90d22392f4da0d8d900c7da38.gz",
+  "final_url": "https://refuge-valette.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-valette.vanoise.com/"
+ },
+ "6c5e3abd492f51eb8d16b19369938baf168abf1c": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A36&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/6c5e3abd492f51eb8d16b19369938baf168abf1c.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "6ce8e3b21c404da2d9bcab9b33b89f43f128b8b8": {
+  "body": null,
+  "file": "bodies/6ce8e3b21c404da2d9bcab9b33b89f43f128b8b8.gz",
+  "final_url": "https://refuge-plandulac.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-plandulac.vanoise.com/"
+ },
+ "6d459c0032c66c5f5d2ca9f97a896c2e9bf7e6ef": {
+  "body": null,
+  "file": "bodies/6d459c0032c66c5f5d2ca9f97a896c2e9bf7e6ef.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93146,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93146,2026-12-07"
+ },
+ "6d49a9035d86490bae42bbc3ad6bf689dc6aed3a": {
+  "body": null,
+  "file": "bodies/6d49a9035d86490bae42bbc3ad6bf689dc6aed3a.gz",
+  "final_url": "https://refugelacougourde.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugelacougourde.ffcam.fr/"
+ },
+ "6ddf0990a4958ed75472c36db181bf08626b9880": {
+  "body": null,
+  "file": "bodies/6ddf0990a4958ed75472c36db181bf08626b9880.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=754087.0962987451,5669721.6563409185,758437.0962987451,5674071.6563409185&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=754087.0962987451,5669721.6563409185,758437.0962987451,5674071.6563409185&wtyp=hut,gite,shelter&limit=50"
+ },
+ "6df646f9c7356e420cc5f7d574921b232a28a279": {
+  "body": null,
+  "file": "bodies/6df646f9c7356e420cc5f7d574921b232a28a279.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93145,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93145,2026-12-07"
+ },
+ "6dfd61d3049db8edecc88254655d3fa458c80aac": {
+  "body": null,
+  "file": "bodies/6dfd61d3049db8edecc88254655d3fa458c80aac.gz",
+  "final_url": "https://refuge-orgere.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-orgere.vanoise.com/"
+ },
+ "6e5d096c446bbf9a006c5a172f09c33bd2d6b4a1": {
+  "body": null,
+  "file": "bodies/6e5d096c446bbf9a006c5a172f09c33bd2d6b4a1.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=163664.10194212064,5258946.3107806565,168014.10194212064,5263296.3107806565&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=163664.10194212064,5258946.3107806565,168014.10194212064,5263296.3107806565&wtyp=hut,gite,shelter&limit=50"
+ },
+ "6e5db8a9350e3c7ce6de46b12ee0f4e180bd369e": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u87ub79d&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/6e5db8a9350e3c7ce6de46b12ee0f4e180bd369e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "70100b8b1892380bd28394970708c9c8109896c5": {
+  "body": null,
+  "file": "bodies/70100b8b1892380bd28394970708c9c8109896c5.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=756748.4113647694,5754958.487349812,761098.4113647694,5759308.487349812&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=756748.4113647694,5754958.487349812,761098.4113647694,5759308.487349812&wtyp=hut,gite,shelter&limit=50"
+ },
+ "70d90cb31c32a938b52675211bdade3d0df8eb1b": {
+  "body": "action=availability&apporigin=BOREON&structure=BK_STRUCTURE%3A5e92vrpttey6&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/70d90cb31c32a938b52675211bdade3d0df8eb1b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "70f5b4f2245e8a721cdc322d34530d4ab8a4ceef": {
+  "body": null,
+  "file": "bodies/70f5b4f2245e8a721cdc322d34530d4ab8a4ceef.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=709210.4247035364,5599426.252949539,713560.4247035364,5603776.252949539&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=709210.4247035364,5599426.252949539,713560.4247035364,5603776.252949539&wtyp=hut,gite,shelter&limit=50"
+ },
+ "71569c8fe210429650d9cd23f2b8b7f3172aa8a0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8koph3e&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/71569c8fe210429650d9cd23f2b8b7f3172aa8a0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "716c8fae604862111cd76568584f9df597c095a8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8jmexys&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/716c8fae604862111cd76568584f9df597c095a8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "71c08ab0c06c674e8b74dd05c804ce65a5c31c6a": {
+  "body": null,
+  "file": "bodies/71c08ab0c06c674e8b74dd05c804ce65a5c31c6a.gz",
+  "final_url": "https://chaletlamaline.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletlamaline.ffcam.fr/"
+ },
+ "72fad6df86cb1c613978f811c8732b492751b375": {
+  "body": null,
+  "file": "bodies/72fad6df86cb1c613978f811c8732b492751b375.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-17918.470302738,5278329.176844515,-13568.470302737998,5282679.176844515&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-17918.470302738,5278329.176844515,-13568.470302737998,5282679.176844515&wtyp=hut,gite,shelter&limit=50"
+ },
+ "739742f622c58f7ee6cdd133ac5abdc19edc7874": {
+  "body": null,
+  "file": "bodies/739742f622c58f7ee6cdd133ac5abdc19edc7874.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=740223.0329588084,5729160.495328191,744573.0329588084,5733510.495328191&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=740223.0329588084,5729160.495328191,744573.0329588084,5733510.495328191&wtyp=hut,gite,shelter&limit=50"
+ },
+ "744bee8095aab4f2591fa7e34cbf676ac0aad783": {
+  "body": null,
+  "file": "bodies/744bee8095aab4f2591fa7e34cbf676ac0aad783.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=759168.9423722414,5677252.949337093,763518.9423722414,5681602.949337093&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=759168.9423722414,5677252.949337093,763518.9423722414,5681602.949337093&wtyp=hut,gite,shelter&limit=50"
+ },
+ "7490aac89fa3f939d6fa7c1e6f36acb00e14c472": {
+  "body": null,
+  "file": "bodies/7490aac89fa3f939d6fa7c1e6f36acb00e14c472.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=813890.8210513275,5482839.605390764,818240.8210513275,5487189.605390764&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=813890.8210513275,5482839.605390764,818240.8210513275,5487189.605390764&wtyp=hut,gite,shelter&limit=50"
+ },
+ "75e4cd3d8dee8b640dac2252e7c8d94f3f543d74": {
+  "body": null,
+  "file": "bodies/75e4cd3d8dee8b640dac2252e7c8d94f3f543d74.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=710899.4753371077,5600887.553655671,715249.4753371077,5605237.553655671&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=710899.4753371077,5600887.553655671,715249.4753371077,5605237.553655671&wtyp=hut,gite,shelter&limit=50"
+ },
+ "75e7eced701468544ee467101f98c25b0286509f": {
+  "body": null,
+  "file": "bodies/75e7eced701468544ee467101f98c25b0286509f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=753784.3072838297,5681274.911937377,758134.3072838297,5685624.911937377&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=753784.3072838297,5681274.911937377,758134.3072838297,5685624.911937377&wtyp=hut,gite,shelter&limit=50"
+ },
+ "75f4904632f265a6b17015e9b04b06a7f56c9af6": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A18&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/75f4904632f265a6b17015e9b04b06a7f56c9af6.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "76e5e55894cfeaf8f3ef63ced5d76c4eab1439bd": {
+  "body": null,
+  "file": "bodies/76e5e55894cfeaf8f3ef63ced5d76c4eab1439bd.gz",
+  "final_url": "https://refuge-prariond.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-prariond.vanoise.com/"
+ },
+ "786f2c2ca045a6105179b739a93ad5e5eb9bce0b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A17&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/786f2c2ca045a6105179b739a93ad5e5eb9bce0b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "78c627d4ff94636ee9983fae611343fb26b16f1a": {
+  "body": null,
+  "file": "bodies/78c627d4ff94636ee9983fae611343fb26b16f1a.gz",
+  "final_url": "https://refugeoulettesdegaube.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeoulettesdegaube.ffcam.fr/"
+ },
+ "7985c1a7af37b467a1bbb9f99adae7de6e9cc162": {
+  "body": null,
+  "file": "bodies/7985c1a7af37b467a1bbb9f99adae7de6e9cc162.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=757815.074725402,5671354.177100565,762165.074725402,5675704.177100565&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=757815.074725402,5671354.177100565,762165.074725402,5675704.177100565&wtyp=hut,gite,shelter&limit=50"
+ },
+ "79ba8b45a9f9ba3f8bcd8567d0430a6fdf6911ac": {
+  "body": null,
+  "file": "bodies/79ba8b45a9f9ba3f8bcd8567d0430a6fdf6911ac.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=809125.3449706216,5480983.202866297,813475.3449706216,5485333.202866297&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=809125.3449706216,5480983.202866297,813475.3449706216,5485333.202866297&wtyp=hut,gite,shelter&limit=50"
+ },
+ "7a567999d0a76f2129c9bb3fa86273d8986cc725": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8kr9qqd&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/7a567999d0a76f2129c9bb3fa86273d8986cc725.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7aa310042f2843ee95cec187feefd60615ee080c": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxxl0tm6umg&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/7aa310042f2843ee95cec187feefd60615ee080c.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7b6155a04575a9f62400906f035545ade6e7b399": {
+  "body": null,
+  "file": "bodies/7b6155a04575a9f62400906f035545ade6e7b399.gz",
+  "final_url": "https://refugestguilhemledesert.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugestguilhemledesert.ffcam.fr/"
+ },
+ "7d46f89f4c3adb6f3474c765b30a19ce1c4b832b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8nmpryk&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/7d46f89f4c3adb6f3474c765b30a19ce1c4b832b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7db0544c770953728f1a6fdd2649b440a0bc59f1": {
+  "body": null,
+  "file": "bodies/7db0544c770953728f1a6fdd2649b440a0bc59f1.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=682054.3688867699,5594924.757280883,686404.3688867699,5599274.757280883&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=682054.3688867699,5594924.757280883,686404.3688867699,5599274.757280883&wtyp=hut,gite,shelter&limit=50"
+ },
+ "7e19b9d641aaf5c06609b31979eaeba826100304": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A84&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/7e19b9d641aaf5c06609b31979eaeba826100304.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7e5c9b8780b3a486113157b531e006e0de00a125": {
+  "body": null,
+  "file": "bodies/7e5c9b8780b3a486113157b531e006e0de00a125.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=784961.8910244341,5691355.818081118,789311.8910244341,5695705.818081118&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=784961.8910244341,5691355.818081118,789311.8910244341,5695705.818081118&wtyp=hut,gite,shelter&limit=50"
+ },
+ "8054a9b4cb0e4070e1d111265b4ad48ce24a2533": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8l09uta&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/8054a9b4cb0e4070e1d111265b4ad48ce24a2533.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "80684b6a8a40f2d24d8ab0d15ca2e9cf5b9e50ea": {
+  "body": null,
+  "file": "bodies/80684b6a8a40f2d24d8ab0d15ca2e9cf5b9e50ea.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=789015.5902811069,5677545.763610997,793365.5902811069,5681895.763610997&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=789015.5902811069,5677545.763610997,793365.5902811069,5681895.763610997&wtyp=hut,gite,shelter&limit=50"
+ },
+ "80c48f5040b551a2ab4449121309a493d54cd93a": {
+  "body": null,
+  "file": "bodies/80c48f5040b551a2ab4449121309a493d54cd93a.gz",
+  "final_url": "https://refugedespingo.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedespingo.ffcam.fr/"
+ },
+ "812c2569d1ca92e216e00662ff97f2643de03c56": {
+  "body": null,
+  "file": "bodies/812c2569d1ca92e216e00662ff97f2643de03c56.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=762973.2859695719,5706891.873731812,767323.2859695719,5711241.873731812&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=762973.2859695719,5706891.873731812,767323.2859695719,5711241.873731812&wtyp=hut,gite,shelter&limit=50"
+ },
+ "8180a7c57ee7ee19c4aba7dd6d51f20a99ade943": {
+  "body": null,
+  "file": "bodies/8180a7c57ee7ee19c4aba7dd6d51f20a99ade943.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=746446.6830492124,5661261.405868175,750796.6830492124,5665611.405868175&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=746446.6830492124,5661261.405868175,750796.6830492124,5665611.405868175&wtyp=hut,gite,shelter&limit=50"
+ },
+ "8182493864b59ec3db98f9aeb1297b46aa8531c9": {
+  "body": null,
+  "file": "bodies/8182493864b59ec3db98f9aeb1297b46aa8531c9.gz",
+  "final_url": "https://refugedelaigle.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedelaigle.ffcam.fr/"
+ },
+ "8187f8a0d239a58687568a90c9041ac845478c8e": {
+  "body": null,
+  "file": "bodies/8187f8a0d239a58687568a90c9041ac845478c8e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=659562.0431361384,5644763.399788948,663912.0431361384,5649113.399788948&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=659562.0431361384,5644763.399788948,663912.0431361384,5649113.399788948&wtyp=hut,gite,shelter&limit=50"
+ },
+ "81f5b013ce56b63c3677dd845eb296261fb313b8": {
+  "body": null,
+  "file": "bodies/81f5b013ce56b63c3677dd845eb296261fb313b8.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=14531.829175928888,5290899.102021645,18881.829175928888,5295249.102021645&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=14531.829175928888,5290899.102021645,18881.829175928888,5295249.102021645&wtyp=hut,gite,shelter&limit=50"
+ },
+ "82928cfbce13f3138c02a0f6df48bed0d458e98d": {
+  "body": null,
+  "file": "bodies/82928cfbce13f3138c02a0f6df48bed0d458e98d.gz",
+  "final_url": "https://refugedupave.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedupave.ffcam.fr/"
+ },
+ "83c1e0ace44892bd0fdf2bbb161d7221ab4854d2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A123&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/83c1e0ace44892bd0fdf2bbb161d7221ab4854d2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "850a66e75b7e55f325a3d8ee12789317ecfe578f": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1ngkc39duv&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/850a66e75b7e55f325a3d8ee12789317ecfe578f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "87359c42fdf5e3f287611aa22fe733855fa50665": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A85&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/87359c42fdf5e3f287611aa22fe733855fa50665.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "893e9031c05bdc669bac81bf6899d99f7a3b6a82": {
+  "body": null,
+  "file": "bodies/893e9031c05bdc669bac81bf6899d99f7a3b6a82.gz",
+  "final_url": "https://refugedupromontoire.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedupromontoire.ffcam.fr/"
+ },
+ "89c93da68ebfde0f05b36f3747997cd3e3fba20c": {
+  "body": null,
+  "file": "bodies/89c93da68ebfde0f05b36f3747997cd3e3fba20c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=746442.4529085627,5748871.605055938,750792.4529085627,5753221.605055938&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=746442.4529085627,5748871.605055938,750792.4529085627,5753221.605055938&wtyp=hut,gite,shelter&limit=50"
+ },
+ "89cbec8dd6cf87aba8dcb6f5029735511f98207a": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3Axxx5xjr51ovb&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/89cbec8dd6cf87aba8dcb6f5029735511f98207a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8a9c869e6a4b2732ea8ab03ff6ad2ffde4873cd4": {
+  "body": null,
+  "file": "bodies/8a9c869e6a4b2732ea8ab03ff6ad2ffde4873cd4.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=702761.9092417613,5604285.024758525,707111.9092417613,5608635.024758525&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=702761.9092417613,5604285.024758525,707111.9092417613,5608635.024758525&wtyp=hut,gite,shelter&limit=50"
+ },
+ "8b0efb5ced1a41d68250f8582d197db1e4d8f8fd": {
+  "body": null,
+  "file": "bodies/8b0efb5ced1a41d68250f8582d197db1e4d8f8fd.gz",
+  "final_url": "https://refugefontturbat.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugefontturbat.ffcam.fr/"
+ },
+ "8bd3bf76db38dd87ba3cd60ae82ed62eea4d30da": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A52&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/8bd3bf76db38dd87ba3cd60ae82ed62eea4d30da.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "8c79e14d95e17779cf141d28625bb6bf0e5f0d4a": {
+  "body": null,
+  "file": "bodies/8c79e14d95e17779cf141d28625bb6bf0e5f0d4a.gz",
+  "final_url": "https://refugeladentdoche.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeladentdoche.ffcam.fr/"
+ },
+ "8d59def572d9d124e3983600bf498836a7d940b6": {
+  "body": null,
+  "file": "bodies/8d59def572d9d124e3983600bf498836a7d940b6.gz",
+  "final_url": "https://refugedelapra.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedelapra.ffcam.fr/"
+ },
+ "8f62b4bd3be81ee993aa291ec51d96f4c68e626c": {
+  "body": null,
+  "file": "bodies/8f62b4bd3be81ee993aa291ec51d96f4c68e626c.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93150,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93150,2026-12-07"
+ },
+ "8fcf8b283c4c75547ce55980076e1009e9d9ed95": {
+  "body": null,
+  "file": "bodies/8fcf8b283c4c75547ce55980076e1009e9d9ed95.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeava.ffcam.fr/"
+ },
+ "90acf693c36e9b991c8e1623338c265b46043187": {
+  "body": null,
+  "file": "bodies/90acf693c36e9b991c8e1623338c265b46043187.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93148,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93148,2026-12-07"
+ },
+ "92864641872ed9ed2a60a80ed82bde5ae0f3a203": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A68&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/92864641872ed9ed2a60a80ed82bde5ae0f3a203.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9294f6729b5450669bcd4b8f90fee0330ff072f3": {
+  "body": null,
+  "file": "bodies/9294f6729b5450669bcd4b8f90fee0330ff072f3.gz",
+  "final_url": "https://refuge-fonddesfours.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-fonddesfours.vanoise.com/"
+ },
+ "92e7c2a3e9b01bbf655ea0d9a61678c024224dae": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A40&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/92e7c2a3e9b01bbf655ea0d9a61678c024224dae.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "92e8ce939588832bde9ed46c1402c41d77b8dc78": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A2&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/92e8ce939588832bde9ed46c1402c41d77b8dc78.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "93ba8ff6194564585e1c11402701ac288f9447c2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u884qc8h&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/93ba8ff6194564585e1c11402701ac288f9447c2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9401d115610a629478845390e41960c736842ca9": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1nrby5i831&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/9401d115610a629478845390e41960c736842ca9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9442690af2d428b1d6b3061eb65f406ac3da6037": {
+  "body": null,
+  "file": "bodies/9442690af2d428b1d6b3061eb65f406ac3da6037.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=749920.6303979146,5623646.911114558,754270.6303979146,5627996.911114558&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=749920.6303979146,5623646.911114558,754270.6303979146,5627996.911114558&wtyp=hut,gite,shelter&limit=50"
+ },
+ "944fbf514eb82425d09ee8c0077ca517245c15cc": {
+  "body": null,
+  "file": "bodies/944fbf514eb82425d09ee8c0077ca517245c15cc.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=BOREON",
+  "method": "GET",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=BOREON"
+ },
+ "949e4b0102bb38212422a4a1e6415e437a3ab647": {
+  "body": null,
+  "file": "bodies/949e4b0102bb38212422a4a1e6415e437a3ab647.gz",
+  "final_url": "https://refugepecletpolset.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugepecletpolset.ffcam.fr/"
+ },
+ "953c188941e41cdcce1590fd6a82915dfadda495": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A4m2wkebwwg2f&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/953c188941e41cdcce1590fd6a82915dfadda495.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "955960f5ae70f26be77d2531023758bc0b387cef": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A101&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/955960f5ae70f26be77d2531023758bc0b387cef.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "964b02190c5999a16f6c24ea9d213d00e67e3e2b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A24&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/964b02190c5999a16f6c24ea9d213d00e67e3e2b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "96de2148e76ead8112018d191445867579f522f8": {
+  "body": null,
+  "file": "bodies/96de2148e76ead8112018d191445867579f522f8.gz",
+  "final_url": "https://chaletdegourette.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletdegourette.ffcam.fr/"
+ },
+ "97522bf3e96fe9ce32d3ac9f7ecfe1f25eb903d7": {
+  "body": null,
+  "file": "bodies/97522bf3e96fe9ce32d3ac9f7ecfe1f25eb903d7.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=700808.2521786114,5589480.539545757,705158.2521786114,5593830.539545757&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=700808.2521786114,5589480.539545757,705158.2521786114,5593830.539545757&wtyp=hut,gite,shelter&limit=50"
+ },
+ "97b67d4293e8be343938415488f3e9ef29be97dd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A106&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/97b67d4293e8be343938415488f3e9ef29be97dd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "996ad0f3552c896100998c08d0e08accac98a506": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5wd7n2ct0&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/996ad0f3552c896100998c08d0e08accac98a506.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "99e1442b16f2933455e728337ea0cb5240a4ee04": {
+  "body": null,
+  "file": "bodies/99e1442b16f2933455e728337ea0cb5240a4ee04.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=711564.3866555233,5609519.262341381,715914.3866555233,5613869.262341381&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=711564.3866555233,5609519.262341381,715914.3866555233,5613869.262341381&wtyp=hut,gite,shelter&limit=50"
+ },
+ "9a2a36853acdd73cf6a07c48d03e5807b7c6667f": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A124&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/9a2a36853acdd73cf6a07c48d03e5807b7c6667f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9aab7d020fac5fa3e80330e85fe6b4f155cdc12c": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3Axxxld3htkpn&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/9aab7d020fac5fa3e80330e85fe6b4f155cdc12c.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9acdcf7c8ad8eb9252495d45deaefaeaf698a3d5": {
+  "body": null,
+  "file": "bodies/9acdcf7c8ad8eb9252495d45deaefaeaf698a3d5.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-39364.94943751233,5303636.18884247,-35014.94943751233,5307986.18884247&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-39364.94943751233,5303636.18884247,-35014.94943751233,5307986.18884247&wtyp=hut,gite,shelter&limit=50"
+ },
+ "9b0c14d3fbaff31434d7e514014ea93499b9ec27": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A54&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/9b0c14d3fbaff31434d7e514014ea93499b9ec27.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9c1f944d64e4515ea1111d0dd80eb0da61d9708f": {
+  "body": null,
+  "file": "bodies/9c1f944d64e4515ea1111d0dd80eb0da61d9708f.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/ricou",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/ricou"
+ },
+ "9cabf533c8b55a1a72a0fac4e79db55c2ef5fc93": {
+  "body": null,
+  "file": "bodies/9cabf533c8b55a1a72a0fac4e79db55c2ef5fc93.gz",
+  "final_url": "https://chaletlestuffes.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletlestuffes.ffcam.fr/"
+ },
+ "9ea6f0d47bcc79ddbb975d34897e5bc46199ed2b": {
+  "body": null,
+  "file": "bodies/9ea6f0d47bcc79ddbb975d34897e5bc46199ed2b.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=745786.1131909371,5661914.0162786115,750136.1131909371,5666264.0162786115&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=745786.1131909371,5661914.0162786115,750136.1131909371,5666264.0162786115&wtyp=hut,gite,shelter&limit=50"
+ },
+ "9f1fe55880c6b04653774fd213be5b6c7e495947": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5snuwv3sr&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/9f1fe55880c6b04653774fd213be5b6c7e495947.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9fc4a85dc8820cbd9f54b9760346bc8fe1a748f2": {
+  "body": null,
+  "file": "bodies/9fc4a85dc8820cbd9f54b9760346bc8fe1a748f2.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92948,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92948,2026-12-07"
+ },
+ "a18a2d1035d02c242f273fbc4b824a1ad573cbb9": {
+  "body": "action=availability&apporigin=NEOUVIELLE&structure=BK_STRUCTURE%3Axxx5ylsjmuv1&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/a18a2d1035d02c242f273fbc4b824a1ad573cbb9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "a1e0f198bf663dcd7404316bbea368b9ba46dd0a": {
+  "body": null,
+  "file": "bodies/a1e0f198bf663dcd7404316bbea368b9ba46dd0a.gz",
+  "final_url": "https://refuge-rosuel.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-rosuel.vanoise.com/"
+ },
+ "a259564927de42c5254d46208718c97e4c8526a9": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A95&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/a259564927de42c5254d46208718c97e4c8526a9.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "a2774645dc7d84c91dfe7576750c177711db6e91": {
+  "body": null,
+  "file": "bodies/a2774645dc7d84c91dfe7576750c177711db6e91.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=769173.6702864034,5676638.038810412,773523.6702864034,5680988.038810412&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=769173.6702864034,5676638.038810412,773523.6702864034,5680988.038810412&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a35ce89b29bb168bd336b14d95be57d77d488715": {
+  "body": null,
+  "file": "bodies/a35ce89b29bb168bd336b14d95be57d77d488715.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=728211.1033064321,5711594.878291845,732561.1033064321,5715944.878291845&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=728211.1033064321,5711594.878291845,732561.1033064321,5715944.878291845&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a3757c01a1f7b98cfb0c6a20abf60b3ebc362954": {
+  "body": null,
+  "file": "bodies/a3757c01a1f7b98cfb0c6a20abf60b3ebc362954.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://gardien.ffcam.fr/"
+ },
+ "a37e15dec9957de6703844f17be4d6fd67259037": {
+  "body": null,
+  "file": "bodies/a37e15dec9957de6703844f17be4d6fd67259037.gz",
+  "final_url": "https://refugebrechederoland.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugebrechederoland.ffcam.fr/"
+ },
+ "a38c0616b63720655c04e7ec99986989d63e4e1f": {
+  "body": null,
+  "file": "bodies/a38c0616b63720655c04e7ec99986989d63e4e1f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=782789.8251203782,5572308.752210559,787139.8251203782,5576658.752210559&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=782789.8251203782,5572308.752210559,787139.8251203782,5576658.752210559&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a3f57eedb41223a6fd6e1c807458be6027795c30": {
+  "body": null,
+  "file": "bodies/a3f57eedb41223a6fd6e1c807458be6027795c30.gz",
+  "final_url": "https://refugeetangdaraing.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeetangdaraing.ffcam.fr/"
+ },
+ "a422159045c62fbe184a88f7b59d98903a8d1299": {
+  "body": null,
+  "file": "bodies/a422159045c62fbe184a88f7b59d98903a8d1299.gz",
+  "final_url": "https://refugedaverole.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedaverole.ffcam.fr/"
+ },
+ "a4a331a44a9a2a2ac7d5c4ec47b2616d8ec3a7e6": {
+  "body": null,
+  "file": "bodies/a4a331a44a9a2a2ac7d5c4ec47b2616d8ec3a7e6.gz",
+  "final_url": "https://refugedepombie.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedepombie.ffcam.fr/"
+ },
+ "a513088c34d43e7802d982836c3990cf97bc3450": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A78&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/a513088c34d43e7802d982836c3990cf97bc3450.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "a57d4c432e3061e58da3a97ce5c4385e00e300ad": {
+  "body": null,
+  "file": "bodies/a57d4c432e3061e58da3a97ce5c4385e00e300ad.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://resas.ffcam.fr/"
+ },
+ "a5938d45362757d4ef9893b03a58d0d4416c549f": {
+  "body": null,
+  "file": "bodies/a5938d45362757d4ef9893b03a58d0d4416c549f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=153289.12540163175,5262931.216900035,157639.12540163175,5267281.216900035&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=153289.12540163175,5262931.216900035,157639.12540163175,5267281.216900035&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a5a6c7516bd2440706d5c4ce49c88c3d5626caaa": {
+  "body": null,
+  "file": "bodies/a5a6c7516bd2440706d5c4ce49c88c3d5626caaa.gz",
+  "final_url": "https://refugetempleecrins.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugetempleecrins.ffcam.fr/"
+ },
+ "a5af8ac8cb323e84439de94faf9dcf2c7806504b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A80&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/a5af8ac8cb323e84439de94faf9dcf2c7806504b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "a652947b9ef4f5534fab2f079496239814913185": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A129&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/a652947b9ef4f5534fab2f079496239814913185.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "a654dd13a3f4335d42bc77fa74faae276bf54389": {
+  "body": null,
+  "file": "bodies/a654dd13a3f4335d42bc77fa74faae276bf54389.gz",
+  "final_url": "https://refuge-leisse.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-leisse.vanoise.com/"
+ },
+ "a6adfa03385fedb914376943e395d0d09cb1f19f": {
+  "body": null,
+  "file": "bodies/a6adfa03385fedb914376943e395d0d09cb1f19f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=724727.9164399956,5628396.926878253,729077.9164399956,5632746.926878253&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=724727.9164399956,5628396.926878253,729077.9164399956,5632746.926878253&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a6e4763e9ed6cab02261e35be2965047422a10f9": {
+  "body": null,
+  "file": "bodies/a6e4763e9ed6cab02261e35be2965047422a10f9.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=680817.8319832104,5668929.014837583,685167.8319832104,5673279.014837583&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=680817.8319832104,5668929.014837583,685167.8319832104,5673279.014837583&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a705ec255dfd388ba06b08dc46a4c6d5ea339600": {
+  "body": null,
+  "file": "bodies/a705ec255dfd388ba06b08dc46a4c6d5ea339600.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=786448.8522544473,5666251.711977393,790798.8522544473,5670601.711977393&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=786448.8522544473,5666251.711977393,790798.8522544473,5670601.711977393&wtyp=hut,gite,shelter&limit=50"
+ },
+ "a8082f34c96f8b282120e9a47acf94077a23f056": {
+  "body": null,
+  "file": "bodies/a8082f34c96f8b282120e9a47acf94077a23f056.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=69281.87168618178,5264281.201341151,73631.87168618178,5268631.201341151&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=69281.87168618178,5264281.201341151,73631.87168618178,5268631.201341151&wtyp=hut,gite,shelter&limit=50"
+ },
+ "aa9e25efb25b8bb7a61990287664ba20604cbace": {
+  "body": null,
+  "file": "bodies/aa9e25efb25b8bb7a61990287664ba20604cbace.gz",
+  "final_url": "https://refugealbert1er.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugealbert1er.ffcam.fr/"
+ },
+ "ab0edcb031f0b2654fad33e3ed00cca73b9a6020": {
+  "body": null,
+  "file": "bodies/ab0edcb031f0b2654fad33e3ed00cca73b9a6020.gz",
+  "final_url": "https://chaletdescontamines.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletdescontamines.ffcam.fr/"
+ },
+ "ab485f3b868b0fc1514a66bcf576ce7afe105a5a": {
+  "body": null,
+  "file": "bodies/ab485f3b868b0fc1514a66bcf576ce7afe105a5a.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=733486.5339743911,5717217.69092636,737836.5339743911,5721567.69092636&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=733486.5339743911,5717217.69092636,737836.5339743911,5721567.69092636&wtyp=hut,gite,shelter&limit=50"
+ },
+ "aba47b6ef95e1c560f52313e3402366d3dfcc93f": {
+  "body": null,
+  "file": "bodies/aba47b6ef95e1c560f52313e3402366d3dfcc93f.gz",
+  "final_url": "https://chaletplainducanon.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletplainducanon.ffcam.fr/"
+ },
+ "abfb118e7248f03282336fc8ca41bd17d784de7b": {
+  "body": null,
+  "file": "bodies/abfb118e7248f03282336fc8ca41bd17d784de7b.gz",
+  "final_url": "https://refugeduviso.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeduviso.ffcam.fr/"
+ },
+ "ad479c1a110fa55a566d111792712f3e4e5c0205": {
+  "body": null,
+  "file": "bodies/ad479c1a110fa55a566d111792712f3e4e5c0205.gz",
+  "final_url": "https://refugeduchambeyron.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeduchambeyron.ffcam.fr/"
+ },
+ "adb8d0419865d1fbee18b46e25b95ecb7319570f": {
+  "body": null,
+  "file": "bodies/adb8d0419865d1fbee18b46e25b95ecb7319570f.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://contact.ffcam.fr/"
+ },
+ "adf8270ac4af8250d4a74f26d356e605488d6090": {
+  "body": null,
+  "file": "bodies/adf8270ac4af8250d4a74f26d356e605488d6090.gz",
+  "final_url": "https://refugedarremoulit.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedarremoulit.ffcam.fr/"
+ },
+ "ae0423327cf13a6e829fa99692544604db72cde2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxxualkeru9&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/ae0423327cf13a6e829fa99692544604db72cde2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "ae87cb85c971e963ba3332a6c0ba16d58e9637eb": {
+  "body": "data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3B%0Aarea%5B%22ISO3166-1%22%3D%22FR%22%5D%5Badmin_level%3D2%5D-%3E.fr%3B%0A%28+nwr%5B%22tourism%22~%22%5E%28alpine_hut%7Cwilderness_hut%29%24%22%5D%28area.fr%29%3B%0A++nwr%5B%22website%22~%22ffcam%5C%5C.fr%22%5D%28area.fr%29%3B%0A++nwr%5B%22contact%3Awebsite%22~%22ffcam%5C%5C.fr%22%5D%28area.fr%29%3B+%29%3B%0Aout+center+tags%3B",
+  "error": {
+   "message": "The read operation timed out",
+   "type": "TimeoutError"
+  },
+  "method": "POST",
+  "url": "https://overpass.kumi.systems/api/interpreter"
+ },
+ "b029ad3cba1794efb5df625980addedd77b2672d": {
+  "body": null,
+  "file": "bodies/b029ad3cba1794efb5df625980addedd77b2672d.gz",
+  "final_url": "https://refugedessouffles.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedessouffles.ffcam.fr/"
+ },
+ "b0e7e20414dd7c093705870da878c296cb5d8034": {
+  "body": null,
+  "file": "bodies/b0e7e20414dd7c093705870da878c296cb5d8034.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=705945.7579974966,5593319.372280331,710295.7579974966,5597669.372280331&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=705945.7579974966,5593319.372280331,710295.7579974966,5597669.372280331&wtyp=hut,gite,shelter&limit=50"
+ },
+ "b17637b69236b6ea5819e8509204ed7e94220ff7": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u84snc9p&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/b17637b69236b6ea5819e8509204ed7e94220ff7.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b2298919b2bba296dde8852f7e39b29cd73b4007": {
+  "body": null,
+  "file": "bodies/b2298919b2bba296dde8852f7e39b29cd73b4007.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/laval",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/laval"
+ },
+ "b3524d7f89365ed6922c20a14f7311632841e2bf": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A5&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/b3524d7f89365ed6922c20a14f7311632841e2bf.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b367b5e56146f454dfdc0ca638b24c2b02fd0ce5": {
+  "body": null,
+  "file": "bodies/b367b5e56146f454dfdc0ca638b24c2b02fd0ce5.gz",
+  "final_url": "https://refugepredelachaumette.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugepredelachaumette.ffcam.fr/"
+ },
+ "b4196c25b6974fb6d956cc5d9da702bc4914f172": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A61&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/b4196c25b6974fb6d956cc5d9da702bc4914f172.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b461691ea11d0a399145befad9b8ec5b816dde28": {
+  "body": null,
+  "file": "bodies/b461691ea11d0a399145befad9b8ec5b816dde28.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-34328.63303574411,5288239.34885293,-29978.63303574411,5292589.34885293&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-34328.63303574411,5288239.34885293,-29978.63303574411,5292589.34885293&wtyp=hut,gite,shelter&limit=50"
+ },
+ "b49b5c7e68f1f0f372113d1c790d47c9295743a4": {
+  "body": null,
+  "file": "bodies/b49b5c7e68f1f0f372113d1c790d47c9295743a4.gz",
+  "final_url": "https://refugeducouvercle.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeducouvercle.ffcam.fr/"
+ },
+ "b4dfe97421f549c613bfa55d5e5af2fbf53db1dd": {
+  "body": null,
+  "file": "bodies/b4dfe97421f549c613bfa55d5e5af2fbf53db1dd.gz",
+  "final_url": "https://refugelalavey.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugelalavey.ffcam.fr/"
+ },
+ "b59f244cb0df88218bce902bb762f49bd0240645": {
+  "body": null,
+  "file": "bodies/b59f244cb0df88218bce902bb762f49bd0240645.gz",
+  "final_url": "https://refugefonddaussois.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugefonddaussois.ffcam.fr/"
+ },
+ "b68cf066813f52a3534f05f403254d2e0e972b59": {
+  "body": null,
+  "file": "bodies/b68cf066813f52a3534f05f403254d2e0e972b59.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=736534.6842708682,5810781.087022785,740884.6842708682,5815131.087022785&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=736534.6842708682,5810781.087022785,740884.6842708682,5815131.087022785&wtyp=hut,gite,shelter&limit=50"
+ },
+ "b6bfd4bcb0c250c3935ee305b8f98eb0ffc619f8": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mjvfvz&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/b6bfd4bcb0c250c3935ee305b8f98eb0ffc619f8.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b6ce1dcdc73786f828ba916d7467f1a10ab5e957": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5wdwmtq8a&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/b6ce1dcdc73786f828ba916d7467f1a10ab5e957.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b77204d83c6b945d83adcf3d469a3171ff9d8743": {
+  "body": null,
+  "file": "bodies/b77204d83c6b945d83adcf3d469a3171ff9d8743.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=674158.3660864113,5850641.120130126,678508.3660864113,5854991.120130126&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=674158.3660864113,5850641.120130126,678508.3660864113,5854991.120130126&wtyp=hut,gite,shelter&limit=50"
+ },
+ "b8b5b0f1a2e5194d01c862c752275b85b2531e87": {
+  "body": null,
+  "file": "bodies/b8b5b0f1a2e5194d01c862c752275b85b2531e87.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=20688.019654921554,5291791.88020021,25038.019654921554,5296141.88020021&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=20688.019654921554,5291791.88020021,25038.019654921554,5296141.88020021&wtyp=hut,gite,shelter&limit=50"
+ },
+ "b8d4fea041ff6bf225679492df34ca1fb31019c5": {
+  "body": null,
+  "file": "bodies/b8d4fea041ff6bf225679492df34ca1fb31019c5.gz",
+  "final_url": "https://refugeladentparrachee.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeladentparrachee.ffcam.fr/"
+ },
+ "b9708ea6f9a466e9b7804c4af8d1e9bc169ff569": {
+  "body": null,
+  "file": "bodies/b9708ea6f9a466e9b7804c4af8d1e9bc169ff569.gz",
+  "final_url": "https://refugedesaiguillesdarves.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesaiguillesdarves.ffcam.fr/"
+ },
+ "ba4ce5240c1958026a4c3499972de455bd2a8af8": {
+  "body": null,
+  "file": "bodies/ba4ce5240c1958026a4c3499972de455bd2a8af8.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=729267.5252739133,5621336.61425943,733617.5252739133,5625686.61425943&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=729267.5252739133,5621336.61425943,733617.5252739133,5625686.61425943&wtyp=hut,gite,shelter&limit=50"
+ },
+ "bab1fb69ed9089332175512c73564f31eacf9306": {
+  "body": null,
+  "file": "bodies/bab1fb69ed9089332175512c73564f31eacf9306.gz",
+  "final_url": "https://refugedupigeonnier.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedupigeonnier.ffcam.fr/"
+ },
+ "bbbdcc6a49b9b3e1273eccdddfee6aadcb32a44c": {
+  "body": null,
+  "file": "bodies/bbbdcc6a49b9b3e1273eccdddfee6aadcb32a44c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=707509.2402454704,5637974.521110694,711859.2402454704,5642324.521110694&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=707509.2402454704,5637974.521110694,711859.2402454704,5642324.521110694&wtyp=hut,gite,shelter&limit=50"
+ },
+ "bcbfc56fc81f76e61bfff7fb109a9e416ef95752": {
+  "body": null,
+  "file": "bodies/bcbfc56fc81f76e61bfff7fb109a9e416ef95752.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=732511.0412767055,5638804.667915843,736861.0412767055,5643154.667915843&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=732511.0412767055,5638804.667915843,736861.0412767055,5643154.667915843&wtyp=hut,gite,shelter&limit=50"
+ },
+ "bcf2d1ef16f6ec4456ddae998cfd8f369e89a231": {
+  "body": null,
+  "file": "bodies/bcf2d1ef16f6ec4456ddae998cfd8f369e89a231.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=748607.9509626628,5691985.547527581,752957.9509626628,5696335.547527581&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=748607.9509626628,5691985.547527581,752957.9509626628,5696335.547527581&wtyp=hut,gite,shelter&limit=50"
+ },
+ "bdad6b1410976ccde6d65748a31131cbc0755dc6": {
+  "body": null,
+  "file": "bodies/bdad6b1410976ccde6d65748a31131cbc0755dc6.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=827358.9209625678,5472161.701131685,831708.9209625678,5476511.701131685&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=827358.9209625678,5472161.701131685,831708.9209625678,5476511.701131685&wtyp=hut,gite,shelter&limit=50"
+ },
+ "be8b3bb859ad7217bd0264bb1b1bede30e17f7bd": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xqew2j&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/be8b3bb859ad7217bd0264bb1b1bede30e17f7bd.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "bef9678a32d9af477a265cb3580944a0370c2569": {
+  "body": null,
+  "file": "bodies/bef9678a32d9af477a265cb3580944a0370c2569.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=755326.1935505925,5701295.255812412,759676.1935505925,5705645.255812412&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=755326.1935505925,5701295.255812412,759676.1935505925,5705645.255812412&wtyp=hut,gite,shelter&limit=50"
+ },
+ "bfbac7437f560ec919cbee193862b40112ded2a1": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A13&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/bfbac7437f560ec919cbee193862b40112ded2a1.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c0beb24a959b50e87ff7455edebe3d7219ae230c": {
+  "body": null,
+  "file": "bodies/c0beb24a959b50e87ff7455edebe3d7219ae230c.gz",
+  "final_url": "https://refugelapointepercee.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugelapointepercee.ffcam.fr/"
+ },
+ "c0d38e8382b2cb98695f512c1b1b586fe007cc78": {
+  "body": null,
+  "file": "bodies/c0d38e8382b2cb98695f512c1b1b586fe007cc78.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=759514.7007105971,5555451.267221424,763864.7007105971,5559801.267221424&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=759514.7007105971,5555451.267221424,763864.7007105971,5559801.267221424&wtyp=hut,gite,shelter&limit=50"
+ },
+ "c0e88d5251c36d0daf08d67e211c3070f6eb6a03": {
+  "body": null,
+  "file": "bodies/c0e88d5251c36d0daf08d67e211c3070f6eb6a03.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93149,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93149,2026-12-07"
+ },
+ "c231f95db6cff6939570f6ab1c76bb3b119fc9a0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8jh7i7h&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/c231f95db6cff6939570f6ab1c76bb3b119fc9a0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c2388e63f7676f7c9167de168d048a0ed8457557": {
+  "body": null,
+  "file": "bodies/c2388e63f7676f7c9167de168d048a0ed8457557.gz",
+  "final_url": "https://refugeduglacierblanc.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeduglacierblanc.ffcam.fr/"
+ },
+ "c5c5b392c7b36662a006c7ef01b5bfa8948a89de": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A111&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/c5c5b392c7b36662a006c7ef01b5bfa8948a89de.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c65ae793032e188ac165b2891c8f0639d31f5a96": {
+  "body": null,
+  "file": "bodies/c65ae793032e188ac165b2891c8f0639d31f5a96.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92949,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92949,2026-12-07"
+ },
+ "c721aedb7c138e9319cbed7bfa26aa8f2b87a148": {
+  "body": null,
+  "file": "bodies/c721aedb7c138e9319cbed7bfa26aa8f2b87a148.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93147,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93147,2026-12-07"
+ },
+ "c74e3da655d83ce28a478fd6c2d3c70e9a58b558": {
+  "body": null,
+  "file": "bodies/c74e3da655d83ce28a478fd6c2d3c70e9a58b558.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=710989.97808311,5629205.387801066,715339.97808311,5633555.387801066&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=710989.97808311,5629205.387801066,715339.97808311,5633555.387801066&wtyp=hut,gite,shelter&limit=50"
+ },
+ "c8bda6c86f210e4be0e26d7e6fff9c85c34080f0": {
+  "body": null,
+  "file": "bodies/c8bda6c86f210e4be0e26d7e6fff9c85c34080f0.gz",
+  "final_url": "https://refugecampanadecloutou.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugecampanadecloutou.ffcam.fr/"
+ },
+ "c8ed70460e867ba328de23054f01c0afd4123625": {
+  "body": null,
+  "file": "bodies/c8ed70460e867ba328de23054f01c0afd4123625.gz",
+  "final_url": "https://chaletvauchignon.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletvauchignon.ffcam.fr/"
+ },
+ "c8edd522e2d54502ac73bd5cf65291d50e23df13": {
+  "body": null,
+  "file": "bodies/c8edd522e2d54502ac73bd5cf65291d50e23df13.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedusaut.ffcam.fr/"
+ },
+ "c9236163fbcc6fd573c7ea398d36ebfe8a14bb84": {
+  "body": null,
+  "file": "bodies/c9236163fbcc6fd573c7ea398d36ebfe8a14bb84.gz",
+  "final_url": "https://refugedeplate.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedeplate.ffcam.fr/"
+ },
+ "c984e115a7230d5304fabfa648eaef9dd6abe0e5": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8nnte7d&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/c984e115a7230d5304fabfa648eaef9dd6abe0e5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c9c69cdabcbab409c76a734c94eefd9b44565fff": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A117&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/c9c69cdabcbab409c76a734c94eefd9b44565fff.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "c9cdfa0a90cbadb0b586ccb8a979150dd649c23c": {
+  "body": null,
+  "file": "bodies/c9cdfa0a90cbadb0b586ccb8a979150dd649c23c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=688506.6692112315,5594426.752885134,692856.6692112315,5598776.752885134&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=688506.6692112315,5594426.752885134,692856.6692112315,5598776.752885134&wtyp=hut,gite,shelter&limit=50"
+ },
+ "caececb220773740adc291c07b94e38a7c98df87": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1mymmzijik&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/caececb220773740adc291c07b94e38a7c98df87.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "cc6ca9e50b2e454a98ec389c8a1fd94c55a8746d": {
+  "body": null,
+  "file": "bodies/cc6ca9e50b2e454a98ec389c8a1fd94c55a8746d.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=761608.3976931456,5691786.6891625235,765958.3976931456,5696136.6891625235&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=761608.3976931456,5691786.6891625235,765958.3976931456,5696136.6891625235&wtyp=hut,gite,shelter&limit=50"
+ },
+ "cc886078a7842ea27b1f31a329d1e9dfad4d2ccf": {
+  "body": null,
+  "file": "bodies/cc886078a7842ea27b1f31a329d1e9dfad4d2ccf.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=775573.2051722363,5777654.060933941,779923.2051722363,5782004.060933941&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=775573.2051722363,5777654.060933941,779923.2051722363,5782004.060933941&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ce026ce9d28dceeab7cebcbd543c179e7997190f": {
+  "body": null,
+  "file": "bodies/ce026ce9d28dceeab7cebcbd543c179e7997190f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=747109.3679778124,5659939.406208045,751459.3679778124,5664289.406208045&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=747109.3679778124,5659939.406208045,751459.3679778124,5664289.406208045&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ce2860fa277ca01920a2e7c15a10cbde80695b5c": {
+  "body": null,
+  "file": "bodies/ce2860fa277ca01920a2e7c15a10cbde80695b5c.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=FFCAM",
+  "method": "GET",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?mode=FORM&_lang=FR&init=1&apporigin=FFCAM"
+ },
+ "ce8a39253a9518ebcf4e005314a6a56bcbf71040": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A75&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/ce8a39253a9518ebcf4e005314a6a56bcbf71040.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "cedd189ca081916fa003629e0acba8958ff3b830": {
+  "body": null,
+  "file": "bodies/cedd189ca081916fa003629e0acba8958ff3b830.gz",
+  "final_url": "https://refugedumaupas.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedumaupas.ffcam.fr/"
+ },
+ "ceff4405b476f93f6bb675b1082f1bc7e9584367": {
+  "body": null,
+  "file": "bodies/ceff4405b476f93f6bb675b1082f1bc7e9584367.gz",
+  "final_url": "https://refugeetangfourcat.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugeetangfourcat.ffcam.fr/"
+ },
+ "cf29974b505af06b67b4fa31660a2815af72180f": {
+  "body": "data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3B%0Aarea%5B%22ISO3166-1%22%3D%22FR%22%5D%5Badmin_level%3D2%5D-%3E.fr%3B%0A%28+nwr%5B%22tourism%22~%22%5E%28alpine_hut%7Cwilderness_hut%29%24%22%5D%28area.fr%29%3B%0A++nwr%5B%22website%22~%22ffcam%5C%5C.fr%22%5D%28area.fr%29%3B%0A++nwr%5B%22contact%3Awebsite%22~%22ffcam%5C%5C.fr%22%5D%28area.fr%29%3B+%29%3B%0Aout+center+tags%3B",
+  "error": {
+   "message": "HTTP Error 504: Gateway Timeout",
+   "type": "HTTPError"
+  },
+  "method": "POST",
+  "url": "https://overpass.private.coffee/api/interpreter"
+ },
+ "d1c394d2bd2917ca90fd1f3d5e152c54d8cd3d2e": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5h5skpilec4l&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d1c394d2bd2917ca90fd1f3d5e152c54d8cd3d2e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d2a12516568fecb379d2c4e42eccff698a26e3d1": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mmakxx&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d2a12516568fecb379d2c4e42eccff698a26e3d1.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d3128a36c72666e6dbfed8bc68a76833db0ef39b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A108&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d3128a36c72666e6dbfed8bc68a76833db0ef39b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d317585432fbeb0ebfbdbfc172c0f1165446ab8d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A26&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d317585432fbeb0ebfbdbfc172c0f1165446ab8d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d353819946fd5cf0c57a0cbc27ad8a9af2db7856": {
+  "body": null,
+  "file": "bodies/d353819946fd5cf0c57a0cbc27ad8a9af2db7856.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-4698.724175423,5270219.920047389,-348.7241754229999,5274569.920047389&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-4698.724175423,5270219.920047389,-348.7241754229999,5274569.920047389&wtyp=hut,gite,shelter&limit=50"
+ },
+ "d3fae3834c5bb268fa2375f53e10321b5924701f": {
+  "body": null,
+  "file": "bodies/d3fae3834c5bb268fa2375f53e10321b5924701f.gz",
+  "final_url": "https://refugedevenasque.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedevenasque.ffcam.fr/"
+ },
+ "d4094dea6e713393d2fab9ddf61faac9dbcf414e": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A97&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d4094dea6e713393d2fab9ddf61faac9dbcf414e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d4eab19e350bd40799057e11a0335060b98be8d2": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A67&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d4eab19e350bd40799057e11a0335060b98be8d2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d6cfa1336e5794c2bf0862266bb93f742444e9c5": {
+  "body": null,
+  "file": "bodies/d6cfa1336e5794c2bf0862266bb93f742444e9c5.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=708379.9813023342,5611057.693135143,712729.9813023342,5615407.693135143&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=708379.9813023342,5611057.693135143,712729.9813023342,5615407.693135143&wtyp=hut,gite,shelter&limit=50"
+ },
+ "d6f5e9b5db8cad117476c913f15c45084c7c34d5": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A70&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d6f5e9b5db8cad117476c913f15c45084c7c34d5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "d9694351c955b4506bac9c0083a6283a23a5d3d0": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A28&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/d9694351c955b4506bac9c0083a6283a23a5d3d0.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "dac5c1a115bbd1dd90b4a99f039b04c8ade5865e": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A139&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/dac5c1a115bbd1dd90b4a99f039b04c8ade5865e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "dad235eab9e46b56a72e661553481b997874e6c5": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A82&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/dad235eab9e46b56a72e661553481b997874e6c5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "dc3dd69a788fc813afe8c3ffdf5655a7aaddeebd": {
+  "body": null,
+  "file": "bodies/dc3dd69a788fc813afe8c3ffdf5655a7aaddeebd.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-16001.214713072332,5276279.328218473,-11651.214713072332,5280629.328218473&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-16001.214713072332,5276279.328218473,-11651.214713072332,5280629.328218473&wtyp=hut,gite,shelter&limit=50"
+ },
+ "de1a5e60310cb3cba12dd19bd1882d1bfefa7879": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A58&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/de1a5e60310cb3cba12dd19bd1882d1bfefa7879.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "dea4ee52d7717d94946119e92691687eb0b51449": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A45&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/dea4ee52d7717d94946119e92691687eb0b51449.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "def8040efef8825dd218ff2d57dc77d51232349d": {
+  "body": null,
+  "file": "bodies/def8040efef8825dd218ff2d57dc77d51232349d.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=777591.8728180006,5769575.970648788,781941.8728180006,5773925.970648788&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=777591.8728180006,5769575.970648788,781941.8728180006,5773925.970648788&wtyp=hut,gite,shelter&limit=50"
+ },
+ "df9835895f70f1704ef2e0a9df9c39d374afcb5f": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1njyztnljl&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/df9835895f70f1704ef2e0a9df9c39d374afcb5f.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e0034b55e6c9599cb5fdde31b5b78aa142c62a4a": {
+  "body": null,
+  "file": "bodies/e0034b55e6c9599cb5fdde31b5b78aa142c62a4a.gz",
+  "final_url": "https://refugedesecrins.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesecrins.ffcam.fr/"
+ },
+ "e18175783bf27165da742474255728afa4f42d02": {
+  "body": null,
+  "file": "bodies/e18175783bf27165da742474255728afa4f42d02.gz",
+  "final_url": "https://refugedesmerveilles.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesmerveilles.ffcam.fr/"
+ },
+ "e2a3487666f9641deeaea65c2380118360e63591": {
+  "body": null,
+  "file": "bodies/e2a3487666f9641deeaea65c2380118360e63591.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=756997.099107167,5499942.4516188735,761347.099107167,5504292.4516188735&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=756997.099107167,5499942.4516188735,761347.099107167,5504292.4516188735&wtyp=hut,gite,shelter&limit=50"
+ },
+ "e2fb36a9ace939b3bbd599290fc7637a1f7b0786": {
+  "body": null,
+  "file": "bodies/e2fb36a9ace939b3bbd599290fc7637a1f7b0786.gz",
+  "final_url": "https://refugedugrandbec.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedugrandbec.ffcam.fr/"
+ },
+ "e3d7efb68b39c6aac65588de7819283219a95243": {
+  "body": null,
+  "file": "bodies/e3d7efb68b39c6aac65588de7819283219a95243.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=392925.59132353705,5422205.861717414,397275.59132353705,5426555.861717414&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=392925.59132353705,5422205.861717414,397275.59132353705,5426555.861717414&wtyp=hut,gite,shelter&limit=50"
+ },
+ "e409d7e83a6c72567140b864bbea6105e1a8f0f6": {
+  "body": null,
+  "file": "bodies/e409d7e83a6c72567140b864bbea6105e1a8f0f6.gz",
+  "final_url": "https://refugedesgrandsmulets.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedesgrandsmulets.ffcam.fr/"
+ },
+ "e5477c72fef82e78b82d954a98b8cd5c45a0ce5e": {
+  "body": null,
+  "file": "bodies/e5477c72fef82e78b82d954a98b8cd5c45a0ce5e.gz",
+  "final_url": "https://refugedescortalets.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedescortalets.ffcam.fr/"
+ },
+ "e5ee3e829f0ced56ca8bb2f0435c893186266ec5": {
+  "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1novae31ez&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/e5ee3e829f0ced56ca8bb2f0435c893186266ec5.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e61735a7e064a3b973cd44a79a5c65203450b6bb": {
+  "body": null,
+  "file": "bodies/e61735a7e064a3b973cd44a79a5c65203450b6bb.gz",
+  "final_url": "https://skitour.fr/api/refuges",
+  "method": "GET",
+  "status": 200,
+  "url": "https://skitour.fr/api/refuges"
+ },
+ "e651f88728e560b9b3f42d22628173172126cd71": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A93&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/e651f88728e560b9b3f42d22628173172126cd71.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e908a1ce91c3ce3ad82eebd7f9ed8eaa5d4fb18e": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A90&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/e908a1ce91c3ce3ad82eebd7f9ed8eaa5d4fb18e.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e94dd08ed0e7efe0addd2c5fc2fa276395b58938": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A59&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/e94dd08ed0e7efe0addd2c5fc2fa276395b58938.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "e98212946050bbb7dc2868a38ec11c5e1ed2a1f6": {
+  "body": null,
+  "file": "bodies/e98212946050bbb7dc2868a38ec11c5e1ed2a1f6.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/rifugio-guido-rey",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/rifugio-guido-rey"
+ },
+ "e9b5f808aa0764fef627ffb011e404131a45e90b": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A79&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/e9b5f808aa0764fef627ffb011e404131a45e90b.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "ea06d199ade9669fb00af537043b8b9c253a0338": {
+  "body": null,
+  "file": "bodies/ea06d199ade9669fb00af537043b8b9c253a0338.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=735052.7992096344,5630486.781487693,739402.7992096344,5634836.781487693&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=735052.7992096344,5630486.781487693,739402.7992096344,5634836.781487693&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ea1a57d428029127f9ab330a5bc64c2b33cf4e0e": {
+  "body": null,
+  "file": "bodies/ea1a57d428029127f9ab330a5bc64c2b33cf4e0e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=735100.6665906688,5630314.972738487,739450.6665906688,5634664.972738487&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=735100.6665906688,5630314.972738487,739450.6665906688,5634664.972738487&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ea6014ac844d077b35e124dd0f348d2ddb09daef": {
+  "body": null,
+  "file": "bodies/ea6014ac844d077b35e124dd0f348d2ddb09daef.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=719680.6907281311,5624379.337376031,724030.6907281311,5628729.337376031&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=719680.6907281311,5624379.337376031,724030.6907281311,5628729.337376031&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ea8df8fb1c9222edf39c53879778b8ad6b5fe844": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8l3ommd&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/ea8df8fb1c9222edf39c53879778b8ad6b5fe844.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "eaeae08a45d71528c70189796dc466b903f6547a": {
+  "body": null,
+  "file": "bodies/eaeae08a45d71528c70189796dc466b903f6547a.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=739123.5303483962,5665012.427674451,743473.5303483962,5669362.427674451&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=739123.5303483962,5665012.427674451,743473.5303483962,5669362.427674451&wtyp=hut,gite,shelter&limit=50"
+ },
+ "eafb1ae6e9dc307aea5e1916ab6fd65fa51a1af4": {
+  "body": null,
+  "file": "bodies/eafb1ae6e9dc307aea5e1916ab6fd65fa51a1af4.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=53436.87800785445,5268868.628076824,57786.87800785445,5273218.628076824&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=53436.87800785445,5268868.628076824,57786.87800785445,5273218.628076824&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ebd90dbf27efe17d179c520035fd11b4cf15a551": {
+  "body": null,
+  "file": "bodies/ebd90dbf27efe17d179c520035fd11b4cf15a551.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=763974.2708306458,5682051.207366113,768324.2708306458,5686401.207366113&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=763974.2708306458,5682051.207366113,768324.2708306458,5686401.207366113&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ec448edfb5306f5dc2d23ef46066d4d3c8f886fd": {
+  "body": null,
+  "file": "bodies/ec448edfb5306f5dc2d23ef46066d4d3c8f886fd.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=783013.9112553138,5678436.624303001,787363.9112553138,5682786.624303001&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=783013.9112553138,5678436.624303001,787363.9112553138,5682786.624303001&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ee0bd03599750dd04e73532c9fe6e3421e246c0a": {
+  "body": null,
+  "file": "bodies/ee0bd03599750dd04e73532c9fe6e3421e246c0a.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/marches",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/marches"
+ },
+ "ee2ea2c9f03786109a38e085aabada664f15d829": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A87&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/ee2ea2c9f03786109a38e085aabada664f15d829.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "eeaa21d1dc97e85a9f2a8b3ea5c23fc2edd01fe2": {
+  "body": "action=availability&apporigin=NEOUVIELLE&structure=BK_STRUCTURE%3Aiyuctdomm9k&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/eeaa21d1dc97e85a9f2a8b3ea5c23fc2edd01fe2.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "eee9177490511ea17176d78e3e09225db484f5ac": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8xxgiou&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/eee9177490511ea17176d78e3e09225db484f5ac.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "eeeb14d6e22591a6c03b733f3b1baee3afeef857": {
+  "body": null,
+  "file": "bodies/eeeb14d6e22591a6c03b733f3b1baee3afeef857.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=747320.2070933455,5685155.951925015,751670.2070933455,5689505.951925015&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=747320.2070933455,5685155.951925015,751670.2070933455,5689505.951925015&wtyp=hut,gite,shelter&limit=50"
+ },
+ "efa059f92c5779deae6c665a0fd078a110a02db8": {
+  "body": null,
+  "file": "bodies/efa059f92c5779deae6c665a0fd078a110a02db8.gz",
+  "final_url": "https://refugedegialorgues.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedegialorgues.ffcam.fr/"
+ },
+ "efbe82711f832b942fd8608f496d2f4e3d55bb49": {
+  "body": null,
+  "file": "bodies/efbe82711f832b942fd8608f496d2f4e3d55bb49.gz",
+  "final_url": "https://refuge-vallonbrun.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-vallonbrun.vanoise.com/"
+ },
+ "f0ecf19da14366275a09ce0c81e0481f51dde864": {
+  "body": null,
+  "file": "bodies/f0ecf19da14366275a09ce0c81e0481f51dde864.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=95051.999842765,5284667.214135108,99401.999842765,5289017.214135108&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=95051.999842765,5284667.214135108,99401.999842765,5289017.214135108&wtyp=hut,gite,shelter&limit=50"
+ },
+ "f1219fd5e06761bf1690c873357592a68eb28509": {
+  "body": null,
+  "file": "bodies/f1219fd5e06761bf1690c873357592a68eb28509.gz",
+  "final_url": "https://refugedevens.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refugedevens.ffcam.fr/"
+ },
+ "f1be71608933542e80827249cc64ecb746c2ba0d": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A89&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/f1be71608933542e80827249cc64ecb746c2ba0d.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f25ebad42cb49564b6eecbcdffb303328326423a": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A94&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/f25ebad42cb49564b6eecbcdffb303328326423a.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f2a9d70d2d60798ef5226e7eac462647bf6d0d55": {
+  "body": null,
+  "file": "bodies/f2a9d70d2d60798ef5226e7eac462647bf6d0d55.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=-5883.386196280111,5263625.496377536,-1533.386196280111,5267975.496377536&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=-5883.386196280111,5263625.496377536,-1533.386196280111,5267975.496377536&wtyp=hut,gite,shelter&limit=50"
+ },
+ "f468cde48531e6b3a17d265d3011488999d0c123": {
+  "body": null,
+  "file": "bodies/f468cde48531e6b3a17d265d3011488999d0c123.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=728688.6639218689,5644150.552270625,733038.6639218689,5648500.552270625&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=728688.6639218689,5644150.552270625,733038.6639218689,5648500.552270625&wtyp=hut,gite,shelter&limit=50"
+ },
+ "f4c30f996bd2bdaee1e98a35df05ed01012ae67a": {
+  "body": null,
+  "file": "bodies/f4c30f996bd2bdaee1e98a35df05ed01012ae67a.gz",
+  "final_url": "https://chaletleychauda.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletleychauda.ffcam.fr/"
+ },
+ "f5efe14d388626388634a31ea2ea8c6a7fe40b55": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A71&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/f5efe14d388626388634a31ea2ea8c6a7fe40b55.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f6084717c87f76c6e128d1b69f6e50488c439864": {
+  "body": null,
+  "file": "bodies/f6084717c87f76c6e128d1b69f6e50488c439864.gz",
+  "final_url": "https://refuge-coldupalet.vanoise.com/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-coldupalet.vanoise.com/"
+ },
+ "f63f4e4235f026338b3cc6ebabe8fc5e2bb4f1ca": {
+  "body": null,
+  "file": "bodies/f63f4e4235f026338b3cc6ebabe8fc5e2bb4f1ca.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuges.ffcam.fr/"
+ },
+ "f642e6f8d8dcde9fa4d500b169ae96ebb1396fa0": {
+  "body": null,
+  "file": "bodies/f642e6f8d8dcde9fa4d500b169ae96ebb1396fa0.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=790761.3025354841,5685688.501314085,795111.3025354841,5690038.501314085&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=790761.3025354841,5685688.501314085,795111.3025354841,5690038.501314085&wtyp=hut,gite,shelter&limit=50"
+ },
+ "f66b3b5a7063757b5a74746dfb73c442466851ed": {
+  "body": null,
+  "file": "bodies/f66b3b5a7063757b5a74746dfb73c442466851ed.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93151,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93151,2026-12-07"
+ },
+ "f8999780f394f4efd6c62bc3c61d9f1f18e8b911": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5ualjg1ab&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/f8999780f394f4efd6c62bc3c61d9f1f18e8b911.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f8d71ed32caee3d49c0cc0c2a58dfae49e8aa129": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A46&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/f8d71ed32caee3d49c0cc0c2a58dfae49e8aa129.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f9c3708da3f17d44d2062871b61b24ff7216db1f": {
+  "body": null,
+  "file": "bodies/f9c3708da3f17d44d2062871b61b24ff7216db1f.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=58952.202178439446,5266489.941097233,63302.202178439446,5270839.941097233&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=58952.202178439446,5266489.941097233,63302.202178439446,5270839.941097233&wtyp=hut,gite,shelter&limit=50"
+ },
+ "fb5a764c49afcf67acf8fa042aa33da6d40091a4": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A128&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/fb5a764c49afcf67acf8fa042aa33da6d40091a4.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fb881669b9d19f86b159fa8791f7426d4f67ac85": {
+  "body": null,
+  "file": "bodies/fb881669b9d19f86b159fa8791f7426d4f67ac85.gz",
+  "final_url": "https://refuge-pro.com/embed/calendrier/chardonnet",
+  "method": "GET",
+  "status": 200,
+  "url": "https://refuge-pro.com/embed/calendrier/chardonnet"
+ },
+ "fbcbb663dca2c9253761bd642e7fe3d38a2355cb": {
+  "body": null,
+  "file": "bodies/fbcbb663dca2c9253761bd642e7fe3d38a2355cb.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=54387.880417569,5264827.732808251,58737.880417569,5269177.732808251&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=54387.880417569,5264827.732808251,58737.880417569,5269177.732808251&wtyp=hut,gite,shelter&limit=50"
+ },
+ "fc0b28f5c285da8bfd69edaa03fb38f23df210d1": {
+  "body": null,
+  "file": "bodies/fc0b28f5c285da8bfd69edaa03fb38f23df210d1.gz",
+  "final_url": "https://www.ffcam.fr//index.php?alias=rechercher_refuge_chalet&message=Refuge+indisponible&oid=T025:11",
+  "method": "GET",
+  "status": 200,
+  "url": "https://chaletleratou.ffcam.fr/"
+ },
+ "fd68fed29b559b5a1c3194d8d33ca91fd4d76561": {
+  "body": null,
+  "file": "bodies/fd68fed29b559b5a1c3194d8d33ca91fd4d76561.gz",
+  "final_url": "https://www.ffcam.fr/",
+  "method": "GET",
+  "status": 200,
+  "url": "https://info.ffcam.fr/"
+ },
+ "fda844c57c377a7b467a2f3a66f51f1301607906": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A98&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/fda844c57c377a7b467a2f3a66f51f1301607906.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fe1aaf97da1795221b36fecdc62dc46361e5739c": {
+  "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8mueov1&productCategory=nomatter&pax=1&date=2026-11-22",
+  "file": "bodies/fe1aaf97da1795221b36fecdc62dc46361e5739c.gz",
+  "final_url": "https://centrale.ffcam.fr/index.php?",
+  "method": "POST",
+  "status": 200,
+  "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "fe83b6cf1cf179cdac37e9425d2341dced35fa26": {
+  "body": null,
+  "file": "bodies/fe83b6cf1cf179cdac37e9425d2341dced35fa26.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=740649.943205941,5655506.537190509,744999.943205941,5659856.537190509&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=740649.943205941,5655506.537190509,744999.943205941,5659856.537190509&wtyp=hut,gite,shelter&limit=50"
+ }
+}

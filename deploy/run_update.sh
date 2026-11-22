@@ -11,8 +11,9 @@ flock -n 9 || { echo "$(date -Is) previous update still running, skipping"; exit
 
 echo "$(date -Is) update start"
 mkdir -p "$APP/data"
-python3 "$APP/ffcam_availability.py" -o "$APP/data/latest.csv"
+# --history: record the changes in $APP/history/ (and the fetch log); without it nothing is kept
+"$APP/rb/ffcam_availability.rb" --history -o "$APP/data/latest.csv"
 # write to a temp file then rename, so visitors never get a half-written page
-python3 "$APP/build_map.py" "$APP/data/latest.csv" -o "$WEB/index.html.tmp"
+"$APP/rb/build_map.rb" "$APP/data/latest.csv" -o "$WEB/index.html.tmp"
 mv "$WEB/index.html.tmp" "$WEB/index.html"
 echo "$(date -Is) update done"

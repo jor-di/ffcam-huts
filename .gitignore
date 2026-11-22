@@ -2,13 +2,12 @@
 secrets.env
 
 # history lives on the `data` branch (checked out here as a git worktree)
-history/
-history-backup/
+/history/
+/history-backup/
 
 # generated files
-__pycache__/
 data/
 site/
-map.html
-releves/
-ffcam_*.csv
+/map.html
+/releves/
+/ffcam_*.csv
