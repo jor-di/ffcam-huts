@@ -8,7 +8,6 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - **Code** : Python standard sans dépendance + une page HTML Leaflet.
 - **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), une fois par jour sinon.
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
-- **État** : tout ce qui est décrit ici est en ligne ; voir [État en cours et prochaines étapes](#état-en-cours-et-prochaines-étapes).
 
 ## Sommaire
 
@@ -19,7 +18,6 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - [Historique des disponibilités](#historique-des-disponibilités)
 - [Mise en ligne](#mise-en-ligne)
 - [Opérations courantes](#opérations-courantes)
-- [État en cours et prochaines étapes](#état-en-cours-et-prochaines-étapes)
 - [Pièges connus et décisions](#pièges-connus-et-décisions)
 - [Annexe : source de chaque refuge](#annexe--source-de-chaque-refuge)
 
@@ -281,32 +279,6 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 | Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec historique |
 | Tester une autre date | `./ffcam_availability.py --date 2027-02-20 --nights 2 --no-history` | |
 | Ajouter la couche IGN SCAN 25 | remplir `IGN_API_KEY` dans `secrets.env`, puis `./build_map.py` | la clé finit en clair dans la page publiée |
-
-## État en cours et prochaines étapes
-
-Tout est publié (commit `01acb68`, 21/11/2026). Dernier lot mis en ligne :
-
-- Mode « Avant-dernière couchette » (clic logo, `#avant-derniere`) et relevé des nuits du week-end suivant.
-- Mise en page téléphone : panneau qui défile d'un bloc, filtres repliés, panneau à 90 %.
-- 16 nouveaux refuges : Néouvielle (3), Boréon (1), Vanoise via Open System (12) — coordonnées (140/140) et liens rafraîchis.
-- Gestion des refuges sans capacité connue dans la carte ; recherche par nom qui trouve aussi les refuges fermés ou hors cadre.
-
-**À faire**
-
-- [x] Vérifier le rendu des refuges Open System sur une date d'ouverture (`--date 2027-02-20` : Leisse 25 places, Bois 45, Femma 40, Vallonbrun 27)
-- [x] Publier le lot ci-dessus et contrôler le premier relevé en ligne (140 refuges, 5 portails)
-- [ ] Tester le panneau téléphone au doigt sur un vrai téléphone
-- [ ] Cocher « Enforce HTTPS » dans Settings → Pages si ce n'est pas déjà fait
-- [ ] Compléter `manual_huts.json` au fil des demandes (refuges privés réservables seulement par téléphone)
-- [ ] Choisir le marqueur définitif (talon de billet retenu par défaut ; alternatives : silhouette de refuge, étoile)
-
-**Pistes évoquées, non commencées**
-
-- Afficher l'historique (courbes de remplissage, alertes « une place s'est libérée »).
-- Ajouter ENTREPYRPYRENEES (52 refuges Pyrénées espagnoles/andorranes ; élargir la recherche OSM hors France).
-- Refuges gardés du Mont-Blanc (Goûter, Tête Rousse) : système à part sur montblanc.ffcam.fr.
-- Couche « cabanes et abris » depuis l'API refuges.info (sans disponibilités).
-- Le petit chiffre sous chaque nuit du carrousel compte toute la France, pas le cadre.
 
 ## Pièges connus et décisions
 
