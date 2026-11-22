@@ -10,14 +10,16 @@ class TestDates < Minitest::Test
     { "2026-11-16" => weekend, "2026-11-17" => weekend, "2026-11-18" => weekend, "2026-11-19" => weekend,
       "2026-11-20" => weekend, # Friday: tonight, Saturday, Sunday
       "2026-11-21" => weekend[1..], # Saturday: tonight and Sunday
-      "2026-11-22" => weekend[2..] } # Sunday: tonight only
+      "2026-11-22" => %w[2026-11-27 2026-11-28 2026-11-29].map(&D) } # Sunday: the next weekend
       .each { |today, nights| assert_equal nights, weekend_nights(D[today]), today }
   end
 
   def test_next_weekend_nights_every_weekday
     nxt = %w[2026-11-27 2026-11-28 2026-11-29].map(&D)
-    (16..22).each { |day| assert_equal nxt, next_weekend_nights(Date.new(2026, 11, day)), "2026-11-#{day}" }
-    assert_equal %w[2026-12-04 2026-12-05 2026-12-06].map(&D), next_weekend_nights(D["2026-11-23"]) # Monday moves on
+    (16..21).each { |day| assert_equal nxt, next_weekend_nights(Date.new(2026, 11, day)), "2026-11-#{day}" }
+    after = %w[2026-12-04 2026-12-05 2026-12-06].map(&D)
+    assert_equal after, next_weekend_nights(D["2026-11-22"]) # Sunday already looks one weekend further
+    assert_equal after, next_weekend_nights(D["2026-11-23"]) # and Monday too
   end
 
   def test_month_end
@@ -37,12 +39,12 @@ class TestDates < Minitest::Test
     assert_equal %w[2027-01-01 2027-01-02 2027-01-03].map(&D), weekend_nights(D["2026-12-30"])
     # Sat 2027-01-02 / Sun 2027-01-03
     assert_equal %w[2027-01-02 2027-01-03].map(&D), weekend_nights(D["2027-01-02"])
-    assert_equal %w[2027-01-03].map(&D), weekend_nights(D["2027-01-03"])
+    assert_equal %w[2027-01-08 2027-01-09 2027-01-10].map(&D), weekend_nights(D["2027-01-03"]) # Sunday
     # Thu 2026-12-31: Fri 2027-01-01, next weekend 2027-01-08
     assert_equal %w[2027-01-08 2027-01-09 2027-01-10].map(&D), next_weekend_nights(D["2026-12-31"])
     # Sun 2028-12-31 (leap year)
-    assert_equal [D["2028-12-31"]], weekend_nights(D["2028-12-31"])
-    assert_equal %w[2029-01-05 2029-01-06 2029-01-07].map(&D), next_weekend_nights(D["2028-12-31"])
+    assert_equal %w[2029-01-05 2029-01-06 2029-01-07].map(&D), weekend_nights(D["2028-12-31"])
+    assert_equal %w[2029-01-12 2029-01-13 2029-01-14].map(&D), next_weekend_nights(D["2028-12-31"])
   end
 
   def test_invariants_over_three_years
@@ -58,7 +60,7 @@ class TestDates < Minitest::Test
 
   def test_dst_does_not_matter
     # the last Sunday of March / October are DST changes in Paris; dates are calendar days
-    assert_equal [D["2026-03-29"]], weekend_nights(D["2026-03-29"])
+    assert_equal %w[2026-04-03 2026-04-04 2026-04-05].map(&D), weekend_nights(D["2026-03-29"]) # Sunday
     assert_equal %w[2026-10-23 2026-10-24 2026-10-25].map(&D), weekend_nights(D["2026-10-19"])
   end
 

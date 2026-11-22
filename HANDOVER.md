@@ -213,7 +213,7 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 - Fonds : Topo clair Esri (défaut), OpenTopoMap, satellite Esri, Plan IGN, OSM France ; calque « Traces ski de rando (IGN) » ; SCAN 25 si clé IGN.
 - Vue de départ : Alpes, du Léman aux Hautes-Alpes.
 
-**Nuits affichées** : lundi–vendredi = vendredi, samedi, dimanche à venir ; samedi = ce soir + dimanche ; dimanche = ce soir ; bascule au week-end suivant le lundi.
+**Nuits affichées** : lundi–vendredi = vendredi, samedi, dimanche à venir ; samedi = ce soir + dimanche ; dès le dimanche = vendredi, samedi, dimanche du week-end suivant.
 
 **Mode caché « Avant-dernière couchette »** : clic sur le logo (ou `#avant-derniere` dans l'URL) = week-end suivant, en-tête teinté crépuscule, étoile retournée. Les données sont déjà dans la page (5 nuits par refuge le samedi).
 
