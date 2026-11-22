@@ -38,8 +38,11 @@ def classify(hut, data, err):
 
 
 def trigger():
-    """What started this run: GitHub Actions event name, or 'local'."""
-    return {"schedule": "planifié", "push": "push sur main", "workflow_dispatch": "manuel (Actions)"}.get(
+    """What started this run: the workflow_dispatch "source" input (cron-job.org, button),
+    else the GitHub Actions event name, else 'local'."""
+    if os.environ.get("TRIGGER_SOURCE"):
+        return os.environ["TRIGGER_SOURCE"]
+    return {"schedule": "planifié (GitHub)", "push": "push sur main", "workflow_dispatch": "manuel (Actions)"}.get(
         os.environ.get("GITHUB_EVENT_NAME", ""), "local")
 
 

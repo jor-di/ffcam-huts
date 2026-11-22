@@ -6,7 +6,15 @@ on:
     - cron: "7 * * 12,1-4,6-9 *"
     # Off season (May, Oct, Nov): once a day, ~8-9h in Paris.
     - cron: "7 7 * 5,10,11 *"
-  workflow_dispatch: # "Run workflow" button in the Actions tab
+  # "Run workflow" button in the Actions tab, and cron-job.org (exact times; GitHub's schedule
+  # can run hours late): POST /repos/jor-di/ffcam-huts/actions/workflows/update.yml/dispatches
+  #   {"ref": "main", "inputs": {"source": "cron-job.org"}}
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Who started this run (shown on the /releves/ page)"
+        required: false
+        default: "manuel (Actions)"
   push:
     branches: [main] # rebuild the map after a code/data change
 
@@ -28,6 +36,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     env:
       TZ: Europe/Paris # history timestamps and "today" in French time
+      TRIGGER_SOURCE: ${{ inputs.source }} # set by workflow_dispatch (cron-job.org or the button)
     steps:
       - uses: actions/checkout@v4
 
