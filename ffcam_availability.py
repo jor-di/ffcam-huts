@@ -17,7 +17,9 @@ import sys
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
+import fetch_log
 import history
+import time
 from ffcam import fetch_availability, load_huts
 
 
@@ -55,7 +57,8 @@ def main():
     p.add_argument("--nights", type=int, help="number of consecutive nights with --date (default: 1)")
     p.add_argument("-o", "--output", help="CSV path (default: ffcam_<date>.csv)")
     p.add_argument("--workers", type=int, default=4, help="parallel requests (default: 4)")
-    p.add_argument("--no-history", action="store_true", help="don't record changes in history/ (see history.py)")
+    p.add_argument("--no-history", action="store_true", help="don't record changes in history/ nor the fetch log (see history.py, fetch_log.py)")
+    p.add_argument("--log", type=Path, help="write the fetch log to this file (default: history/fetch_log.json, unless --no-history)")
     args = p.parse_args()
 
     if args.date:
@@ -78,19 +81,31 @@ def main():
         print("No hut_coordinates.json: run ./refresh_coordinates.py to add GPS columns.", file=sys.stderr)
     print(f"{len(huts)} huts, fetching availability for {', '.join(map(str, dates))}...", file=sys.stderr)
 
+    timings = {}
+
     def work(hut):
+        t0 = time.monotonic()
         try:
             return hut, fetch_availability(hut["id"], fetch_from, hut.get("portal", "FFCAM"), hut.get("refugepro")), None
         except Exception as e:  # keep going, record the error
-            return hut, None, str(e)
+            return hut, None, f"{type(e).__name__}: {e}"
+        finally:
+            timings[hut["id"]] = time.monotonic() - t0
 
+    started = time.monotonic()
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         results = list(pool.map(work, huts))
+    elapsed = time.monotonic() - started
 
     fetched_at = dt.datetime.now().isoformat(timespec="seconds")
     if not args.no_history:
         n = history.record(results, fetched_at)
         print(f"History: {n} changes appended to {history.HISTORY_DIR.name}/", file=sys.stderr)
+    log_path = args.log or (None if args.no_history else fetch_log.LOG_FILE)
+    if log_path:
+        run = fetch_log.record(results, timings, fetched_at, elapsed, log_path)
+        bad = {k: v for k, v in run["sources"].items() if v["err"] or v["warn"]}
+        print(f"Fetch log: {log_path.name} ({len(run['problems'])} huts with a problem{': ' + str(bad) if bad else ''})", file=sys.stderr)
     rows, errors = [], 0
     for hut, data, err in results:
         errors += bool(err)

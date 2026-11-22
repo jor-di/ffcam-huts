@@ -57,9 +57,10 @@ flowchart LR
 | `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) s'ils en ont un | à la main | oui (main) |
 | `hut_links.json` | liens Camptocamp et Skitour | `refresh_links.py` | oui (main) |
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
-| `history/` | historique des places | `ffcam_availability.py` | oui (branche `data`) |
+| `history/` | historique des places + `fetch_log.json` (journal des relevés) | `ffcam_availability.py` | oui (branche `data`) |
+| `log_template.html` | page de suivi des relevés | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
-| `ffcam_*.csv`, `map.html`, `data/`, `site/` | sorties générées | scripts | non (`.gitignore`) |
+| `ffcam_*.csv`, `map.html`, `releves/`, `data/`, `site/` | sorties générées | scripts | non (`.gitignore`) |
 | `deploy/` | plan B VPS OVH + nginx + certbot | — | oui, jamais utilisé |
 
 ## Sources de données
@@ -220,6 +221,17 @@ Une seule page HTML (`map_template.html` + les données injectées par `build_ma
 **Refuges sans capacité connue** (Open System) : affichés « 25 places » au lieu de « 25 / 32 ».
 
 **Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur `…`) ou à réserver par téléphone / mail (`☎`), et refuges de `manual_huts.json` (`☎`). La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; les vrais complets et les fermés restent derrière « Afficher les fermés ».
+
+## Suivi des relevés (`/releves/`)
+
+Une page publique, [dernierecouchette.fr/releves/](https://dernierecouchette.fr/releves/) (lien sur la date de mise à jour de la carte), dit si la récupération des places s'est bien passée pour chaque refuge au dernier relevé.
+
+- **Production** : à chaque relevé, `ffcam_availability.py` appelle `fetch_log.record()` (module `fetch_log.py`), qui classe chaque refuge et met à jour `history/fetch_log.json` sur la branche `data`. `build_map.py` génère ensuite la page à partir de `log_template.html`, dans `releves/index.html` à côté de la carte (`site/releves/` en ligne).
+- **États** : `ok` (nuits reçues ; une remarque si aucun calendrier d'ouverture n'est publié, normal pour un refuge fermé), `warn` « à vérifier » (réponse sans aucune nuit : souvent un changement de format), `err` (requête en échec : délai, erreur HTTP, page sans données ; le message de l'exception est gardé), `skip` « non relevé » (refuges `MANUAL`).
+- **`fetch_log.json`** : `last_run` (le dernier relevé, une entrée par refuge : état, nuits reçues, durée, message), `runs` (les 48 derniers relevés résumés par source, avec la liste des refuges en problème), `last_success` (dernier relevé réussi par refuge). Le déclencheur vient de `GITHUB_EVENT_NAME` (planifié, push, manuel) ou vaut « local ».
+- **Page** : le dernier relevé (durée, nombre de requêtes, déclencheur, résumé), un billet par source (refuges sans erreur / total, 24 derniers relevés en barres, durée cumulée, dernier succès), puis le tableau des refuges filtrable (À traiter, Erreurs, Remarques, Non relevés, Tous) avec recherche.
+- **Effet de bord** : ce fichier change à chaque relevé, donc la branche `data` reçoit un commit par relevé (et non plus seulement en cas de changement de places).
+- En local, `--no-history` n'écrit pas non plus le journal ; `--log <fichier>` permet de l'écrire ailleurs pour tester.
 
 ## Historique des disponibilités
 
