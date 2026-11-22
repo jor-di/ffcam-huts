@@ -23,6 +23,7 @@ returning 30 days, from <date> - 15 days to <date> + 14 days: [{"s": free beds,
 
 import datetime as dt
 import html as htmllib
+import threading
 import json
 import os
 import re
@@ -30,6 +31,7 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
+from contextlib import contextmanager
 from pathlib import Path
 
 BASE_URL = "https://centrale.ffcam.fr/index.php"
@@ -56,6 +58,29 @@ TYPES = {
 
 SECRETS_FILE = Path(__file__).with_name("secrets.env")
 
+# Politeness: whatever the number of worker threads, each site gets at most PER_HOST_LIMIT
+# requests at a time, and at least PER_HOST_GAP seconds between two request starts.
+PER_HOST_LIMIT = 2
+PER_HOST_GAP = 0.3
+_host_lock = threading.Lock()
+_host_slots = {}
+_host_next = {}
+
+
+@contextmanager
+def polite(url):
+    """Wait for a free slot and the minimum gap for this URL's site, then run the request."""
+    host = urllib.parse.urlsplit(url).hostname
+    with _host_lock:
+        slots = _host_slots.setdefault(host, threading.Semaphore(PER_HOST_LIMIT))
+    with slots:
+        with _host_lock:  # reserve the next start time for this site
+            now = time.monotonic()
+            start = max(now, _host_next.get(host, 0.0))
+            _host_next[host] = start + PER_HOST_GAP
+        time.sleep(max(0.0, start - now))
+        yield
+
 
 def secret(name):
     """An API key from the environment, else from secrets.env (KEY=value lines)."""
@@ -77,7 +102,7 @@ def http(params, method="GET", retries=3):
         req = urllib.request.Request(f"{BASE_URL}?", data=data.encode(), headers=HEADERS)
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with polite(req.full_url), urllib.request.urlopen(req, timeout=30) as resp:
                 return resp.read().decode("utf-8", errors="replace")
         except Exception:
             if attempt == retries - 1:
@@ -88,7 +113,7 @@ def http(params, method="GET", retries=3):
 def get_url(url, retries=3):
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=30) as resp:
+            with polite(url), urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=30) as resp:
                 return resp.read().decode("utf-8", errors="replace")
         except Exception:
             if attempt == retries - 1:
@@ -116,7 +141,7 @@ def hut_site(subdomain):
         return None
     url = f"https://{subdomain}.ffcam.fr/"
     try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=20) as resp:
+        with polite(url), urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=20) as resp:
             return url if resp.geturl().startswith(url) else None
     except Exception:
         return None

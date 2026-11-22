@@ -80,7 +80,7 @@ Les places viennent de trois systèmes de réservation, lus là où les refuges 
 
 ## Récupérer les disponibilités : les requêtes
 
-Trois systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `fetch_availability()` dans `ffcam.py`). Aucun ne demande de clé ni de cookie.
+Trois systèmes, un appel par refuge et par relevé, choisi selon le champ `portal` du refuge dans `huts.json` (code : `fetch_availability()` dans `ffcam.py`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `polite()` : 2 simultanées au plus et 0,3 s entre deux départs par site.
 
 ### 1. Centrale FFCAM (portails FFCAM, VANOISE, NEOUVIELLE, BOREON)
 
@@ -296,6 +296,7 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 - Pas de base de données : fichiers JSON/CSV versionnés ; une base hébergée seulement si on affiche l'historique de façon interactive.
 - Hébergement GitHub Pages plutôt qu'un VPS (gratuit, sans maintenance) ; dépôt public accepté.
 - Une seule requête par refuge et par relevé (charge FFCAM ~3 000 requêtes/jour en saison) ; pas de 2e requête pour voir plus loin.
+- Politesse envers les sites interrogés (`polite()` dans `ffcam.py`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (151 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
 - Clés : la clé d'exemple de la doc Skitour et les accès privés IGN n'ont pas été utilisés ; uniquement des clés personnelles.
 - Les noms « FFCAM » / « CAF » sont évités dans le nom du site (marques de la fédération).
 
