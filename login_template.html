@@ -85,8 +85,10 @@ async function unlock(id, kek) {
 
 // « Se déconnecter »: next to « màj » on the map, next to « Retour à la carte » on /releves/
 const LOGOUT = `(() => {
-  const out = e => { e.preventDefault(); e.stopPropagation();
+  const out = async e => { e.preventDefault(); e.stopPropagation();
     for (const s of [localStorage, sessionStorage]) try { s.removeItem('${STORE}'); } catch (_) {}
+    // no automatic sign-in with the account saved in Chrome until the next manual login
+    try { await navigator.credentials?.preventSilentAccess?.(); } catch (_) {}
     location.reload(); };
   const a = Object.assign(document.createElement('a'), { href:'#', textContent:'déconnexion', title:'Se déconnecter', onclick:out });
   const meta = document.getElementById('meta'), back = document.querySelector('a.back');
@@ -125,6 +127,24 @@ function forget() {
   for (const s of [storage('sessionStorage'), storage('localStorage')]) try { s?.removeItem(STORE); } catch (_) {}
 }
 
+// Open the page with a name + password, remember the derived key (not the password)
+async function login(name, password, remember) {
+  const id = hex(await sha256(norm(name))), kek = await deriveKek(name, password);
+  const html = await unlock(id, kek);
+  const s = storage(remember ? 'localStorage' : 'sessionStorage');
+  try { s?.setItem(STORE, JSON.stringify({ id, kek:toB64(kek) })); } catch (_) {}
+  return html;
+}
+
+// Chrome / Edge don't see a login here (no navigation, no request): ask them to offer saving
+// it in their password manager (Credential Management API; Firefox and Safari don't have it).
+const canStore = () => 'PasswordCredential' in window && navigator.credentials;
+function offerToSave(name, password) {
+  if (!canStore()) return;
+  try { navigator.credentials.store(new PasswordCredential({ id:name.trim(), password, name:name.trim() })).catch(() => {}); }
+  catch (_) {}
+}
+
 async function start() {
   const saved = remembered();
   if (saved) {
@@ -133,8 +153,18 @@ async function start() {
     catch (_) { forget(); } // user removed or password changed: ask again
     if (html) return show(html);
   }
+  // nothing remembered on this device: an account saved in Chrome's password manager (new
+  // device, after « déconnexion »...) opens the page directly, or after picking it
+  if (canStore()) {
+    let cred = null;
+    try { cred = await navigator.credentials.get({ password:true, mediation:'optional' }); } catch (_) {}
+    if (cred?.password) {
+      try { return show(await login(cred.id, cred.password, true)); }
+      catch (_) { document.getElementById('name').value = cred.id; } // outdated password: ask
+    }
+  }
   document.body.classList.remove('waiting');
-  document.getElementById('name').focus();
+  document.getElementById(document.getElementById('name').value ? 'password' : 'name').focus();
 }
 
 document.getElementById('login').addEventListener('submit', async e => {
@@ -142,16 +172,15 @@ document.getElementById('login').addEventListener('submit', async e => {
   const name = document.getElementById('name').value, password = document.getElementById('password').value;
   const go = document.getElementById('go'), err = document.getElementById('err');
   go.disabled = true; go.textContent = 'Ouverture…'; err.textContent = '';
-  try {
-    const id = hex(await sha256(norm(name))), kek = await deriveKek(name, password);
-    const html = await unlock(id, kek);
-    const s = storage(document.getElementById('remember').checked ? 'localStorage' : 'sessionStorage');
-    try { s?.setItem(STORE, JSON.stringify({ id, kek:toB64(kek) })); } catch (_) {}
-    return show(html);
-  } catch (_) {
+  let html;
+  try { html = await login(name, password, document.getElementById('remember').checked); }
+  catch (_) {
     err.textContent = 'Prénom ou mot de passe incorrect.';
     go.disabled = false; go.textContent = 'Entrer';
+    return;
   }
+  offerToSave(name, password);
+  show(html);
 });
 
 if (window.isSecureContext && crypto.subtle) start();
