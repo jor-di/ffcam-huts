@@ -29,7 +29,7 @@ class TestWpbs < Minitest::Test
   def test_statuses_inventory_and_month_boundary
     out = parse
     assert_equal({
-      "2026-12-27" => ["OPEN", 1, "online"],    # today, "1 pl."
+      "2026-12-27" => ["UNGUARDED", 1, "online"], # today, "1 pl.", « Disponible (non-gardé) »
       "2026-12-28" => ["OPEN", nil, "request"], # bookable, no inventory shown: places unknown
       "2026-12-29" => ["OPEN", 0, nil],         # "Complet", not bookable
       "2026-12-30" => ["OPEN", 0, nil],         # inventory "Complet" (wpbs-full)
@@ -40,7 +40,7 @@ class TestWpbs < Minitest::Test
       "2027-01-04" => ["OPEN", 3, "online"],    # changeover end, bookable: available
       "2027-01-05" => ["CLOSE", nil, nil],      # available status but not bookable
       "2027-01-06" => ["OPEN", 5, "online"],    # changeover start but bookable with places: the inventory wins
-      "2027-01-07" => ["OPEN", 12, "online"],
+      "2027-01-07" => ["UNGUARDED", 12, "online"], # « Disponible (non-gardé) »
     }, rows(out))
     assert_equal [nil], out["capacity"].values.uniq # no capacity given
     assert_equal out["opening"].keys, out["capacity"].keys
@@ -56,7 +56,7 @@ class TestWpbs < Minitest::Test
 
   def test_legend_meanings
     assert_equal :available, Ffcam.wpbs_meaning("Disponible (selon conditions)")
-    assert_equal :available, Ffcam.wpbs_meaning("Disponible (non-gardé)")
+    assert_equal :unguarded, Ffcam.wpbs_meaning("Disponible (non-gardé)")
     assert_equal :full, Ffcam.wpbs_meaning("Complet")
     assert_equal :closed, Ffcam.wpbs_meaning("Non-disponible")
     assert_equal :closed, Ffcam.wpbs_meaning("Voir refuge été")

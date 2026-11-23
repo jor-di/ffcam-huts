@@ -150,7 +150,8 @@ def main
         "free_beds" => free,
         "capacity" => capacity,
         "booked" => free.is_a?(Integer) && capacity.is_a?(Integer) ? capacity - free : nil,
-        "bookable" => opening == "OPEN" && Py.truthy?(free),
+        # UNGUARDED with a booking mode: bookable without a keeper (WPBS « Disponible (non-gardé) »)
+        "bookable" => (opening == "OPEN" || (opening == "UNGUARDED" && !booking.nil?)) && Py.truthy?(free),
         # online | waitlist (full, waiting list) | phone (FFCAM: no longer sold online) | request (manual hut;
         # WPBS: bookable, places not shown)
         "booking" => booking,

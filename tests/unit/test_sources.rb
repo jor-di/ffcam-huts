@@ -80,6 +80,15 @@ class TestSources < Minitest::Test
     assert_equal "online", nulls["booking"]["2026-11-22"]
   end
 
+  def test_refugepro_unguarded_days
+    days = [{ "date" => "2026-11-23", "capacity" => 12, "free" => 12, "status" => "open", "isFull" => false, "unguarded" => true },
+            { "date" => "2026-11-24", "capacity" => 12, "free" => 12, "status" => "closed", "unguarded" => true }]
+    out = refugepro("data" => days)
+    assert_equal({ "2026-11-23" => "UNGUARDED", "2026-11-24" => "CLOSE" }, out["opening"])
+    assert_equal "online", out["booking"]["2026-11-23"] # still booked online, places kept
+    assert_equal 12, out["free"]["2026-11-23"]
+  end
+
   def test_refugepro_without_data
     assert_equal({ "free" => {}, "capacity" => {}, "opening" => {}, "booking" => {} }, refugepro({}))
     error = assert_raises(RuntimeError) { with_page("<html></html>") { Ffcam.fetch_refugepro_availability("galibier", TODAY) } }

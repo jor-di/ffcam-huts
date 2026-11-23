@@ -307,6 +307,8 @@ const TYPE_CHIPS = { refuge:'Gardé', refuge_non_garde:'Non gardé', autre:'Autr
 const chipOf = (h, n) => n?.unguarded || h.type === 'refuge_non_garde' ? 'refuge_non_garde' : h.type === 'refuge' ? 'refuge' : 'autre';
 // the icon follows the night: a guarded hut in its unguarded period gets the winter-room icon
 const hutIcon = (h, n) => HUT_ICONS[n?.unguarded ? 'refuge_non_garde' : h.type in HUT_ICONS ? h.type : 'autre'];
+// FFCAM centrale portals: their unguarded nights follow the FFCAM rule (booking advised, bed not guaranteed)
+const CENTRALE = ['FFCAM', 'VANOISE', 'NEOUVIELLE', 'BOREON'];
 const GROUP = { ok:'bookable', low:'bookable', request:'request', full:'full', closed:'closed' };
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -328,6 +330,8 @@ function status(n) {
 // room (« X Non Gardé », folded into it by rb/map_data.rb) if that one is open, marked unguarded.
 function night(h, d) {
   const n = h.nights[d];
+  // bookable without a keeper (WP Booking System « Disponible (non-gardé) »: UNGUARDED + a booking mode)
+  if (n?.opening === 'UNGUARDED' && n.booking) return { ...n, opening:'OPEN', unguarded: true };
   if (status(n) !== 'closed') return n;
   if (n?.winter && status(n.winter) !== 'closed') return { ...n.winter, unguarded: true };
   return n;
@@ -417,7 +421,7 @@ function popup(h) {
         ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div></div>
     </div>
     <div class="card-body">${nights}
-      ${dates.some(d => night(h, d)?.unguarded) ? '<p class="note"><b>Non gardé</b> : réservation conseillée, lit non garanti.</p>' : ''}
+      ${CENTRALE.includes(h.portal) && dates.some(d => night(h, d)?.unguarded) ? '<p class="note"><b>Non gardé</b> : réservation conseillée, lit non garanti.</p>' : ''}
       ${h.phone || h.email ? `<div class="contact">${h.phone ? `<a href="tel:${esc(h.phone.replace(/[^+0-9]/g, ''))}">☎ ${esc(h.phone)}</a>` : ''}
         ${h.email ? `<a href="mailto:${esc(h.email)}">${esc(h.email)}</a>` : ''}</div>` : ''}
       <div class="actions">

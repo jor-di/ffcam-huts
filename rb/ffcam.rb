@@ -502,7 +502,9 @@ module Ffcam
 
   # Refuge Pro: the calendar a hut embeds on its site (refuge-pro.com/embed/calendrier/<slug>).
   # The page is a Next.js render whose payload holds availability.data = about a year of
-  # {"date", "capacity", "booked", "free", "status": open|closed, "isFull"}, plus the hut's rules.
+  # {"date", "capacity", "booked", "free", "status": open|closed, "isFull", "unguarded"}, plus the
+  # hut's rules. An open day with "unguarded": true (bookable, no keeper: winter room...) gets
+  # UNGUARDED instead of OPEN (shown « Non gardé » on the map).
   def fetch_refugepro_availability(slug, today = nil)
     page = get_url(format(REFUGEPRO_EMBED, slug: slug))
     chunks = page.scan(/self\.__next_f\.push\(\[1,"((?:[^"\\]++|\\.)*+)"\]\)/).map(&:first)
@@ -519,7 +521,7 @@ module Ffcam
     info.fetch("data", []).each do |d|
       day, is_open = d["date"], d["status"] == "open"
       out["free"][day], out["capacity"][day] = d["free"], d["capacity"]
-      out["opening"][day] = is_open ? "OPEN" : "CLOSE"
+      out["opening"][day] = !is_open ? "CLOSE" : Py.truthy?(d["unguarded"]) ? "UNGUARDED" : "OPEN"
       next unless is_open
       if Py.truthy?(d["isFull"]) || !Py.truthy?(d["free"])
         out["booking"][day] = Py.truthy?(info["waitlistEnabled"]) ? "waitlist" : nil
@@ -553,6 +555,7 @@ module Ffcam
     plain = name.unicode_normalize(:nfkd).gsub(/\p{Mn}/, "").downcase
     return :closed if plain.match?(/non[- ]?disponible|indisponible|ferme|closed|unavailable|voir/)
     return :full if plain.match?(/complet|full|booked/)
+    return :unguarded if plain.match?(/disponible|libre|available/) && plain.match?(/non[- ]?garde|unguarded/)
     return :available if plain.match?(/disponible|libre|available/)
     nil
   end
@@ -567,6 +570,8 @@ module Ffcam
   #   status "full" (legend "Complet", changeover start)    -> OPEN, 0 free (full)
   #   not bookable                               -> CLOSE
   #   bookable, no inventory shown               -> OPEN, places unknown (nil), request ("Sur demande")
+  # A bookable day whose status is « Disponible (non-gardé) » gets UNGUARDED instead of OPEN (the
+  # map shows it « Non gardé », with its places).
   # A status absent from the legend: changeover end = available; others decided by the bookable flag.
   def parse_wpbs(html, url, today = nil, calendars: nil)
     today = (today || local_today).iso8601
@@ -599,13 +604,14 @@ module Ffcam
         meaning = legend[classes.find { |c| c.start_with?("wpbs-legend-item-") }&.delete_prefix("wpbs-legend-item-")]
         out["capacity"][day] = nil
         bookable = classes.include?("wpbs-is-bookable")
+        open = meaning == :unguarded ? "UNGUARDED" : "OPEN" # « Disponible (non-gardé) »: bookable, no keeper
         out["opening"][day], out["free"][day], out["booking"][day] =
           if free&.zero? then ["OPEN", 0, nil]                     # inventory "Complet" / 0 pl.
           elsif meaning == :closed then ["CLOSE", nil, nil]
-          elsif bookable && free then ["OPEN", free, "online"]     # places left: the inventory wins
+          elsif bookable && free then [open, free, "online"]       # places left: the inventory wins
           elsif meaning == :full then ["OPEN", 0, nil]
           elsif !bookable then ["CLOSE", nil, nil]
-          else ["OPEN", nil, "request"]                            # bookable, places not shown
+          else [open, nil, "request"]                              # bookable, places not shown
           end
       end
     end
