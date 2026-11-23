@@ -12,6 +12,7 @@ require "fileutils"
 require "optparse"
 require_relative "ffcam"
 require_relative "fetch_log"
+require_relative "map_data"
 
 def to_int(v)
   v.nil? || v == "" ? nil : Integer(v, 10)
@@ -54,6 +55,7 @@ def main
     }
   end
 
+  MapData.merge_winter_rooms(huts)
   data = { "dates" => dates.sort, "fetchedAt" => fetched_at, "source" => File.basename(path), "huts" => huts.values,
            "ignKey" => args[:ign_key] }
   template = File.read(File.join(Ffcam::ROOT, "map_template.html"), encoding: "UTF-8")

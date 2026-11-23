@@ -38,7 +38,7 @@ flowchart LR
   end
   subgraph auto["Automatique, GitHub Actions (après tests/unit.sh et tests/check.sh)"]
     avail["rb/ffcam_availability.rb --history<br/>1 requête par refuge<br/>→ latest.csv + history/"]
-    build["rb/build_map.rb<br/>map_template.html + données<br/>→ site/index.html + site/releves/"]
+    build["rb/build_map.rb<br/>map_template.html + données<br/>(« Non Gardé » FFCAM fusionnés : rb/map_data.rb)<br/>→ site/index.html + site/releves/"]
     protect["rb/protect_site.rb<br/>login_template.html + secret SITE_USERS<br/>→ pages chiffrées"]
     avail -- CSV --> build --> protect
   end
@@ -49,11 +49,11 @@ flowchart LR
   protect -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
 ```
 
-Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro, WP Booking System), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
+Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro, WP Booking System), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/map_data.rb` (parties non gardées FFCAM, pour la carte), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
-| `huts.json` | 154 refuges : id, nom, type, portail, site | `rb/refresh_huts.rb` | oui (main) |
+| `huts.json` | 154 refuges : id, nom, type, portail, site (dont 28 « Non Gardé » FFCAM, fusionnés sur la carte : 131 marqueurs) | `rb/refresh_huts.rb` | oui (main) |
 | `hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `rb/refresh_coordinates.rb` | oui (main) |
 | `coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
 | `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) ou `wpbs` (pages du calendrier WordPress) s'ils en ont un | à la main | oui (main) |
@@ -242,12 +242,12 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 - En-tête : logo (lits superposés + étoile), titre, date de mise à jour, ligne de crêtes.
 - Carrousel de nuits en billets : nuit choisie centrée, voisines à moitié visibles, samedi par défaut ; clic, flèches ← →, glissement au doigt.
 - Chiffres clés (réservables, places, complets) : **limités au cadre de la carte**.
-- Filtres : minimum de places, « Afficher les fermés » (complets + fermés), types Gardé / Non gardé / Autre (avec icônes ; clic sur un type quand tous sont actifs = ne garder que lui), recherche sans accents (un nom trouve le refuge même fermé ou hors du cadre).
+- Filtres : minimum de places (ne porte que sur les réservables), « Afficher les complets » (interrupteur coché par défaut, agit aussi sur les listes d'attente ; n'apparaît que si, cette nuit, au moins un refuge est complet ou en liste d'attente ; décoché, ils deviennent des points gris comme les fermés et passent en fin de liste ; bulle et fiche disent toujours ce qu'ils sont), types Refuges / Autres (chalets, centres ; avec icônes ; clic sur un type quand tous sont actifs = ne garder que lui), recherche sans accents (un nom trouve le refuge même fermé ou hors du cadre).
 - Liste des refuges **dans le cadre de la carte**, en petits billets ; clic = la carte vole au refuge.
 
 **Carte**
 
-- Marqueurs en talons de billet (places + pastille vert / orange / rouge), fermés = point gris.
+- Marqueurs en talons de billet (places + pastille vert / orange / rouge, sablier violet pour la liste d'attente, ☎ pour téléphone / mail), fermés = point gris.
 - Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons Fiche FFCAM / Site du refuge / Réserver, Camptocamp, Skitour.
 - Fonds : Topo clair Esri (défaut), OpenTopoMap, satellite Esri, Plan IGN, OSM France ; calque « Traces ski de rando (IGN) » ; SCAN 25 si clé IGN.
 - Vue de départ : Alpes, du Léman aux Hautes-Alpes.
@@ -258,9 +258,19 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 
 **Téléphone** : tout le panneau défile d'un bloc avec un bandeau collant (titre + billets compacts), filtres repliés derrière « Filtres · n actifs », panneau jusqu'à 90 % de l'écran. Testé en simulation seulement, pas au doigt.
 
+**Gardé / non gardé, une propriété de la nuit** : un seul marqueur par bâtiment (`map_template.html`, `night()` ; données préparées par `rb/map_data.rb`). Pour chaque nuit :
+
+1. le refuge gardé s'il est ouvert (réservable, sur demande ou complet) ;
+2. sinon sa partie non gardée FFCAM si elle a des places : la centrale vend les « X Non Gardé » sous un id à part ; `MapData.merge_winter_rooms` les range dans leur refuge gardé (même nom après `Ffcam.norm`) sous `nights[date].winter`. Sans refuge gardé dans la liste (Goûter, Tête Rousse, Argentière, Leschaux, Platé), la partie non gardée reste un refuge à part ;
+3. sinon fermé. Beaucoup de refuges fermés gardent un accès libre (salle hors-sac, parfois nuitée à payer après coup, comme au Parc de la Vanoise) : ils restent affichés comme les autres fermés, par souci de cohérence.
+
+Les nuits du cas 2 sont marquées « Non gardé » (icône à étoile, sous-titre « non gardé »).
+
+Où se fait la réconciliation : **uniquement à la construction de la carte**. `huts.json`, les relevés (`rb/ffcam_availability.rb`), le CSV et l'historique (branche `data`) gardent les deux ids FFCAM comme deux refuges distincts ; `rb/build_map.rb` appelle `MapData.merge_winter_rooms` sur les données du CSV, qui retire l'entrée « Non Gardé » de la liste et range ses nuits dans le refuge gardé (`winter` par nuit, `winterId` sur le refuge) ; la page choisit ensuite nuit par nuit (`night()`). Le rapprochement se fait par le nom (`Ffcam.norm` enlève « Non Gardé », « Refuge », les articles…) : si la FFCAM renomme l'un des deux, la paire n'est plus reconnue et les deux réapparaissent comme deux marqueurs (rien ne casse, mais vérifier après un `rb/refresh_huts.rb`).
+
 **Refuges sans capacité connue** (Open System, WP Booking System) : affichés « 25 places » au lieu de « 25 / 32 ».
 
-**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur `…`) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; les vrais complets et les fermés restent derrière « Afficher les fermés ».
+**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur sablier) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; tous les refuges sont affichés, complets et fermés compris : les fermés, inutiles pour réserver, en petits points gris sous les autres marqueurs et en fin de liste, après les complets.
 
 ## Suivi des relevés (`/releves/`)
 
@@ -357,6 +367,7 @@ Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie 
 | Donner ou retirer un accès | modifier le secret `SITE_USERS`, puis Run workflow | voir [Accès](#accès-prénom--mot-de-passe) |
 | Tester l'écran de connexion en local | `rb/build_map.rb -o site/index.html && SITE_USERS='test:secret' rb/protect_site.rb site && python3 -m http.server -d site 8000` | ouvrir http://127.0.0.1:8000/ (WebCrypto exige `localhost`/`127.0.0.1` ou HTTPS) |
 | Rafraîchir la liste des refuges (quelques fois par an) | `rb/refresh_huts.rb && rb/refresh_coordinates.rb && rb/refresh_links.rb`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
+| Vérifier la fusion gardé / « Non Gardé » (après `rb/refresh_huts.rb`) | `ruby -Irb -rjson -rmap_data -e 'h=JSON.parse(File.read("huts.json"))["huts"].to_h{\|x\| [x["id"], x.merge("nights"=>{})]}; MapData.merge_winter_rooms(h); puts h.values.select{\|x\| x["type"]=="refuge_non_garde"}.map{\|x\| x["name"]}'` | liste les « Non Gardé » restés seuls ; aujourd'hui 5 (Goûter, Tête Rousse, Argentière, Leschaux, Platé : leur refuge gardé n'est pas dans la centrale) |
 | Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `rb/refresh_coordinates.rb` | 6 corrections aujourd'hui |
 | Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `rb/refresh_huts.rb && rb/refresh_links.rb` | voir l'annexe |
 | Ajouter un refuge WP Booking System | page du site contenant `wpbs-container` : entrée dans `manual_huts.json` avec `"wpbs": [{"url": "<page>"}]`, id `WPBS-<nom>`, position, site, téléphone, email, puis `rb/refresh_huts.rb && rb/refresh_links.rb` | ajouter aussi sa réponse aux deux scénarios de `tests/fixtures/` (voir [tests/README.md](tests/README.md)) |
@@ -372,7 +383,7 @@ Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie 
 
 Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relevé (un échec arrête le relevé avant l'historique et la publication) :
 
-- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, chiffrement des pages (`rb/protect_site.rb`), limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
+- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, chiffrement des pages (`rb/protect_site.rb`), fusion des « Non Gardé » FFCAM (`rb/map_data.rb`), limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
 - `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
 
 Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
@@ -390,7 +401,7 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 **Pièges**
 
 - Un refuge peut avoir des places libres et être fermé (`CLOSE`) : « réservable » = `OPEN` **et** places > 0.
-- Les « Non Gardé » sont des entrées séparées de leur refuge gardé (salle hors-sac) ; en hiver ce sont presque les seuls réservables.
+- Les « Non Gardé » sont des entrées séparées de leur refuge gardé dans la centrale (salle hors-sac) ; en hiver ce sont presque les seuls réservables. Sur la carte, ils sont fusionnés avec leur refuge gardé (voir « Gardé / non gardé, une propriété de la nuit »).
 - Les emails des refuges sont obfusqués (`name<a></a><ff></ff>…`) : seule la partie avant @ est fiable ; elle donne le site `name.ffcam.fr`.
 - Les tâches planifiées GitHub partent avec retard (minutes, parfois des heures : 8 h le 22/11/2026) ou pas du tout, et sont désactivées après 60 jours sans activité : d'où cron-job.org, et plus de `schedule` dans le workflow (voir « Déclenchement par cron-job.org »).
 - Le dépôt peut être modifié directement sur GitHub (ça a été le cas du README) : faire `git pull --rebase` avant de pousser.
