@@ -17,13 +17,9 @@ require "optparse"
 require_relative "ffcam"
 require_relative "history"
 require_relative "fetch_log"
+require_relative "map_data"
 
-# The hut's FFCAM site; else its OSM website (only FFCAM ones for FFCAM huts: OSM may list other sites).
-def hut_url(hut, osm_website)
-  return hut["site"] if Py.truthy?(hut["site"])
-  return osm_website if Py.truthy?(osm_website) && (osm_website.include?(".ffcam.fr") || hut.fetch("portal", "FFCAM") != "FFCAM")
-  nil
-end
+def hut_url(hut, osm_website) = MapData.hut_url(hut, osm_website)
 
 # Monday = 0 ... Sunday = 6
 def weekday(date)

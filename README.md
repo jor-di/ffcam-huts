@@ -14,6 +14,8 @@ Carte : https://dernierecouchette.fr/
 | `rb/refresh_links.rb` | liens Camptocamp / Skitour → `hut_links.json` (clé Skitour dans `secrets.env`) | après `rb/refresh_coordinates.rb` |
 | `rb/ffcam_availability.rb` | places libres ; historique (`history/`) seulement avec `--history` | automatique (GitHub Actions) |
 | `rb/build_map.rb` | génère la carte (`map_template.html` → HTML), la page `/releves/` et la page `/a-propos/` | automatique |
+| `rb/check_links.rb` | vérifie les liens « Site du refuge » / « ⚡ Résa » des fiches ; issue GitHub (mail) si un lien casse | chaque semaine (GitHub Actions) |
+| `rb/check_fetch_alerts.rb` | issue GitHub (mail) quand un refuge échoue 10 relevés de suite | après chaque relevé |
 | `rb/protect_site.rb` | chiffre les pages publiées : accès par prénom + mot de passe (secret `SITE_USERS`) | automatique |
 
 Scripts Ruby (bibliothèque standard, version dans `.ruby-version`, Ruby 3.1 ou plus suffit),

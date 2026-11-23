@@ -1,0 +1,24 @@
+{
+  "_comment": "Card links that rb/map_data.rb (MapData.links) can't guess, by hut id: site (« Site du refuge ») and/or booking (« ⚡ Résa »). Rules without this file: <name>.ffcam.fr/reservation.html, reservation-hg.html for « Non Gardé » winter rooms, the Refuge Pro / WP Booking System / Open System page, else the centrale deep link. Found and checked on 23/11/2026 (page embedding the centrale widget with this hut). Edit by hand.",
+  "huts": {
+    "BK_STRUCTURE:xxx5wd7n2ct0": { "booking": "https://montblanc.ffcam.fr/reservation-hg-vnmb.html", "note": "Goûter Non Gardé: shared Mont-Blanc page (normal route)" },
+    "BK_STRUCTURE:xxx5wdwmtq8a": { "booking": "https://montblanc.ffcam.fr/reservation-hg-vnmb.html", "note": "Tête Rousse Non Gardé: same page as the Goûter" },
+    "BK_STRUCTURE:xxx5u8838n0j": { "site": "https://refugedargentiere.ffcam.fr/", "booking": "https://refugedargentiere.ffcam.fr/reservation-hg.html", "note": "Argentière Non Gardé (guarded hut not in the centrale list)" },
+    "BK_STRUCTURE:xxx5u8l3ommd": { "site": "https://refugeleschaux.ffcam.fr/", "booking": "https://refugeleschaux.ffcam.fr/reservation-hg.html", "note": "Leschaux Non Gardé (refugeleschaux, not refugedeleschaux)" },
+    "BK_STRUCTURE:74": { "site": "https://refugealpedevillardarene.ffcam.fr/", "note": "Alpe de Villar d'Arène: site not found by refresh_huts" },
+    "BK_STRUCTURE:101": { "booking": "https://centrale.ffcam.fr/index.php?structure=BK_STRUCTURE:101&mode=FORM&_lang=FR&init=1", "note": "Chalet du Sancy: no reservation.html (404)" },
+    "BK_STRUCTURE:5h5skpilec4l": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-entre-deux-eaux-tour-des-glaciers-de-la-vanoise-vanoise-60n5h5vonly9.html" },
+    "BK_STRUCTURE:5a1mymmzijik": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-plan-sec-tour-des-glaciers-de-la-vanoise-vanoise-1v05a3s518nq.html" },
+    "BK_STRUCTURE:xxxld3htkpn": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-arpont-tour-des-glaciers-de-la-vanoise-vanoise-6il5xn8wkgi6.html" },
+    "BK_STRUCTURE:5a1nrby5i831": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-l-orgere-tour-des-glaciers-de-la-vanoise-vanoise-ioy5a3s5qkeu.html" },
+    "BK_STRUCTURE:5a1ngkc39duv": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-fournache-tour-des-glaciers-de-la-vanoise-vanoise-8ed5a3s5cyf0.html" },
+    "BK_STRUCTURE:5a1novae31ez": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-la-valette-tour-des-glaciers-de-la-vanoise-vanoise-16n65cqqshe9.html" },
+    "BK_STRUCTURE:5a1njyztnljl": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-refuge-du-roc-tour-des-glaciers-de-la-vanoise-vanoise-2rb5a3s5klbs.html" },
+    "BK_STRUCTURE:5a1nww29smum": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-le-saut-tour-des-glaciers-de-la-vanoise-vanoise-bql5a3s5xavw.html" },
+    "BK_STRUCTURE:xxx5xjr51ovb": { "booking": "https://www.refuges-vanoise.com/fiche-hebergement-bellecombe-tour-des-glaciers-de-la-vanoise-vanoise-4w05i4usyqo4.html" },
+    "BK_STRUCTURE:xxx5ybjcpt6a": { "booking": "https://www.visit-neouvielle.com/fiche-hebergement-refuge-d-aygues-cluses-neouvielle-bigorre-8hdlfjrygjf.html" },
+    "BK_STRUCTURE:iyuctdomm9k": { "booking": "https://www.visit-neouvielle.com/fiche-hebergement-refuge-d-oredon-neouvielle-bigorre-qh5a1mlx1jj.html" },
+    "BK_STRUCTURE:xxx5ylsjmuv1": { "booking": "https://www.visit-neouvielle.com/fiche-hebergement-refuge-de-l-oule-neouvielle-bigorre-hx25a1megvdf.html" },
+    "BK_STRUCTURE:5e92vrpttey6": { "booking": "https://giteduboreon.com/reservation-boreon.html" }
+  }
+}

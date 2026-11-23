@@ -16,6 +16,21 @@ class TestMapData < Minitest::Test
     MapData.merge_winter_rooms(huts)
     assert_equal %w[G L], huts.keys # alone, a winter room stays a hut
     assert_equal "W", huts["G"]["winterId"]
+    refute huts["G"].key?("winterBooking") # no booking link on the winter room here
     assert_equal({ "opening" => "CLOSE", "winter" => { "opening" => "OPEN", "free" => 20 } }, huts["G"]["nights"]["d1"])
+  end
+
+  def test_links
+    ffcam = "https://refugeduglacierblanc.ffcam.fr/"
+    assert_equal [ffcam, ffcam + "reservation.html"], MapData.links({ "portal" => "FFCAM", "site" => ffcam }, ffcam)
+    pro = { "portal" => "REFUGEPRO", "site" => "https://refuge-pro.com/embed/calendrier/x", "website" => "https://x.fr/" }
+    assert_equal ["https://x.fr/", pro["site"]], MapData.links(pro, pro["site"])
+    assert_equal [nil, pro["site"]], MapData.links(pro.except("website"), pro["site"]) # never refuge-pro.com as site
+    winter = { "id" => "W", "portal" => "FFCAM", "type" => "refuge_non_garde" }
+    assert_equal [ffcam, ffcam + "reservation-hg.html"], MapData.links(winter, ffcam)
+    assert_equal [nil, "https://centrale.ffcam.fr/index.php?structure=V&mode=FORM&_lang=FR&init=1&apporigin=VANOISE"],
+                 MapData.links({ "id" => "V", "portal" => "VANOISE" }, nil)
+    assert_equal [nil, "https://p/"], MapData.links({ "id" => "V", "portal" => "VANOISE" }, nil, { "V" => { "booking" => "https://p/" } })
+    assert_equal ["https://selle.fr/", nil], MapData.links({ "portal" => "MANUAL", "website" => "https://selle.fr/" }, "https://selle.fr/contact/")
   end
 end

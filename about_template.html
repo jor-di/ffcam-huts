@@ -35,6 +35,9 @@
 
   main.wrap { display:grid; gap:28px; }
   .card { background:var(--paper); border:1px solid var(--rule); border-radius:10px; padding:20px 22px; }
+  .card.notice { background:#fbf3e6; border-color:#ecd3ae; border-left:4px solid var(--low); }
+  .card.notice h2 { color:#8a5414; }
+  .card.notice p:last-child { margin-bottom:0; }
   .lead p { margin:0 0 12px; }
   .lead p:last-child { margin:0; }
   .lead .big { font:700 21px/1.3 var(--display); color:var(--pine); }
@@ -81,14 +84,13 @@
 
 <main class="wrap">
   <div class="card lead">
-    <p class="big">Un site pour ceux qui ne voient pas plus loin que le bout de la semaine (ou des diagrammes météo).</p>
-    <p>Pour ceux qui ne savent pas réserver un refuge deux mois à l’avance.</p>
-    <p>Rejoignez l’équipe des <b>bouches-matelas</b> : entre les places qui restent et celles qui se libèrent quand approche la date limite pour les arrhes, il y a souvent une couchette à prendre.</p>
+    <p>Pour ceux qui ne savent pas réserver un refuge deux mois à l’avance : rejoignez l’équipe des <b>bouche-matelas</b> !</p>
+    <p> Entre les places qui restent cachées au fond des vallées, et celles qui se libèrent quand approche le week-end, il y a souvent une couchette à prendre.</p>
   </div>
 
   <section>
     <h2>Ce que fait le site</h2>
-    <p>Il donne de la visibilité aux refuges et à leurs disponibilités : les places libres du prochain week-end (et du suivant, pour qui trouve le bouton magique), refuge par refuge, sur une seule carte. Les relevés sont faits toutes les heures de décembre à avril, une fois par jour de mai à novembre : les données ne sont donc pas en temps réel, une place affichée peut déjà être prise (l’heure du dernier relevé est en haut de la carte).</p>
+    <p>Il donne de la visibilité aux refuges et à leurs disponibilités : les places libres du prochain week-end (et du suivant, pour qui trouve le bouton magique), refuge par refuge, sur une seule carte. Les relevés sont faits toutes les heures de décembre à avril, une fois par jour le reste de l'année. L'information n'est donc pas complètement temps réel, une place affichée peut déjà être prise (l’heure du dernier relevé est en haut de la carte).</p>
   </section>
 
   <section>
@@ -102,6 +104,13 @@
     </ul>
   </section>
 
+  <section class="card notice">
+    <h2>Refuges non gardés</h2>
+    <p>Hors période de gardiennage, les refuges du CAF gardent une partie ouverte (refuge d’hiver, salle hors-sac), sans gardien ni repas. Pour certains, la FFCAM conseille de réserver et de payer sa nuitée en ligne : ce sont les refuges affichés « Non gardé » avec des places sur la carte.</p>
+    <p>Mais la réservation reste seulement conseillée et <b>ne garantit pas un lit</b> : d’autres personnes peuvent arriver sans avoir réservé. À l’inverse, un refuge affiché fermé garde souvent une partie accessible.</p>
+    <p>Tout est expliqué dans le <a href="https://www.ffcam.fr/periode-hors-gardiennage.html" target="_blank" rel="noopener">mode d’emploi hors gardiennage de la FFCAM</a>.</p>
+  </section>
+
   <section>
     <h2>D’où viennent les données</h2>
     <p class="label" id="total"></p>
@@ -111,7 +120,7 @@
 
   <section class="card">
     <h2>Projet bricolé, projet ouvert</h2>
-    <p>C’est un projet perso, fait sur le temps libre : les données peuvent ne pas être à jour, fausses, ... Vérifiez toujours les infos auprès des refuges.</p>
+    <p>Ce site repose sur des API non documentées. Les données peuvent ne pas être à jour, ne plus être accessibles, ou tout simplement fausses... Vérifiez toujours les infos qui y sont affichées.</p>
     <div class="open">
       <a class="gh" href="https://github.com/jor-di/ffcam-huts" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -126,11 +135,11 @@
 const ABOUT = __ABOUT__;
 // sources shown to the public: booking systems grouped, with the number of huts on the map
 const GROUPS = [
-  ['Centrale de réservation FFCAM', 'ffcam.fr, avec les portails du Parc de la Vanoise, du Néouvielle et du Boréon', ['FFCAM', 'VANOISE', 'NEOUVIELLE', 'BOREON']],
-  ['Parc national de la Vanoise', 'réservation des refuges du Parc (Open System)', ['OPENSYSTEM']],
-  ['Refuge Pro', 'calendriers en ligne des refuges privés', ['REFUGEPRO']],
-  ['Sites des refuges', 'calendrier de réservation publié sur le site du refuge', ['WPBS']],
-  ['Téléphone et mail', 'refuges gardés sans réservation en ligne, ajoutés à la main', ['MANUAL']],
+  ['Centrale de réservation FFCAM', 'ffcam.fr, et ses portails Refuges de Vanoise, Néouvielle et Boréon', ['FFCAM', 'VANOISE', 'NEOUVIELLE', 'BOREON']],
+  ['Parc national de la Vanoise', 'les refuges du Parc, réservés sur son propre site', ['OPENSYSTEM']],
+  ['Refuge Pro', 'calendriers de réservation de refuges privés', ['REFUGEPRO']],
+  ['Sites des refuges', 'calendriers de réservation spécifiques', ['WPBS']],
+  ['Téléphone et mail', 'refuges gardés sans réservation en ligne', ['MANUAL']],
 ];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const rows = GROUPS.map(([name, what, portals]) => [name, what, portals.reduce((a, p) => a + (ABOUT.portals[p] || 0), 0)]).filter(r => r[2]);

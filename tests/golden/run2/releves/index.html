@@ -78,6 +78,7 @@
   td.num { font:500 12px/1.3 var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; }
   td.src-c { font:400 11px/1.3 var(--mono); color:var(--ink-2); white-space:nowrap; }
   td.msg { color:var(--ink-2); font-size:12px; min-width:240px; }
+  td.msg a { color:var(--pine); word-break:break-all; }
   td b { font-weight:600; }
   tr.e td:first-child { box-shadow:inset 3px 0 0 var(--full); }
   tr.w td:first-child { box-shadow:inset 3px 0 0 var(--low); }
@@ -121,6 +122,21 @@ const short = iso => iso ? new Date(iso).toLocaleString('fr-FR', { day:'2-digit'
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const app = document.getElementById('app');
 
+// weekly check of the cards' links (rb/check_links.rb → history/links.json)
+function linksHtml() {
+  const L = LOG.links;
+  if (!L) return '';
+  const c = L.counts, KIND = { site:'Site du refuge', booking:'⚡ Résa' };
+  const pill = c.err ? `<span class="pill err">${c.err} cassé${c.err > 1 ? 's' : ''}${c.warn ? ` · ${c.warn} à vérifier` : ''}</span>`
+    : c.warn ? `<span class="pill warn">${c.warn} à vérifier</span>` : '<span class="pill ok">Tous les liens répondent</span>';
+  const rows = L.problems.slice().sort((a, b) => (a.state === 'err' ? 0 : 1) - (b.state === 'err' ? 0 : 1) || a.name.localeCompare(b.name, 'fr'))
+    .map(r => `<tr class="${r.state === 'err' ? 'e' : 'w'}"><td><span class="pill ${r.state}">${r.state === 'err' ? 'Cassé' : 'À vérifier'}</span></td>
+      <td><b>${esc(r.name)}</b></td><td class="src-c">${KIND[r.kind]}</td><td class="msg"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a></td><td class="msg">${esc(r.msg)}</td></tr>`).join('');
+  return `<div style="display:grid;gap:8px"><div class="label">Liens des fiches</div>
+    <div class="runbar"><div><div class="when">Vérifiés le ${when(L.at)}</div><div class="facts">${L.checked} liens · contrôle hebdomadaire</div></div>${pill}</div>
+    ${rows ? `<div class="tablewrap"><table><thead><tr><th>État</th><th>Refuge</th><th>Lien</th><th>Adresse</th><th>Détail</th></tr></thead><tbody>${rows}</tbody></table></div>` : ''}</div>`;
+}
+
 if (!LOG.last_run) {
   app.innerHTML = `<div class="none">Pas encore de relevé enregistré. La page se remplira après le prochain relevé automatique.</div>`;
 } else {
@@ -157,7 +173,8 @@ if (!LOG.last_run) {
       <div class="filters" role="group" aria-label="Filtrer les refuges" id="filters"></div>
       <div class="tablewrap"><table><thead><tr><th>État</th><th>Refuge</th><th>Source</th><th>Nuits reçues</th><th>Durée</th><th>Dernier succès</th><th>Détail</th></tr></thead><tbody id="rows"></tbody></table></div>
     </div>
-    <div class="legend"><span><i style="background:var(--ok)"></i>relevé sans erreur</span><span><i style="background:var(--low)"></i>à vérifier (réponse vide)</span><span><i style="background:var(--full)"></i>erreur</span><span><i style="background:var(--skip)"></i>non relevé (réservation hors ligne)</span><span><i style="background:#e4e0d6"></i>source absente de ce relevé</span></div>`;
+    <div class="legend"><span><i style="background:var(--ok)"></i>relevé sans erreur</span><span><i style="background:var(--low)"></i>à vérifier (réponse vide)</span><span><i style="background:var(--full)"></i>erreur</span><span><i style="background:var(--skip)"></i>non relevé (réservation hors ligne)</span><span><i style="background:#e4e0d6"></i>source absente de ce relevé</span></div>
+    ${linksHtml()}`;
 
   // hut table
   const order = { err:0, warn:1, ok:2, skip:3 };

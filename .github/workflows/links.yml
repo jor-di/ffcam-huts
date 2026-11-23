@@ -1,0 +1,58 @@
+name: Check links
+
+# Weekly check of the huts' card links (« Site du refuge », « ⚡ Résa »): rb/check_links.rb.
+# Started by cron-job.org (workflow_dispatch, like update.yml; see HANDOVER, « Vérification des
+# liens ») or the "Run workflow" button. Writes history/links.json on the `data` branch (shown on
+# /releves/ at the next map build) and keeps the GitHub issue « Liens cassés » in sync (GitHub
+# mails it).
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Who started this run"
+        required: false
+        default: "manuel (Actions)"
+
+permissions:
+  contents: write # push history/links.json to the `data` branch
+  issues: write # issue « Liens cassés »
+
+concurrency:
+  group: update # never at the same time as a fetch (both push to the `data` branch)
+  cancel-in-progress: false
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: Europe/Paris
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby (version from .ruby-version)
+        uses: ruby/setup-ruby@v1
+
+      - name: Check out the history (data branch)
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: history
+
+      - name: Check the links
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: rb/check_links.rb --history
+
+      - name: Commit the result
+        working-directory: history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add links.json
+          if git diff --cached --quiet; then
+            echo "no change"
+          else
+            git commit -q -m "links $(date '+%Y-%m-%d %H:%M')"
+            git push -q
+          fi

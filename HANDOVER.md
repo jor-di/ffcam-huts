@@ -61,6 +61,7 @@ Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne 
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places + `fetch_log.json` (journal des relevés) | `rb/ffcam_availability.rb --history` | oui (branche `data`) |
 | `log_template.html` | page de suivi des relevés | à la main | oui (main) |
+| `booking_links.json` | liens « Site du refuge » / « ⚡ Résa » qu'on ne peut pas deviner (voir [La carte](#la-carte)) | à la main | oui (main) |
 | `about_template.html` | page « À propos » pour le grand public (démarche, lecture de la carte, sources avec le nombre de refuges calculé à chaque build, lien GitHub) | à la main | oui (main) |
 | `login_template.html` | écran de connexion qui enveloppe chaque page publiée (voir [Accès](#accès-prénom--mot-de-passe)) | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
@@ -201,7 +202,7 @@ C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1
 - `booking` : complet + `waitlistEnabled` → `waitlist` ; nuit avant aujourd'hui + `bookingCutoffDays`, ou au-delà de `premiereNuit` tant que `ouvreLe` n'est pas passé → `phone` (places mises à 0) ; sinon `online`.
 - Le slug est l'adresse du calendrier ; il est noté dans `manual_huts.json` (champ `refugepro`). Il n'y a pas de liste publique des refuges Refuge Pro : les 11 slugs ont été trouvés en essayant le nom du refuge (`chardonnet`, `refuge-du-clot-des-vaches`…) ; une page inexistante répond 404.
 - La page donne aussi le téléphone du refuge (`telephoneRefuge`) mais **pas sa position** : position et altitude viennent d'OpenStreetMap (Nominatim), notées dans `manual_huts.json`.
-- Lien principal sur la carte = ce calendrier (bouton « Réserver ») ; le site propre du refuge, quand il existe, est dans le champ `website`.
+- Sur la carte : ce calendrier = bouton « ⚡ Résa » ; le site propre du refuge (champ `website`, quand il existe) = bouton « Site du refuge ».
 - **Pas de vitrine tierce** : ces refuges sont aussi vendus sur refuge.camp (même éditeur), qu'on n'utilise pas ; on lit le calendrier du refuge.
 
 ### 4. WP Booking System (Refuge de la Coire, `portal = WPBS`)
@@ -228,7 +229,7 @@ GET https://www.refugedelacoire.fr/reservations-hiver/
 - Page sans calendrier `wpbs-container`, ou calendrier sans aucune case datée → erreur (`err` sur `/releves/`, « RuntimeError: no WP Booking System calendar on <url> » / « no day in the WP Booking System calendar of <url> »).
 - Configuration dans `manual_huts.json`, champ `wpbs` : une liste de pages `[{"url": "…", "calendars": [14]}]` (`calendars` facultatif : sinon tous les calendriers de la page) ; un jour présent dans plusieurs calendriers ou pages est pris dans le premier. Une requête par page.
 - **Été pas encore lu** : la page [réservations été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers (14 et 15, à partir de juin 2027, autres numéros d'états : 70, 74, 76, 80). Il suffira d'ajouter la page à `wpbs` quand on saura comment combiner ses deux calendriers (aujourd'hui : le premier l'emporte, sans addition des places).
-- Lien principal sur la carte = la page de réservation (bouton « Réserver »).
+- Sur la carte : la page de réservation = bouton « ⚡ Résa » ; le site du refuge (champ `website`) = « Site du refuge ».
 
 ### 5. Refuges sans réservation en ligne lisible (`portal = MANUAL`)
 
@@ -249,7 +250,10 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 **Carte**
 
 - Marqueurs en talons de billet (places + pastille vert / orange / rouge, sablier violet pour la liste d'attente, ☎ pour téléphone / mail), fermés = point gris. Les refuges `MANUAL` (téléphone / mail seulement, jamais réservables en ligne) sont aussi un simple point gris sur la carte, mais restent « Sur demande » dans la liste et la fiche. Une nuit `UNGUARDED` de la centrale (refuge ouvert sans gardien) est libellée « Accès libre ».
-- Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons Fiche FFCAM / Site du refuge / Réserver, Camptocamp, Skitour.
+- Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons « Site du refuge » et « ⚡ Résa », puis Camptocamp, Skitour. Les deux liens sont calculés par `MapData.links` (`rb/map_data.rb`) :
+  - **Site du refuge** : le vrai site du refuge, champ `website` de `manual_huts.json` (refuges Refuge Pro, Coire, Selle), sinon le site FFCAM (`<nom>.ffcam.fr`), Open System ou OSM. Jamais refuge-pro.com : sans `website`, pas de bouton. Les 11 refuges Refuge Pro ont un `website` (Marches et Chardonnet : leur page sur refugesclareethabor.com ; le Chardonnet a aussi un site en construction, refugechardonnet.wpcomstaging.com, à reprendre quand il aura une vraie adresse).
+  - **⚡ Résa** (vérifié le 23/11/2026) : d'abord `booking_links.json` (fait à la main : 19 refuges dont on ne peut pas deviner la page) ; sinon `<nom>.ffcam.fr/reservation.html` (widget de la centrale, refuge déjà choisi ; 80 sites sur 85 ; Platé, Étang Fourcat, Brèche de Roland, Lavey : page d'information ou fermeture pour travaux) ; pour une partie « Non Gardé », `reservation-hg.html` sur le site de son refuge gardé (widget `mode:'FORM_BOOK_HG'` avec l'id du **gardé**, que la centrale traduit en id de la partie non gardée ; alias `reservation-hors-gardiennage.html`) ; le calendrier Refuge Pro ou la page WP Booking System (`site` de `huts.json`) ; le site Open System (widget sur l'accueil) ; rien pour les refuges `MANUAL` ; en dernier recours le **lien direct de la centrale** `https://centrale.ffcam.fr/index.php?structure=<id>&mode=FORM&_lang=FR&init=1` (+ `&apporigin=VANOISE|NEOUVIELLE|BOREON` hors portail FFCAM ; marche pour tout id, page brute faite pour une iframe). Quand la nuit choisie montre la partie non gardée d'un refuge fusionné, le bouton mène à sa réservation (`winterBooking`).
+  - `booking_links.json` contient : Goûter et Tête Rousse non gardés (`montblanc.ffcam.fr/reservation-hg-vnmb.html`, page commune de la voie normale), Argentière et Leschaux non gardés (leur refuge gardé n'est pas dans la centrale ; `refugeleschaux`, pas `refugedeleschaux`), le site de l'Alpe de Villar d'Arène, le Sancy (pas de `reservation.html` : lien direct), et les fiches des portails Vanoise (refuges-vanoise.com), Néouvielle (visit-neouvielle.com) et Boréon (giteduboreon.com), qui portent le widget avec l'id du refuge (souvent sans le préfixe `BK_STRUCTURE:`).
 - Fonds : Topo clair Esri (défaut), OpenTopoMap, satellite Esri, Plan IGN, OSM France ; calque « Traces ski de rando (IGN) » ; SCAN 25 si clé IGN.
 - Vue de départ : Alpes, du Léman aux Hautes-Alpes.
 
@@ -265,7 +269,7 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 2. sinon sa partie non gardée FFCAM si elle a des places : la centrale vend les « X Non Gardé » sous un id à part ; `MapData.merge_winter_rooms` les range dans leur refuge gardé (même nom après `Ffcam.norm`) sous `nights[date].winter`. Sans refuge gardé dans la liste (Goûter, Tête Rousse, Argentière, Leschaux, Platé), la partie non gardée reste un refuge à part ;
 3. sinon fermé. Beaucoup de refuges fermés gardent un accès libre (salle hors-sac, parfois nuitée à payer après coup, comme au Parc de la Vanoise) : ils restent affichés comme les autres fermés, par souci de cohérence.
 
-Les nuits du cas 2 sont marquées « Non gardé » (icône à étoile, sous-titre « non gardé »).
+Les nuits du cas 2 sont marquées « Non gardé » (icône à étoile, sous-titre « non gardé ») ; la fiche ajoute alors l'encart « Non gardé : réservation conseillée, lit non garanti. », d'après le [mode d'emploi hors gardiennage](https://www.ffcam.fr/periode-hors-gardiennage.html) de la FFCAM (repris dans un encart de la page « À propos »).
 
 Où se fait la réconciliation : **uniquement à la construction de la carte**. `huts.json`, les relevés (`rb/ffcam_availability.rb`), le CSV et l'historique (branche `data`) gardent les deux ids FFCAM comme deux refuges distincts ; `rb/build_map.rb` appelle `MapData.merge_winter_rooms` sur les données du CSV, qui retire l'entrée « Non Gardé » de la liste et range ses nuits dans le refuge gardé (`winter` par nuit, `winterId` sur le refuge) ; la page choisit ensuite nuit par nuit (`night()`). Le rapprochement se fait par le nom (`Ffcam.norm` enlève « Non Gardé », « Refuge », les articles…) : si la FFCAM renomme l'un des deux, la paire n'est plus reconnue et les deux réapparaissent comme deux marqueurs (rien ne casse, mais vérifier après un `rb/refresh_huts.rb`).
 
@@ -311,7 +315,7 @@ Le site est publié par GitHub Actions sur GitHub Pages, derrière le domaine de
 | Dépôt | `jor-di/ffcam-huts`, public, branche par défaut `main` (obligatoire pour la publication Pages et `workflow_dispatch`) |
 | Déclenchement | cron-job.org appelle `workflow_dispatch` (voir ci-dessous) ; pas de planning GitHub |
 | Tâche | `.github/workflows/update.yml` : lancé par cron-job.org (`workflow_dispatch`), à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
-| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → `rb/protect_site.rb site` (chiffrement, secret `SITE_USERS`) → déploiement Pages |
+| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → `rb/check_fetch_alerts.rb` (alerte mail, ne bloque jamais) → `rb/protect_site.rb site` (chiffrement, secret `SITE_USERS`) → déploiement Pages |
 | Pages | Settings → Pages → Source = GitHub Actions ; Custom domain = `dernierecouchette.fr` ; « Enforce HTTPS » à cocher une fois le certificat prêt |
 | DNS (OVH) | 4 × A `@` → `185.199.108-111.153`, 4 × AAAA `@` → `2606:50c0:8000-8003::153`, CNAME `www` → `jor-di.github.io.`, TXT `_github-pages-challenge-jor-di` (domaine vérifié) ; NS, MX et SPF d'origine conservés |
 | Compte | GitHub perso `jor-di` ; sur la machine, clé SSH dédiée `~/.ssh/id_ed25519_github_perso` via l'alias `github-perso` ; identité perso automatique sous `~/code/perso/` (`includeIf`) ; le compte pro reste en HTTPS via `gh` |
@@ -333,6 +337,31 @@ Le planning GitHub ne tient pas ses horaires : du 21 au 23/11/2026, un seul pass
 - Jeton : GitHub → Settings → Developer settings → Fine-grained tokens ; dépôt `jor-di/ffcam-huts` seulement ; permission **Actions : Read and write** ; jeton actuel **sans expiration** (il ne peut que lancer les workflows de ce dépôt) ; s'il fuit ou est révoqué : Regenerate token, puis le recoller dans les deux tâches cron-job.org. Il n'est stocké que chez cron-job.org.
 - Le champ `source` est affiché sur /releves/ (« cron-job.org ») : on distingue ainsi ces passages des pushes et des lancements à la main.
 - Si cron-job.org s'arrête (jeton expiré, compte désactivé), plus aucun relevé n'est lancé : activer dans la tâche l'email en cas d'échec, et surveiller la date du dernier relevé sur /releves/. Le planning GitHub a été retiré du workflow (doublons avec cron-job.org quand il finissait par partir).
+
+### Alertes par mail
+
+Pas de service d'envoi : les alertes sont des **issues GitHub**, et GitHub envoie un mail au propriétaire du dépôt quand une issue est ouverte ou commentée (vérifier que les notifications par mail sont actives : GitHub → Settings → Notifications). Une issue par sujet, tenue à jour par `rb/github_issues.rb` : ouverte au premier problème, mise à jour avec un commentaire quand la liste change (sinon rien, pas de mail toutes les heures), commentée puis fermée quand tout remarche. Jeton : celui du workflow (`GITHUB_TOKEN`, permission `issues: write`), rien à créer. En local, sans jeton, les scripts affichent ce qu'ils signaleraient.
+
+| Issue (étiquette) | Quand | Script, lancé par |
+| --- | --- | --- |
+| « Relevés en erreur » (`releves`) | un refuge en erreur (ou réponse vide) dans chacun des **10 derniers relevés** de `fetch_log.json` (en hiver ~10 h, de mai à novembre ~10 jours) | `rb/check_fetch_alerts.rb`, après chaque relevé (`update.yml`) |
+| « Liens cassés » (`liens`) | un lien « Site du refuge » ou « ⚡ Résa » ne répond pas, ou un sous-domaine `.ffcam.fr` inconnu renvoie vers www.ffcam.fr | `rb/check_links.rb --history`, chaque semaine (`links.yml`) |
+
+Un plantage du workflow lui-même (tests en échec, erreur Ruby) est signalé à part par GitHub (« Run failed »), au compte qui a créé le jeton de cron-job.org.
+
+### Vérification des liens
+
+`rb/check_links.rb` contrôle chaque lien des fiches (~300, ~45 s, mêmes limites de politesse que les relevés) : réponse HTTP 2xx, et pour une page de réservation FFCAM (`reservation.html`, lien direct de la centrale), présence de l'id du refuge dans la page (sinon « à vérifier » : page sans widget, refuge fermé pour travaux…). Avec `--history`, il écrit `history/links.json` (branche `data` : date, nombre de liens, liens en problème), affiché sur /releves/ (section « Liens des fiches ») au relevé suivant, et tient l'issue « Liens cassés » à jour (seulement les liens cassés, pas les « à vérifier »).
+
+Lancé par `.github/workflows/links.yml` (`workflow_dispatch`, même groupe de concurrence que les relevés : jamais en même temps) depuis une troisième tâche cron-job.org, avec le même jeton :
+
+| Champ | Valeur |
+| --- | --- |
+| URL | `https://api.github.com/repos/jor-di/ffcam-huts/actions/workflows/links.yml/dispatches` |
+| Horaire | `0 6 * * 1` (lundi 6 h, Europe/Paris) |
+| Méthode, en-têtes, corps | comme la tâche des relevés |
+
+À la main : `rb/check_links.rb` (affiche les problèmes), par exemple après un `rb/refresh_huts.rb`.
 
 ## Accès (prénom + mot de passe)
 
@@ -365,6 +394,7 @@ Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie 
 | Modifier le code ou la carte | éditer, puis `git commit` + `git push` | le push relance un relevé et republie |
 | Voir le résultat en local | `rb/ffcam_availability.rb && rb/build_map.rb && xdg-open map.html` | sans `--history`, rien n'est écrit dans `history/` (pas de divergence avec l'historique en ligne) |
 | Forcer une mise à jour en ligne | onglet Actions → « Update availability » → Run workflow | |
+| Vérifier les liens des fiches | `rb/check_links.rb` | ~45 s, affiche les liens cassés ou à vérifier ; voir [Vérification des liens](#vérification-des-liens) |
 | Donner ou retirer un accès | modifier le secret `SITE_USERS`, puis Run workflow | voir [Accès](#accès-prénom--mot-de-passe) |
 | Tester l'écran de connexion en local | `rb/build_map.rb -o site/index.html && SITE_USERS='test:secret' rb/protect_site.rb site && python3 -m http.server -d site 8000` | ouvrir http://127.0.0.1:8000/ (WebCrypto exige `localhost`/`127.0.0.1` ou HTTPS) |
 | Rafraîchir la liste des refuges (quelques fois par an) | `rb/refresh_huts.rb && rb/refresh_coordinates.rb && rb/refresh_links.rb`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
@@ -384,7 +414,7 @@ Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie 
 
 Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relevé (un échec arrête le relevé avant l'historique et la publication) :
 
-- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, chiffrement des pages (`rb/protect_site.rb`), fusion des « Non Gardé » FFCAM (`rb/map_data.rb`), limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
+- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, chiffrement des pages (`rb/protect_site.rb`), fusion des « Non Gardé » FFCAM et liens des fiches (`rb/map_data.rb`), alertes (`rb/check_fetch_alerts.rb` : 10 relevés de suite ; verdicts de `rb/check_links.rb` ; issue GitHub sans jeton), limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
 - `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
 
 Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).

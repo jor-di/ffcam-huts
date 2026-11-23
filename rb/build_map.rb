@@ -55,6 +55,11 @@ def main
     }
   end
 
+  by_id = Ffcam.load_huts["huts"].to_h { |h| [h["id"], h] }
+  overrides = MapData.load_booking_links
+  huts.each_value do |h|
+    h["site"], h["booking"] = MapData.links(by_id.fetch(h["id"], {}), h.delete("url"), overrides)
+  end
   MapData.merge_winter_rooms(huts)
   data = { "dates" => dates.sort, "fetchedAt" => fetched_at, "source" => File.basename(path), "huts" => huts.values,
            "ignKey" => args[:ign_key] }
@@ -86,7 +91,10 @@ def build_log_page(args, map_template)
   names = Ffcam.load_huts["huts"].to_h do |h|
     [h["id"], { "name" => h["name"].gsub("  ", " ").gsub(" (FFCAM)", ""), "portal" => h.fetch("portal", "FFCAM") }]
   end
+  links_file = File.join(File.dirname(args[:log]), "links.json") # weekly link check (rb/check_links.rb)
+  links = File.exist?(links_file) ? JSON.parse(File.read(links_file, encoding: "UTF-8")) : nil
   data = { "last_run" => log["last_run"], "runs" => log.fetch("runs", []), "last_success" => log.fetch("last_success", {}), "huts" => names }
+  data["links"] = links if links
   favicon = map_template.match(%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"})
   page = File.read(File.join(Ffcam::ROOT, "log_template.html"), encoding: "UTF-8")
   page = page.gsub("__FAVICON__") { favicon ? favicon[1] : "" }

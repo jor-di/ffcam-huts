@@ -17,6 +17,7 @@ on:
 permissions:
   contents: write # push the history to the `data` branch
   pages: write # publish the map
+  issues: write # mail alert: GitHub issue « Relevés en erreur » (rb/check_fetch_alerts.rb)
   id-token: write # required by deploy-pages
 
 concurrency:
@@ -73,6 +74,14 @@ jobs:
             git commit -q -m "availability $(date '+%Y-%m-%d %H:%M')"
             git push -q
           fi
+
+      # Huts failing 10 runs in a row: GitHub issue « Relevés en erreur » (GitHub mails it), updated
+      # when the list changes, closed when it is empty. Never blocks the publication.
+      - name: Mail alert on failing huts
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: rb/check_fetch_alerts.rb
 
       # Login by first name + password: the pages are encrypted (see HANDOVER, « Accès »). Fails
       # without the SITE_USERS secret rather than publishing them open; the history is already saved.
