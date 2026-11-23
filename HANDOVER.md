@@ -351,7 +351,7 @@ Un plantage du workflow lui-même (tests en échec, erreur Ruby) est signalé à
 
 ### Vérification des liens
 
-`rb/check_links.rb` contrôle chaque lien des fiches (~300, ~45 s, mêmes limites de politesse que les relevés) : réponse HTTP 2xx, et pour une page de réservation FFCAM (`reservation.html`, lien direct de la centrale), présence de l'id du refuge dans la page (sinon « à vérifier » : page sans widget, refuge fermé pour travaux…). Avec `--history`, il écrit `history/links.json` (branche `data` : date, nombre de liens, liens en problème), affiché sur /releves/ (section « Liens des fiches ») au relevé suivant, et tient l'issue « Liens cassés » à jour (seulement les liens cassés, pas les « à vérifier »).
+`rb/check_links.rb` contrôle chaque lien des fiches (~300, ~45 s, mêmes limites de politesse que les relevés) : réponse HTTP 2xx (401 / 403 / 429 = « à vérifier » : certains sites, comme refugesclareethabor.com, refusent les adresses de GitHub Actions alors que la page marche dans un navigateur), et pour une page de réservation FFCAM (`reservation.html`, lien direct de la centrale), présence de l'id du refuge dans la page (sinon « à vérifier » : page sans widget, refuge fermé pour travaux…). Avec `--history`, il écrit `history/links.json` (branche `data` : date, nombre de liens, liens en problème), affiché sur /releves/ (section « Liens des fiches ») au relevé suivant, et tient l'issue « Liens cassés » à jour (seulement les liens cassés, pas les « à vérifier »).
 
 Lancé par `.github/workflows/links.yml` (`workflow_dispatch`, même groupe de concurrence que les relevés : jamais en même temps) depuis une troisième tâche cron-job.org, avec le même jeton :
 

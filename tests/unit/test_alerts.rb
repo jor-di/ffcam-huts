@@ -31,6 +31,13 @@ class TestAlerts < Minitest::Test
     assert_equal "ok", LinkCheck.verdict(t.("site", "https://refugelaval.com/"), "https://www.refugelaval.com/", "")[0]
   end
 
+  def test_link_failures
+    assert_equal "warn", LinkCheck.failure("HTTPError: HTTP Error 403: Forbidden")[0] # refuses robots
+    assert_equal "warn", LinkCheck.failure("HTTPError: HTTP Error 429: Too Many Requests")[0]
+    assert_equal "err", LinkCheck.failure("HTTPError: HTTP Error 404: Not Found")[0]
+    assert_equal "err", LinkCheck.failure("URLError: <urlopen error [Errno -2] Name or service not known>")[0]
+  end
+
   def test_link_targets
     hut = { "id" => "RP-x", "name" => "Refuge X", "portal" => "REFUGEPRO", "site" => "https://refuge-pro.com/embed/calendrier/x", "website" => "https://x.fr/" }
     assert_equal [%w[site https://x.fr/], %w[booking https://refuge-pro.com/embed/calendrier/x]],

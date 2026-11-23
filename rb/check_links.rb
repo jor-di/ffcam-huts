@@ -9,7 +9,8 @@
 #                                    # sync the GitHub issue « Liens cassés » (with GITHUB_TOKEN)
 #
 # Per link: ok; warn (answers, but the page doesn't name this hut: booking page without the
-# centrale widget, closed for works...); err (no answer, HTTP error, an unknown <name>.ffcam.fr
+# centrale widget, closed for works...; or 401 / 403 / 429: the site refuses robots, as some do
+# with GitHub Actions' addresses); err (no answer, other HTTP error, an unknown <name>.ffcam.fr
 # site sent to www.ffcam.fr). Only errors go into the issue.
 
 require "fileutils"
@@ -47,6 +48,13 @@ module LinkCheck
     ["ok", ""]
   end
 
+  # [state, message] for a link that didn't answer. 401 / 403 / 429: the site refuses robots
+  # (often GitHub Actions' datacenter addresses), the page itself may be fine: only « à vérifier ».
+  def failure(error)
+    return ["warn", "le site refuse les robots (#{error[/HTTP Error \d+/]}) : à vérifier dans un navigateur"] if error.match?(/HTTP Error (401|403|429)\b/)
+    ["err", error[0, 200]]
+  end
+
   def check(targets)
     urls = targets.map { |t| t["url"] }.uniq
     answers = Ffcam.pool_map(urls, 6) do |u|
@@ -57,7 +65,7 @@ module LinkCheck
     end.then { |list| urls.zip(list).to_h }
     targets.map do |t|
       a = answers[t["url"]]
-      state, msg = a.is_a?(String) ? ["err", a[0, 200]] : verdict(t, *a)
+      state, msg = a.is_a?(String) ? failure(a) : verdict(t, *a)
       t.merge("state" => state, "msg" => msg)
     end
   end
