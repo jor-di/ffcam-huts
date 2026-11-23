@@ -1,0 +1,134 @@
+#!/usr/bin/env ruby
+# Lock the published pages behind a first name + password: every HTML file of a folder is
+# replaced by a login page (login_template.html) that holds it encrypted, and decrypts it in
+# the browser (WebCrypto). GitHub Pages only serves static files: this is the access control.
+#
+# Usage:
+#   SITE_USERS=$'marie:motdepasse\npaul:autre' rb/protect_site.rb site
+#   rb/protect_site.rb site --allow-public    # no SITE_USERS: leave the pages as they are
+#
+# SITE_USERS: one "first name:password" per line (blank lines and # comments ignored). In the
+# workflow it comes from the SITE_USERS repository secret, so passwords never are in the repo.
+#
+# Scheme (see HANDOVER, « Accès ») :
+#   K    random AES-256 key, new at each run: each page = AES-256-GCM(K, page)
+#   KEK  PBKDF2-HMAC-SHA256(password, SHA-256("dernierecouchette:" + name), ITERATIONS)
+#        (salt stable per user, so the key a browser remembers survives the next builds)
+#   each user gets AES-256-GCM(KEK, K), stored under SHA-256(name) (names not shown in clear).
+# A removed user loses access with the next build (K changes); GCM rejects a wrong password.
+
+require "base64"
+require "digest"
+require "json"
+require "openssl"
+require "optparse"
+require_relative "ffcam"
+
+module SiteLock
+  ITERATIONS = 600_000
+  SALT_PREFIX = "dernierecouchette:"
+  TEMPLATE = File.join(Ffcam::ROOT, "login_template.html")
+
+  module_function
+
+  # "Élodie " -> "elodie" (same rule as the login page: NFD, no combining marks, lower case)
+  def norm_name(name)
+    name.to_s.unicode_normalize(:nfd).gsub(/[̀-ͯ]/, "").downcase.strip
+  end
+
+  def user_id(name) = Digest::SHA256.hexdigest(norm_name(name))
+
+  # SITE_USERS text -> {normalized name => password}
+  def parse_users(text)
+    text.to_s.each_line.with_object({}) do |line, users|
+      line = line.chomp
+      next if line.strip.empty? || line.strip.start_with?("#")
+      name, password = line.split(":", 2)
+      raise ArgumentError, "SITE_USERS: expected « prénom:mot de passe », got a line without ':'" unless password
+      raise ArgumentError, "SITE_USERS: empty name or password" if norm_name(name).empty? || password.empty?
+      users[norm_name(name)] = password
+    end
+  end
+
+  def kek(name, password, iterations = ITERATIONS)
+    salt = Digest::SHA256.digest(SALT_PREFIX + norm_name(name))
+    OpenSSL::KDF.pbkdf2_hmac(password, salt: salt, iterations: iterations, length: 32, hash: "sha256")
+  end
+
+  # AES-256-GCM: {iv, ct} in base64, ct = ciphertext + 16-byte tag (the WebCrypto layout)
+  def seal(key, plain)
+    c = OpenSSL::Cipher.new("aes-256-gcm").encrypt
+    c.key = key
+    iv = c.random_iv
+    c.auth_data = ""
+    ct = c.update(plain) + c.final + c.auth_tag
+    { "iv" => Base64.strict_encode64(iv), "ct" => Base64.strict_encode64(ct) }
+  end
+
+  def open_box(key, box)
+    raw = Base64.strict_decode64(box["ct"])
+    c = OpenSSL::Cipher.new("aes-256-gcm").decrypt
+    c.key = key
+    c.iv = Base64.strict_decode64(box["iv"])
+    c.auth_tag = raw[-16..]
+    c.auth_data = ""
+    c.update(raw[0...-16]) + c.final
+  end
+
+  # {name => password} -> [K, {user id => K sealed with the user's KEK}]
+  def wrap_keys(users, iterations = ITERATIONS)
+    key = OpenSSL::Random.random_bytes(32)
+    [key, users.to_h { |name, password| [user_id(name), seal(kek(name, password, iterations), key)] }]
+  end
+
+  def payload(key, keys, html, iterations = ITERATIONS)
+    { "v" => 1, "iterations" => iterations, "users" => keys, "page" => seal(key, html.b) }
+  end
+
+  def login_page(template, payload, favicon)
+    json = JSON.generate(payload).gsub("</", "<\\/")
+    template.gsub("__FAVICON__") { favicon }.gsub("__PAYLOAD__") { json }
+  end
+
+  # Ruby side of the login page: the page of a payload, or nil (unknown name, wrong password).
+  def unlock(payload, name, password)
+    box = payload["users"][user_id(name)] or return nil
+    key = open_box(kek(name, password, payload["iterations"]), box)
+    open_box(key, payload["page"]).force_encoding(Encoding::UTF_8)
+  rescue OpenSSL::Cipher::CipherError
+    nil
+  end
+
+  def protect(dir, users, iterations = ITERATIONS)
+    template = File.read(TEMPLATE, encoding: "UTF-8")
+    key, keys = wrap_keys(users, iterations)
+    Dir.glob(File.join(dir, "**", "*.html")).sort.map do |path|
+      html = File.read(path, encoding: "UTF-8")
+      favicon = html[%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"}, 1] || ""
+      File.write(path, login_page(template, payload(key, keys, html, iterations), favicon))
+      path
+    end
+  end
+end
+
+def main
+  allow_public = false
+  parser = OptionParser.new do |o|
+    o.banner = "Usage: SITE_USERS=… rb/protect_site.rb DIR [--allow-public]"
+    o.on("--allow-public", "without SITE_USERS, leave the pages unprotected instead of failing") { allow_public = true }
+  end
+  dir = Ffcam.parse_args(parser, positional: 1)[0] or abort(parser.banner)
+  abort("#{dir}: no such folder") unless File.directory?(dir)
+  users = SiteLock.parse_users(Ffcam.env("SITE_USERS"))
+  if users.empty?
+    abort("SITE_USERS is empty: refusing to publish the pages unprotected (--allow-public to do it anyway).") unless allow_public
+    warn "SITE_USERS is empty: pages left unprotected (--allow-public)"
+    return
+  end
+  pages = SiteLock.protect(dir, users)
+  warn "Protected #{pages.size} page(s) for #{users.size} user(s): #{pages.join(', ')}"
+rescue ArgumentError => e
+  abort(e.message)
+end
+
+main if $PROGRAM_NAME == __FILE__

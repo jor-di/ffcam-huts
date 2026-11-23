@@ -103,8 +103,8 @@ class TestHistory < Minitest::Test
   def test_trigger
     env = %w[TRIGGER_SOURCE GITHUB_EVENT_NAME].to_h { |k| [k, ENV.delete(k)] }
     assert_equal "local", FetchLog.trigger
-    ENV["GITHUB_EVENT_NAME"] = "schedule"
-    assert_equal "planifié (GitHub)", FetchLog.trigger
+    ENV["GITHUB_EVENT_NAME"] = "push"
+    assert_equal "push sur main", FetchLog.trigger
     ENV["TRIGGER_SOURCE"] = "cron-job.org"
     assert_equal "cron-job.org", FetchLog.trigger
   ensure

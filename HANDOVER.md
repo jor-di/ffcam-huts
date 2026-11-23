@@ -6,7 +6,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 
 - **Couverture** : 154 refuges, venant de 5 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro, WP Booking System) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
 - **Code** : Ruby, bibliothèque standard seulement (aucune gem), scripts dans `rb/` + une page HTML Leaflet. Version : `.ruby-version` (4.0.9, utilisée par GitHub Actions) ; le code tourne aussi sur Ruby 3.1 à 3.3 (vérifié avec les tests).
-- **Fréquence** : toutes les heures en saison (déc.–avr., juin–sept.), trois fois par jour sinon (6h07, 7h37, 12h07 UTC).
+- **Fréquence** (heure de Paris, lancé par cron-job.org) : de décembre à avril, toutes les heures à la minute 7 sauf de 1 h à 5 h ; en mai, octobre et novembre, une fois par jour à 7h07 ; aucun relevé de juin à septembre.
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
 
 ## Sommaire
@@ -17,6 +17,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 - [La carte](#la-carte)
 - [Historique des disponibilités](#historique-des-disponibilités)
 - [Mise en ligne](#mise-en-ligne)
+- [Accès (prénom + mot de passe)](#accès-prénom--mot-de-passe)
 - [Opérations courantes](#opérations-courantes)
 - [Tests](#tests)
 - [En suspens](#en-suspens)
@@ -38,13 +39,14 @@ flowchart LR
   subgraph auto["Automatique, GitHub Actions (après tests/unit.sh et tests/check.sh)"]
     avail["rb/ffcam_availability.rb --history<br/>1 requête par refuge<br/>→ latest.csv + history/"]
     build["rb/build_map.rb<br/>map_template.html + données<br/>→ site/index.html + site/releves/"]
-    avail -- CSV --> build
+    protect["rb/protect_site.rb<br/>login_template.html + secret SITE_USERS<br/>→ pages chiffrées"]
+    avail -- CSV --> build --> protect
   end
   huts -- liste des refuges --> avail
   coords -- GPS --> build
   links -- liens --> build
   avail -- commit si changement --> data[("branche data<br/>historique")]
-  build -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
+  protect -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
 ```
 
 Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro, WP Booking System), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
@@ -59,6 +61,7 @@ Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne 
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places + `fetch_log.json` (journal des relevés) | `rb/ffcam_availability.rb --history` | oui (branche `data`) |
 | `log_template.html` | page de suivi des relevés | à la main | oui (main) |
+| `login_template.html` | écran de connexion qui enveloppe chaque page publiée (voir [Accès](#accès-prénom--mot-de-passe)) | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
 | `.ruby-version` | version de Ruby (GitHub Actions, mise / rbenv en local) | à la main | oui (main) |
 | `tests/` | tests unitaires et rejeu hors ligne (voir [Tests](#tests)) | à la main | oui (main) |
@@ -265,7 +268,7 @@ Une page publique, [dernierecouchette.fr/releves/](https://dernierecouchette.fr/
 
 - **Production** : à chaque relevé, `rb/ffcam_availability.rb --history` appelle `FetchLog.record` (module `rb/fetch_log.rb`), qui classe chaque refuge et met à jour `history/fetch_log.json` sur la branche `data`. `rb/build_map.rb` génère ensuite la page à partir de `log_template.html`, dans `releves/index.html` à côté de la carte (`site/releves/` en ligne).
 - **États** : `ok` (nuits reçues ; une remarque si aucun calendrier d'ouverture n'est publié, normal pour un refuge fermé), `warn` « à vérifier » (réponse sans aucune nuit : souvent un changement de format), `err` (requête en échec : délai, erreur HTTP, page sans données ; le message de l'exception est gardé), `skip` « non relevé » (refuges `MANUAL`).
-- **`fetch_log.json`** : `last_run` (le dernier relevé, une entrée par refuge : état, nuits reçues, durée, message), `runs` (les 48 derniers relevés résumés par source, avec la liste des refuges en problème), `last_success` (dernier relevé réussi par refuge). Le déclencheur vient de `GITHUB_EVENT_NAME` (planifié, push, manuel) ou vaut « local ».
+- **`fetch_log.json`** : `last_run` (le dernier relevé, une entrée par refuge : état, nuits reçues, durée, message), `runs` (les 48 derniers relevés résumés par source, avec la liste des refuges en problème), `last_success` (dernier relevé réussi par refuge). Le déclencheur vient du champ `source` de `workflow_dispatch` (« cron-job.org »), sinon de `GITHUB_EVENT_NAME` (push, manuel) ou vaut « local ».
 - **Page** : le dernier relevé (durée, nombre de requêtes, déclencheur, résumé), un billet par source (refuges sans erreur / total, 24 derniers relevés en barres, durée cumulée, dernier succès), puis le tableau des refuges filtrable (À traiter, Erreurs, Remarques, Non relevés, Tous) avec recherche.
 - **Effet de bord** : ce fichier change à chaque relevé, donc la branche `data` reçoit un commit par relevé (et non plus seulement en cas de changement de places).
 - Sans `--history` (tout lancement à la main), le journal n'est pas écrit non plus ; `--log <fichier>` permet de l'écrire ailleurs pour tester.
@@ -294,23 +297,65 @@ Le site est publié par GitHub Actions sur GitHub Pages, derrière le domaine de
 
 | Élément | Réglage |
 | --- | --- |
-| Dépôt | `jor-di/ffcam-huts`, public, branche par défaut `main` (obligatoire pour les tâches planifiées et la publication Pages) |
-| Tâche | `.github/workflows/update.yml` : `7 * * 12,1-4,6-9 *` (saison), `7 6,12 * 5,10,11 *` et `37 7 * 5,10,11 *` (hors saison : 3 créneaux, le planning GitHub pouvant prendre des heures de retard ou sauter un passage), heures UTC ; aussi à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
-| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → déploiement Pages |
+| Dépôt | `jor-di/ffcam-huts`, public, branche par défaut `main` (obligatoire pour la publication Pages et `workflow_dispatch`) |
+| Déclenchement | cron-job.org appelle `workflow_dispatch` (voir ci-dessous) ; pas de planning GitHub |
+| Tâche | `.github/workflows/update.yml` : lancé par cron-job.org (`workflow_dispatch`), à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
+| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → `rb/protect_site.rb site` (chiffrement, secret `SITE_USERS`) → déploiement Pages |
 | Pages | Settings → Pages → Source = GitHub Actions ; Custom domain = `dernierecouchette.fr` ; « Enforce HTTPS » à cocher une fois le certificat prêt |
 | DNS (OVH) | 4 × A `@` → `185.199.108-111.153`, 4 × AAAA `@` → `2606:50c0:8000-8003::153`, CNAME `www` → `jor-di.github.io.`, TXT `_github-pages-challenge-jor-di` (domaine vérifié) ; NS, MX et SPF d'origine conservés |
 | Compte | GitHub perso `jor-di` ; sur la machine, clé SSH dédiée `~/.ssh/id_ed25519_github_perso` via l'alias `github-perso` ; identité perso automatique sous `~/code/perso/` (`includeIf`) ; le compte pro reste en HTTPS via `gh` |
 | Secrets | `secrets.env` (local, `chmod 600`, ignoré par git) : `SKITOUR_API_KEY`, `IGN_API_KEY` (vide). Le workflow n'en a pas besoin. |
 
+### Déclenchement par cron-job.org
+
+Le planning GitHub ne tient pas ses horaires : du 21 au 23/11/2026, un seul passage sur cinq créneaux, et en retard. Le relevé est donc lancé de l'extérieur par une tâche [cron-job.org](https://cron-job.org) (compte gratuit), qui appelle l'API GitHub :
+
+| Champ | Valeur |
+| --- | --- |
+| URL | `https://api.github.com/repos/jor-di/ffcam-huts/actions/workflows/update.yml/dispatches` |
+| Méthode | `POST` |
+| En-têtes | `Authorization: Bearer <jeton>`, `Accept: application/vnd.github+json`, `X-GitHub-Api-Version: 2026-03-10`, `Content-Type: application/json` |
+| Corps | `{"ref": "main", "inputs": {"source": "cron-job.org"}}` |
+| Horaires | deux tâches, fuseau Europe/Paris : saison `7 0,5-23 * 12,1-4 *` (toutes les heures sauf 1 h–4 h, déc.–avr.) ; hors saison `7 7 * 5,10,11 *` (7 h 07, mai, oct., nov.) ; rien de juin à septembre |
+| Réponse attendue | `204 No Content` (cron-job.org la marque en succès) |
+
+- Jeton : GitHub → Settings → Developer settings → Fine-grained tokens ; dépôt `jor-di/ffcam-huts` seulement ; permission **Actions : Read and write** ; jeton actuel **sans expiration** (il ne peut que lancer les workflows de ce dépôt) ; s'il fuit ou est révoqué : Regenerate token, puis le recoller dans les deux tâches cron-job.org. Il n'est stocké que chez cron-job.org.
+- Le champ `source` est affiché sur /releves/ (« cron-job.org ») : on distingue ainsi ces passages des pushes et des lancements à la main.
+- Si cron-job.org s'arrête (jeton expiré, compte désactivé), plus aucun relevé n'est lancé : activer dans la tâche l'email en cas d'échec, et surveiller la date du dernier relevé sur /releves/. Le planning GitHub a été retiré du workflow (doublons avec cron-job.org quand il finissait par partir).
+
+## Accès (prénom + mot de passe)
+
+Le site est réservé à quelques personnes, chacune avec un prénom et un mot de passe. GitHub Pages ne sert que des fichiers statiques, sans login possible côté serveur : les pages publiées sont donc **chiffrées**, et un écran de connexion (`login_template.html`) les déchiffre dans le navigateur.
+
+- **Qui a accès** : secret GitHub `SITE_USERS` (Settings → Secrets and variables → Actions), une ligne `prénom:mot de passe` par personne (lignes vides et `#` ignorées ; le mot de passe peut contenir `:`). Le prénom ne tient compte ni des majuscules ni des accents (« Élodie » = « elodie »).
+- **Ajouter, retirer, changer un mot de passe** : modifier le secret, puis Actions → « Update availability » → Run workflow (ou attendre le prochain relevé). Une personne retirée perd l'accès dès cette publication, même si son navigateur avait retenu la connexion.
+- **Côté navigateur** : « Se souvenir de moi » garde la clé dérivée du mot de passe (pas le mot de passe) dans le `localStorage` ; sinon elle ne dure que le temps de l'onglet. Un lien « déconnexion » (à côté de « màj » sur la carte, en haut de /releves/) l'efface.
+- **Sans le secret**, l'étape « Protect the site » échoue et rien n'est publié (le site en ligne garde la version précédente ; l'historique est déjà enregistré). En local, `rb/protect_site.rb DIR --allow-public` laisse les pages en clair.
+
+Fonctionnement (`rb/protect_site.rb`) :
+
+- À chaque publication, une clé aléatoire `K` (AES-256) chiffre chaque page HTML de `site/` en AES-GCM.
+- Pour chaque personne, `K` est chiffrée avec une clé tirée de son mot de passe : PBKDF2-HMAC-SHA256, 600 000 itérations, sel = SHA-256(`dernierecouchette:` + prénom normalisé). Le sel est fixe par personne, pour que la clé retenue par un navigateur reste valable d'une publication à l'autre.
+- La page publiée ne contient que l'écran de connexion, les données chiffrées et les entrées par personne, rangées sous SHA-256(prénom) : aucun prénom en clair.
+- Au login, le navigateur (WebCrypto) refait le calcul, ouvre `K`, déchiffre la page et la met à la place de l'écran de connexion. Les scripts sont relancés dans l'ordre, sans `document.write`, que Chrome peut bloquer sur un réseau mobile lent.
+
+Limites :
+
+- Le dépôt est public : le code et la branche `data` (historique brut des places) restent lisibles sur GitHub. Seule l'app est protégée.
+- Un mot de passe faible se casse hors ligne (la page chiffrée est téléchargeable) : choisir des mots de passe longs.
+- Une personne connectée peut copier ce qu'elle voit ou partager son mot de passe.
+
 ## Opérations courantes
 
-Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seule. Les commandes se lancent à la racine du dépôt.
+Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie seul. Les commandes se lancent à la racine du dépôt.
 
 | Quand | Commande | Notes |
 | --- | --- | --- |
 | Modifier le code ou la carte | éditer, puis `git commit` + `git push` | le push relance un relevé et republie |
 | Voir le résultat en local | `rb/ffcam_availability.rb && rb/build_map.rb && xdg-open map.html` | sans `--history`, rien n'est écrit dans `history/` (pas de divergence avec l'historique en ligne) |
 | Forcer une mise à jour en ligne | onglet Actions → « Update availability » → Run workflow | |
+| Donner ou retirer un accès | modifier le secret `SITE_USERS`, puis Run workflow | voir [Accès](#accès-prénom--mot-de-passe) |
+| Tester l'écran de connexion en local | `rb/build_map.rb -o site/index.html && SITE_USERS='test:secret' rb/protect_site.rb site && python3 -m http.server -d site 8000` | ouvrir http://127.0.0.1:8000/ (WebCrypto exige `localhost`/`127.0.0.1` ou HTTPS) |
 | Rafraîchir la liste des refuges (quelques fois par an) | `rb/refresh_huts.rb && rb/refresh_coordinates.rb && rb/refresh_links.rb`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
 | Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `rb/refresh_coordinates.rb` | 6 corrections aujourd'hui |
 | Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `rb/refresh_huts.rb && rb/refresh_links.rb` | voir l'annexe |
@@ -327,7 +372,7 @@ Au quotidien il n'y a rien à faire : la tâche planifiée relève et publie seu
 
 Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relevé (un échec arrête le relevé avant l'historique et la publication) :
 
-- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
+- `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, chiffrement des pages (`rb/protect_site.rb`), limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
 - `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
 
 Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
@@ -347,7 +392,7 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 - Un refuge peut avoir des places libres et être fermé (`CLOSE`) : « réservable » = `OPEN` **et** places > 0.
 - Les « Non Gardé » sont des entrées séparées de leur refuge gardé (salle hors-sac) ; en hiver ce sont presque les seuls réservables.
 - Les emails des refuges sont obfusqués (`name<a></a><ff></ff>…`) : seule la partie avant @ est fiable ; elle donne le site `name.ffcam.fr`.
-- Les tâches planifiées GitHub partent avec retard (minutes, parfois des heures : 8 h le 22/11/2026) et sont désactivées après 60 jours sans activité (les commits de données devraient suffire).
+- Les tâches planifiées GitHub partent avec retard (minutes, parfois des heures : 8 h le 22/11/2026) ou pas du tout, et sont désactivées après 60 jours sans activité : d'où cron-job.org, et plus de `schedule` dans le workflow (voir « Déclenchement par cron-job.org »).
 - Le dépôt peut être modifié directement sur GitHub (ça a été le cas du README) : faire `git pull --rebase` avant de pousser.
 - Le Ratou n'a ni site ni position exacte (panneau « Chalet du Ratou ») ; Averole et Orédon sont tagués autrement qu'en refuge dans OSM.
 

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dernière couchette</title>
+<link rel="icon" type="image/svg+xml" href="__FAVICON__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<!-- Login page written by rb/protect_site.rb: the real page is in PAYLOAD, encrypted (AES-GCM);
+     the first name + password open it in the browser (WebCrypto). See HANDOVER, « Accès ». -->
+<style>
+  :root {
+    --ground:#f5f2ea; --paper:#fffdf7; --ink:#1f2a24; --ink-2:#66716b; --rule:#ddd8cc;
+    --pine:#24493a; --glow:#d98a2b; --full:#c8473d;
+    --display:Fraunces, Georgia, serif; --body:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color-scheme:light;
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; min-height:100%; background:var(--ground); color:var(--ink); font:15px/1.45 var(--body); -webkit-font-smoothing:antialiased; }
+  body { display:grid; place-items:center; min-height:100vh; padding:24px 16px; }
+  body.waiting form { visibility:hidden; }
+  form { width:100%; max-width:340px; background:var(--paper); border:1px solid var(--rule); border-radius:12px;
+         padding:28px 24px 24px; box-shadow:0 10px 30px rgba(20,30,25,.12); }
+  .brand { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+  .brand svg { width:40px; height:40px; flex:none; }
+  h1 { font:700 22px/1.1 var(--display); color:var(--pine); margin:0; }
+  .brand small { color:var(--ink-2); font-size:12.5px; }
+  label { display:block; font-weight:600; font-size:13px; margin:0 0 14px; }
+  input[type=text], input[type=password] { display:block; width:100%; margin-top:5px; padding:10px 12px; font:inherit;
+    color:var(--ink); background:#fff; border:1px solid var(--rule); border-radius:8px; }
+  input:focus { outline:2px solid var(--pine); outline-offset:1px; border-color:transparent; }
+  label.check { display:flex; align-items:center; gap:8px; font-weight:400; color:var(--ink-2); }
+  button { width:100%; margin-top:6px; padding:11px; font:600 15px var(--body); color:#fff; background:var(--pine);
+           border:0; border-radius:8px; cursor:pointer; }
+  button:disabled { opacity:.6; cursor:wait; }
+  .err { min-height:20px; margin:12px 0 0; color:var(--full); font-size:13px; text-align:center; }
+</style>
+</head>
+<body class="waiting">
+<form id="login" autocomplete="on">
+  <div class="brand">
+    <svg viewBox="0 0 34 34" fill="none" stroke="#24493a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 31V12M28 31V12"/><path d="M6 19h22M6 27h22"/><path d="M9 19v-3.5h7V19M9 27v-3.5h7V27"/>
+      <path d="m22 3 1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="#d98a2b" stroke="none"/></svg>
+    <div><h1>Dernière couchette</h1><small>Accès réservé</small></div>
+  </div>
+  <label>Prénom <input type="text" id="name" name="username" autocomplete="username" autocapitalize="words" required></label>
+  <label>Mot de passe <input type="password" id="password" name="password" autocomplete="current-password" required></label>
+  <label class="check"><input type="checkbox" id="remember" checked> Se souvenir de moi sur cet appareil</label>
+  <button type="submit" id="go">Entrer</button>
+  <p class="err" id="err" role="alert"></p>
+</form>
+<script>
+// everything in a closure: the unlocked page runs in this same window, with its own globals
+(() => {
+const PAYLOAD = __PAYLOAD__;
+const STORE = 'dc-auth'; // {id, kek}: localStorage if « se souvenir », sessionStorage otherwise
+const enc = new TextEncoder();
+const fromB64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const toB64 = a => btoa(String.fromCharCode(...a));
+const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+// same rule as SiteLock.norm_name (rb/protect_site.rb)
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+const sha256 = s => crypto.subtle.digest('SHA-256', enc.encode(s));
+
+async function deriveKek(name, password) {
+  const salt = await sha256('dernierecouchette:' + norm(name));
+  const base = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveBits']);
+  return new Uint8Array(await crypto.subtle.deriveBits(
+    { name:'PBKDF2', hash:'SHA-256', salt, iterations:PAYLOAD.iterations }, base, 256));
+}
+async function openBox(raw, box) {
+  const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+  return new Uint8Array(await crypto.subtle.decrypt({ name:'AES-GCM', iv:fromB64(box.iv) }, key, fromB64(box.ct)));
+}
+async function unlock(id, kek) {
+  const box = PAYLOAD.users[id];
+  if (!box) throw new Error('unknown user');
+  const page = await openBox(await openBox(kek, box), PAYLOAD.page);
+  return new TextDecoder().decode(page);
+}
+
+// « Se déconnecter »: next to « màj » on the map, next to « Retour à la carte » on /releves/
+const LOGOUT = `(() => {
+  const out = e => { e.preventDefault(); e.stopPropagation();
+    for (const s of [localStorage, sessionStorage]) try { s.removeItem('${STORE}'); } catch (_) {}
+    location.reload(); };
+  const a = Object.assign(document.createElement('a'), { href:'#', textContent:'déconnexion', title:'Se déconnecter', onclick:out });
+  const meta = document.getElementById('meta'), back = document.querySelector('a.back');
+  if (meta) meta.append(' · ', a);
+  else if (back) { a.className = 'back'; a.style.marginLeft = '8px'; back.after(a); }
+  else { a.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px sans-serif'; document.body.append(a); }
+})();`;
+
+// Put the decrypted page in place of this one (same URL, so relative links and storage still
+// work). Not document.write: Chrome may block the external scripts it inserts on slow mobile
+// networks. Parsed scripts are inert: recreate them in order, waiting for each external one.
+async function show(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const logout = doc.createElement('script');
+  logout.textContent = LOGOUT;
+  doc.body.append(logout);
+  document.replaceChild(document.adoptNode(doc.documentElement), document.documentElement);
+  for (const old of [...document.querySelectorAll('script')]) {
+    const s = document.createElement('script');
+    for (const a of old.attributes) s.setAttribute(a.name, a.value);
+    s.textContent = old.textContent;
+    const loaded = s.src && new Promise(done => { s.onload = s.onerror = done; });
+    old.replaceWith(s);
+    if (loaded) await loaded;
+  }
+}
+
+const storage = name => { try { return window[name]; } catch (_) { return null; } };
+function remembered() {
+  for (const s of [storage('sessionStorage'), storage('localStorage')]) {
+    try { const v = s && JSON.parse(s.getItem(STORE)); if (v?.id && v?.kek) return v; } catch (_) {}
+  }
+  return null;
+}
+function forget() {
+  for (const s of [storage('sessionStorage'), storage('localStorage')]) try { s?.removeItem(STORE); } catch (_) {}
+}
+
+async function start() {
+  const saved = remembered();
+  if (saved) {
+    let html = null;
+    try { html = await unlock(saved.id, fromB64(saved.kek)); }
+    catch (_) { forget(); } // user removed or password changed: ask again
+    if (html) return show(html);
+  }
+  document.body.classList.remove('waiting');
+  document.getElementById('name').focus();
+}
+
+document.getElementById('login').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = document.getElementById('name').value, password = document.getElementById('password').value;
+  const go = document.getElementById('go'), err = document.getElementById('err');
+  go.disabled = true; go.textContent = 'Ouverture…'; err.textContent = '';
+  try {
+    const id = hex(await sha256(norm(name))), kek = await deriveKek(name, password);
+    const html = await unlock(id, kek);
+    const s = storage(document.getElementById('remember').checked ? 'localStorage' : 'sessionStorage');
+    try { s?.setItem(STORE, JSON.stringify({ id, kek:toB64(kek) })); } catch (_) {}
+    return show(html);
+  } catch (_) {
+    err.textContent = 'Prénom ou mot de passe incorrect.';
+    go.disabled = false; go.textContent = 'Entrer';
+  }
+});
+
+if (window.isSecureContext && crypto.subtle) start();
+else {
+  document.body.classList.remove('waiting');
+  document.getElementById('err').textContent = 'Ce navigateur ne permet pas d’ouvrir la page (HTTPS requis).';
+}
+})();
+</script>
+</body>
+</html>

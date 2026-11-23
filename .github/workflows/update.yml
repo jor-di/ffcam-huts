@@ -1,16 +1,10 @@
 name: Update availability
 
 on:
-  schedule:
-    # times are UTC. Season (Dec-Apr, Jun-Sep): every hour at minute 7.
-    - cron: "7 * * 12,1-4,6-9 *"
-    # Off season (May, Oct, Nov): 3 slots a day (GitHub's schedule can run hours late or skip a
-    # run; with 3 slots one usually lands in the morning): 6:07, 7:37 and 12:07 UTC.
-    - cron: "7 6,12 * 5,10,11 *"
-    - cron: "37 7 * 5,10,11 *"
-  # "Run workflow" button in the Actions tab. An external scheduler could also start it via
+  # No GitHub schedule (it ran hours late or not at all). Runs are started by cron-job.org (see
+  # HANDOVER, « Déclenchement par cron-job.org ») and the "Run workflow" button, both through
   # POST /repos/jor-di/ffcam-huts/actions/workflows/update.yml/dispatches
-  #   {"ref": "main", "inputs": {"source": "<name shown on /releves/>"}}
+  #   {"ref": "main", "inputs": {"source": "cron-job.org"}}
   workflow_dispatch:
     inputs:
       source:
@@ -38,7 +32,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     env:
       TZ: Europe/Paris # history timestamps and "today" in French time
-      TRIGGER_SOURCE: ${{ inputs.source }} # set by workflow_dispatch (the button, or an external scheduler)
+      TRIGGER_SOURCE: ${{ inputs.source }} # set by workflow_dispatch (cron-job.org, or the button)
     steps:
       - uses: actions/checkout@v4
 
@@ -79,6 +73,13 @@ jobs:
             git commit -q -m "availability $(date '+%Y-%m-%d %H:%M')"
             git push -q
           fi
+
+      # Login by first name + password: the pages are encrypted (see HANDOVER, « Accès »). Fails
+      # without the SITE_USERS secret rather than publishing them open; the history is already saved.
+      - name: Protect the site
+        env:
+          SITE_USERS: ${{ secrets.SITE_USERS }}
+        run: rb/protect_site.rb site
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

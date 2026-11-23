@@ -41,7 +41,7 @@ module FetchLog
   # else the GitHub Actions event name, else 'local'.
   def trigger
     return Ffcam.env("TRIGGER_SOURCE") if Ffcam.env("TRIGGER_SOURCE")
-    { "schedule" => "planifié (GitHub)", "push" => "push sur main", "workflow_dispatch" => "manuel (Actions)" }
+    { "push" => "push sur main", "workflow_dispatch" => "manuel (Actions)" }
       .fetch(Ffcam.env("GITHUB_EVENT_NAME"), "local")
   end
 
