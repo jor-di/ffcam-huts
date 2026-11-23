@@ -16,7 +16,7 @@ RUN="rb/%s.rb"
 # data files in the parent of rb/, i.e. the work folder.
 CODE="rb .ruby-version"
 # Files every scenario starts with (relative to the repo root).
-INPUTS="manual_huts.json coordinates_overrides.json map_template.html log_template.html"
+INPUTS="manual_huts.json coordinates_overrides.json map_template.html log_template.html about_template.html"
 # Scenarios: fixed clock, then the scripts in order (a step may carry arguments: "build_map x.csv").
 RUN1_NOW=2026-11-22T18:00:00
 RUN1_STEPS=(refresh_huts refresh_coordinates refresh_links "ffcam_availability --history" build_map)

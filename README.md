@@ -13,7 +13,7 @@ Carte : https://dernierecouchette.fr/
 | `rb/refresh_coordinates.rb` | GPS (OpenStreetMap) → `hut_coordinates.json` | après `rb/refresh_huts.rb` |
 | `rb/refresh_links.rb` | liens Camptocamp / Skitour → `hut_links.json` (clé Skitour dans `secrets.env`) | après `rb/refresh_coordinates.rb` |
 | `rb/ffcam_availability.rb` | places libres ; historique (`history/`) seulement avec `--history` | automatique (GitHub Actions) |
-| `rb/build_map.rb` | génère la carte (`map_template.html` → HTML) et la page `/releves/` | automatique |
+| `rb/build_map.rb` | génère la carte (`map_template.html` → HTML), la page `/releves/` et la page `/a-propos/` | automatique |
 | `rb/protect_site.rb` | chiffre les pages publiées : accès par prénom + mot de passe (secret `SITE_USERS`) | automatique |
 
 Scripts Ruby (bibliothèque standard, version dans `.ruby-version`, Ruby 3.1 ou plus suffit),
@@ -22,8 +22,7 @@ rien n'est écrit dans `history/`). Tests hors ligne : `tests/unit.sh && tests/c
 Détails : [HANDOVER.md](HANDOVER.md).
 
 GitHub Actions (`.github/workflows/update.yml`), lancé par cron-job.org, fait passer les tests puis la mise à jour
-toutes les heures de décembre à avril (sauf la nuit), une fois par jour (7h07) en mai, octobre et novembre (rien de juin
-à septembre), et publie la carte sur GitHub Pages. L'accès demande un prénom et un mot de passe (voir
+toutes les heures de décembre à avril (sauf la nuit), une fois par jour (7h07) de mai à novembre, et publie la carte sur GitHub Pages. L'accès demande un prénom et un mot de passe (voir
 [HANDOVER.md](HANDOVER.md#accès-prénom--mot-de-passe)).
 
 ## Historique

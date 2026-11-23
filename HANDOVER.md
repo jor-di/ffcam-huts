@@ -6,7 +6,7 @@ Dernière couchette est une carte des places libres dans les refuges de montagne
 
 - **Couverture** : 154 refuges, venant de 5 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro, WP Booking System) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
 - **Code** : Ruby, bibliothèque standard seulement (aucune gem), scripts dans `rb/` + une page HTML Leaflet. Version : `.ruby-version` (4.0.9, utilisée par GitHub Actions) ; le code tourne aussi sur Ruby 3.1 à 3.3 (vérifié avec les tests).
-- **Fréquence** (heure de Paris, lancé par cron-job.org) : de décembre à avril, toutes les heures à la minute 7 sauf de 1 h à 5 h ; en mai, octobre et novembre, une fois par jour à 7h07 ; aucun relevé de juin à septembre.
+- **Fréquence** (heure de Paris, lancé par cron-job.org) : de décembre à avril, toutes les heures à la minute 7 sauf de 1 h à 5 h ; de mai à novembre, une fois par jour à 7h07.
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
 
 ## Sommaire
@@ -38,7 +38,7 @@ flowchart LR
   end
   subgraph auto["Automatique, GitHub Actions (après tests/unit.sh et tests/check.sh)"]
     avail["rb/ffcam_availability.rb --history<br/>1 requête par refuge<br/>→ latest.csv + history/"]
-    build["rb/build_map.rb<br/>map_template.html + données<br/>(« Non Gardé » FFCAM fusionnés : rb/map_data.rb)<br/>→ site/index.html + site/releves/"]
+    build["rb/build_map.rb<br/>map_template.html + données<br/>(« Non Gardé » FFCAM fusionnés : rb/map_data.rb)<br/>→ site/index.html + site/releves/ + site/a-propos/"]
     protect["rb/protect_site.rb<br/>login_template.html + secret SITE_USERS<br/>→ pages chiffrées"]
     avail -- CSV --> build --> protect
   end
@@ -61,11 +61,12 @@ Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne 
 | `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places + `fetch_log.json` (journal des relevés) | `rb/ffcam_availability.rb --history` | oui (branche `data`) |
 | `log_template.html` | page de suivi des relevés | à la main | oui (main) |
+| `about_template.html` | page « À propos » pour le grand public (démarche, lecture de la carte, sources avec le nombre de refuges calculé à chaque build, lien GitHub) | à la main | oui (main) |
 | `login_template.html` | écran de connexion qui enveloppe chaque page publiée (voir [Accès](#accès-prénom--mot-de-passe)) | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
 | `.ruby-version` | version de Ruby (GitHub Actions, mise / rbenv en local) | à la main | oui (main) |
 | `tests/` | tests unitaires et rejeu hors ligne (voir [Tests](#tests)) | à la main | oui (main) |
-| `ffcam_*.csv`, `map.html`, `releves/`, `data/`, `site/` | sorties générées | scripts | non (`.gitignore`) |
+| `ffcam_*.csv`, `map.html`, `releves/`, `a-propos/`, `data/`, `site/` | sorties générées | scripts | non (`.gitignore`) |
 | `deploy/` | plan B VPS OVH + nginx + certbot | — | oui, jamais utilisé |
 
 ## Sources de données
@@ -239,15 +240,15 @@ Une seule page HTML (`map_template.html` + les données injectées par `rb/build
 
 **Panneau de gauche** (feuille glissante en bas sur téléphone)
 
-- En-tête : logo (lits superposés + étoile), titre, date de mise à jour, ligne de crêtes.
+- En-tête : logo (lits superposés + étoile), titre, date de mise à jour (lien vers /releves/), lien « à propos » (/a-propos/, page `about_template.html` écrite par `rb/build_map.rb`), ligne de crêtes.
 - Carrousel de nuits en billets : nuit choisie centrée, voisines à moitié visibles, samedi par défaut ; clic, flèches ← →, glissement au doigt.
-- Chiffres clés (réservables, places, complets) : **limités au cadre de la carte**.
-- Filtres : minimum de places (ne porte que sur les réservables), « Afficher les complets » (interrupteur coché par défaut, agit aussi sur les listes d'attente ; n'apparaît que si, cette nuit, au moins un refuge est complet ou en liste d'attente ; décoché, ils deviennent des points gris comme les fermés et passent en fin de liste ; bulle et fiche disent toujours ce qu'ils sont), types Refuges / Autres (chalets, centres ; avec icônes ; clic sur un type quand tous sont actifs = ne garder que lui), recherche sans accents (un nom trouve le refuge même fermé ou hors du cadre).
+- Chiffres clés « Sur la carte » (refuges réservables, places libres) : **limités au cadre de la carte**.
+- Filtres : minimum de places (ne porte que sur les réservables), « Afficher les complets » (interrupteur coché par défaut, agit aussi sur les listes d'attente ; n'apparaît que si, cette nuit, au moins un refuge est complet ou en liste d'attente ; décoché, ils deviennent des points gris comme les fermés et passent en fin de liste ; bulle et fiche disent toujours ce qu'ils sont), types Gardé / Non gardé / Autre (selon la nuit choisie : « Non gardé » = la partie non gardée est affichée cette nuit, ou refuge non gardé seul ; les refuges fermés restent dans « Gardé » ; « Autre » = chalets, centres ; avec icônes ; clic sur un type quand tous sont actifs = ne garder que lui), recherche sans accents (un nom trouve le refuge même fermé ou hors du cadre).
 - Liste des refuges **dans le cadre de la carte**, en petits billets ; clic = la carte vole au refuge.
 
 **Carte**
 
-- Marqueurs en talons de billet (places + pastille vert / orange / rouge, sablier violet pour la liste d'attente, ☎ pour téléphone / mail), fermés = point gris.
+- Marqueurs en talons de billet (places + pastille vert / orange / rouge, sablier violet pour la liste d'attente, ☎ pour téléphone / mail), fermés = point gris. Les refuges `MANUAL` (téléphone / mail seulement, jamais réservables en ligne) sont aussi un simple point gris sur la carte, mais restent « Sur demande » dans la liste et la fiche. Une nuit `UNGUARDED` de la centrale (refuge ouvert sans gardien) est libellée « Accès libre ».
 - Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons Fiche FFCAM / Site du refuge / Réserver, Camptocamp, Skitour.
 - Fonds : Topo clair Esri (défaut), OpenTopoMap, satellite Esri, Plan IGN, OSM France ; calque « Traces ski de rando (IGN) » ; SCAN 25 si clé IGN.
 - Vue de départ : Alpes, du Léman aux Hautes-Alpes.
@@ -270,7 +271,7 @@ Où se fait la réconciliation : **uniquement à la construction de la carte**. 
 
 **Refuges sans capacité connue** (Open System, WP Booking System) : affichés « 25 places » au lieu de « 25 / 32 ».
 
-**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur sablier) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places / sur demande » ; tous les refuges sont affichés, complets et fermés compris : les fermés, inutiles pour réserver, en petits points gris sous les autres marqueurs et en fin de liste, après les complets.
+**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur sablier) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places » ; tous les refuges sont affichés, complets et fermés compris : les fermés, inutiles pour réserver, en petits points gris sous les autres marqueurs et en fin de liste, après les complets.
 
 ## Suivi des relevés (`/releves/`)
 
@@ -326,7 +327,7 @@ Le planning GitHub ne tient pas ses horaires : du 21 au 23/11/2026, un seul pass
 | Méthode | `POST` |
 | En-têtes | `Authorization: Bearer <jeton>`, `Accept: application/vnd.github+json`, `X-GitHub-Api-Version: 2026-03-10`, `Content-Type: application/json` |
 | Corps | `{"ref": "main", "inputs": {"source": "cron-job.org"}}` |
-| Horaires | deux tâches, fuseau Europe/Paris : saison `7 0,5-23 * 12,1-4 *` (toutes les heures sauf 1 h–4 h, déc.–avr.) ; hors saison `7 7 * 5,10,11 *` (7 h 07, mai, oct., nov.) ; rien de juin à septembre |
+| Horaires | deux tâches, fuseau Europe/Paris : saison `7 0,5-23 * 12,1-4 *` (toutes les heures sauf 1 h–4 h, déc.–avr.) ; hors saison `7 7 * 5-11 *` (7 h 07, de mai à novembre) |
 | Réponse attendue | `204 No Content` (cron-job.org la marque en succès) |
 
 - Jeton : GitHub → Settings → Developer settings → Fine-grained tokens ; dépôt `jor-di/ffcam-huts` seulement ; permission **Actions : Read and write** ; jeton actuel **sans expiration** (il ne peut que lancer les workflows de ce dépôt) ; s'il fuit ou est révoqué : Regenerate token, puis le recoller dans les deux tâches cron-job.org. Il n'est stocké que chez cron-job.org.

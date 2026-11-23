@@ -64,6 +64,20 @@ def main
   File.write(args[:output], html)
   warn "Wrote #{args[:output]} (#{huts.size} huts, nights: #{data['dates'].join(', ')})"
   build_log_page(args, template)
+  build_about_page(args, template, data)
+end
+
+# The /a-propos/ page: what the site is for, its sources (huts on the map per booking system).
+def build_about_page(args, map_template, data)
+  portals = data["huts"].each_with_object(Hash.new(0)) { |h, acc| acc[h["portal"]] += 1 }
+  about = { "total" => data["huts"].size, "portals" => portals.sort.to_h, "fetchedAt" => data["fetchedAt"] }
+  favicon = map_template.match(%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"})
+  page = File.read(File.join(Ffcam::ROOT, "about_template.html"), encoding: "UTF-8")
+  page = page.gsub("__FAVICON__") { favicon ? favicon[1] : "" }.gsub("__ABOUT__") { script_json(about) }
+  out = File.join(File.dirname(args[:output]), "a-propos", "index.html")
+  FileUtils.mkdir_p(File.dirname(out))
+  File.write(out, page)
+  warn "Wrote #{out} (about page)"
 end
 
 # The /releves/ page: did each hut's fetch go well (see fetch_log.rb).
