@@ -288,7 +288,7 @@ const HUT_ICONS = {
   autre: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M2 11.5 12 5l10 6.5"/><path d="M4.5 10v9.5h15V10"/><path d="M4.5 14.5h15"/><path d="M8 14.5v5M12 14.5v5M16 14.5v5"/></svg>',
 };
 const STATUS = { ok:'Places dispo', low:'Presque complet', request:'Sur demande', full:'Complet', closed:'Fermé' };
-const OPENING = { OPEN:'Ouvert', CLOSE:'Fermé', UNGUARDED:'Non gardé' };
+const OPENING = { OPEN:'Ouvert', CLOSE:'Fermé', UNGUARDED:'Hors gardiennage' };
 const TYPES = { refuge:'Refuge gardé', refuge_non_garde:'Non gardé', chalet:'Chalet', centre:'Centre' };
 const TYPE_CHIPS = { refuge:'Gardé', refuge_non_garde:'Non gardé', autre:'Autre' };
 const chipOf = type => type in TYPE_CHIPS ? type : 'autre'; // chalets, centres… go to « Autre »
