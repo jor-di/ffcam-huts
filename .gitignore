@@ -1,5 +1,6 @@
 # secrets: never commit
 secrets.env
+users.txt
 
 # history lives on the `data` branch (checked out here as a git worktree)
 /history/
