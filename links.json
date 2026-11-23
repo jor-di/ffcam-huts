@@ -1,0 +1,59 @@
+{
+ "at": "2026-11-23T23:26:43",
+ "checked": 300,
+ "counts": {
+  "ok": 294,
+  "warn": 2,
+  "err": 4
+ },
+ "problems": [
+  {
+   "id": "RP-refuge-buffere",
+   "name": "Refuge Buffère",
+   "kind": "site",
+   "url": "https://refugesclareethabor.com/",
+   "state": "err",
+   "msg": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+   "id": "BK_STRUCTURE:126",
+   "name": "Refuge de l'Etang Fourcat",
+   "kind": "booking",
+   "url": "https://refugeetangfourcat.ffcam.fr/reservation.html",
+   "state": "warn",
+   "msg": "la page ne montre pas ce refuge (pas de widget de réservation)"
+  },
+  {
+   "id": "BK_STRUCTURE:76",
+   "name": "Refuge de la Lavey",
+   "kind": "booking",
+   "url": "https://refugelalavey.ffcam.fr/reservation.html",
+   "state": "warn",
+   "msg": "la page ne montre pas ce refuge (pas de widget de réservation)"
+  },
+  {
+   "id": "RP-marches",
+   "name": "Refuge des Marches",
+   "kind": "site",
+   "url": "https://refugesclareethabor.com/refuges/refuge-des-marches",
+   "state": "err",
+   "msg": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+   "id": "RP-chardonnet",
+   "name": "Refuge du Chardonnet",
+   "kind": "site",
+   "url": "https://refugesclareethabor.com/refuges/refuge-du-chardonnet",
+   "state": "err",
+   "msg": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+   "id": "RP-rifugio-guido-rey",
+   "name": "Rifugio Guido Rey",
+   "kind": "site",
+   "url": "https://www.rifugioguidorey.it/",
+   "state": "err",
+   "msg": "URLError: <urlopen error [Errno -2] Name or service not known>"
+  }
+ ]
+}
