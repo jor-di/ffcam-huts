@@ -1,4 +1,4 @@
-# centrale.ffcam.fr: the FFCAM booking engine and its other portals. Loaded by ffcam.rb.
+# centrale.ffcam.fr: the FFCAM booking engine and its other portals. Loaded by couchette.rb.
 #
 # How the FFCAM booking widget works (https://www.ffcam.fr/reserver-votre-refuge-en-ligne.html):
 #   1. The page embeds an iframe served by centrale.ffcam.fr/index.php. That HTML
@@ -13,7 +13,7 @@
 # own huts (some shared with FFCAM), e.g. VANOISE adds the Vanoise national park huts.
 # Availability must be requested through a portal that lists the hut.
 
-module Ffcam
+module Couchette
   BASE_URL = "https://centrale.ffcam.fr/index.php"
 
   TYPES = {

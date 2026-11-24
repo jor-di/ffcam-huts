@@ -122,7 +122,7 @@ const short = iso => iso ? new Date(iso).toLocaleString('fr-FR', { day:'2-digit'
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const app = document.getElementById('app');
 
-// weekly check of the cards' links (rb/check_links.rb → history/links.json)
+// weekly check of the cards' links (bin/check-links → history/links.json)
 function linksHtml() {
   const L = LOG.links;
   if (!L) return '';

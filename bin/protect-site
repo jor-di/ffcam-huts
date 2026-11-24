@@ -4,8 +4,8 @@
 # the browser (WebCrypto). GitHub Pages only serves static files: this is the access control.
 #
 # Usage:
-#   SITE_USERS=$'marie:motdepasse\npaul:autre' rb/protect_site.rb site
-#   rb/protect_site.rb site --allow-public    # no SITE_USERS: leave the pages as they are
+#   SITE_USERS=$'marie:motdepasse\npaul:autre' bin/protect-site site
+#   bin/protect-site site --allow-public    # no SITE_USERS: leave the pages as they are
 #
 # SITE_USERS: one "first name:password" per line (blank lines and # comments ignored). In the
 # workflow it comes from the SITE_USERS repository secret, so passwords never are in the repo.
@@ -22,12 +22,12 @@ require "digest"
 require "json"
 require "openssl"
 require "optparse"
-require_relative "ffcam"
+require_relative "../lib/couchette"
 
 module SiteLock
   ITERATIONS = 600_000
   SALT_PREFIX = "dernierecouchette:"
-  TEMPLATE = File.join(Ffcam::ROOT, "login_template.html")
+  TEMPLATE = File.join(Couchette::ROOT, "login_template.html")
 
   module_function
 
@@ -114,12 +114,12 @@ end
 def main
   allow_public = false
   parser = OptionParser.new do |o|
-    o.banner = "Usage: SITE_USERS=… rb/protect_site.rb DIR [--allow-public]"
+    o.banner = "Usage: SITE_USERS=… bin/protect-site DIR [--allow-public]"
     o.on("--allow-public", "without SITE_USERS, leave the pages unprotected instead of failing") { allow_public = true }
   end
-  dir = Ffcam.parse_args(parser, positional: 1)[0] or abort(parser.banner)
+  dir = Couchette.parse_args(parser, positional: 1)[0] or abort(parser.banner)
   abort("#{dir}: no such folder") unless File.directory?(dir)
-  users = SiteLock.parse_users(Ffcam.env("SITE_USERS"))
+  users = SiteLock.parse_users(Couchette.env("SITE_USERS"))
   if users.empty?
     abort("SITE_USERS is empty: refusing to publish the pages unprotected (--allow-public to do it anyway).") unless allow_public
     warn "SITE_USERS is empty: pages left unprotected (--allow-public)"

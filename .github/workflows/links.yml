@@ -1,6 +1,6 @@
 name: Check links
 
-# Weekly check of the huts' card links (« Site du refuge », « ⚡ Résa »): rb/check_links.rb.
+# Weekly check of the huts' card links (« Site du refuge », « ⚡ Résa »): bin/check-links.
 # Started by cron-job.org (workflow_dispatch, like update.yml; see HANDOVER, « Vérification des
 # liens ») or the "Run workflow" button. Writes history/links.json on the `data` branch (shown on
 # /releves/ at the next map build) and keeps the GitHub issue « Liens cassés » in sync (GitHub
@@ -42,7 +42,7 @@ jobs:
       - name: Check the links
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: rb/check_links.rb --history
+        run: bin/check-links --history
 
       - name: Commit the result
         working-directory: history

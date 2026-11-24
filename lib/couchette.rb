@@ -1,7 +1,7 @@
-# Shared code of the scripts, in one module (Ffcam: the project first read only the FFCAM centrale).
+# Shared code of the scripts of bin/, in one module named after the site (« Dernière couchette »).
 # This file holds what every script needs (paths, environment, command line, secrets, thread
 # pool) and loads the rest:
-#   clock.rb                  local time, fixed by FFCAM_NOW in tests
+#   clock.rb                  local time, fixed by COUCHETTE_NOW in tests
 #   http.rb                   every request: politeness, retries, record / replay for tests
 #   sources/ffcam_centrale.rb centrale.ffcam.fr (portals FFCAM, VANOISE, NEOUVIELLE, BOREON)
 #   sources/open_system.rb    Open System (Vanoise park huts)
@@ -10,7 +10,7 @@
 #   sources.rb                the hut list (huts.json) and, per hut, the source to ask
 #
 # Each source returns a hut's nights as {"free", "capacity", "opening", "booking"}, each a
-# {date => value} hash (see Ffcam.fetch_availability).
+# {date => value} hash (see Couchette.fetch_availability).
 
 require "date"
 require "digest/sha1" # not just "digest": its lazy loading of SHA1 is not thread-safe on Ruby 3.2
@@ -29,18 +29,18 @@ require_relative "py"
 Encoding.default_external = Encoding::UTF_8
 ARGV.map! { |arg| arg.dup.force_encoding(Encoding::UTF_8) }
 
-module Ffcam
+module Couchette
   extend self
 
-  # Data files live in the repository root, the parent of rb/.
+  # Data files live in the repository root, the parent of lib/ (and bin/).
   ROOT = File.expand_path("..", __dir__)
 
   SECRETS_FILE = File.join(ROOT, "secrets.env")
 
   # ---------- Tests: fixed clock, HTTP record / replay (see tests/README.md) ----------
-  # FFCAM_NOW=2026-11-22T18:00:00    replaces "now" (local time) everywhere, and zeroes measured durations
-  # FFCAM_RECORD_DIR=<dir>           real requests, each response (or failure) saved to <dir>
-  # FFCAM_REPLAY_DIR=<dir>           no network: responses served from <dir>
+  # COUCHETTE_NOW=2026-11-22T18:00:00    replaces "now" (local time) everywhere, and zeroes measured durations
+  # COUCHETTE_RECORD_DIR=<dir>           real requests, each response (or failure) saved to <dir>
+  # COUCHETTE_REPLAY_DIR=<dir>           no network: responses served from <dir>
   # An environment variable as UTF-8 text, nil when unset or empty.
   def env(name)
     value = ENV[name]&.dup&.force_encoding(Encoding::UTF_8)

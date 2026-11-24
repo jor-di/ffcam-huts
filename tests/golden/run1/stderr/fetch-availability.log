@@ -1,4 +1,4 @@
 154 huts, fetching availability for 2026-11-27, 2026-11-28, 2026-11-29, 2026-12-04, 2026-12-05, 2026-12-06...
 History: 10239 changes appended to history/
 Fetch log: fetch_log.json (0 huts with a problem)
-Wrote 924 rows to ffcam_2026-11-27.csv (209 bookable hut-nights, 0 errors)
+Wrote 924 rows to availability_2026-11-27.csv (209 bookable hut-nights, 0 errors)

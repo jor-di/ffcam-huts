@@ -327,7 +327,7 @@ function status(n) {
 }
 
 // What a hut offers a given night: the guarded hut when it is open; otherwise its FFCAM winter
-// room (« X Non Gardé », folded into it by rb/map_data.rb) if that one is open, marked unguarded.
+// room (« X Non Gardé », folded into it by lib/map_data.rb) if that one is open, marked unguarded.
 function night(h, d) {
   const n = h.nights[d];
   // bookable without a keeper (WP Booking System « Disponible (non-gardé) »: UNGUARDED + a booking mode)
@@ -368,7 +368,7 @@ const layers = {
   'OpenStreetMap France': L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { maxZoom:20, subdomains:'abc',
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | tuiles <a href="https://www.openstreetmap.fr">OSM France</a>' }),
 };
-// IGN SCAN 25 (the paper 1:25 000 maps) needs a personal IGN API key: rb/build_map.rb --ign-key KEY
+// IGN SCAN 25 (the paper 1:25 000 maps) needs a personal IGN API key: bin/build-site --ign-key KEY
 if (DATA.ignKey) layers['IGN SCAN 25'] = L.tileLayer(
   `https://data.geopf.fr/private/wmts?apikey=${encodeURIComponent(DATA.ignKey)}&SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN25TOUR&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}`,
   { minZoom:6, maxZoom:16, attribution:'&copy; <a href="https://www.ign.fr">IGN</a> SCAN 25' });
@@ -492,7 +492,7 @@ nightsEl.addEventListener('touchend', e => {
   touchX = null;
 });
 window.addEventListener('resize', centerCarousel);
-// "màj" links to the fetch log page (releves/, built next to the map by rb/build_map.rb)
+// "màj" links to the fetch log page (releves/, built next to the map by bin/build-site)
 document.getElementById('meta').innerHTML =
   `${DATA.huts.length} refuges · <a href="releves/" title="Suivi des relevés" onclick="event.stopPropagation()">màj ${esc(new Date(DATA.fetchedAt).toLocaleString('fr-FR', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }))}</a> · <a href="a-propos/" title="Le site, ses sources, son code" onclick="event.stopPropagation()">à propos</a>`;
 

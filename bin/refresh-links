@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Find each hut's page on Camptocamp (C2C) and Skitour, written to hut_links.json.
 #
-# Run after rb/refresh_coordinates.rb: huts are matched by position (and name) around
+# Run after bin/refresh-coordinates: huts are matched by position (and name) around
 # their GPS coordinates.
 #
 #   - Camptocamp: public API, no key. Searches C2C huts within ~1.5 km of each hut.
@@ -11,14 +11,14 @@
 #     Skitour's terms ask that pages using its data link to skitour.fr: the map does.
 #
 # Usage:
-#   rb/refresh_links.rb
+#   bin/refresh-links
 
 require "optparse"
-require_relative "ffcam"
-require_relative "difflib"
+require_relative "../lib/couchette"
+require_relative "../lib/difflib"
 
-COORDS = File.join(Ffcam::ROOT, "hut_coordinates.json")
-OUTPUT = File.join(Ffcam::ROOT, "hut_links.json")
+COORDS = File.join(Couchette::ROOT, "hut_coordinates.json")
+OUTPUT = File.join(Couchette::ROOT, "hut_links.json")
 UA = { "User-Agent" => "ffcam-huts-script", "Accept" => "application/json" }.freeze
 C2C_API = "https://api.camptocamp.org/waypoints"
 C2C_PAGE = "https://www.camptocamp.org/waypoints/%<id>s"
@@ -29,7 +29,7 @@ MAX_DIST_M = 400      # a candidate this close is accepted even with a different
 MIN_NAME_SCORE = 0.6  # name similarity needed for candidates further away
 
 def get_json(url, headers = nil)
-  Py.loads(Ffcam.fetch(url, nil, UA.merge(headers || {}))[1])
+  Py.loads(Couchette.fetch(url, nil, UA.merge(headers || {}))[1])
 end
 
 def distance_m(lat1, lon1, lat2, lon2)
@@ -40,7 +40,7 @@ def distance_m(lat1, lon1, lat2, lon2)
 end
 
 def name_score(a, b)
-  Difflib::SequenceMatcher.new(Ffcam.norm(a), Ffcam.norm(b)).ratio
+  Difflib::SequenceMatcher.new(Couchette.norm(a), Couchette.norm(b)).ratio
 end
 
 # candidates: [[id, name, lat, lon]] -> [id, name, distance] of the best one, or nil.
@@ -98,15 +98,15 @@ def skitour_candidates(key)
 end
 
 def main
-  skitour_key = Ffcam.secret("SKITOUR_API_KEY")
+  skitour_key = Couchette.secret("SKITOUR_API_KEY")
   parser = OptionParser.new do |o|
-    o.banner = "Usage: rb/refresh_links.rb [--skitour-key KEY]"
+    o.banner = "Usage: bin/refresh-links [--skitour-key KEY]"
     o.on("--skitour-key KEY", "Skitour API key (default: secrets.env or env SKITOUR_API_KEY)") { |v| skitour_key = v }
   end
-  Ffcam.parse_args(parser)
+  Couchette.parse_args(parser)
 
-  huts = Ffcam.load_huts["huts"]
-  abort("hut_coordinates.json not found: run rb/refresh_coordinates.rb first.") unless File.exist?(COORDS)
+  huts = Couchette.load_huts["huts"]
+  abort("hut_coordinates.json not found: run bin/refresh-coordinates first.") unless File.exist?(COORDS)
   coords = JSON.parse(File.read(COORDS, encoding: "UTF-8"))
   previous = File.exist?(OUTPUT) ? JSON.parse(File.read(OUTPUT, encoding: "UTF-8")) : {}
   located = huts.select { |h| coords.key?(h["id"]) }
@@ -120,7 +120,7 @@ def main
     [hut, nil, e.message]
   end
 
-  Ffcam.pool_map(located, 3, &c2c).each do |hut, match, err|
+  Couchette.pool_map(located, 3, &c2c).each do |hut, match, err|
     if err
       warn "  C2C error for #{hut['name']}: #{err}"
       links[hut["id"]]["c2c"] = previous.fetch(hut["id"], {})["c2c"]

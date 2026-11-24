@@ -1,6 +1,6 @@
 require_relative "test_helper"
 
-# rb/py.rb: the formats of the data files (numbers, JSON, CSV, HTML entities)
+# lib/py.rb: the formats of the data files (numbers, JSON, CSV, HTML entities)
 class TestPy < Minitest::Test
   def test_float_repr
     [

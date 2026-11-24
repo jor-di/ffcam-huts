@@ -1,7 +1,8 @@
 require_relative "test_helper"
-require File.join(RB, "github_issues")
-require File.join(RB, "check_fetch_alerts")
-require File.join(RB, "check_links")
+require File.join(LIB, "github_issues")
+# the scripts define their helpers as top-level methods; `main` only runs when executed
+load File.join(BIN, "check-fetch-alerts")
+load File.join(BIN, "check-links")
 
 # Mail alerts (GitHub issues): huts failing N runs in a row, link check verdicts. Offline.
 class TestAlerts < Minitest::Test

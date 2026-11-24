@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Replay the recorded scenarios (tests/fixtures/) with the Ruby scripts (rb/), offline and with
+# Replay the recorded scenarios (tests/fixtures/) with the Ruby scripts (bin/), offline and with
 # a fixed clock, and compare every output file with tests/golden/, byte for byte.
 #
 #   tests/check.sh            # ("tests/check.sh ruby" works too)
@@ -11,19 +11,19 @@ set -uo pipefail
 
 # ---------- Adjust here ----------
 # How to run one script (%s = script name, without extension).
-RUN="rb/%s.rb"
+RUN="bin/%s"
 # Code copied into the work folder (relative to the repo root). The scripts read / write their
-# data files in the parent of rb/, i.e. the work folder.
-CODE="rb .ruby-version"
+# data files in the parent of bin/ and lib/, i.e. the work folder.
+CODE="bin lib .ruby-version"
 # Files every scenario starts with (relative to the repo root).
 INPUTS="manual_huts.json coordinates_overrides.json map_template.html log_template.html about_template.html booking_links.json"
-# Scenarios: fixed clock, then the scripts in order (a step may carry arguments: "build_map x.csv").
+# Scenarios: fixed clock, then the scripts in order (a step may carry arguments: "build-site x.csv").
 RUN1_NOW=2026-11-22T18:00:00
-RUN1_STEPS=(refresh_huts refresh_coordinates refresh_links "ffcam_availability --history" build_map)
+RUN1_STEPS=(refresh-huts refresh-coordinates refresh-links "fetch-availability --history" build-site)
 # run2 starts from run1's golden outputs (hut lists and history/)
 RUN2_NOW=2026-11-23T09:00:00
 RUN2_FROM_RUN1="huts.json hut_coordinates.json hut_links.json history"
-RUN2_STEPS=("ffcam_availability --history" build_map)
+RUN2_STEPS=("fetch-availability --history" build-site)
 # Files written by the scripts that are not outputs to compare (regex on the relative path).
 IGNORE='(^|/)\.bundle(/|$)'
 # ----------------------------------
@@ -54,7 +54,7 @@ snapshot() { (cd "$1" && find . -type f -printf '%P\n' | grep -Ev "$IGNORE" | xa
 run_scenario() {
   local name=$1 now=$2; shift 2
   local work=$TMP/$name logs=$TMP/$name-stderr golden=$TESTS/golden/$name
-  echo "== $name ($impl, FFCAM_NOW=$now)"
+  echo "== $name ($impl, COUCHETTE_NOW=$now)"
   mkdir -p "$work" "$logs"
   (cd "$REPO" && cp -r $CODE $INPUTS "$work/") || { fail "copy of code and inputs"; return; }
   if [[ $name == run2 ]]; then
@@ -67,8 +67,8 @@ run_scenario() {
     [[ $step == *" "* ]] && args=${step#* }
     local cmd; cmd=$(printf "$RUN" "$script")
     # offline, fixed clock, no secret / CI variable from the caller's environment
-    (cd "$work" && env -u GITHUB_EVENT_NAME -u TRIGGER_SOURCE -u IGN_API_KEY -u FFCAM_RECORD_DIR \
-        FFCAM_REPLAY_DIR="$TESTS/fixtures/$name" FFCAM_NOW="$now" TZ=Europe/Paris \
+    (cd "$work" && env -u GITHUB_EVENT_NAME -u TRIGGER_SOURCE -u IGN_API_KEY -u COUCHETTE_RECORD_DIR \
+        COUCHETTE_REPLAY_DIR="$TESTS/fixtures/$name" COUCHETTE_NOW="$now" TZ=Europe/Paris \
         SKITOUR_API_KEY=replay-dummy-key $cmd $args) 2> "$logs/$script.raw" > /dev/null
     local status=$?
     sed "s|$work|<work>|g" "$logs/$script.raw" > "$logs/$script.log" && rm "$logs/$script.raw"

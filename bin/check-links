@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 # Check the links of the huts' cards (« Site du refuge », « ⚡ Résa », see MapData.links): each one
 # must answer, and a booking page of the FFCAM centrale must show this hut. Weekly (workflow
-# links.yml, started by cron-job.org) or by hand after rb/refresh_huts.rb. About 250 requests,
+# links.yml, started by cron-job.org) or by hand after bin/refresh-huts. About 250 requests,
 # with the same politeness limits as the availability fetch.
 #
-#   rb/check_links.rb                # print the problems
-#   rb/check_links.rb --history      # also write history/links.json (shown on /releves/) and
+#   bin/check-links                # print the problems
+#   bin/check-links --history      # also write history/links.json (shown on /releves/) and
 #                                    # sync the GitHub issue « Liens cassés » (with GITHUB_TOKEN)
 #
 # Per link: ok; warn (answers, but the page doesn't name this hut: booking page without the
@@ -17,14 +17,14 @@ require "fileutils"
 require "json"
 require "optparse"
 require "uri"
-require_relative "ffcam"
-require_relative "map_data"
-require_relative "github_issues"
+require_relative "../lib/couchette"
+require_relative "../lib/map_data"
+require_relative "../lib/github_issues"
 
 module LinkCheck
   module_function
 
-  FILE = File.join(Ffcam::ROOT, "history", "links.json")
+  FILE = File.join(Couchette::ROOT, "history", "links.json")
 
   # [{id, name, kind ("site" / "booking"), url}] for every hut of huts.json
   def targets(huts, coords, overrides = MapData.load_booking_links)
@@ -57,11 +57,11 @@ module LinkCheck
 
   def check(targets)
     urls = targets.map { |t| t["url"] }.uniq
-    answers = Ffcam.pool_map(urls, 6) do |u|
-      final, body = Ffcam.polite(u) { Ffcam.fetch(u, nil, Ffcam::HEADERS, 20) }
+    answers = Couchette.pool_map(urls, 6) do |u|
+      final, body = Couchette.polite(u) { Couchette.fetch(u, nil, Couchette::HEADERS, 20) }
       [final, body]
     rescue StandardError => e
-      Ffcam.error_text(e)
+      Couchette.error_text(e)
     end.then { |list| urls.zip(list).to_h }
     targets.map do |t|
       a = answers[t["url"]]
@@ -86,14 +86,14 @@ end
 def main
   history = false
   parser = OptionParser.new do |o|
-    o.banner = "Usage: rb/check_links.rb [--history]"
+    o.banner = "Usage: bin/check-links [--history]"
     o.on("--history", "write history/links.json and sync the GitHub issue") { history = true }
   end
-  Ffcam.parse_args(parser)
-  coords_file = File.join(Ffcam::ROOT, "hut_coordinates.json")
+  Couchette.parse_args(parser)
+  coords_file = File.join(Couchette::ROOT, "hut_coordinates.json")
   coords = File.exist?(coords_file) ? JSON.parse(File.read(coords_file, encoding: "UTF-8")) : {}
-  results = LinkCheck.check(LinkCheck.targets(Ffcam.load_huts["huts"], coords))
-  sum = LinkCheck.summary(results, Ffcam.local_now.strftime("%Y-%m-%dT%H:%M:%S"))
+  results = LinkCheck.check(LinkCheck.targets(Couchette.load_huts["huts"], coords))
+  sum = LinkCheck.summary(results, Couchette.local_now.strftime("%Y-%m-%dT%H:%M:%S"))
   sum["problems"].each { |r| puts "#{r['state'].ljust(4)} #{r['name']} [#{r['kind']}] #{r['url']} — #{r['msg']}" }
   warn "Links: #{sum['checked']} checked, #{sum['counts']}"
   return unless history

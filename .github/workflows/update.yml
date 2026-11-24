@@ -17,7 +17,7 @@ on:
 permissions:
   contents: write # push the history to the `data` branch
   pages: write # publish the map
-  issues: write # mail alert: GitHub issue « Relevés en erreur » (rb/check_fetch_alerts.rb)
+  issues: write # mail alert: GitHub issue « Relevés en erreur » (bin/check-fetch-alerts)
   id-token: write # required by deploy-pages
 
 concurrency:
@@ -54,10 +54,10 @@ jobs:
       - name: Fetch availability (and record history changes)
         run: |
           mkdir -p data site
-          rb/ffcam_availability.rb --history -o data/latest.csv
+          bin/fetch-availability --history -o data/latest.csv
 
       - name: Build the map
-        run: rb/build_map.rb data/latest.csv -o site/index.html
+        run: bin/build-site data/latest.csv -o site/index.html
 
       - name: Commit history changes
         working-directory: history
@@ -78,14 +78,14 @@ jobs:
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: rb/check_fetch_alerts.rb
+        run: bin/check-fetch-alerts
 
       # Login by first name + password: the pages are encrypted (see HANDOVER, « Accès »). Fails
       # without the SITE_USERS secret rather than publishing them open; the history is already saved.
       - name: Protect the site
         env:
           SITE_USERS: ${{ secrets.SITE_USERS }}
-        run: rb/protect_site.rb site
+        run: bin/protect-site site
 
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5

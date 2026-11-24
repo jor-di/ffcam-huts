@@ -1,13 +1,13 @@
-# The hut list and the source of each hut. Loaded by ffcam.rb.
+# The hut list and the source of each hut. Loaded by couchette.rb.
 #
-# huts.json (rb/refresh_huts.rb) gathers the huts of every source; the "portal" field of a hut
+# huts.json (bin/refresh-huts) gathers the huts of every source; the "portal" field of a hut
 # says where its nights are read: a centrale portal (FFCAM, VANOISE...), OPENSYSTEM,
 # REFUGEPRO, WPBS, or MANUAL (no online calendar: phone / mail).
 # Refuge Pro (portal "REFUGEPRO") and WP Booking System (portal "WPBS"): huts listed by hand in
 # manual_huts.json, whose own calendar page is read (see fetch_refugepro_availability,
 # fetch_wpbs_availability).
 
-module Ffcam
+module Couchette
   HUTS_FILE = File.join(ROOT, "huts.json")
 
   # Portals (apporigin) to collect huts from. Others exist:
@@ -52,7 +52,7 @@ module Ffcam
   end
 
   def load_huts(path = HUTS_FILE)
-    abort("#{path} not found: run rb/refresh_huts.rb first.") unless File.exist?(path)
+    abort("#{path} not found: run bin/refresh-huts first.") unless File.exist?(path)
     JSON.parse(File.read(path, encoding: "UTF-8"))
   end
 

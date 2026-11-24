@@ -9,17 +9,17 @@ Carte : https://dernierecouchette.fr/
 
 | Script | Rôle | Quand |
 |---|---|---|
-| `rb/refresh_huts.rb` | liste des refuges et leur site → `huts.json` | de temps en temps |
-| `rb/refresh_coordinates.rb` | GPS (OpenStreetMap) → `hut_coordinates.json` | après `rb/refresh_huts.rb` |
-| `rb/refresh_links.rb` | liens Camptocamp / Skitour → `hut_links.json` (clé Skitour dans `secrets.env`) | après `rb/refresh_coordinates.rb` |
-| `rb/ffcam_availability.rb` | places libres ; historique (`history/`) seulement avec `--history` | automatique (GitHub Actions) |
-| `rb/build_map.rb` | génère la carte (`map_template.html` → HTML), la page `/releves/` et la page `/a-propos/` | automatique |
-| `rb/check_links.rb` | vérifie les liens « Site du refuge » / « ⚡ Résa » des fiches ; issue GitHub (mail) si un lien casse | chaque semaine (GitHub Actions) |
-| `rb/check_fetch_alerts.rb` | issue GitHub (mail) quand un refuge échoue 10 relevés de suite | après chaque relevé |
-| `rb/protect_site.rb` | chiffre les pages publiées : accès par prénom + mot de passe (secret `SITE_USERS`) | automatique |
+| `bin/refresh-huts` | liste des refuges et leur site → `huts.json` | de temps en temps |
+| `bin/refresh-coordinates` | GPS (OpenStreetMap) → `hut_coordinates.json` | après `bin/refresh-huts` |
+| `bin/refresh-links` | liens Camptocamp / Skitour → `hut_links.json` (clé Skitour dans `secrets.env`) | après `bin/refresh-coordinates` |
+| `bin/fetch-availability` | places libres ; historique (`history/`) seulement avec `--history` | automatique (GitHub Actions) |
+| `bin/build-site` | génère la carte (`map_template.html` → HTML), la page `/releves/` et la page `/a-propos/` | automatique |
+| `bin/check-links` | vérifie les liens « Site du refuge » / « ⚡ Résa » des fiches ; issue GitHub (mail) si un lien casse | chaque semaine (GitHub Actions) |
+| `bin/check-fetch-alerts` | issue GitHub (mail) quand un refuge échoue 10 relevés de suite | après chaque relevé |
+| `bin/protect-site` | chiffre les pages publiées : accès par prénom + mot de passe (secret `SITE_USERS`) | automatique |
 
 Scripts Ruby (bibliothèque standard, version dans `.ruby-version`, Ruby 3.1 ou plus suffit),
-à lancer depuis la racine : `rb/ffcam_availability.rb && rb/build_map.rb` (sans `--history`,
+à lancer depuis la racine : `bin/fetch-availability && bin/build-site` (sans `--history`,
 rien n'est écrit dans `history/`). Tests hors ligne : `tests/unit.sh && tests/check.sh`.
 Détails : [HANDOVER.md](HANDOVER.md).
 
@@ -31,6 +31,6 @@ toutes les heures de décembre à avril (sauf la nuit), une fois par jour (7h07)
 
 Branche `data` (en local : `history/`, un worktree git). Une ligne par changement :
 `fetched_at, hut_id, date, opening, free_beds, capacity` dans `availability_AAAA-MM.csv`.
-L'état d'une nuit à un instant donné = la dernière ligne avant cet instant. Voir `rb/history.rb`.
+L'état d'une nuit à un instant donné = la dernière ligne avant cet instant. Voir `lib/history.rb`.
 
 Sources : FFCAM (centrale.ffcam.fr), OpenStreetMap, IGN, Camptocamp, Skitour.

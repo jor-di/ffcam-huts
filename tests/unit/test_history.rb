@@ -112,16 +112,16 @@ class TestHistory < Minitest::Test
   end
 
   # The availability script writes history/ (the production `data` branch worktree) and the
-  # fetch log only with --history. Run on a copy of rb/ (data files are next to rb/) with one
+  # fetch log only with --history. Run on a copy of bin/ and lib/ (data files are in their parent) with one
   # MANUAL hut: no request at all.
   def run_availability(*args)
     root = File.join(@dir, "copy")
     FileUtils.mkdir_p(root)
-    FileUtils.cp_r(RB, root)
+    FileUtils.cp_r([BIN, LIB], root)
     File.write(File.join(root, "huts.json"), JSON.generate({ "huts" => [
       { "id" => "MANUAL-x", "portal" => "MANUAL", "name" => "Refuge X", "short_name" => "X", "type" => "refuge", "max_pax_per_booking" => nil },
     ] }))
-    _, err, status = Open3.capture3(RbConfig.ruby, File.join(root, "rb", "ffcam_availability.rb"), "-o", "out.csv", *args, chdir: root)
+    _, err, status = Open3.capture3(RbConfig.ruby, File.join(root, "bin", "fetch-availability"), "-o", "out.csv", *args, chdir: root)
     assert status.success?, err
     [root, err]
   end

@@ -4,19 +4,19 @@ require "timeout"
 
 # Politeness limiter, thread pool, HTTP layer (against a local server) and command line.
 class TestHttp < Minitest::Test
-  # Run `count` fake requests per host through Ffcam.polite with 8 workers; returns
+  # Run `count` fake requests per host through Couchette.polite with 8 workers; returns
   # {host => [[start, end], ...]} and the highest number of simultaneous requests per host.
   def run_polite(hosts, count, duration: 0.05, fail_at: nil)
     lock, active, peak, spans = Mutex.new, Hash.new(0), Hash.new(0), Hash.new { |h, k| h[k] = [] }
     jobs = hosts.product((0...count).to_a)
     error = nil
     begin
-      Ffcam.pool_map(jobs, 8) do |host, i|
-        Ffcam.polite("https://#{host}/page?#{i}") do
-          t0 = Ffcam.clock
+      Couchette.pool_map(jobs, 8) do |host, i|
+        Couchette.polite("https://#{host}/page?#{i}") do
+          t0 = Couchette.clock
           lock.synchronize { peak[host] = [peak[host], active[host] += 1].max }
           sleep duration
-          lock.synchronize { active[host] -= 1; spans[host] << [t0, Ffcam.clock] }
+          lock.synchronize { active[host] -= 1; spans[host] << [t0, Couchette.clock] }
           raise "boom #{host} #{i}" if fail_at == [host, i]
         end
       end
@@ -32,8 +32,8 @@ class TestHttp < Minitest::Test
     hosts.each do |host|
       starts = spans[host].map(&:first).sort
       assert_equal 5, starts.size
-      assert_equal Ffcam::PER_HOST_LIMIT, peak[host], "#{host}: at most 2 at a time (and 2 reached)"
-      starts.each_cons(2) { |x, y| assert_operator y - x, :>=, Ffcam::PER_HOST_GAP - 0.01, "#{host}: gap between starts" }
+      assert_equal Couchette::PER_HOST_LIMIT, peak[host], "#{host}: at most 2 at a time (and 2 reached)"
+      starts.each_cons(2) { |x, y| assert_operator y - x, :>=, Couchette::PER_HOST_GAP - 0.01, "#{host}: gap between starts" }
     end
     # the two hosts don't wait for each other (upper time bounds are relaxed on CI runners,
     # which can be slow: a flaky timing test must not block the hourly update)
@@ -47,20 +47,20 @@ class TestHttp < Minitest::Test
       assert_equal 6, spans["c.polite.test"].size
       assert_operator peak["c.polite.test"], :<=, 2
       # both slots are free again
-      2.times.map { Thread.new { Ffcam.polite("https://c.polite.test/") { :ok } } }.each { |t| assert_equal :ok, t.value }
+      2.times.map { Thread.new { Couchette.polite("https://c.polite.test/") { :ok } } }.each { |t| assert_equal :ok, t.value }
     end
   end
 
   def test_pool_map
-    assert_equal (1..20).map { |i| i * 2 }, Ffcam.pool_map((1..20).to_a, 8) { |i| sleep(rand / 100); i * 2 } # input order
-    assert_equal [], Ffcam.pool_map([], 4) { |i| i }
+    assert_equal (1..20).map { |i| i * 2 }, Couchette.pool_map((1..20).to_a, 8) { |i| sleep(rand / 100); i * 2 } # input order
+    assert_equal [], Couchette.pool_map([], 4) { |i| i }
     ran = Queue.new
     error = assert_raises(KeyError) do
-      Ffcam.pool_map((0..9).to_a, 3) { |i| ran << i; raise KeyError, "item #{i}" if [7, 4].include?(i) }
+      Couchette.pool_map((0..9).to_a, 3) { |i| ran << i; raise KeyError, "item #{i}" if [7, 4].include?(i) }
     end
     assert_equal "item 4", error.message # the first failing item, after all ran
     assert_equal 10, ran.size
-    assert_raises(ArgumentError) { Ffcam.pool_map([1], 0) { |i| i } }
+    assert_raises(ArgumentError) { Couchette.pool_map([1], 0) { |i| i } }
   end
 
   # A local HTTP server: `handler` gets the request line and returns the raw response (or
@@ -98,10 +98,10 @@ class TestHttp < Minitest::Test
 
   def test_read_timeout_is_not_retried_by_net_http
     hits = with_server(->(_req) { sleep 1.5; nil }) do |base|
-      t0 = Ffcam.clock
-      error = assert_raises(Ffcam::FetchError) { Ffcam.fetch("#{base}/slow", nil, Ffcam::HEADERS, 0.5) }
-      assert_equal "TimeoutError: The read operation timed out", Ffcam.error_text(error)
-      assert_operator Ffcam.clock - t0, :<, 0.9 unless ENV["CI"] # one timeout, not two (also proven by hits == 1)
+      t0 = Couchette.clock
+      error = assert_raises(Couchette::FetchError) { Couchette.fetch("#{base}/slow", nil, Couchette::HEADERS, 0.5) }
+      assert_equal "TimeoutError: The read operation timed out", Couchette.error_text(error)
+      assert_operator Couchette.clock - t0, :<, 0.9 unless ENV["CI"] # one timeout, not two (also proven by hits == 1)
     end
     assert_equal 1, hits
   end
@@ -117,35 +117,35 @@ class TestHttp < Minitest::Test
       end
     end
     with_server(handler) do |base|
-      error = assert_raises(Ffcam::FetchError) { Ffcam.fetch("#{base}/502") }
-      assert_equal "HTTPError: HTTP Error 502: Bad Gateway", Ffcam.error_text(error)
-      final, body = Ffcam.fetch("#{base}/moved", "a=1") # a POST redirected with 302 becomes a GET
+      error = assert_raises(Couchette::FetchError) { Couchette.fetch("#{base}/502") }
+      assert_equal "HTTPError: HTTP Error 502: Bad Gateway", Couchette.error_text(error)
+      final, body = Couchette.fetch("#{base}/moved", "a=1") # a POST redirected with 302 becomes a GET
       assert_equal ["#{base}/target", "été"], [final, body.force_encoding("UTF-8")]
-      assert_raises(Ffcam::FetchError) { Ffcam.fetch("#{base}/temporary", "a=1") } # 307: not followed for a POST
+      assert_raises(Couchette::FetchError) { Couchette.fetch("#{base}/temporary", "a=1") } # 307: not followed for a POST
     end
   end
 
   def test_connection_refused
     port = TCPServer.new("127.0.0.1", 0).then { |s| s.addr[1].tap { s.close } }
-    error = assert_raises(Ffcam::FetchError) { Ffcam.fetch("http://127.0.0.1:#{port}/", nil, Ffcam::HEADERS, 2) }
-    assert_equal "URLError: <urlopen error [Errno 111] Connection refused>", Ffcam.error_text(error)
+    error = assert_raises(Couchette::FetchError) { Couchette.fetch("http://127.0.0.1:#{port}/", nil, Couchette::HEADERS, 2) }
+    assert_equal "URLError: <urlopen error [Errno 111] Connection refused>", Couchette.error_text(error)
   end
 
   def test_retries_wait_2_then_4_seconds
     waits = []
-    Ffcam.singleton_class.alias_method(:real_pause, :pause)
-    Ffcam.define_singleton_method(:pause) { |s| waits << s }
+    Couchette.singleton_class.alias_method(:real_pause, :pause)
+    Couchette.define_singleton_method(:pause) { |s| waits << s }
     calls = 0
-    assert_raises(RuntimeError) { Ffcam.with_retries(3) { calls += 1; raise "down" } }
+    assert_raises(RuntimeError) { Couchette.with_retries(3) { calls += 1; raise "down" } }
     assert_equal [3, [2, 4]], [calls, waits]
     calls = 0
-    assert_equal :ok, Ffcam.with_retries(3) { (calls += 1) < 2 ? raise("once") : :ok }
+    assert_equal :ok, Couchette.with_retries(3) { (calls += 1) < 2 ? raise("once") : :ok }
   ensure
-    Ffcam.singleton_class.alias_method(:pause, :real_pause)
-    Ffcam.singleton_class.remove_method(:real_pause)
+    Couchette.singleton_class.alias_method(:pause, :real_pause)
+    Couchette.singleton_class.remove_method(:real_pause)
   end
 
-  # Ffcam.parse_args on a given command line: [result, exit status, stderr]
+  # Couchette.parse_args on a given command line: [result, exit status, stderr]
   def parse(argv, positional: 0)
     saved = ARGV.dup
     ARGV.replace(argv)
@@ -156,7 +156,7 @@ class TestHttp < Minitest::Test
     status = 0
     result = nil
     _, err = capture_io do
-      result = Ffcam.parse_args(parser, positional: positional)
+      result = Couchette.parse_args(parser, positional: positional)
     rescue SystemExit => e
       status = e.status
     end

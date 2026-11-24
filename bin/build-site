@@ -1,18 +1,18 @@
 #!/usr/bin/env ruby
-# Build an interactive map (map.html) from an availability CSV made by ffcam_availability.rb,
+# Build an interactive map (map.html) from an availability CSV made by fetch-availability,
 # and the fetch log page (releves/index.html next to it) from history/fetch_log.json.
 #
 # Usage:
-#   rb/build_map.rb                          # latest ffcam_*.csv in this folder
-#   rb/build_map.rb ffcam_2026-11-21.csv -o weekend.html
+#   bin/build-site                          # latest availability_*.csv in this folder
+#   bin/build-site availability_2026-11-21.csv -o weekend.html
 #
 # Open the HTML file in a browser (it needs internet access for the map tiles).
 
 require "fileutils"
 require "optparse"
-require_relative "ffcam"
-require_relative "fetch_log"
-require_relative "map_data"
+require_relative "../lib/couchette"
+require_relative "../lib/fetch_log"
+require_relative "../lib/map_data"
 
 def to_int(v)
   v.nil? || v == "" ? nil : Integer(v, 10)
@@ -24,18 +24,18 @@ def script_json(data)
 end
 
 def main
-  args = { output: File.join(Ffcam::ROOT, "map.html"), ign_key: Ffcam.secret("IGN_API_KEY"), log: FetchLog::LOG_FILE }
+  args = { output: File.join(Couchette::ROOT, "map.html"), ign_key: Couchette.secret("IGN_API_KEY"), log: FetchLog::LOG_FILE }
   parser = OptionParser.new do |o|
-    o.banner = "Usage: rb/build_map.rb [csv] [-o OUTPUT] [--ign-key KEY] [--log LOG] [--log-output PATH]"
+    o.banner = "Usage: bin/build-site [csv] [-o OUTPUT] [--ign-key KEY] [--log LOG] [--log-output PATH]"
     o.on("-o", "--output OUTPUT") { |v| args[:output] = v }
     o.on("--ign-key KEY", "IGN API key to add the SCAN 25 layer (default: secrets.env or env IGN_API_KEY); it ends up in the HTML") { |v| args[:ign_key] = v }
     o.on("--log LOG", "fetch log to show (default: history/fetch_log.json)") { |v| args[:log] = v }
     o.on("--log-output PATH", "fetch log page (default: releves/index.html next to the map)") { |v| args[:log_output] = v }
   end
-  args[:csv] = Ffcam.parse_args(parser, positional: 1)[0]
+  args[:csv] = Couchette.parse_args(parser, positional: 1)[0]
 
-  path = args[:csv] || Dir.glob(File.join(Ffcam::ROOT, "ffcam_*.csv")).max_by { |f| File.mtime(f) }
-  abort("No CSV found: run rb/ffcam_availability.rb first.") unless path
+  path = args[:csv] || Dir.glob(File.join(Couchette::ROOT, "availability_*.csv")).max_by { |f| File.mtime(f) }
+  abort("No CSV found: run bin/fetch-availability first.") unless path
 
   huts, dates, fetched_at = {}, [], nil
   Py.csv_dicts(File.read(path, encoding: "UTF-8")).each do |r|
@@ -55,7 +55,7 @@ def main
     }
   end
 
-  by_id = Ffcam.load_huts["huts"].to_h { |h| [h["id"], h] }
+  by_id = Couchette.load_huts["huts"].to_h { |h| [h["id"], h] }
   overrides = MapData.load_booking_links
   huts.each_value do |h|
     h["site"], h["booking"] = MapData.links(by_id.fetch(h["id"], {}), h.delete("url"), overrides)
@@ -64,7 +64,7 @@ def main
   MapData.merge_winter_rooms(huts)
   data = { "dates" => dates.sort, "fetchedAt" => fetched_at, "source" => File.basename(path), "huts" => huts.values,
            "ignKey" => args[:ign_key] }
-  template = File.read(File.join(Ffcam::ROOT, "map_template.html"), encoding: "UTF-8")
+  template = File.read(File.join(Couchette::ROOT, "map_template.html"), encoding: "UTF-8")
   html = template.gsub("__DATA__") { script_json(data) }
   FileUtils.mkdir_p(File.dirname(args[:output]))
   File.write(args[:output], html)
@@ -78,7 +78,7 @@ def build_about_page(args, map_template, data)
   portals = data["huts"].each_with_object(Hash.new(0)) { |h, acc| acc[h["portal"]] += 1 }
   about = { "total" => data["huts"].size, "portals" => portals.sort.to_h, "fetchedAt" => data["fetchedAt"] }
   favicon = map_template.match(%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"})
-  page = File.read(File.join(Ffcam::ROOT, "about_template.html"), encoding: "UTF-8")
+  page = File.read(File.join(Couchette::ROOT, "about_template.html"), encoding: "UTF-8")
   page = page.gsub("__FAVICON__") { favicon ? favicon[1] : "" }.gsub("__ABOUT__") { script_json(about) }
   out = File.join(File.dirname(args[:output]), "a-propos", "index.html")
   FileUtils.mkdir_p(File.dirname(out))
@@ -89,15 +89,15 @@ end
 # The /releves/ page: did each hut's fetch go well (see fetch_log.rb).
 def build_log_page(args, map_template)
   log = FetchLog.load(args[:log]) || {}
-  names = Ffcam.load_huts["huts"].to_h do |h|
+  names = Couchette.load_huts["huts"].to_h do |h|
     [h["id"], { "name" => h["name"].gsub("  ", " ").gsub(" (FFCAM)", ""), "portal" => h.fetch("portal", "FFCAM") }]
   end
-  links_file = File.join(File.dirname(args[:log]), "links.json") # weekly link check (rb/check_links.rb)
+  links_file = File.join(File.dirname(args[:log]), "links.json") # weekly link check (bin/check-links)
   links = File.exist?(links_file) ? JSON.parse(File.read(links_file, encoding: "UTF-8")) : nil
   data = { "last_run" => log["last_run"], "runs" => log.fetch("runs", []), "last_success" => log.fetch("last_success", {}), "huts" => names }
   data["links"] = links if links
   favicon = map_template.match(%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"})
-  page = File.read(File.join(Ffcam::ROOT, "log_template.html"), encoding: "UTF-8")
+  page = File.read(File.join(Couchette::ROOT, "log_template.html"), encoding: "UTF-8")
   page = page.gsub("__FAVICON__") { favicon ? favicon[1] : "" }
   page = page.gsub("__LOG__") { script_json(data) }
   out = args[:log_output] || File.join(File.dirname(args[:output]), "releves", "index.html")

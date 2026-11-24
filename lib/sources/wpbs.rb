@@ -1,6 +1,6 @@
-# WP Booking System: a calendar in a WordPress page of the hut's site. Loaded by ffcam.rb.
+# WP Booking System: a calendar in a WordPress page of the hut's site. Loaded by couchette.rb.
 
-module Ffcam
+module Couchette
   # ---------- WP Booking System (WordPress plugin "wp-booking-system-premium") ----------
   # The calendar is rendered server-side in the page: one container per calendar
   #   <div class="wpbs-container ... wpbs-calendar-12 " data-id="12" data-current_year="2026"

@@ -12,4 +12,6 @@ site/
 /map.html
 /releves/
 /a-propos/
+/availability_*.csv
+# old name (before bin/fetch-availability)
 /ffcam_*.csv

@@ -8,14 +8,14 @@
 #   3. name      same normalized name ("Non Gardé" winter rooms use their hut's name)
 #   4. fuzzy     close name, only among huts operated by the Club Alpin in OSM
 #
-# Writes hut_coordinates.json. Re-run after rb/refresh_huts.rb when huts are added.
+# Writes hut_coordinates.json. Re-run after bin/refresh-huts when huts are added.
 
 require "optparse"
-require_relative "ffcam"
-require_relative "difflib"
+require_relative "../lib/couchette"
+require_relative "../lib/difflib"
 
-OUTPUT = File.join(Ffcam::ROOT, "hut_coordinates.json")
-OVERRIDES = File.join(Ffcam::ROOT, "coordinates_overrides.json")
+OUTPUT = File.join(Couchette::ROOT, "hut_coordinates.json")
+OVERRIDES = File.join(Couchette::ROOT, "coordinates_overrides.json")
 OVERPASS_URLS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
@@ -35,13 +35,13 @@ def fetch_osm(attempts = 4)
   body = Py.urlencode({ "data" => QUERY })
   attempts.times do |attempt|
     OVERPASS_URLS.each do |url|
-      return Py.loads(Ffcam.fetch(url, body, { "User-Agent" => "ffcam-huts-script" }, 240)[1]).fetch("elements")
+      return Py.loads(Couchette.fetch(url, body, { "User-Agent" => "ffcam-huts-script" }, 240)[1]).fetch("elements")
     rescue StandardError => e # servers are often busy: try the next one
       warn "  #{url}: #{e.message}"
     end
     wait = 30 * 2**attempt
     warn "All Overpass servers failed, retrying in #{wait}s..."
-    Ffcam.pause(wait)
+    Couchette.pause(wait)
   end
   abort("Could not reach the Overpass API, try again later.")
 end
@@ -66,8 +66,8 @@ def to_coords(el, how)
 end
 
 def main
-  Ffcam.parse_args(OptionParser.new("Usage: rb/refresh_coordinates.rb (no option)")) # --help only
-  huts = Ffcam.load_huts["huts"]
+  Couchette.parse_args(OptionParser.new("Usage: bin/refresh-coordinates (no option)")) # --help only
+  huts = Couchette.load_huts["huts"]
   overrides = JSON.parse(File.read(OVERRIDES, encoding: "UTF-8")).reject { |k, _| k.start_with?("_") }
 
   warn "Downloading OSM huts (can take a minute)..."
@@ -81,7 +81,7 @@ def main
       sub = ffcam_subdomain(t[key])
       by_site[sub] = e if Py.truthy?(sub) && !by_site.key?(sub)
     end
-    (by_name[Ffcam.norm(t["name"])] ||= []) << e
+    (by_name[Couchette.norm(t["name"])] ||= []) << e
   end
   # when several OSM huts share a name, prefer the Club Alpin one
   by_name.transform_values! { |cands| Py.sorted(cands) { |e| CLUB_ALPIN.match?(e["tags"].fetch("operator", "")) ? 0 : 1 } }
@@ -89,7 +89,7 @@ def main
 
   result, unmatched = {}, []
   huts.each do |hut|
-    hid, key = hut["id"], Ffcam.norm(hut["name"])
+    hid, key = hut["id"], Couchette.norm(hut["name"])
     coords =
       if !hut["lat"].nil? && !hut["lon"].nil? # manual huts carry their position
         { "lat" => hut["lat"], "lon" => hut["lon"], "ele" => hut["ele"], "osm" => nil,
@@ -115,7 +115,7 @@ def main
   # "Non Gardé" winter rooms: reuse their guarded sibling when found
   unmatched.dup.each do |hut|
     sibling = huts.find do |h|
-      result.key?(h["id"]) && h["id"] != hut["id"] && Ffcam.norm(h["name"]) == Ffcam.norm(hut["name"])
+      result.key?(h["id"]) && h["id"] != hut["id"] && Couchette.norm(h["name"]) == Couchette.norm(hut["name"])
     end
     next unless sibling
     result[hut["id"]] = result[sibling["id"]].merge("name" => hut["name"], "match" => "sibling")

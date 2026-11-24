@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-<!-- Login page written by rb/protect_site.rb: the real page is in PAYLOAD, encrypted (AES-GCM);
+<!-- Login page written by bin/protect-site: the real page is in PAYLOAD, encrypted (AES-GCM);
      the first name + password open it in the browser (WebCrypto). See HANDOVER, « Accès ». -->
 <style>
   :root {
@@ -62,7 +62,7 @@ const enc = new TextEncoder();
 const fromB64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const toB64 = a => btoa(String.fromCharCode(...a));
 const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-// same rule as SiteLock.norm_name (rb/protect_site.rb)
+// same rule as SiteLock.norm_name (bin/protect-site)
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
 const sha256 = s => crypto.subtle.digest('SHA-256', enc.encode(s));
 

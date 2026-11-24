@@ -1,4 +1,4 @@
-# Open System (Alliance Réseaux). Loaded by ffcam.rb.
+# Open System (Alliance Réseaux). Loaded by couchette.rb.
 #
 # Open System (portal "OPENSYSTEM"): 12 Vanoise national park huts (Leisse, Fond des Fours...)
 # book through Open System / Alliance Réseaux, not the FFCAM centrale. Their sites (refuge-xxx.vanoise.com) embed
@@ -7,7 +7,7 @@
 # returning 30 days, from <date> - 15 days to <date> + 14 days: [{"s": free beds,
 # "f": 1 if closed, "d": days *before* <date>}] (the day is <date> - d). No capacity is given.
 
-module Ffcam
+module Couchette
   # Open System huts are discovered from this site's "other huts" menu (all the park's huts)
   OPENSYSTEM_ENTRY = "https://refuge-leisse.vanoise.com/"
   OPENSYSTEM_PLANNING = "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=%<num>s,%<date>s"

@@ -4,13 +4,13 @@
 # « Relevés en erreur » (label `releves`, see github_issues.rb: opened, updated when the list
 # changes, closed when it is empty). Run by the workflow after each fetch.
 #
-#   rb/check_fetch_alerts.rb               # GitHub issue (with GITHUB_TOKEN), else print
-#   rb/check_fetch_alerts.rb --log FILE
+#   bin/check-fetch-alerts               # GitHub issue (with GITHUB_TOKEN), else print
+#   bin/check-fetch-alerts --log FILE
 
 require "optparse"
-require_relative "ffcam"
-require_relative "fetch_log"
-require_relative "github_issues"
+require_relative "../lib/couchette"
+require_relative "../lib/fetch_log"
+require_relative "../lib/github_issues"
 
 module FetchAlerts
   module_function
@@ -42,13 +42,13 @@ end
 def main
   path = FetchLog::LOG_FILE
   parser = OptionParser.new do |o|
-    o.banner = "Usage: rb/check_fetch_alerts.rb [--log FILE]"
+    o.banner = "Usage: bin/check-fetch-alerts [--log FILE]"
     o.on("--log FILE", "fetch log (default: history/fetch_log.json)") { |v| path = v }
   end
-  Ffcam.parse_args(parser)
+  Couchette.parse_args(parser)
   log = FetchLog.load(path) or abort("#{path}: no fetch log")
   failing = FetchAlerts.failing(log)
-  names = Ffcam.load_huts["huts"].to_h { |h| [h["id"], { "name" => h["name"].gsub("  ", " ").gsub(" (FFCAM)", ""), "portal" => h.fetch("portal", "FFCAM") }] }
+  names = Couchette.load_huts["huts"].to_h { |h| [h["id"], { "name" => h["name"].gsub("  ", " ").gsub(" (FFCAM)", ""), "portal" => h.fetch("portal", "FFCAM") }] }
   body = failing.empty? ? nil : FetchAlerts.body(failing, log, names)
   result = GitHubIssues.sync(label: "releves", title: "Relevés en erreur", body: body, key: failing.map { |p| p["id"] }.sort.join(","))
   warn "Fetch alert: #{failing.size} hut(s) failing #{FetchAlerts::RUNS} runs in a row (issue: #{result})"

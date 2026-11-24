@@ -12,23 +12,23 @@
 # To rebuild the state of any (hut, night) at a given time, take the last row with
 # fetched_at <= that time.
 #
-# Written only by `rb/ffcam_availability.rb --history` (production runs): history/ is a
+# Written only by `bin/fetch-availability --history` (production runs): history/ is a
 # worktree of the production `data` branch, so a manual run must not touch it.
 
 require "fileutils"
 require "json"
-require_relative "ffcam"
+require_relative "couchette"
 
 module History
   extend self
 
-  HISTORY_DIR = File.join(Ffcam::ROOT, "history")
+  HISTORY_DIR = File.join(Couchette::ROOT, "history")
   FIELDS = %w[fetched_at hut_id date opening free_beds capacity].freeze
 
-  # results: [[hut, data, error]] as returned by ffcam_availability.rb. Returns rows appended.
+  # results: [[hut, data, error]] as returned by fetch-availability. Returns rows appended.
   # `dir` is the history folder (another one in tests).
   def record(results, fetched_at, today = nil, dir: HISTORY_DIR)
-    today = (today || Ffcam.local_today).iso8601
+    today = (today || Couchette.local_today).iso8601
     state_file = File.join(dir, "state.json")
     FileUtils.mkdir_p(dir)
     state = File.exist?(state_file) ? JSON.parse(File.read(state_file, encoding: "UTF-8")) : {}

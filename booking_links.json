@@ -1,5 +1,5 @@
 {
-  "_comment": "Card links that rb/map_data.rb (MapData.links) can't guess, by hut id: site (« Site du refuge ») and/or booking (« ⚡ Résa »). Rules without this file: <name>.ffcam.fr/reservation.html, reservation-hg.html for « Non Gardé » winter rooms, the Refuge Pro / WP Booking System / Open System page, else the centrale deep link. Found and checked on 23/11/2026 (page embedding the centrale widget with this hut). Edit by hand.",
+  "_comment": "Card links that lib/map_data.rb (MapData.links) can't guess, by hut id: site (« Site du refuge ») and/or booking (« ⚡ Résa »). Rules without this file: <name>.ffcam.fr/reservation.html, reservation-hg.html for « Non Gardé » winter rooms, the Refuge Pro / WP Booking System / Open System page, else the centrale deep link. Found and checked on 23/11/2026 (page embedding the centrale widget with this hut). Edit by hand.",
   "huts": {
     "BK_STRUCTURE:xxx5wd7n2ct0": { "booking": "https://montblanc.ffcam.fr/reservation-hg-vnmb.html", "note": "Goûter Non Gardé: shared Mont-Blanc page (normal route)" },
     "BK_STRUCTURE:xxx5wdwmtq8a": { "booking": "https://montblanc.ffcam.fr/reservation-hg-vnmb.html", "note": "Tête Rousse Non Gardé: same page as the Goûter" },

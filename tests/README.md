@@ -1,6 +1,6 @@
 # Tests : rejouer le pipeline hors ligne
 
-Ce dossier permet de faire tourner **tout le pipeline** (`rb/refresh_huts.rb` → `rb/refresh_coordinates.rb` → `rb/refresh_links.rb` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb`) sans réseau et avec une horloge fixe, puis de comparer les fichiers produits, octet par octet, à des sorties de référence. Ces références ont été produites par la version Python d'origine (supprimée depuis) : le code Ruby doit écrire exactement les mêmes fichiers.
+Ce dossier permet de faire tourner **tout le pipeline** (`bin/refresh-huts` → `bin/refresh-coordinates` → `bin/refresh-links` → `bin/fetch-availability --history` → `bin/build-site`) sans réseau et avec une horloge fixe, puis de comparer les fichiers produits, octet par octet, à des sorties de référence. Ces références ont été produites par la version Python d'origine (supprimée depuis) : le code Ruby doit écrire exactement les mêmes fichiers.
 
 ```
 tests/check.sh            # doit afficher PASS (« tests/check.sh ruby » marche aussi)
@@ -15,14 +15,14 @@ tests/unit.sh                 # tous les tests de tests/unit/ (minitest), quelqu
 tests/unit.sh -n /polite/     # seulement les tests dont le nom correspond
 ```
 
-Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-end pour chaque jour de la semaine et autour des fins de mois et d'année, formats des fichiers (`Py.float_repr`, `Py.round`, `Py.dumps`, CSV aller-retour, entités HTML), modes de réservation (classes du calendrier FFCAM, règles Refuge Pro : délai de réservation, liste d'attente, `nextSeasonOpening`), calendrier WP Booking System (`test_wpbs.rb`, sur `unit/fixtures/wpbs_calendar.html`, une copie réduite de la vraie page de la Coire dont les jours ont été modifiés pour couvrir chaque cas : états de la légende, places, réservable sans places, complet, fermé, jours passés, passage décembre → janvier, plusieurs calendriers ou pages, page sans calendrier), dates Open System, `FetchLog.classify` et la rotation des relevés, détection des changements et oubli des nuits passées de l'historique, limiteur de politesse (2 requêtes simultanées et 0,3 s entre deux départs par site, pas de blocage avec 8 fils et une exception), erreurs HTTP, délais et redirections (petit serveur local), essais 2 s puis 4 s, erreurs de ligne de commande, et `rb/ffcam_availability.rb` qui n'écrit ni `history/` ni le journal des relevés sans `--history` (lancé sur une copie de `rb/` dans un dossier temporaire, avec un seul refuge sans requête). Ils n'utilisent ni le réseau ni les fichiers de données du dépôt (l'historique et le journal des relevés sont écrits dans un dossier temporaire) ; `unit.sh` retire `FFCAM_NOW`, `FFCAM_REPLAY_DIR` et `FFCAM_RECORD_DIR` de l'environnement. minitest est livré avec Ruby (gem fournie avec Ruby 4.0, chargeable sans Bundler).
+Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-end pour chaque jour de la semaine et autour des fins de mois et d'année, formats des fichiers (`Py.float_repr`, `Py.round`, `Py.dumps`, CSV aller-retour, entités HTML), modes de réservation (classes du calendrier FFCAM, règles Refuge Pro : délai de réservation, liste d'attente, `nextSeasonOpening`), calendrier WP Booking System (`test_wpbs.rb`, sur `unit/fixtures/wpbs_calendar.html`, une copie réduite de la vraie page de la Coire dont les jours ont été modifiés pour couvrir chaque cas : états de la légende, places, réservable sans places, complet, fermé, jours passés, passage décembre → janvier, plusieurs calendriers ou pages, page sans calendrier), dates Open System, `FetchLog.classify` et la rotation des relevés, détection des changements et oubli des nuits passées de l'historique, limiteur de politesse (2 requêtes simultanées et 0,3 s entre deux départs par site, pas de blocage avec 8 fils et une exception), erreurs HTTP, délais et redirections (petit serveur local), essais 2 s puis 4 s, erreurs de ligne de commande, et `bin/fetch-availability` qui n'écrit ni `history/` ni le journal des relevés sans `--history` (lancé sur une copie de `bin/` et `lib/` dans un dossier temporaire, avec un seul refuge sans requête). Ils n'utilisent ni le réseau ni les fichiers de données du dépôt (l'historique et le journal des relevés sont écrits dans un dossier temporaire) ; `unit.sh` retire `COUCHETTE_NOW`, `COUCHETTE_REPLAY_DIR` et `COUCHETTE_RECORD_DIR` de l'environnement. minitest est livré avec Ruby (gem fournie avec Ruby 4.0, chargeable sans Bundler).
 
 ## Contenu
 
 | Chemin | Contenu |
 | --- | --- |
-| `fixtures/run1/` | toutes les réponses HTTP d'un pipeline complet, enregistrées le 22/11/2026 avec `FFCAM_NOW=2026-11-22T18:00:00` |
-| `fixtures/run2/` | les réponses d'un second relevé (`ffcam_availability` seul) avec `FFCAM_NOW=2026-11-23T09:00:00`, plus 2 erreurs ajoutées à la main (voir plus bas) |
+| `fixtures/run1/` | toutes les réponses HTTP d'un pipeline complet, enregistrées le 22/11/2026 avec `COUCHETTE_NOW=2026-11-22T18:00:00` |
+| `fixtures/run2/` | les réponses d'un second relevé (`fetch-availability` seul) avec `COUCHETTE_NOW=2026-11-23T09:00:00`, plus 2 erreurs ajoutées à la main (voir plus bas) |
 | `golden/run1/`, `golden/run2/` | les sorties de référence, produites par la version Python d'origine en rejouant ces enregistrements |
 | `golden/<run>/stderr/<script>.log` | la sortie d'erreur de chaque script (lignes de résumé), le dossier de travail remplacé par `<work>` ; pour information seulement |
 | `check.sh` | rejoue les deux scénarios et compare |
@@ -30,15 +30,15 @@ Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-e
 
 ## Variables d'environnement
 
-Lues par `rb/http.rb` et `rb/clock.rb` ; sans elles, rien ne change en production.
+Lues par `lib/http.rb` et `lib/clock.rb` ; sans elles, rien ne change en production.
 
 | Variable | Effet |
 | --- | --- |
-| `FFCAM_NOW=2026-11-22T18:00:00` | heure locale (Paris) qui remplace « maintenant » partout : dates par défaut, nuits du week-end, `fetched_at`, `refreshed_at`, nuits passées oubliées par l'historique, règles Refuge Pro. Les durées mesurées (`seconds` de `fetch_log.json`) valent alors 0. |
-| `FFCAM_RECORD_DIR=<dossier>` | vraies requêtes (limiteur de politesse actif) ; chaque réponse, ou échec, est enregistrée dans le dossier. Plusieurs scripts peuvent enregistrer dans le même dossier : l'index est complété. |
-| `FFCAM_REPLAY_DIR=<dossier>` | aucun accès réseau : les réponses viennent du dossier ; pas de limiteur ni d'attente entre essais. Une requête absente arrête le script avec `ReplayMissing: no recorded response in <dossier> for GET <url>`. |
+| `COUCHETTE_NOW=2026-11-22T18:00:00` | heure locale (Paris) qui remplace « maintenant » partout : dates par défaut, nuits du week-end, `fetched_at`, `refreshed_at`, nuits passées oubliées par l'historique, règles Refuge Pro. Les durées mesurées (`seconds` de `fetch_log.json`) valent alors 0. |
+| `COUCHETTE_RECORD_DIR=<dossier>` | vraies requêtes (limiteur de politesse actif) ; chaque réponse, ou échec, est enregistrée dans le dossier. Plusieurs scripts peuvent enregistrer dans le même dossier : l'index est complété. |
+| `COUCHETTE_REPLAY_DIR=<dossier>` | aucun accès réseau : les réponses viennent du dossier ; pas de limiteur ni d'attente entre essais. Une requête absente arrête le script avec `ReplayMissing: no recorded response in <dossier> for GET <url>`. |
 
-`check.sh` lance aussi les scripts avec `SKITOUR_API_KEY=replay-dummy-key` (sans clé, `rb/refresh_links.rb` sauterait Skitour ; la clé n'entre pas dans l'identifiant d'une requête, donc n'importe quelle valeur convient), `TZ=Europe/Paris`, et sans `IGN_API_KEY`, `GITHUB_EVENT_NAME` ni `TRIGGER_SOURCE` (déclencheur « local », `ignKey` à `null`).
+`check.sh` lance aussi les scripts avec `SKITOUR_API_KEY=replay-dummy-key` (sans clé, `bin/refresh-links` sauterait Skitour ; la clé n'entre pas dans l'identifiant d'une requête, donc n'importe quelle valeur convient), `TZ=Europe/Paris`, et sans `IGN_API_KEY`, `GITHUB_EVENT_NAME` ni `TRIGGER_SOURCE` (déclencheur « local », `ignKey` à `null`).
 
 ## Format des enregistrements
 
@@ -66,9 +66,9 @@ fixtures/run1/bodies/<id>.gz     corps de la réponse (octets tels que reçus), 
 
 À l'enregistrement de run1, `overpass-api.de` a d'abord répondu 502, puis a réussi au 2e tour : seul le succès est gardé, donc au rejeu le premier serveur répond tout de suite et les deux échecs enregistrés ne servent pas.
 
-**run1** — pipeline complet, `FFCAM_NOW=2026-11-22T18:00:00` (un dimanche : nuit de ce soir + week-end suivant), dossier vide au départ sauf `manual_huts.json`, `coordinates_overrides.json` et les deux modèles HTML ; `history/` vide, donc l'historique écrit un état initial complet.
+**run1** — pipeline complet, `COUCHETTE_NOW=2026-11-22T18:00:00` (un dimanche : nuit de ce soir + week-end suivant), dossier vide au départ sauf `manual_huts.json`, `coordinates_overrides.json` et les deux modèles HTML ; `history/` vide, donc l'historique écrit un état initial complet.
 
-**run2** — `rb/ffcam_availability.rb --history` puis `rb/build_map.rb`, `FFCAM_NOW=2026-11-23T09:00:00` (lundi), en partant des sorties de run1 (`huts.json`, `hut_coordinates.json`, `hut_links.json`, `history/`) : l'historique n'ajoute que les changements et oublie les nuits passées, `fetch_log.json` contient 2 relevés.
+**run2** — `bin/fetch-availability --history` puis `bin/build-site`, `COUCHETTE_NOW=2026-11-23T09:00:00` (lundi), en partant des sorties de run1 (`huts.json`, `hut_coordinates.json`, `hut_links.json`, `history/`) : l'historique n'ajoute que les changements et oublie les nuits passées, `fetch_log.json` contient 2 relevés.
 
 ### Erreurs ajoutées à la main dans `fixtures/run2/`
 
@@ -85,25 +85,25 @@ Toute nouvelle réception de run2 doit refaire ces deux modifications.
 
 La page `GET https://www.refugedelacoire.fr/reservations-hiver/` (refuge `WPBS-coire`, entrée `c3721d0fc365cc4d11329c0a8e538d0e4a70c065`) a été enregistrée seule le 22/11/2026 au soir, puis copiée telle quelle dans les deux scénarios (même entrée d'index, même corps). Son calendrier montre novembre et décembre 2026 avec le 22/11 comme aujourd'hui : cohérent avec les horloges des deux scénarios (run2, le 23/11, ignore simplement le 22).
 
-Pour ajouter ainsi **une seule réponse** sans tout réenregistrer : l'enregistrer dans un dossier vide avec `FFCAM_RECORD_DIR` (dans une copie du projet, en appelant directement la méthode concernée), par exemple
+Pour ajouter ainsi **une seule réponse** sans tout réenregistrer : l'enregistrer dans un dossier vide avec `COUCHETTE_RECORD_DIR` (dans une copie du projet, en appelant directement la méthode concernée), par exemple
 
 ```sh
-W=/tmp/ffcam-one && rm -rf $W && mkdir -p $W && cp -r rb $W/
-FFCAM_RECORD_DIR=$W/rec ruby -e 'require ARGV[0]; Ffcam.fetch_wpbs_availability([{"url" => ARGV[1]}])' $W/rb/ffcam.rb https://www.refugedelacoire.fr/reservations-hiver/
+W=/tmp/ffcam-one && rm -rf $W && mkdir -p $W && cp -r bin lib $W/
+COUCHETTE_RECORD_DIR=$W/rec ruby -e 'require ARGV[0]; Couchette.fetch_wpbs_availability([{"url" => ARGV[1]}])' $W/lib/couchette.rb https://www.refugedelacoire.fr/reservations-hiver/
 ```
 
 puis fusionner son `index.json` dans celui de chaque scénario (en le réécrivant avec le même format : `Py.dumps(index, ensure_ascii: false, indent: 1, sort_keys: true)` + saut de ligne) et copier `bodies/<id>.gz` ; enfin `tests/check.sh --update`, relire le diff de `golden/`, et `tests/check.sh`.
 
 ## Ce que compare `check.sh`
 
-Pour chaque scénario, dans un dossier temporaire neuf : copie de `rb/`, de `.ruby-version` et des fichiers d'entrée, lancement des scripts dans l'ordre en mode rejeu (`ffcam_availability` avec `--history`, qui écrit donc dans le `history/` du dossier temporaire), puis comparaison `diff -u` de **chaque fichier de `golden/<run>/`** (hors `stderr/`) avec le fichier du même nom produit : `PASS` / `FAIL` par fichier, code de sortie non nul à la moindre différence. Un fichier créé ou modifié par les scripts qui n'est pas dans `golden/` est aussi un échec. Fichiers comparés :
+Pour chaque scénario, dans un dossier temporaire neuf : copie de `bin/`, `lib/`, de `.ruby-version` et des fichiers d'entrée, lancement des scripts dans l'ordre en mode rejeu (`fetch-availability` avec `--history`, qui écrit donc dans le `history/` du dossier temporaire), puis comparaison `diff -u` de **chaque fichier de `golden/<run>/`** (hors `stderr/`) avec le fichier du même nom produit : `PASS` / `FAIL` par fichier, code de sortie non nul à la moindre différence. Un fichier créé ou modifié par les scripts qui n'est pas dans `golden/` est aussi un échec. Fichiers comparés :
 
-- run1 : `huts.json`, `hut_coordinates.json`, `hut_links.json`, `ffcam_2026-11-22.csv`, `history/state.json`, `history/availability_2026-11.csv`, `history/fetch_log.json`, `map.html`, `releves/index.html` ;
-- run2 : `ffcam_2026-11-27.csv`, les trois fichiers de `history/`, `map.html`, `releves/index.html`.
+- run1 : `huts.json`, `hut_coordinates.json`, `hut_links.json`, `availability_2026-11-27.csv`, `history/state.json`, `history/availability_2026-11.csv`, `history/fetch_log.json`, `map.html`, `releves/index.html` ;
+- run2 : `availability_2026-11-27.csv`, les trois fichiers de `history/`, `map.html`, `releves/index.html`.
 
 La sortie d'erreur de chaque script est seulement signalée (`info … same` / `differs`), jamais en échec.
 
-Les commandes sont en tête du script (`RUN`, `CODE`, `RUN1_STEPS`, `RUN2_STEPS`) : `rb/<script>.rb`, lancé depuis le dossier de travail, où les scripts lisent et écrivent leurs fichiers (le parent de `rb/`). Options : `--keep` garde les dossiers de travail, `--update` réécrit `golden/` à partir du code Ruby (après un nouvel enregistrement, ou un changement voulu des sorties : relire alors le diff de `golden/`).
+Les commandes sont en tête du script (`RUN`, `CODE`, `RUN1_STEPS`, `RUN2_STEPS`) : `bin/<script>`, lancé depuis le dossier de travail, où les scripts lisent et écrivent leurs fichiers (le parent de `bin/` et `lib/`). Options : `--keep` garde les dossiers de travail, `--update` réécrit `golden/` à partir du code Ruby (après un nouvel enregistrement, ou un changement voulu des sorties : relire alors le diff de `golden/`).
 
 ## Réenregistrer
 
@@ -111,18 +111,18 @@ Les commandes sont en tête du script (`RUN`, `CODE`, `RUN1_STEPS`, `RUN2_STEPS`
 
 ```sh
 W=/tmp/ffcam-rec && rm -rf $W && mkdir -p $W
-cp -r rb .ruby-version map_template.html log_template.html manual_huts.json coordinates_overrides.json $W/
-ln -s "$PWD/secrets.env" $W/secrets.env          # pour la clé Skitour (refresh_links.rb)
+cp -r bin lib .ruby-version map_template.html log_template.html manual_huts.json coordinates_overrides.json $W/
+ln -s "$PWD/secrets.env" $W/secrets.env          # pour la clé Skitour (refresh-links)
 cd $W
-export FFCAM_RECORD_DIR=$OLDPWD/tests/fixtures/run1 FFCAM_NOW=2026-11-22T18:00:00
-rm -rf $FFCAM_RECORD_DIR
-rb/refresh_huts.rb && rb/refresh_coordinates.rb && rb/refresh_links.rb
+export COUCHETTE_RECORD_DIR=$OLDPWD/tests/fixtures/run1 COUCHETTE_NOW=2026-11-22T18:00:00
+rm -rf $COUCHETTE_RECORD_DIR
+bin/refresh-huts && bin/refresh-coordinates && bin/refresh-links
 rm secrets.env
-rb/ffcam_availability.rb --history && rb/build_map.rb   # history/ de $W (rb/ est copié : jamais celui du dépôt)
-export FFCAM_RECORD_DIR=$OLDPWD/tests/fixtures/run2 FFCAM_NOW=2026-11-23T09:00:00
-rm -rf $FFCAM_RECORD_DIR
-rb/ffcam_availability.rb --history               # repart de l'history/ laissé par run1
+bin/fetch-availability --history && bin/build-site   # history/ de $W (bin/ et lib/ sont copiés : jamais l'history/ du dépôt)
+export COUCHETTE_RECORD_DIR=$OLDPWD/tests/fixtures/run2 COUCHETTE_NOW=2026-11-23T09:00:00
+rm -rf $COUCHETTE_RECORD_DIR
+bin/fetch-availability --history               # repart de l'history/ laissé par run1
 cd - && tests/check.sh --update && tests/check.sh
 ```
 
-Puis refaire les modifications à la main de run2 (avant `--update` ; pour un corps : `zcat`, modifier, `gzip -n -9`), et vérifier que la clé Skitour n'apparaît nulle part : `K=$(sed -n 's/^SKITOUR_API_KEY=//p' secrets.env); grep -rlF "$K" tests/; zgrep -lF "$K" tests/fixtures/*/bodies/*.gz` ne doit rien afficher. Overpass est souvent surchargé : `rb/refresh_coordinates.rb` réessaie seul, parfois plusieurs minutes.
+Puis refaire les modifications à la main de run2 (avant `--update` ; pour un corps : `zcat`, modifier, `gzip -n -9`), et vérifier que la clé Skitour n'apparaît nulle part : `K=$(sed -n 's/^SKITOUR_API_KEY=//p' secrets.env); grep -rlF "$K" tests/; zgrep -lF "$K" tests/fixtures/*/bodies/*.gz` ne doit rien afficher. Overpass est souvent surchargé : `bin/refresh-coordinates` réessaie seul, parfois plusieurs minutes.

@@ -1,13 +1,13 @@
-# Every network request of the scripts goes through Ffcam.fetch: politeness limiter, retries,
-# errors named as in the fetch log, and record / replay for the offline tests (FFCAM_RECORD_DIR,
-# FFCAM_REPLAY_DIR, see tests/README.md). Loaded by ffcam.rb.
+# Every network request of the scripts goes through Couchette.fetch: politeness limiter, retries,
+# errors named as in the fetch log, and record / replay for the offline tests (COUCHETTE_RECORD_DIR,
+# COUCHETTE_REPLAY_DIR, see tests/README.md). Loaded by couchette.rb.
 
-module Ffcam
+module Couchette
   HEADERS = { "User-Agent" => "Mozilla/5.0 (X11; Linux x86_64) ffcam-huts-script" }.freeze
 
-  RECORD_DIR = env("FFCAM_RECORD_DIR")
-  REPLAY_DIR = env("FFCAM_REPLAY_DIR")
-  abort("FFCAM_RECORD_DIR and FFCAM_REPLAY_DIR can't be used together.") if RECORD_DIR && REPLAY_DIR
+  RECORD_DIR = env("COUCHETTE_RECORD_DIR")
+  REPLAY_DIR = env("COUCHETTE_REPLAY_DIR")
+  abort("COUCHETTE_RECORD_DIR and COUCHETTE_REPLAY_DIR can't be used together.") if RECORD_DIR && REPLAY_DIR
   RECORD_LOCK = Mutex.new
 
   # Politeness: whatever the number of worker threads, each site gets at most PER_HOST_LIMIT
@@ -32,7 +32,7 @@ module Ffcam
     end
   end
 
-  # A request absent from FFCAM_REPLAY_DIR. Not a StandardError, so that the scripts'
+  # A request absent from COUCHETTE_REPLAY_DIR. Not a StandardError, so that the scripts'
   # `rescue StandardError` (retries, per-hut errors) don't turn it into an ordinary failure: the run stops.
   class ReplayMissing < Exception; end # rubocop:disable Lint/InheritException
 
@@ -86,7 +86,7 @@ module Ffcam
     gz
   end
 
-  # Save one outcome to FFCAM_RECORD_DIR: index.json entry + bodies/<key>.gz. The last outcome of a request wins.
+  # Save one outcome to COUCHETTE_RECORD_DIR: index.json entry + bodies/<key>.gz. The last outcome of a request wins.
   def record(method, url, body, entry, content = nil)
     key = fixture_key(method, url, body)
     entry = { "method" => method, "url" => url, "body" => body }.merge(entry)

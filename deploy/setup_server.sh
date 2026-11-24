@@ -41,7 +41,7 @@ echo "== system user '$USER_NAME' (runs the updates, owns the data)"
 id "$USER_NAME" >/dev/null 2>&1 || useradd --system --home-dir "$APP" --shell /usr/sbin/nologin "$USER_NAME"
 mkdir -p "$WEB" /var/log/ffcam-huts "$APP/history" "$APP/data"
 chown -R "$USER_NAME:$USER_NAME" "$APP" "$WEB" /var/log/ffcam-huts
-chmod +x "$APP"/rb/*.rb "$APP"/deploy/*.sh
+chmod +x "$APP"/bin/* "$APP"/deploy/*.sh
 
 echo "== nginx"
 cp "$APP/deploy/nginx.conf" /etc/nginx/sites-available/refuges

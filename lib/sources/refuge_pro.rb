@@ -1,6 +1,6 @@
-# Refuge Pro: the calendar a hut embeds on its own site. Loaded by ffcam.rb.
+# Refuge Pro: the calendar a hut embeds on its own site. Loaded by couchette.rb.
 
-module Ffcam
+module Couchette
   REFUGEPRO_EMBED = "https://refuge-pro.com/embed/calendrier/%<slug>s"
 
   # Refuge Pro: the calendar a hut embeds on its site (refuge-pro.com/embed/calendrier/<slug>).

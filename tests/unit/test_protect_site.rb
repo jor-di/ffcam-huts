@@ -1,9 +1,9 @@
 require_relative "test_helper"
 require "open3"
 require "rbconfig"
-load File.join(RB, "protect_site.rb")
+load File.join(BIN, "protect-site")
 
-# rb/protect_site.rb: pages encrypted for a list of first name + password (low PBKDF2 cost here).
+# bin/protect-site: pages encrypted for a list of first name + password (low PBKDF2 cost here).
 class TestProtectSite < Minitest::Test
   ITER = 1_000
   USERS = { "élodie" => "secret", "paul" => "p:ss" }.freeze
@@ -57,7 +57,7 @@ class TestProtectSite < Minitest::Test
 
   def test_refuses_without_users
     File.write(File.join(@dir, "index.html"), PAGE)
-    script = File.join(RB, "protect_site.rb")
+    script = File.join(BIN, "protect-site")
     _, err, status = Open3.capture3({ "SITE_USERS" => nil }, RbConfig.ruby, script, @dir)
     refute status.success?
     assert_includes err, "SITE_USERS is empty"

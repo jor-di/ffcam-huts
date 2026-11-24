@@ -1,4 +1,4 @@
-# Name similarity used to match hut names (refresh_coordinates.rb, refresh_links.rb): the
+# Name similarity used to match hut names (refresh-coordinates, refresh-links): the
 # Ratcliff/Obershelp score of Python's difflib (SequenceMatcher#ratio, get_close_matches),
 # the algorithm the matches in hut_coordinates.json and hut_links.json were made with.
 # Ported line by line so that scores and ties stay the same and a refresh doesn't move huts.

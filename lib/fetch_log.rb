@@ -10,16 +10,16 @@
 #   last_run      the latest run, with one entry per hut (state, nights received, seconds, message)
 #   runs          a summary of the last MAX_RUNS runs: per source counts + the huts with a problem
 #   last_success  per hut, the time of the latest ok / warn fetch
-# Written by `rb/ffcam_availability.rb --history` (or to another file with --log FILE).
+# Written by `bin/fetch-availability --history` (or to another file with --log FILE).
 
 require "fileutils"
 require "json"
-require_relative "ffcam"
+require_relative "couchette"
 
 module FetchLog
   extend self
 
-  LOG_FILE = File.join(Ffcam::ROOT, "history", "fetch_log.json")
+  LOG_FILE = File.join(Couchette::ROOT, "history", "fetch_log.json")
   MAX_RUNS = 48
   SOURCE_ORDER = %w[FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM REFUGEPRO WPBS MANUAL].freeze
 
@@ -40,9 +40,9 @@ module FetchLog
   # What started this run: the workflow_dispatch "source" input (cron-job.org, button),
   # else the GitHub Actions event name, else 'local'.
   def trigger
-    return Ffcam.env("TRIGGER_SOURCE") if Ffcam.env("TRIGGER_SOURCE")
+    return Couchette.env("TRIGGER_SOURCE") if Couchette.env("TRIGGER_SOURCE")
     { "push" => "push sur main", "workflow_dispatch" => "manuel (Actions)" }
-      .fetch(Ffcam.env("GITHUB_EVENT_NAME"), "local")
+      .fetch(Couchette.env("GITHUB_EVENT_NAME"), "local")
   end
 
   # results: [[hut, data, error]]; timings: {hut_id => seconds}. Returns the run summary.

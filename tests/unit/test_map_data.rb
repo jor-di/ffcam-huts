@@ -1,7 +1,7 @@
 require_relative "test_helper"
-require File.join(RB, "map_data")
+require File.join(LIB, "map_data")
 
-# rb/map_data.rb: FFCAM winter rooms folded into their guarded hut.
+# lib/map_data.rb: FFCAM winter rooms folded into their guarded hut.
 class TestMapData < Minitest::Test
   def hut(id, name, type, nights)
     [id, { "id" => id, "name" => name, "type" => type, "nights" => nights }]

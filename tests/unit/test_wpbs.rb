@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
-# WP Booking System calendars (portal WPBS, Refuge de la Coire): Ffcam.parse_wpbs and
-# Ffcam.fetch_wpbs_availability, on a trimmed copy of the real page (fixtures/wpbs_calendar.html).
+# WP Booking System calendars (portal WPBS, Refuge de la Coire): Couchette.parse_wpbs and
+# Couchette.fetch_wpbs_availability, on a trimmed copy of the real page (fixtures/wpbs_calendar.html).
 class TestWpbs < Minitest::Test
   PAGE = File.read(File.join(__dir__, "fixtures", "wpbs_calendar.html"), encoding: "UTF-8")
   URL = "https://www.refugedelacoire.fr/reservations-hiver/"
@@ -9,16 +9,16 @@ class TestWpbs < Minitest::Test
 
   # get_url serves `pages` ({url => body}, no network) for the duration of the block
   def with_pages(pages)
-    Ffcam.singleton_class.alias_method(:real_get_url, :get_url)
-    Ffcam.define_singleton_method(:get_url) { |url, *| pages.fetch(url) }
+    Couchette.singleton_class.alias_method(:real_get_url, :get_url)
+    Couchette.define_singleton_method(:get_url) { |url, *| pages.fetch(url) }
     yield
   ensure
-    Ffcam.singleton_class.alias_method(:get_url, :real_get_url)
-    Ffcam.singleton_class.remove_method(:real_get_url)
+    Couchette.singleton_class.alias_method(:get_url, :real_get_url)
+    Couchette.singleton_class.remove_method(:real_get_url)
   end
 
   def parse(html = PAGE, today = TODAY, **opts)
-    Ffcam.parse_wpbs(html, URL, today, **opts)
+    Couchette.parse_wpbs(html, URL, today, **opts)
   end
 
   # [opening, free, booking] per day
@@ -55,13 +55,13 @@ class TestWpbs < Minitest::Test
   end
 
   def test_legend_meanings
-    assert_equal :available, Ffcam.wpbs_meaning("Disponible (selon conditions)")
-    assert_equal :unguarded, Ffcam.wpbs_meaning("Disponible (non-gardé)")
-    assert_equal :full, Ffcam.wpbs_meaning("Complet")
-    assert_equal :closed, Ffcam.wpbs_meaning("Non-disponible")
-    assert_equal :closed, Ffcam.wpbs_meaning("Voir refuge été")
-    assert_equal :closed, Ffcam.wpbs_meaning("Fermé")
-    assert_nil Ffcam.wpbs_meaning("Tarif spécial")
+    assert_equal :available, Couchette.wpbs_meaning("Disponible (selon conditions)")
+    assert_equal :unguarded, Couchette.wpbs_meaning("Disponible (non-gardé)")
+    assert_equal :full, Couchette.wpbs_meaning("Complet")
+    assert_equal :closed, Couchette.wpbs_meaning("Non-disponible")
+    assert_equal :closed, Couchette.wpbs_meaning("Voir refuge été")
+    assert_equal :closed, Couchette.wpbs_meaning("Fermé")
+    assert_nil Couchette.wpbs_meaning("Tarif spécial")
   end
 
   def test_several_calendars_and_pages
@@ -72,19 +72,19 @@ class TestWpbs < Minitest::Test
     assert_equal 7, parse(both, calendars: ["14"])["free"]["2026-12-27"]
     pages = { URL => PAGE, "https://x/ete/" => second }
     with_pages(pages) do
-      out = Ffcam.fetch_wpbs_availability([{ "url" => "https://x/ete/" }, URL], TODAY)
+      out = Couchette.fetch_wpbs_availability([{ "url" => "https://x/ete/" }, URL], TODAY)
       assert_equal [7, nil, "online"], [out["free"]["2026-12-27"], out["capacity"]["2026-12-27"], out["booking"]["2026-12-27"]]
       assert_equal 12, out["opening"].size
-      assert_equal rows(parse), rows(Ffcam.fetch_wpbs_availability([{ "url" => URL }], TODAY))
+      assert_equal rows(parse), rows(Couchette.fetch_wpbs_availability([{ "url" => URL }], TODAY))
     end
   end
 
   def test_dispatch
     with_pages(URL => PAGE) do
-      out = Ffcam.fetch_availability("WPBS-coire", TODAY, "WPBS", [{ "url" => URL }])
+      out = Couchette.fetch_availability("WPBS-coire", TODAY, "WPBS", [{ "url" => URL }])
       assert_equal %w[free capacity opening booking], out.keys
       # without a date: today on the real clock
-      assert_equal rows(parse(PAGE, Ffcam.local_today)), rows(out)
+      assert_equal rows(parse(PAGE, Couchette.local_today)), rows(out)
     end
   end
 
@@ -99,9 +99,9 @@ class TestWpbs < Minitest::Test
   end
 
   def test_manual_portal
-    assert_equal "REFUGEPRO", Ffcam.manual_portal("refugepro" => "galibier")
-    assert_equal "WPBS", Ffcam.manual_portal("wpbs" => [{ "url" => URL }])
-    assert_equal "MANUAL", Ffcam.manual_portal("wpbs" => [])
-    assert_equal "MANUAL", Ffcam.manual_portal({})
+    assert_equal "REFUGEPRO", Couchette.manual_portal("refugepro" => "galibier")
+    assert_equal "WPBS", Couchette.manual_portal("wpbs" => [{ "url" => URL }])
+    assert_equal "MANUAL", Couchette.manual_portal("wpbs" => [])
+    assert_equal "MANUAL", Couchette.manual_portal({})
   end
 end

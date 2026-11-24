@@ -8,5 +8,5 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 # real clock and politeness limiter: no test variable from the caller's environment
-exec env -u FFCAM_NOW -u FFCAM_REPLAY_DIR -u FFCAM_RECORD_DIR \
-  ruby -Irb -e 'Dir["tests/unit/test_*.rb"].sort.each { |f| require File.expand_path(f) }' -- "$@"
+exec env -u COUCHETTE_NOW -u COUCHETTE_REPLAY_DIR -u COUCHETTE_RECORD_DIR \
+  ruby -Ilib -e 'Dir["tests/unit/test_*.rb"].sort.each { |f| require File.expand_path(f) }' -- "$@"
