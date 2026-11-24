@@ -86,7 +86,7 @@ module Couchette
   end
 
   # WP Booking System calendars of a hut: `pages` = [{"url" => page, "calendars" => [ids] (optional)}]
-  # (manual_huts.json "wpbs"); a day found on several pages is taken from the first one.
+  # (catalog/manual/manual_huts.json "wpbs"); a day found on several pages is taken from the first one.
   def fetch_wpbs_availability(pages, today = nil)
     out = { "free" => {}, "capacity" => {}, "opening" => {}, "booking" => {} }
     Array(pages).each do |page|

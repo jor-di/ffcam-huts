@@ -5,9 +5,9 @@
 #   http.rb                   every request: politeness, retries, record / replay for tests
 #   sources/ffcam_centrale.rb centrale.ffcam.fr (portals FFCAM, VANOISE, NEOUVIELLE, BOREON)
 #   sources/open_system.rb    Open System (Vanoise park huts)
-#   sources/refuge_pro.rb     Refuge Pro calendars (huts of manual_huts.json)
-#   sources/wpbs.rb           WP Booking System calendars (huts of manual_huts.json)
-#   sources.rb                the hut list (huts.json) and, per hut, the source to ask
+#   sources/refuge_pro.rb     Refuge Pro calendars (huts of catalog/manual/manual_huts.json)
+#   sources/wpbs.rb           WP Booking System calendars (huts of catalog/manual/manual_huts.json)
+#   sources.rb                the hut list (catalog/huts.json) and, per hut, the source to ask
 #
 # Each source returns a hut's nights as {"free", "capacity", "opening", "booking"}, each a
 # {date => value} hash (see Couchette.fetch_availability).
@@ -36,6 +36,11 @@ module Couchette
   ROOT = File.expand_path("..", __dir__)
 
   SECRETS_FILE = File.join(ROOT, "secrets.env")
+  # catalog/: the hut lists made by bin/refresh-* ; catalog/manual/: the files kept by hand
+  CATALOG_DIR = File.join(ROOT, "catalog")
+  MANUAL_DIR = File.join(CATALOG_DIR, "manual")
+  # templates/: the HTML pages that bin/build-site and bin/protect-site fill
+  TEMPLATES_DIR = File.join(ROOT, "templates")
 
   # ---------- Tests: fixed clock, HTTP record / replay (see tests/README.md) ----------
   # COUCHETTE_NOW=2026-11-22T18:00:00    replaces "now" (local time) everywhere, and zeroes measured durations

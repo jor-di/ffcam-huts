@@ -544,7 +544,7 @@ function render() {
 
   markerLayer.clearLayers(); markers.clear();
   const order = { closed:0, full:1, request:2, low:3, ok:4 };
-  // huts only bookable by phone / mail (manual_huts.json): never online, so just a dot on the map
+  // huts only bookable by phone / mail (catalog/manual/manual_huts.json): never online, so just a dot on the map
   const pin = r => r.h.portal === 'MANUAL' ? 'closed' : r.ds;
   visible.sort((a, b) => order[pin(a)] - order[pin(b)]).forEach(r => {
     const { h, n, s } = r, ps = pin(r);

@@ -1,6 +1,6 @@
 # Name similarity used to match hut names (refresh-coordinates, refresh-links): the
 # Ratcliff/Obershelp score of Python's difflib (SequenceMatcher#ratio, get_close_matches),
-# the algorithm the matches in hut_coordinates.json and hut_links.json were made with.
+# the algorithm the matches in catalog/hut_coordinates.json and catalog/hut_links.json were made with.
 # Ported line by line so that scores and ties stay the same and a refresh doesn't move huts.
 # ratio = 2 * matched characters / total length, matched characters being found by taking
 # the longest common block, then recursing on both sides of it.

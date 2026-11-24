@@ -26,7 +26,7 @@ module LinkCheck
 
   FILE = File.join(Couchette::ROOT, "history", "links.json")
 
-  # [{id, name, kind ("site" / "booking"), url}] for every hut of huts.json
+  # [{id, name, kind ("site" / "booking"), url}] for every hut of catalog/huts.json
   def targets(huts, coords, overrides = MapData.load_booking_links)
     huts.flat_map do |h|
       site, booking = MapData.links(h, MapData.hut_url(h, coords.dig(h["id"], "website")), overrides)
@@ -79,7 +79,7 @@ module LinkCheck
     rows = errors.map { |r| "| #{r['name']} | #{r['kind'] == 'site' ? 'Site du refuge' : 'Résa'} | #{r['url']} | #{r['msg'].gsub('|', '/')} |" }
     ["#{errors.size} lien#{errors.size > 1 ? 's' : ''} cassé#{errors.size > 1 ? 's' : ''} sur les fiches des refuges.", "",
      "| Refuge | Lien | URL | Erreur |", "| --- | --- | --- | --- |", *rows, "",
-     "À corriger dans `booking_links.json` (ou `manual_huts.json` pour un site). Détail : https://dernierecouchette.fr/releves/"].join("\n")
+     "À corriger dans `catalog/manual/booking_links.json` (ou `catalog/manual/manual_huts.json` pour un site). Détail : https://dernierecouchette.fr/releves/"].join("\n")
   end
 end
 
@@ -90,7 +90,7 @@ def main
     o.on("--history", "write history/links.json and sync the GitHub issue") { history = true }
   end
   Couchette.parse_args(parser)
-  coords_file = File.join(Couchette::ROOT, "hut_coordinates.json")
+  coords_file = File.join(Couchette::CATALOG_DIR, "hut_coordinates.json")
   coords = File.exist?(coords_file) ? JSON.parse(File.read(coords_file, encoding: "UTF-8")) : {}
   results = LinkCheck.check(LinkCheck.targets(Couchette.load_huts["huts"], coords))
   sum = LinkCheck.summary(results, Couchette.local_now.strftime("%Y-%m-%dT%H:%M:%S"))

@@ -1,24 +1,24 @@
 # The hut list and the source of each hut. Loaded by couchette.rb.
 #
-# huts.json (bin/refresh-huts) gathers the huts of every source; the "portal" field of a hut
+# catalog/huts.json (bin/refresh-huts) gathers the huts of every source; the "portal" field of a hut
 # says where its nights are read: a centrale portal (FFCAM, VANOISE...), OPENSYSTEM,
 # REFUGEPRO, WPBS, or MANUAL (no online calendar: phone / mail).
 # Refuge Pro (portal "REFUGEPRO") and WP Booking System (portal "WPBS"): huts listed by hand in
-# manual_huts.json, whose own calendar page is read (see fetch_refugepro_availability,
+# catalog/manual/manual_huts.json, whose own calendar page is read (see fetch_refugepro_availability,
 # fetch_wpbs_availability).
 
 module Couchette
-  HUTS_FILE = File.join(ROOT, "huts.json")
+  HUTS_FILE = File.join(CATALOG_DIR, "huts.json")
 
   # Portals (apporigin) to collect huts from. Others exist:
   # ENTREPYRPYRENEES (Spanish/Andorran Pyrenees), ITFFCAM (all of them + Morocco).
   DEFAULT_PORTALS = %w[FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM MANUAL].freeze
 
-  # MANUAL: huts listed by hand in manual_huts.json. Those with a "refugepro" slug book through
+  # MANUAL: huts listed by hand in catalog/manual/manual_huts.json. Those with a "refugepro" slug book through
   # Refuge Pro (the hut's own booking software) and get availability (portal REFUGEPRO); those
   # with "wpbs" pages publish a WP Booking System calendar on their WordPress site (portal WPBS);
   # the others have no online booking we can read (phone / mail / form).
-  MANUAL_HUTS_FILE = File.join(ROOT, "manual_huts.json")
+  MANUAL_HUTS_FILE = File.join(MANUAL_DIR, "manual_huts.json")
 
   # Normalize a hut name for matching: no accents, case, 'refuge/chalet/de/la...' or 'Non Gardé'.
   def norm(name)
@@ -35,7 +35,7 @@ module Couchette
     fetch_centrale_huts(portals - %w[OPENSYSTEM MANUAL]) + extra
   end
 
-  # Huts of manual_huts.json, shaped like the others.
+  # Huts of catalog/manual/manual_huts.json, shaped like the others.
   def manual_huts(path = MANUAL_HUTS_FILE)
     return [] unless File.exist?(path)
     JSON.parse(File.read(path, encoding: "UTF-8"))["huts"].map do |h|
@@ -44,7 +44,7 @@ module Couchette
     end
   end
 
-  # Portal of a hut of manual_huts.json: the calendar it publishes, if any.
+  # Portal of a hut of catalog/manual/manual_huts.json: the calendar it publishes, if any.
   def manual_portal(hut)
     return "REFUGEPRO" if Py.truthy?(hut["refugepro"])
     return "WPBS" if Py.truthy?(hut["wpbs"])

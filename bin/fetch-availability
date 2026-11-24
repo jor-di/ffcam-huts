@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-# Fetch the availability of every hut of huts.json, whatever its booking system (FFCAM centrale,
+# Fetch the availability of every hut of catalog/huts.json, whatever its booking system (FFCAM centrale,
 # Open System, Refuge Pro, WP Booking System: see Couchette.fetch_availability in sources.rb), into a CSV.
 #
-# Run bin/refresh-huts first to create huts.json.
+# Run bin/refresh-huts first to create catalog/huts.json.
 #
 # Usage:
 #   bin/fetch-availability                       # this weekend from tonight on + next weekend (Fri, Sat, Sun)
@@ -62,9 +62,9 @@ def main
   fetch_from = args[:date] ? start : Couchette.local_today
 
   huts = Couchette.load_huts["huts"]
-  coords = read_json(File.join(Couchette::ROOT, "hut_coordinates.json"))
-  links = read_json(File.join(Couchette::ROOT, "hut_links.json")) # from bin/refresh-links
-  warn "No hut_coordinates.json: run bin/refresh-coordinates to add GPS columns." if coords.empty?
+  coords = read_json(File.join(Couchette::CATALOG_DIR, "hut_coordinates.json"))
+  links = read_json(File.join(Couchette::CATALOG_DIR, "hut_links.json")) # from bin/refresh-links
+  warn "No catalog/hut_coordinates.json: run bin/refresh-coordinates to add GPS columns." if coords.empty?
   warn "#{huts.size} huts, fetching availability for #{dates.map(&:iso8601).join(', ')}..."
 
   timings = {}

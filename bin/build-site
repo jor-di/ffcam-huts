@@ -64,7 +64,7 @@ def main
   MapData.merge_winter_rooms(huts)
   data = { "dates" => dates.sort, "fetchedAt" => fetched_at, "source" => File.basename(path), "huts" => huts.values,
            "ignKey" => args[:ign_key] }
-  template = File.read(File.join(Couchette::ROOT, "map_template.html"), encoding: "UTF-8")
+  template = File.read(File.join(Couchette::TEMPLATES_DIR, "map.html"), encoding: "UTF-8")
   html = template.gsub("__DATA__") { script_json(data) }
   FileUtils.mkdir_p(File.dirname(args[:output]))
   File.write(args[:output], html)
@@ -78,7 +78,7 @@ def build_about_page(args, map_template, data)
   portals = data["huts"].each_with_object(Hash.new(0)) { |h, acc| acc[h["portal"]] += 1 }
   about = { "total" => data["huts"].size, "portals" => portals.sort.to_h, "fetchedAt" => data["fetchedAt"] }
   favicon = map_template.match(%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"})
-  page = File.read(File.join(Couchette::ROOT, "about_template.html"), encoding: "UTF-8")
+  page = File.read(File.join(Couchette::TEMPLATES_DIR, "a-propos.html"), encoding: "UTF-8")
   page = page.gsub("__FAVICON__") { favicon ? favicon[1] : "" }.gsub("__ABOUT__") { script_json(about) }
   out = File.join(File.dirname(args[:output]), "a-propos", "index.html")
   FileUtils.mkdir_p(File.dirname(out))
@@ -97,7 +97,7 @@ def build_log_page(args, map_template)
   data = { "last_run" => log["last_run"], "runs" => log.fetch("runs", []), "last_success" => log.fetch("last_success", {}), "huts" => names }
   data["links"] = links if links
   favicon = map_template.match(%r{<link rel="icon" type="image/svg\+xml" href="([^"]+)"})
-  page = File.read(File.join(Couchette::ROOT, "log_template.html"), encoding: "UTF-8")
+  page = File.read(File.join(Couchette::TEMPLATES_DIR, "releves.html"), encoding: "UTF-8")
   page = page.gsub("__FAVICON__") { favicon ? favicon[1] : "" }
   page = page.gsub("__LOG__") { script_json(data) }
   out = args[:log_output] || File.join(File.dirname(args[:output]), "releves", "index.html")

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Refresh huts.json with the current list of FFCAM huts (ids, names, types...).
+# Refresh catalog/huts.json with the current list of FFCAM huts (ids, names, types...).
 #
 # Also finds each hut's own FFCAM website (https://<name>.ffcam.fr/): <name> is usually the
 # part before @ of the hut's email; "Non Gardé" winter rooms share their guarded hut's site.

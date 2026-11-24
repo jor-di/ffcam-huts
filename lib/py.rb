@@ -2,8 +2,8 @@
 #
 # The project was first written in Python. Its files are still read and diffed as text: the
 # availability history and fetch log on the `data` branch (history/: availability_*.csv,
-# state.json, fetch_log.json, one git commit per run), and huts.json, hut_coordinates.json,
-# hut_links.json in the repository. Writing them exactly as before (same number formatting,
+# state.json, fetch_log.json, one git commit per run), and catalog/huts.json, catalog/hut_coordinates.json,
+# catalog/hut_links.json in the repository. Writing them exactly as before (same number formatting,
 # JSON spacing and escapes, CSV quoting, rounding) keeps git diffs limited to real changes
 # and lets tests/check.sh compare outputs byte for byte with tests/golden/. Ruby's own
 # JSON / CSV / Float#to_s / Float#round differ in small ways (1.0e+16 vs 1e+16, rounding of

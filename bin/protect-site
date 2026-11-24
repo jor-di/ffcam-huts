@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # Lock the published pages behind a first name + password: every HTML file of a folder is
-# replaced by a login page (login_template.html) that holds it encrypted, and decrypts it in
+# replaced by a login page (templates/login.html) that holds it encrypted, and decrypts it in
 # the browser (WebCrypto). GitHub Pages only serves static files: this is the access control.
 #
 # Usage:
@@ -27,7 +27,7 @@ require_relative "../lib/couchette"
 module SiteLock
   ITERATIONS = 600_000
   SALT_PREFIX = "dernierecouchette:"
-  TEMPLATE = File.join(Couchette::ROOT, "login_template.html")
+  TEMPLATE = File.join(Couchette::TEMPLATES_DIR, "login.html")
 
   module_function
 

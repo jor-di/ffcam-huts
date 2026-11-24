@@ -16,13 +16,13 @@ RUN="bin/%s"
 # data files in the parent of bin/ and lib/, i.e. the work folder.
 CODE="bin lib .ruby-version"
 # Files every scenario starts with (relative to the repo root).
-INPUTS="manual_huts.json coordinates_overrides.json map_template.html log_template.html about_template.html booking_links.json"
+INPUTS="catalog/manual templates"
 # Scenarios: fixed clock, then the scripts in order (a step may carry arguments: "build-site x.csv").
 RUN1_NOW=2026-11-22T18:00:00
 RUN1_STEPS=(refresh-huts refresh-coordinates refresh-links "fetch-availability --history" build-site)
 # run2 starts from run1's golden outputs (hut lists and history/)
 RUN2_NOW=2026-11-23T09:00:00
-RUN2_FROM_RUN1="huts.json hut_coordinates.json hut_links.json history"
+RUN2_FROM_RUN1="catalog/huts.json catalog/hut_coordinates.json catalog/hut_links.json history"
 RUN2_STEPS=("fetch-availability --history" build-site)
 # Files written by the scripts that are not outputs to compare (regex on the relative path).
 IGNORE='(^|/)\.bundle(/|$)'
@@ -56,9 +56,9 @@ run_scenario() {
   local work=$TMP/$name logs=$TMP/$name-stderr golden=$TESTS/golden/$name
   echo "== $name ($impl, COUCHETTE_NOW=$now)"
   mkdir -p "$work" "$logs"
-  (cd "$REPO" && cp -r $CODE $INPUTS "$work/") || { fail "copy of code and inputs"; return; }
+  (cd "$REPO" && cp -r --parents $CODE $INPUTS "$work/") || { fail "copy of code and inputs"; return; }
   if [[ $name == run2 ]]; then
-    for f in $RUN2_FROM_RUN1; do cp -r "$TESTS/golden/run1/$f" "$work/"; done
+    (cd "$TESTS/golden/run1" && cp -r --parents $RUN2_FROM_RUN1 "$work/")
   fi
   local before; before=$(snapshot "$work")
 

@@ -118,7 +118,8 @@ class TestHistory < Minitest::Test
     root = File.join(@dir, "copy")
     FileUtils.mkdir_p(root)
     FileUtils.cp_r([BIN, LIB], root)
-    File.write(File.join(root, "huts.json"), JSON.generate({ "huts" => [
+    FileUtils.mkdir_p(File.join(root, "catalog"))
+    File.write(File.join(root, "catalog", "huts.json"), JSON.generate({ "huts" => [
       { "id" => "MANUAL-x", "portal" => "MANUAL", "name" => "Refuge X", "short_name" => "X", "type" => "refuge", "max_pax_per_booking" => nil },
     ] }))
     _, err, status = Open3.capture3(RbConfig.ruby, File.join(root, "bin", "fetch-availability"), "-o", "out.csv", *args, chdir: root)

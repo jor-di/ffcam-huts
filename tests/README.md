@@ -66,9 +66,9 @@ fixtures/run1/bodies/<id>.gz     corps de la réponse (octets tels que reçus), 
 
 À l'enregistrement de run1, `overpass-api.de` a d'abord répondu 502, puis a réussi au 2e tour : seul le succès est gardé, donc au rejeu le premier serveur répond tout de suite et les deux échecs enregistrés ne servent pas.
 
-**run1** — pipeline complet, `COUCHETTE_NOW=2026-11-22T18:00:00` (un dimanche : nuit de ce soir + week-end suivant), dossier vide au départ sauf `manual_huts.json`, `coordinates_overrides.json` et les deux modèles HTML ; `history/` vide, donc l'historique écrit un état initial complet.
+**run1** — pipeline complet, `COUCHETTE_NOW=2026-11-22T18:00:00` (un dimanche : nuit de ce soir + week-end suivant), dossier vide au départ sauf `catalog/manual/manual_huts.json`, `catalog/manual/coordinates_overrides.json` et les deux modèles HTML ; `history/` vide, donc l'historique écrit un état initial complet.
 
-**run2** — `bin/fetch-availability --history` puis `bin/build-site`, `COUCHETTE_NOW=2026-11-23T09:00:00` (lundi), en partant des sorties de run1 (`huts.json`, `hut_coordinates.json`, `hut_links.json`, `history/`) : l'historique n'ajoute que les changements et oublie les nuits passées, `fetch_log.json` contient 2 relevés.
+**run2** — `bin/fetch-availability --history` puis `bin/build-site`, `COUCHETTE_NOW=2026-11-23T09:00:00` (lundi), en partant des sorties de run1 (`catalog/huts.json`, `catalog/hut_coordinates.json`, `catalog/hut_links.json`, `history/`) : l'historique n'ajoute que les changements et oublie les nuits passées, `fetch_log.json` contient 2 relevés.
 
 ### Erreurs ajoutées à la main dans `fixtures/run2/`
 
@@ -98,7 +98,7 @@ puis fusionner son `index.json` dans celui de chaque scénario (en le réécriva
 
 Pour chaque scénario, dans un dossier temporaire neuf : copie de `bin/`, `lib/`, de `.ruby-version` et des fichiers d'entrée, lancement des scripts dans l'ordre en mode rejeu (`fetch-availability` avec `--history`, qui écrit donc dans le `history/` du dossier temporaire), puis comparaison `diff -u` de **chaque fichier de `golden/<run>/`** (hors `stderr/`) avec le fichier du même nom produit : `PASS` / `FAIL` par fichier, code de sortie non nul à la moindre différence. Un fichier créé ou modifié par les scripts qui n'est pas dans `golden/` est aussi un échec. Fichiers comparés :
 
-- run1 : `huts.json`, `hut_coordinates.json`, `hut_links.json`, `availability_2026-11-27.csv`, `history/state.json`, `history/availability_2026-11.csv`, `history/fetch_log.json`, `map.html`, `releves/index.html` ;
+- run1 : `catalog/huts.json`, `catalog/hut_coordinates.json`, `catalog/hut_links.json`, `availability_2026-11-27.csv`, `history/state.json`, `history/availability_2026-11.csv`, `history/fetch_log.json`, `map.html`, `releves/index.html` ;
 - run2 : `availability_2026-11-27.csv`, les trois fichiers de `history/`, `map.html`, `releves/index.html`.
 
 La sortie d'erreur de chaque script est seulement signalée (`info … same` / `differs`), jamais en échec.
@@ -111,7 +111,7 @@ Les commandes sont en tête du script (`RUN`, `CODE`, `RUN1_STEPS`, `RUN2_STEPS`
 
 ```sh
 W=/tmp/ffcam-rec && rm -rf $W && mkdir -p $W
-cp -r bin lib .ruby-version map_template.html log_template.html manual_huts.json coordinates_overrides.json $W/
+cp -r --parents bin lib .ruby-version templates catalog/manual $W/
 ln -s "$PWD/secrets.env" $W/secrets.env          # pour la clé Skitour (refresh-links)
 cd $W
 export COUCHETTE_RECORD_DIR=$OLDPWD/tests/fixtures/run1 COUCHETTE_NOW=2026-11-22T18:00:00

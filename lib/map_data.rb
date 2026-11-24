@@ -7,7 +7,7 @@ require_relative "couchette"
 module MapData
   module_function
 
-  BOOKING_LINKS_FILE = File.join(Couchette::ROOT, "booking_links.json")
+  BOOKING_LINKS_FILE = File.join(Couchette::MANUAL_DIR, "booking_links.json")
 
   # The hut's FFCAM site; else its OSM website (only FFCAM ones for FFCAM huts: OSM may list other
   # sites). The `hut_url` column of the availability CSV.
@@ -17,7 +17,7 @@ module MapData
     nil
   end
 
-  # Hand-kept card links (booking_links.json): {hut id => {"site", "booking"}}.
+  # Hand-kept card links (catalog/manual/booking_links.json): {hut id => {"site", "booking"}}.
   def load_booking_links(file = BOOKING_LINKS_FILE)
     File.exist?(file) ? JSON.parse(File.read(file, encoding: "UTF-8"))["huts"] : {}
   end
@@ -29,12 +29,12 @@ module MapData
     "https://centrale.ffcam.fr/index.php?structure=#{id}&mode=FORM&_lang=FR&init=1#{origin}"
   end
 
-  # The two links of a hut's card: [site, booking]. booking_links.json first, then:
-  #   site     the hut's own website: `website` (manual_huts.json), else the map URL (FFCAM site,
+  # The two links of a hut's card: [site, booking]. catalog/manual/booking_links.json first, then:
+  #   site     the hut's own website: `website` (catalog/manual/manual_huts.json), else the map URL (FFCAM site,
   #            Open System site, OSM website) unless it is a booking tool (refuge-pro.com).
   #   booking  <name>.ffcam.fr/reservation.html (centrale widget with the hut already chosen),
   #            reservation-hg.html for a « Non Gardé » winter room (same site as its guarded hut);
-  #            the Refuge Pro calendar / WP Booking System page (huts.json `site`); the Open
+  #            the Refuge Pro calendar / WP Booking System page (catalog/huts.json `site`); the Open
   #            System site (its widget is on the home page); none for huts only bookable by
   #            phone / mail; else the centrale deep link.
   def links(hut, url, overrides = {})

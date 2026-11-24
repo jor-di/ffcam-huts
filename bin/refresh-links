@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Find each hut's page on Camptocamp (C2C) and Skitour, written to hut_links.json.
+# Find each hut's page on Camptocamp (C2C) and Skitour, written to catalog/hut_links.json.
 #
 # Run after bin/refresh-coordinates: huts are matched by position (and name) around
 # their GPS coordinates.
@@ -17,8 +17,8 @@ require "optparse"
 require_relative "../lib/couchette"
 require_relative "../lib/difflib"
 
-COORDS = File.join(Couchette::ROOT, "hut_coordinates.json")
-OUTPUT = File.join(Couchette::ROOT, "hut_links.json")
+COORDS = File.join(Couchette::CATALOG_DIR, "hut_coordinates.json")
+OUTPUT = File.join(Couchette::CATALOG_DIR, "hut_links.json")
 UA = { "User-Agent" => "ffcam-huts-script", "Accept" => "application/json" }.freeze
 C2C_API = "https://api.camptocamp.org/waypoints"
 C2C_PAGE = "https://www.camptocamp.org/waypoints/%<id>s"

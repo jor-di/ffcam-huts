@@ -31,15 +31,15 @@ Deux rythmes : trois scripts « de référence » lancés à la main de temps en
 ```mermaid
 flowchart LR
   subgraph local["De temps en temps, en local (résultats commités sur main)"]
-    huts["bin/refresh-huts<br/>centrale FFCAM (4 portails) + Open System + manual_huts.json<br/>→ huts.json"]
-    coords["bin/refresh-coordinates<br/>OpenStreetMap + corrections<br/>→ hut_coordinates.json"]
-    links["bin/refresh-links<br/>Camptocamp + Skitour<br/>→ hut_links.json"]
+    huts["bin/refresh-huts<br/>centrale FFCAM (4 portails) + Open System + catalog/manual/manual_huts.json<br/>→ catalog/huts.json"]
+    coords["bin/refresh-coordinates<br/>OpenStreetMap + corrections<br/>→ catalog/hut_coordinates.json"]
+    links["bin/refresh-links<br/>Camptocamp + Skitour<br/>→ catalog/hut_links.json"]
     huts --> coords --> links
   end
   subgraph auto["Automatique, GitHub Actions (après tests/unit.sh et tests/check.sh)"]
     avail["bin/fetch-availability --history<br/>1 requête par refuge<br/>→ latest.csv + history/"]
-    build["bin/build-site<br/>map_template.html + données<br/>(« Non Gardé » FFCAM fusionnés : lib/map_data.rb)<br/>→ site/index.html + site/releves/ + site/a-propos/"]
-    protect["bin/protect-site<br/>login_template.html + secret SITE_USERS<br/>→ pages chiffrées"]
+    build["bin/build-site<br/>templates/map.html + données<br/>(« Non Gardé » FFCAM fusionnés : lib/map_data.rb)<br/>→ site/index.html + site/releves/ + site/a-propos/"]
+    protect["bin/protect-site<br/>templates/login.html + secret SITE_USERS<br/>→ pages chiffrées"]
     avail -- CSV --> build --> protect
   end
   huts -- liste des refuges --> avail
@@ -49,21 +49,23 @@ flowchart LR
   protect -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
 ```
 
-Les scripts sont dans `bin/` et s'y lancent directement (`bin/<script>`, ligne `#!/usr/bin/env ruby`) ; le code qu'ils partagent est dans `lib/`. Ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `bin/` et `lib/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `bin/fetch-availability` (`availability_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `lib/couchette.rb` (module `Couchette` : chemins, environnement, ligne de commande ; charge les autres), `lib/http.rb` (toutes les requêtes : politesse, essais, enregistrement / rejeu), `lib/clock.rb` (heure de Paris, `COUCHETTE_NOW`), `lib/sources.rb` (liste des refuges et aiguillage vers la source de chacun), `lib/sources/` (un fichier par système : `ffcam_centrale.rb`, `open_system.rb`, `refuge_pro.rb`, `wpbs.rb`), `lib/weekends.rb` (nuits du week-end affiché), `lib/history.rb` (historique), `lib/fetch_log.rb` (journal des relevés), `lib/map_data.rb` (parties non gardées FFCAM, pour la carte), `lib/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `lib/difflib.rb` (similarité des noms).
+Les scripts sont dans `bin/` et s'y lancent directement (`bin/<script>`, ligne `#!/usr/bin/env ruby`) ; le code qu'ils partagent est dans `lib/`. Ils lisent et écrivent leurs fichiers de données (`catalog/huts.json`, `history/`, `map.html`…) dans le dossier parent de `bin/` et `lib/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `bin/fetch-availability` (`availability_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `lib/couchette.rb` (module `Couchette` : chemins, environnement, ligne de commande ; charge les autres), `lib/http.rb` (toutes les requêtes : politesse, essais, enregistrement / rejeu), `lib/clock.rb` (heure de Paris, `COUCHETTE_NOW`), `lib/sources.rb` (liste des refuges et aiguillage vers la source de chacun), `lib/sources/` (un fichier par système : `ffcam_centrale.rb`, `open_system.rb`, `refuge_pro.rb`, `wpbs.rb`), `lib/weekends.rb` (nuits du week-end affiché), `lib/history.rb` (historique), `lib/fetch_log.rb` (journal des relevés), `lib/map_data.rb` (parties non gardées FFCAM, pour la carte), `lib/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `lib/difflib.rb` (similarité des noms).
+
+Rangement : `bin/` (scripts), `lib/` (code partagé), `catalog/` (listes de refuges produites par les `bin/refresh-*`), `catalog/manual/` (fichiers tenus à la main), `templates/` (pages HTML remplies par `bin/build-site` et `bin/protect-site`), `tests/`, `deploy/`.
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
-| `huts.json` | 154 refuges : id, nom, type, portail, site (dont 28 « Non Gardé » FFCAM, fusionnés sur la carte : 131 marqueurs) | `bin/refresh-huts` | oui (main) |
-| `hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `bin/refresh-coordinates` | oui (main) |
-| `coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
-| `manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) ou `wpbs` (pages du calendrier WordPress) s'ils en ont un | à la main | oui (main) |
-| `hut_links.json` | liens Camptocamp et Skitour | `bin/refresh-links` | oui (main) |
-| `map_template.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
+| `catalog/huts.json` | 154 refuges : id, nom, type, portail, site (dont 28 « Non Gardé » FFCAM, fusionnés sur la carte : 131 marqueurs) | `bin/refresh-huts` | oui (main) |
+| `catalog/hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `bin/refresh-coordinates` | oui (main) |
+| `catalog/manual/coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
+| `catalog/manual/manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) ou `wpbs` (pages du calendrier WordPress) s'ils en ont un | à la main | oui (main) |
+| `catalog/hut_links.json` | liens Camptocamp et Skitour | `bin/refresh-links` | oui (main) |
+| `templates/map.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places + `fetch_log.json` (journal des relevés) | `bin/fetch-availability --history` | oui (branche `data`) |
-| `log_template.html` | page de suivi des relevés | à la main | oui (main) |
-| `booking_links.json` | liens « Site du refuge » / « ⚡ Résa » qu'on ne peut pas deviner (voir [La carte](#la-carte)) | à la main | oui (main) |
-| `about_template.html` | page « À propos » pour le grand public (démarche, lecture de la carte, sources avec le nombre de refuges calculé à chaque build, lien GitHub) | à la main | oui (main) |
-| `login_template.html` | écran de connexion qui enveloppe chaque page publiée (voir [Accès](#accès-prénom--mot-de-passe)) | à la main | oui (main) |
+| `templates/releves.html` | page de suivi des relevés | à la main | oui (main) |
+| `catalog/manual/booking_links.json` | liens « Site du refuge » / « ⚡ Résa » qu'on ne peut pas deviner (voir [La carte](#la-carte)) | à la main | oui (main) |
+| `templates/a-propos.html` | page « À propos » pour le grand public (démarche, lecture de la carte, sources avec le nombre de refuges calculé à chaque build, lien GitHub) | à la main | oui (main) |
+| `templates/login.html` | écran de connexion qui enveloppe chaque page publiée (voir [Accès](#accès-prénom--mot-de-passe)) | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
 | `.ruby-version` | version de Ruby (GitHub Actions, mise / rbenv en local) | à la main | oui (main) |
 | `tests/` | tests unitaires et rejeu hors ligne (voir [Tests](#tests)) | à la main | oui (main) |
@@ -82,7 +84,7 @@ Les places viennent de quatre systèmes de réservation, lus là où les refuges
 | [Refuge Pro](https://refuge-pro.com) | 11 refuges privés (Clarée, Vallée Étroite, Galibier, Maurienne…) : places, capacité, liste d'attente | sans clé | Calendrier « embed » que chaque refuge intègre à son site ; voir [les requêtes](#3-refuge-pro-11-refuges-portal--refugepro). ~1 an de nuits. |
 | WP Booking System | Refuge de la Coire : places par nuit | sans clé | Extension WordPress dont le calendrier est dans la page du site du refuge ; voir [les requêtes](#4-wp-booking-system-refuge-de-la-coire-portal--wpbs). Deux mois (le mois en cours et le suivant). **Pas de capacité.** |
 | OpenStreetMap (Overpass) | GPS, altitude, site web | sans clé | Souvent surchargé : le script essaie 3 serveurs et réessaie (jusqu'à plusieurs minutes). Appariement par site `*.ffcam.fr`, puis par nom, puis corrections manuelles. |
-| Nominatim (OSM) | recherche ponctuelle d'un refuge introuvable | sans clé | Utilisé à la main pour remplir `coordinates_overrides.json`. |
+| Nominatim (OSM) | recherche ponctuelle d'un refuge introuvable | sans clé | Utilisé à la main pour remplir `catalog/manual/coordinates_overrides.json`. |
 | [Camptocamp](https://www.camptocamp.org) | lien fiche refuge | API publique | Recherche dans un rayon de 1,5 km, acceptée si < 400 m ou nom proche. 150/154 trouvés. |
 | [Skitour](https://skitour.fr/api/) | lien fiche refuge | clé perso (gratuite, 1000 req/j) | `GET /api/refuges` avec en-tête `cle`. 125/154 trouvés. Les conditions demandent un lien vers skitour.fr. |
 | IGN Géoplateforme | fonds Plan IGN, traces ski de rando | sans clé | Couche `TRACES.RANDO.HIVERNALE` (rouge, recolorée en bleu en CSS). SCAN 25 = clé privée : code prêt, jamais testé. |
@@ -90,7 +92,7 @@ Les places viennent de quatre systèmes de réservation, lus là où les refuges
 
 ## Récupérer les disponibilités : les requêtes
 
-Quatre systèmes, un appel par refuge et par relevé (par page pour WP Booking System), choisi selon le champ `portal` du refuge dans `huts.json` (code : `Couchette.fetch_availability` dans `lib/sources.rb`, un fichier par système dans `lib/sources/`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Couchette.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
+Quatre systèmes, un appel par refuge et par relevé (par page pour WP Booking System), choisi selon le champ `portal` du refuge dans `catalog/huts.json` (code : `Couchette.fetch_availability` dans `lib/sources.rb`, un fichier par système dans `lib/sources/`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Couchette.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
 
 ### 1. Centrale FFCAM (portails FFCAM, VANOISE, NEOUVIELLE, BOREON)
 
@@ -134,7 +136,7 @@ BK.openingCalendar   = {"2026-11-21": "OPEN", ...}     # OPEN | CLOSE | UNGUARDE
 AllianceReseaux.Widget.Instance("Produit", { idPanier: "AGwCAAA", idIntegration: "1110", ui: "OPRF-92948" })
 ```
 
-Pas d'`OPRF` sur la page = refuge qui réserve via la centrale FFCAM (Arpont, Orgère, Valette) : ignoré ici. L'id stocké dans `huts.json` est `OPRF-92948`.
+Pas d'`OPRF` sur la page = refuge qui réserve via la centrale FFCAM (Arpont, Orgère, Valette) : ignoré ici. L'id stocké dans `catalog/huts.json` est `OPRF-92948`.
 
 **Places d'un refuge** — GET, réponse JSONP (le paramètre `callback` est facultatif) :
 
@@ -159,7 +161,7 @@ Les méthodes de chaque système renvoient le même hash, ce qui permet au reste
 {"free": {"2026-11-21": 24, ...}, "capacity": {"2026-11-21": 24 ou None, ...}, "opening": {"2026-11-21": "OPEN", ...}}
 ```
 
-Pour ajouter un nouveau système : un fichier dans `lib/sources/` (chargé par `lib/couchette.rb`) avec une méthode de `Couchette` qui renvoie ce hash, un `portal` dédié dans `huts.json`, et une branche dans `Couchette.fetch_availability` (`lib/sources.rb`).
+Pour ajouter un nouveau système : un fichier dans `lib/sources/` (chargé par `lib/couchette.rb`) avec une méthode de `Couchette` qui renvoie ce hash, un `portal` dédié dans `catalog/huts.json`, et une branche dans `Couchette.fetch_availability` (`lib/sources.rb`).
 
 ### Mode de réservation d'une nuit (`booking`)
 
@@ -200,8 +202,8 @@ C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1
 
 - `data` couvre **environ un an** (346 nuits), avec capacité, réservé et libre par nuit. Un jour ouvert avec `"unguarded": true` (réservable sans gardien : Ricou jusqu'au 25/12/2026, par exemple) donne `UNGUARDED` au lieu de `OPEN`, places et mode de réservation gardés : « Non gardé » sur la carte, réservable dans le CSV.
 - `booking` : complet + `waitlistEnabled` → `waitlist` ; nuit avant aujourd'hui + `bookingCutoffDays`, ou au-delà de `premiereNuit` tant que `ouvreLe` n'est pas passé → `phone` (places mises à 0) ; sinon `online`.
-- Le slug est l'adresse du calendrier ; il est noté dans `manual_huts.json` (champ `refugepro`). Il n'y a pas de liste publique des refuges Refuge Pro : les 11 slugs ont été trouvés en essayant le nom du refuge (`chardonnet`, `refuge-du-clot-des-vaches`…) ; une page inexistante répond 404.
-- La page donne aussi le téléphone du refuge (`telephoneRefuge`) mais **pas sa position** : position et altitude viennent d'OpenStreetMap (Nominatim), notées dans `manual_huts.json`.
+- Le slug est l'adresse du calendrier ; il est noté dans `catalog/manual/manual_huts.json` (champ `refugepro`). Il n'y a pas de liste publique des refuges Refuge Pro : les 11 slugs ont été trouvés en essayant le nom du refuge (`chardonnet`, `refuge-du-clot-des-vaches`…) ; une page inexistante répond 404.
+- La page donne aussi le téléphone du refuge (`telephoneRefuge`) mais **pas sa position** : position et altitude viennent d'OpenStreetMap (Nominatim), notées dans `catalog/manual/manual_huts.json`.
 - Sur la carte : ce calendrier = bouton « ⚡ Résa » ; le site propre du refuge (champ `website`, quand il existe) = bouton « Site du refuge ».
 - **Pas de vitrine tierce** : ces refuges sont aussi vendus sur refuge.camp (même éditeur), qu'on n'utilise pas ; on lit le calendrier du refuge.
 
@@ -227,21 +229,21 @@ GET https://www.refugedelacoire.fr/reservations-hiver/
 - Pas de capacité (comme Open System) : la carte affiche « N places » sans total.
 - Couverture : les mois présents dans la page seulement (Coire : le mois en cours et le suivant, assez pour les deux week-ends affichés). Les autres mois sont chargés par le site via `admin-ajax.php` : non utilisé.
 - Page sans calendrier `wpbs-container`, ou calendrier sans aucune case datée → erreur (`err` sur `/releves/`, « RuntimeError: no WP Booking System calendar on <url> » / « no day in the WP Booking System calendar of <url> »).
-- Configuration dans `manual_huts.json`, champ `wpbs` : une liste de pages `[{"url": "…", "calendars": [14]}]` (`calendars` facultatif : sinon tous les calendriers de la page) ; un jour présent dans plusieurs calendriers ou pages est pris dans le premier. Une requête par page.
+- Configuration dans `catalog/manual/manual_huts.json`, champ `wpbs` : une liste de pages `[{"url": "…", "calendars": [14]}]` (`calendars` facultatif : sinon tous les calendriers de la page) ; un jour présent dans plusieurs calendriers ou pages est pris dans le premier. Une requête par page.
 - **Été pas encore lu** : la page [réservations été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers (14 et 15, à partir de juin 2027, autres numéros d'états : 70, 74, 76, 80). Il suffira d'ajouter la page à `wpbs` quand on saura comment combiner ses deux calendriers (aujourd'hui : le premier l'emporte, sans addition des places).
 - Sur la carte : la page de réservation = bouton « ⚡ Résa » ; le site du refuge (champ `website`) = « Site du refuge ».
 
 ### 5. Refuges sans réservation en ligne lisible (`portal = MANUAL`)
 
-Nant du Beurre, Selle : ajoutés à la main dans `manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : toutes leurs nuits valent `request`.
+Nant du Beurre, Selle : ajoutés à la main dans `catalog/manual/manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : toutes leurs nuits valent `request`.
 
 ## La carte
 
-Une seule page HTML (`map_template.html` + les données injectées par `bin/build-site`), Leaflet 1.9.4, sans serveur, design « Crêtes » : billets de couchette en papier crème, vert sapin, thème clair uniquement.
+Une seule page HTML (`templates/map.html` + les données injectées par `bin/build-site`), Leaflet 1.9.4, sans serveur, design « Crêtes » : billets de couchette en papier crème, vert sapin, thème clair uniquement.
 
 **Panneau de gauche** (feuille glissante en bas sur téléphone)
 
-- En-tête : logo (lits superposés + étoile), titre, date de mise à jour (lien vers /releves/), lien « à propos » (/a-propos/, page `about_template.html` écrite par `bin/build-site`), ligne de crêtes.
+- En-tête : logo (lits superposés + étoile), titre, date de mise à jour (lien vers /releves/), lien « à propos » (/a-propos/, page `templates/a-propos.html` écrite par `bin/build-site`), ligne de crêtes.
 - Carrousel de nuits en billets : nuit choisie centrée, voisines à moitié visibles, samedi par défaut ; clic, flèches ← →, glissement au doigt.
 - Chiffres clés « Sur la carte » (refuges réservables, places libres) : **limités au cadre de la carte**.
 - Filtres : minimum de places (ne porte que sur les réservables), « Afficher les complets » (interrupteur coché par défaut, agit aussi sur les listes d'attente ; n'apparaît que si, cette nuit, au moins un refuge est complet ou en liste d'attente ; décoché, ils deviennent des points gris comme les fermés et passent en fin de liste ; bulle et fiche disent toujours ce qu'ils sont), types Gardé / Non gardé / Autre (selon la nuit choisie : « Non gardé » = la partie non gardée est affichée cette nuit, ou refuge non gardé seul ; les refuges fermés restent dans « Gardé » ; « Autre » = chalets, centres ; avec icônes ; clic sur un type quand tous sont actifs = ne garder que lui), recherche sans accents (un nom trouve le refuge même fermé ou hors du cadre).
@@ -251,9 +253,9 @@ Une seule page HTML (`map_template.html` + les données injectées par `bin/buil
 
 - Marqueurs en talons de billet (places + pastille vert / orange / rouge, sablier violet pour la liste d'attente, ☎ pour téléphone / mail), fermés = point gris. Les refuges `MANUAL` (téléphone / mail seulement, jamais réservables en ligne) sont aussi un simple point gris sur la carte, mais restent « Sur demande » dans la liste et la fiche. Une nuit `UNGUARDED` de la centrale (refuge ouvert sans gardien) est libellée « Accès libre ».
 - Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons « Site du refuge » et « ⚡ Résa », puis Camptocamp, Skitour. Les deux liens sont calculés par `MapData.links` (`lib/map_data.rb`) :
-  - **Site du refuge** : le vrai site du refuge, champ `website` de `manual_huts.json` (refuges Refuge Pro, Coire, Selle), sinon le site FFCAM (`<nom>.ffcam.fr`), Open System ou OSM. Jamais refuge-pro.com : sans `website`, pas de bouton. Les 11 refuges Refuge Pro ont un `website` (Marches et Chardonnet : leur page sur refugesclareethabor.com ; le Chardonnet a aussi un site en construction, refugechardonnet.wpcomstaging.com, à reprendre quand il aura une vraie adresse).
-  - **⚡ Résa** (vérifié le 23/11/2026) : d'abord `booking_links.json` (fait à la main : 19 refuges dont on ne peut pas deviner la page) ; sinon `<nom>.ffcam.fr/reservation.html` (widget de la centrale, refuge déjà choisi ; 80 sites sur 85 ; Platé, Étang Fourcat, Brèche de Roland, Lavey : page d'information ou fermeture pour travaux) ; pour une partie « Non Gardé », `reservation-hg.html` sur le site de son refuge gardé (widget `mode:'FORM_BOOK_HG'` avec l'id du **gardé**, que la centrale traduit en id de la partie non gardée ; alias `reservation-hors-gardiennage.html`) ; le calendrier Refuge Pro ou la page WP Booking System (`site` de `huts.json`) ; le site Open System (widget sur l'accueil) ; rien pour les refuges `MANUAL` ; en dernier recours le **lien direct de la centrale** `https://centrale.ffcam.fr/index.php?structure=<id>&mode=FORM&_lang=FR&init=1` (+ `&apporigin=VANOISE|NEOUVIELLE|BOREON` hors portail FFCAM ; marche pour tout id, page brute faite pour une iframe). Quand la nuit choisie montre la partie non gardée d'un refuge fusionné, le bouton mène à sa réservation (`winterBooking`).
-  - `booking_links.json` contient : Goûter et Tête Rousse non gardés (`montblanc.ffcam.fr/reservation-hg-vnmb.html`, page commune de la voie normale), Argentière et Leschaux non gardés (leur refuge gardé n'est pas dans la centrale ; `refugeleschaux`, pas `refugedeleschaux`), le site de l'Alpe de Villar d'Arène, le Sancy (pas de `reservation.html` : lien direct), et les fiches des portails Vanoise (refuges-vanoise.com), Néouvielle (visit-neouvielle.com) et Boréon (giteduboreon.com), qui portent le widget avec l'id du refuge (souvent sans le préfixe `BK_STRUCTURE:`).
+  - **Site du refuge** : le vrai site du refuge, champ `website` de `catalog/manual/manual_huts.json` (refuges Refuge Pro, Coire, Selle), sinon le site FFCAM (`<nom>.ffcam.fr`), Open System ou OSM. Jamais refuge-pro.com : sans `website`, pas de bouton. Les 11 refuges Refuge Pro ont un `website` (Marches et Chardonnet : leur page sur refugesclareethabor.com ; le Chardonnet a aussi un site en construction, refugechardonnet.wpcomstaging.com, à reprendre quand il aura une vraie adresse).
+  - **⚡ Résa** (vérifié le 23/11/2026) : d'abord `catalog/manual/booking_links.json` (fait à la main : 19 refuges dont on ne peut pas deviner la page) ; sinon `<nom>.ffcam.fr/reservation.html` (widget de la centrale, refuge déjà choisi ; 80 sites sur 85 ; Platé, Étang Fourcat, Brèche de Roland, Lavey : page d'information ou fermeture pour travaux) ; pour une partie « Non Gardé », `reservation-hg.html` sur le site de son refuge gardé (widget `mode:'FORM_BOOK_HG'` avec l'id du **gardé**, que la centrale traduit en id de la partie non gardée ; alias `reservation-hors-gardiennage.html`) ; le calendrier Refuge Pro ou la page WP Booking System (`site` de `catalog/huts.json`) ; le site Open System (widget sur l'accueil) ; rien pour les refuges `MANUAL` ; en dernier recours le **lien direct de la centrale** `https://centrale.ffcam.fr/index.php?structure=<id>&mode=FORM&_lang=FR&init=1` (+ `&apporigin=VANOISE|NEOUVIELLE|BOREON` hors portail FFCAM ; marche pour tout id, page brute faite pour une iframe). Quand la nuit choisie montre la partie non gardée d'un refuge fusionné, le bouton mène à sa réservation (`winterBooking`).
+  - `catalog/manual/booking_links.json` contient : Goûter et Tête Rousse non gardés (`montblanc.ffcam.fr/reservation-hg-vnmb.html`, page commune de la voie normale), Argentière et Leschaux non gardés (leur refuge gardé n'est pas dans la centrale ; `refugeleschaux`, pas `refugedeleschaux`), le site de l'Alpe de Villar d'Arène, le Sancy (pas de `reservation.html` : lien direct), et les fiches des portails Vanoise (refuges-vanoise.com), Néouvielle (visit-neouvielle.com) et Boréon (giteduboreon.com), qui portent le widget avec l'id du refuge (souvent sans le préfixe `BK_STRUCTURE:`).
 - Fonds : Topo clair Esri (défaut), OpenTopoMap, satellite Esri, Plan IGN, OSM France ; calque « Traces ski de rando (IGN) » ; SCAN 25 si clé IGN.
 - Vue de départ : Alpes, du Léman aux Hautes-Alpes.
 
@@ -263,7 +265,7 @@ Une seule page HTML (`map_template.html` + les données injectées par `bin/buil
 
 **Téléphone** : tout le panneau défile d'un bloc avec un bandeau collant (titre + billets compacts), filtres repliés derrière « Filtres · n actifs », panneau jusqu'à 90 % de l'écran. Testé en simulation seulement, pas au doigt.
 
-**Gardé / non gardé, une propriété de la nuit** : un seul marqueur par bâtiment (`map_template.html`, `night()` ; données préparées par `lib/map_data.rb`). Pour chaque nuit :
+**Gardé / non gardé, une propriété de la nuit** : un seul marqueur par bâtiment (`templates/map.html`, `night()` ; données préparées par `lib/map_data.rb`). Pour chaque nuit :
 
 1. le refuge gardé s'il est ouvert (réservable, sur demande ou complet) ;
 2. sinon sa partie non gardée FFCAM si elle a des places : la centrale vend les « X Non Gardé » sous un id à part ; `MapData.merge_winter_rooms` les range dans leur refuge gardé (même nom après `Couchette.norm`) sous `nights[date].winter`. Sans refuge gardé dans la liste (Goûter, Tête Rousse, Argentière, Leschaux, Platé), la partie non gardée reste un refuge à part ;
@@ -271,17 +273,17 @@ Une seule page HTML (`map_template.html` + les données injectées par `bin/buil
 
 Les nuits du cas 2 sont marquées « Non gardé » (icône à étoile, sous-titre « non gardé ») ; la fiche ajoute alors l'encart « Non gardé : réservation conseillée, lit non garanti. », d'après le [mode d'emploi hors gardiennage](https://www.ffcam.fr/periode-hors-gardiennage.html) de la FFCAM (repris dans un encart de la page « À propos »).
 
-Où se fait la réconciliation : **uniquement à la construction de la carte**. `huts.json`, les relevés (`bin/fetch-availability`), le CSV et l'historique (branche `data`) gardent les deux ids FFCAM comme deux refuges distincts ; `bin/build-site` appelle `MapData.merge_winter_rooms` sur les données du CSV, qui retire l'entrée « Non Gardé » de la liste et range ses nuits dans le refuge gardé (`winter` par nuit, `winterId` sur le refuge) ; la page choisit ensuite nuit par nuit (`night()`). Le rapprochement se fait par le nom (`Couchette.norm` enlève « Non Gardé », « Refuge », les articles…) : si la FFCAM renomme l'un des deux, la paire n'est plus reconnue et les deux réapparaissent comme deux marqueurs (rien ne casse, mais vérifier après un `bin/refresh-huts`).
+Où se fait la réconciliation : **uniquement à la construction de la carte**. `catalog/huts.json`, les relevés (`bin/fetch-availability`), le CSV et l'historique (branche `data`) gardent les deux ids FFCAM comme deux refuges distincts ; `bin/build-site` appelle `MapData.merge_winter_rooms` sur les données du CSV, qui retire l'entrée « Non Gardé » de la liste et range ses nuits dans le refuge gardé (`winter` par nuit, `winterId` sur le refuge) ; la page choisit ensuite nuit par nuit (`night()`). Le rapprochement se fait par le nom (`Couchette.norm` enlève « Non Gardé », « Refuge », les articles…) : si la FFCAM renomme l'un des deux, la paire n'est plus reconnue et les deux réapparaissent comme deux marqueurs (rien ne casse, mais vérifier après un `bin/refresh-huts`).
 
 **Refuges sans capacité connue** (Open System, WP Booking System) : affichés « 25 places » au lieu de « 25 / 32 ».
 
-**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur sablier) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places » ; tous les refuges sont affichés, complets et fermés compris : les fermés, inutiles pour réserver, en petits points gris sous les autres marqueurs et en fin de liste, après les complets.
+**Catégorie « Sur demande »** (violet, affichée par défaut avec les réservables) : nuits FFCAM en liste d'attente (marqueur sablier) ou à réserver par téléphone / mail (`☎`), refuges `MANUAL` de `catalog/manual/manual_huts.json` (`☎`), et nuits WP Booking System réservables sans nombre de places affiché. La fiche donne le téléphone et l'email quand on les connaît. Les chiffres clés comptent « réservables / places » ; tous les refuges sont affichés, complets et fermés compris : les fermés, inutiles pour réserver, en petits points gris sous les autres marqueurs et en fin de liste, après les complets.
 
 ## Suivi des relevés (`/releves/`)
 
 Une page publique, [dernierecouchette.fr/releves/](https://dernierecouchette.fr/releves/) (lien sur la date de mise à jour de la carte), dit si la récupération des places s'est bien passée pour chaque refuge au dernier relevé.
 
-- **Production** : à chaque relevé, `bin/fetch-availability --history` appelle `FetchLog.record` (module `lib/fetch_log.rb`), qui classe chaque refuge et met à jour `history/fetch_log.json` sur la branche `data`. `bin/build-site` génère ensuite la page à partir de `log_template.html`, dans `releves/index.html` à côté de la carte (`site/releves/` en ligne).
+- **Production** : à chaque relevé, `bin/fetch-availability --history` appelle `FetchLog.record` (module `lib/fetch_log.rb`), qui classe chaque refuge et met à jour `history/fetch_log.json` sur la branche `data`. `bin/build-site` génère ensuite la page à partir de `templates/releves.html`, dans `releves/index.html` à côté de la carte (`site/releves/` en ligne).
 - **États** : `ok` (nuits reçues ; une remarque si aucun calendrier d'ouverture n'est publié, normal pour un refuge fermé), `warn` « à vérifier » (réponse sans aucune nuit : souvent un changement de format), `err` (requête en échec : délai, erreur HTTP, page sans données ; le message de l'exception est gardé), `skip` « non relevé » (refuges `MANUAL`).
 - **`fetch_log.json`** : `last_run` (le dernier relevé, une entrée par refuge : état, nuits reçues, durée, message), `runs` (les 48 derniers relevés résumés par source, avec la liste des refuges en problème), `last_success` (dernier relevé réussi par refuge). Le déclencheur vient du champ `source` de `workflow_dispatch` (« cron-job.org »), sinon de `GITHUB_EVENT_NAME` (push, manuel) ou vaut « local ».
 - **Page** : le dernier relevé (durée, nombre de requêtes, déclencheur, résumé), un billet par source (refuges sans erreur / total, 24 derniers relevés en barres, durée cumulée, dernier succès), puis le tableau des refuges filtrable (À traiter, Erreurs, Remarques, Non relevés, Tous) avec recherche.
@@ -365,7 +367,7 @@ Lancé par `.github/workflows/links.yml` (`workflow_dispatch`, même groupe de c
 
 ## Accès (prénom + mot de passe)
 
-Le site est réservé à quelques personnes, chacune avec un prénom et un mot de passe. GitHub Pages ne sert que des fichiers statiques, sans login possible côté serveur : les pages publiées sont donc **chiffrées**, et un écran de connexion (`login_template.html`) les déchiffre dans le navigateur.
+Le site est réservé à quelques personnes, chacune avec un prénom et un mot de passe. GitHub Pages ne sert que des fichiers statiques, sans login possible côté serveur : les pages publiées sont donc **chiffrées**, et un écran de connexion (`templates/login.html`) les déchiffre dans le navigateur.
 
 - **Qui a accès** : secret GitHub `SITE_USERS` (Settings → Secrets and variables → Actions), une ligne `prénom:mot de passe` par personne (lignes vides et `#` ignorées ; le mot de passe peut contenir `:`). Le prénom ne tient compte ni des majuscules ni des accents (« Élodie » = « elodie »).
 - **Ajouter, retirer, changer un mot de passe** : modifier le secret, puis Actions → « Update availability » → Run workflow (ou attendre le prochain relevé). Une personne retirée perd l'accès dès cette publication, même si son navigateur avait retenu la connexion.
@@ -399,10 +401,10 @@ Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie 
 | Tester l'écran de connexion en local | `bin/build-site -o site/index.html && SITE_USERS='test:secret' bin/protect-site site && python3 -m http.server -d site 8000` | ouvrir http://127.0.0.1:8000/ (WebCrypto exige `localhost`/`127.0.0.1` ou HTTPS) |
 | Rafraîchir la liste des refuges (quelques fois par an) | `bin/refresh-huts && bin/refresh-coordinates && bin/refresh-links`, puis commit + push des JSON | Overpass peut prendre plusieurs minutes ; la clé Skitour est lue dans `secrets.env` |
 | Vérifier la fusion gardé / « Non Gardé » (après `bin/refresh-huts`) | `ruby -Ilib -rjson -rmap_data -e 'h=JSON.parse(File.read("huts.json"))["huts"].to_h{\|x\| [x["id"], x.merge("nights"=>{})]}; MapData.merge_winter_rooms(h); puts h.values.select{\|x\| x["type"]=="refuge_non_garde"}.map{\|x\| x["name"]}'` | liste les « Non Gardé » restés seuls ; aujourd'hui 5 (Goûter, Tête Rousse, Argentière, Leschaux, Platé : leur refuge gardé n'est pas dans la centrale) |
-| Un refuge n'a pas de GPS | ajouter une entrée dans `coordinates_overrides.json` (via Nominatim), relancer `bin/refresh-coordinates` | 6 corrections aujourd'hui |
-| Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `bin/refresh-huts && bin/refresh-links` | voir l'annexe |
-| Ajouter un refuge WP Booking System | page du site contenant `wpbs-container` : entrée dans `manual_huts.json` avec `"wpbs": [{"url": "<page>"}]`, id `WPBS-<nom>`, position, site, téléphone, email, puis `bin/refresh-huts && bin/refresh-links` | ajouter aussi sa réponse aux deux scénarios de `tests/fixtures/` (voir [tests/README.md](tests/README.md)) |
-| Ajouter un refuge réservable seulement par téléphone | entrée dans `manual_huts.json` sans `refugepro` ni `wpbs` (position, site, téléphone, email) | |
+| Un refuge n'a pas de GPS | ajouter une entrée dans `catalog/manual/coordinates_overrides.json` (via Nominatim), relancer `bin/refresh-coordinates` | 6 corrections aujourd'hui |
+| Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `catalog/manual/manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `bin/refresh-huts && bin/refresh-links` | voir l'annexe |
+| Ajouter un refuge WP Booking System | page du site contenant `wpbs-container` : entrée dans `catalog/manual/manual_huts.json` avec `"wpbs": [{"url": "<page>"}]`, id `WPBS-<nom>`, position, site, téléphone, email, puis `bin/refresh-huts && bin/refresh-links` | ajouter aussi sa réponse aux deux scénarios de `tests/fixtures/` (voir [tests/README.md](tests/README.md)) |
+| Ajouter un refuge réservable seulement par téléphone | entrée dans `catalog/manual/manual_huts.json` sans `refugepro` ni `wpbs` (position, site, téléphone, email) | |
 | Ajouter un portail de la centrale | `bin/refresh-huts --portals FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM ENTREPYRPYRENEES` | ou modifier `Couchette::DEFAULT_PORTALS` dans `lib/couchette.rb` |
 | Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec `--history` |
 | Tester une autre date | `bin/fetch-availability --date 2027-02-20 --nights 2` | |
@@ -425,7 +427,7 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 
 | Sujet | Ce qui manque | Pour le régler |
 | --- | --- | --- |
-| Refuge de la Coire : saison d’été | Seule la [page d’hiver](https://www.refugedelacoire.fr/reservations-hiver/) est lue. La [page d’été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers WP Booking System (14 et 15, à partir de juin 2027) dont on ne sait pas encore à quoi chacun correspond (dortoir / bivouac ?). Aujourd’hui, si une page a plusieurs calendriers, un jour est pris dans le premier, sans additionner les places. | Décider comment combiner les deux calendriers (n’en garder qu’un avec `calendars`, ou additionner les places, ce qui demande une petite évolution de `Couchette.fetch_wpbs_availability`), puis ajouter `{"url": "https://www.refugedelacoire.fr/reservations-ete/"}` à la liste `wpbs` de la Coire dans `manual_huts.json`. À faire au printemps, avant l’ouverture des réservations d’été. |
+| Refuge de la Coire : saison d’été | Seule la [page d’hiver](https://www.refugedelacoire.fr/reservations-hiver/) est lue. La [page d’été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers WP Booking System (14 et 15, à partir de juin 2027) dont on ne sait pas encore à quoi chacun correspond (dortoir / bivouac ?). Aujourd’hui, si une page a plusieurs calendriers, un jour est pris dans le premier, sans additionner les places. | Décider comment combiner les deux calendriers (n’en garder qu’un avec `calendars`, ou additionner les places, ce qui demande une petite évolution de `Couchette.fetch_wpbs_availability`), puis ajouter `{"url": "https://www.refugedelacoire.fr/reservations-ete/"}` à la liste `wpbs` de la Coire dans `catalog/manual/manual_huts.json`. À faire au printemps, avant l’ouverture des réservations d’été. |
 
 ## Pièges connus et décisions
 
@@ -451,7 +453,7 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 
 ## Annexe : source de chaque refuge
 
-Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `bin/refresh-huts` (liste des refuges) puis `bin/fetch-availability` (places), qui appellent les méthodes du module `Couchette` indiquées (`lib/sources.rb` et `lib/sources/`).
+Chaque refuge de `catalog/huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `bin/refresh-huts` (liste des refuges) puis `bin/fetch-availability` (places), qui appellent les méthodes du module `Couchette` indiquées (`lib/sources.rb` et `lib/sources/`).
 
 | `portal` | Refuges | Liste des refuges (`bin/refresh-huts` → `Couchette.fetch_huts`) | Places (dans `bin/fetch-availability`) | Identifiant |
 | --- | --- | --- | --- | --- |
@@ -460,13 +462,13 @@ Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et
 | `NEOUVIELLE` | 3 | idem, `apporigin=NEOUVIELLE` | idem | `BK_STRUCTURE:<n>` |
 | `BOREON` | 1 | idem, `apporigin=BOREON` | idem | `BK_STRUCTURE:<n>` |
 | `OPENSYSTEM` | 12 | `Couchette.fetch_opensystem_huts` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site | `Couchette.fetch_opensystem_availability` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
-| `REFUGEPRO` | 11 | `manual_huts.json` (entrées avec `refugepro`) | `Couchette.fetch_refugepro_availability` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
-| `WPBS` | 1 | `manual_huts.json` (entrées avec `wpbs`) | `Couchette.fetch_wpbs_availability` : calendrier WP Booking System de la page du site (`Couchette.parse_wpbs`) | `WPBS-<nom>` |
-| `MANUAL` | 2 | `manual_huts.json` (entrées sans `refugepro` ni `wpbs`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
+| `REFUGEPRO` | 11 | `catalog/manual/manual_huts.json` (entrées avec `refugepro`) | `Couchette.fetch_refugepro_availability` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
+| `WPBS` | 1 | `catalog/manual/manual_huts.json` (entrées avec `wpbs`) | `Couchette.fetch_wpbs_availability` : calendrier WP Booking System de la page du site (`Couchette.parse_wpbs`) | `WPBS-<nom>` |
+| `MANUAL` | 2 | `catalog/manual/manual_huts.json` (entrées sans `refugepro` ni `wpbs`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
 
-Coordonnées : `bin/refresh-coordinates` (OpenStreetMap, ou position donnée dans `manual_huts.json`, ou `coordinates_overrides.json`). Liens : `bin/refresh-links` (Camptocamp, Skitour).
+Coordonnées : `bin/refresh-coordinates` (OpenStreetMap, ou position donnée dans `catalog/manual/manual_huts.json`, ou `catalog/manual/coordinates_overrides.json`). Liens : `bin/refresh-links` (Camptocamp, Skitour).
 
-Les 115 refuges du portail FFCAM sont listés dans `huts.json` (nom, id, site `*.ffcam.fr`) et ne sont pas répétés ici. Tous les autres :
+Les 115 refuges du portail FFCAM sont listés dans `catalog/huts.json` (nom, id, site `*.ffcam.fr`) et ne sont pas répétés ici. Tous les autres :
 
 ### Portail VANOISE de la centrale FFCAM (Parc national de la Vanoise)
 
@@ -508,7 +510,7 @@ Les 115 refuges du portail FFCAM sont listés dans `huts.json` (nom, id, site `*
 | Refuge du Col du Palet | `OPRF-93148` |
 | Refuge du Fond des Fours | `OPRF-93147` |
 
-### Refuge Pro (ajoutés dans `manual_huts.json`)
+### Refuge Pro (ajoutés dans `catalog/manual/manual_huts.json`)
 
 | Refuge | Calendrier |
 | --- | --- |
@@ -524,13 +526,13 @@ Les 115 refuges du portail FFCAM sont listés dans `huts.json` (nom, id, site `*
 | Refuge du Galibier | [`galibier`](https://refuge-pro.com/embed/calendrier/galibier) |
 | Rifugio Guido Rey | [`rifugio-guido-rey`](https://refuge-pro.com/embed/calendrier/rifugio-guido-rey) |
 
-### WP Booking System (ajoutés dans `manual_huts.json`)
+### WP Booking System (ajoutés dans `catalog/manual/manual_huts.json`)
 
 | Refuge | Identifiant | Calendrier |
 | --- | --- | --- |
 | Refuge de la Coire | `WPBS-coire` | [réservations hiver](https://www.refugedelacoire.fr/reservations-hiver/) (calendrier 12) ; été pas encore lu |
 
-### Sans réservation en ligne lisible (ajoutés dans `manual_huts.json`)
+### Sans réservation en ligne lisible (ajoutés dans `catalog/manual/manual_huts.json`)
 
 | Refuge | Comment réserver |
 | --- | --- |
