@@ -83,18 +83,18 @@ async function unlock(id, kek) {
   return new TextDecoder().decode(page);
 }
 
-// « Se déconnecter »: next to « màj » on the map, next to « Retour à la carte » on /releves/
+// « Se déconnecter »: only on /a-propos/, next to its « Retour à la carte » (a.back[data-logout]);
+// the map and /releves/ have none
 const LOGOUT = `(() => {
+  const back = document.querySelector('a.back[data-logout]');
+  if (!back) return;
   const out = async e => { e.preventDefault(); e.stopPropagation();
     for (const s of [localStorage, sessionStorage]) try { s.removeItem('${STORE}'); } catch (_) {}
     // no automatic sign-in with the account saved in Chrome until the next manual login
     try { await navigator.credentials?.preventSilentAccess?.(); } catch (_) {}
     location.reload(); };
   const a = Object.assign(document.createElement('a'), { href:'#', textContent:'déconnexion', title:'Se déconnecter', onclick:out });
-  const meta = document.getElementById('meta'), back = document.querySelector('a.back');
-  if (meta) meta.append(' · ', a);
-  else if (back) { a.className = 'back'; a.style.marginLeft = '8px'; back.after(a); }
-  else { a.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px sans-serif'; document.body.append(a); }
+  a.className = 'back'; a.style.marginLeft = '8px'; back.after(a);
 })();`;
 
 // Put the decrypted page in place of this one (same URL, so relative links and storage still

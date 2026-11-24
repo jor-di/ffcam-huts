@@ -128,7 +128,7 @@ function linksHtml() {
   if (!L) return '';
   const c = L.counts, KIND = { site:'Site du refuge', booking:'⚡ Résa' };
   const pill = c.err ? `<span class="pill err">${c.err} cassé${c.err > 1 ? 's' : ''}${c.warn ? ` · ${c.warn} à vérifier` : ''}</span>`
-    : c.warn ? `<span class="pill warn">${c.warn} à vérifier</span>` : '<span class="pill ok">Tous les liens répondent</span>';
+    : c.warn ? `<span class="pill warn">${c.warn} à vérifier</span>` : `<span class="pill ok">✓ ${L.checked}/${L.checked} liens</span>`;
   const rows = L.problems.slice().sort((a, b) => (a.state === 'err' ? 0 : 1) - (b.state === 'err' ? 0 : 1) || a.name.localeCompare(b.name, 'fr'))
     .map(r => `<tr class="${r.state === 'err' ? 'e' : 'w'}"><td><span class="pill ${r.state}">${r.state === 'err' ? 'Cassé' : 'À vérifier'}</span></td>
       <td><b>${esc(r.name)}</b></td><td class="src-c">${KIND[r.kind]}</td><td class="msg"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a></td><td class="msg">${esc(r.msg)}</td></tr>`).join('');
@@ -143,8 +143,9 @@ if (!LOG.last_run) {
   const run = LOG.last_run, runs = LOG.runs || [];
   document.getElementById('sub').textContent = `${run.huts.length} refuges · ${Object.keys(run.sources).length} sources de données`;
   const errs = run.huts.filter(h => h.state === 'err').length, warns = run.huts.filter(h => h.state === 'warn').length;
+  const fetched = run.huts.filter(h => h.state !== 'skip').length; // huts booked offline are not fetched
   const pill = errs ? `<span class="pill err">${errs} erreur${errs > 1 ? 's' : ''}${warns ? ` · ${warns} à vérifier` : ''}</span>`
-    : warns ? `<span class="pill warn">${warns} à vérifier</span>` : `<span class="pill ok">Tout est bon</span>`;
+    : warns ? `<span class="pill warn">${warns} à vérifier</span>` : `<span class="pill ok">✓ ${fetched}/${fetched} relevés</span>`;
 
   // per source: 24 last runs (oldest left), last run without error
   const spark = key => runs.slice(0, 24).reverse().map(r => {
