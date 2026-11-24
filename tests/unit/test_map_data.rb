@@ -20,6 +20,20 @@ class TestMapData < Minitest::Test
     assert_equal({ "opening" => "CLOSE", "winter" => { "opening" => "OPEN", "free" => 20 } }, huts["G"]["nights"]["d1"])
   end
 
+  def test_drop_unguarded_capacity
+    huts = [
+      hut("W", "Refuge de la Pra Non Gardé", "refuge_non_garde", { "d1" => { "opening" => "OPEN", "free" => 8, "capacity" => 8 } }),
+      hut("G", "Refuge de la Pra  (FFCAM)", "refuge", { "d1" => { "opening" => "OPEN", "free" => 8, "capacity" => 23 } }),
+      hut("C", "Refuge de la Coire", "refuge_non_garde", { "d1" => { "opening" => "OPEN", "free" => 8, "capacity" => 12 } }),
+    ].to_h
+    huts["W"]["portal"] = huts["G"]["portal"] = "FFCAM"
+    huts["C"]["portal"] = "WPBS"
+    MapData.drop_unguarded_capacity(huts)
+    assert_nil huts["W"]["nights"]["d1"]["capacity"] # centrale « Non Gardé »: total = free beds, meaningless
+    assert_equal 23, huts["G"]["nights"]["d1"]["capacity"]
+    assert_equal 12, huts["C"]["nights"]["d1"]["capacity"] # other systems keep theirs
+  end
+
   def test_links
     ffcam = "https://refugeduglacierblanc.ffcam.fr/"
     assert_equal [ffcam, ffcam + "reservation.html"], MapData.links({ "portal" => "FFCAM", "site" => ffcam }, ffcam)

@@ -421,7 +421,7 @@ function popup(h) {
         ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div></div>
     </div>
     <div class="card-body">${nights}
-      ${CENTRALE.includes(h.portal) && dates.some(d => night(h, d)?.unguarded) ? '<p class="note"><b>Non gardé</b> : réservation conseillée, lit non garanti.</p>' : ''}
+      ${CENTRALE.includes(h.portal) && (h.type === 'refuge_non_garde' || dates.some(d => night(h, d)?.unguarded)) ? '<p class="note"><b>Non gardé</b> : réservation conseillée, lit non garanti.</p>' : ''}
       ${h.phone || h.email ? `<div class="contact">${h.phone ? `<a href="tel:${esc(h.phone.replace(/[^+0-9]/g, ''))}">☎ ${esc(h.phone)}</a>` : ''}
         ${h.email ? `<a href="mailto:${esc(h.email)}">${esc(h.email)}</a>` : ''}</div>` : ''}
       <div class="actions">
@@ -498,9 +498,21 @@ document.getElementById('meta').innerHTML =
 
 function focusHut(h, fly = true) {
   state.active = h.id;
-  if (fly) map.flyTo([h.lat, h.lon], Math.max(map.getZoom(), 12), { duration: .8 });
-  markers.get(h.id)?.openPopup();
-  if (window.innerWidth <= 760) document.getElementById('sheet').classList.add('collapsed');
+  const m = markers.get(h.id);
+  if (fly) {
+    const z = Math.max(map.getZoom(), 12);
+    let target = L.latLng(h.lat, h.lon);
+    // phone: the card opens above the pin, so put the pin low on the screen (just above the
+    // collapsed sheet, 78px) instead of in the middle, leaving the upper part for the card
+    if (isMobile()) {
+      const dy = Math.max(0, map.getSize().y / 2 - 78 - 40);
+      target = map.unproject(map.project(target, z).subtract([0, dy]), z);
+    }
+    map.flyTo(target, z, { duration: .8 });
+    // open once there: opened mid-flight, the card's own auto-pan is lost
+    map.once('moveend', () => m?.openPopup());
+  } else m?.openPopup();
+  if (isMobile()) document.getElementById('sheet').classList.add('collapsed');
   highlight();
 }
 function highlight() {
@@ -537,7 +549,7 @@ function render() {
   visible.sort((a, b) => order[pin(a)] - order[pin(b)]).forEach(r => {
     const { h, n, s } = r, ps = pin(r);
     const m = L.marker([h.lat, h.lon], { icon: icon(h, ps, n), zIndexOffset: order[ps] * 1000, riseOnHover: true, alt: shortName(h) })
-      .bindPopup(() => popup(h), { maxWidth: 320, minWidth: 300, autoPanPaddingTopLeft: [20, 20] })
+      .bindPopup(() => popup(h), { maxWidth: 320, minWidth: 300, autoPanPaddingTopLeft: [20, 20], autoPanPaddingBottomRight: [20, isMobile() ? 90 : 20] })
       .bindTooltip(`<b>${esc(shortName(h))}</b><br>${n?.unguarded ? 'Non gardé · ' : ''}${s === 'closed' ? (OPENING[n?.opening] || STATUS.closed) : s === 'request' ? `Sur demande · ${REQUEST[n.booking]}` : s === 'full' ? `Complet${n.capacity ? ` (${n.capacity} pl.)` : ''}` : `${n.free}${n.capacity != null ? ` / ${n.capacity}` : ''} places`}`,
         { direction: 'top', offset: [0, ps === 'closed' ? -6 : -30] })
       .on('click', () => { state.active = h.id; highlight(); })

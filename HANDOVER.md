@@ -315,7 +315,7 @@ Le site est publié par GitHub Actions sur GitHub Pages, derrière le domaine de
 | Dépôt | `jor-di/ffcam-huts`, public, branche par défaut `main` (obligatoire pour la publication Pages et `workflow_dispatch`) |
 | Déclenchement | cron-job.org appelle `workflow_dispatch` (voir ci-dessous) ; pas de planning GitHub |
 | Tâche | `.github/workflows/update.yml` : lancé par cron-job.org (`workflow_dispatch`), à chaque push sur `main` et via « Run workflow » ; `TZ=Europe/Paris` |
-| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → `rb/check_fetch_alerts.rb` (alerte mail, ne bloque jamais) → `rb/protect_site.rb site` (chiffrement, secret `SITE_USERS`) → déploiement Pages |
+| Étapes | checkout `main` → Ruby (`ruby/setup-ruby@v1`, version de `.ruby-version`) → `tests/unit.sh` + `tests/check.sh` (un échec arrête tout, avant l'historique et Pages) → checkout `data` dans `history/` → `rb/ffcam_availability.rb --history` → `rb/build_map.rb` → commit de `history/` si changement → `rb/check_fetch_alerts.rb` (alerte mail, ne bloque jamais) → `rb/protect_site.rb site` (chiffrement, secret `SITE_USERS`) → envoi du site (`upload-pages-artifact`) ; puis job `deploy` à part : déploiement Pages (dans le même job, `deploy-pages` ne trouvait parfois pas l'artifact tout juste envoyé : actions/deploy-pages#451, deux échecs les 23 et 24/11/2026) |
 | Pages | Settings → Pages → Source = GitHub Actions ; Custom domain = `dernierecouchette.fr` ; « Enforce HTTPS » à cocher une fois le certificat prêt |
 | DNS (OVH) | 4 × A `@` → `185.199.108-111.153`, 4 × AAAA `@` → `2606:50c0:8000-8003::153`, CNAME `www` → `jor-di.github.io.`, TXT `_github-pages-challenge-jor-di` (domaine vérifié) ; NS, MX et SPF d'origine conservés |
 | Compte | GitHub perso `jor-di` ; sur la machine, clé SSH dédiée `~/.ssh/id_ed25519_github_perso` via l'alias `github-perso` ; identité perso automatique sous `~/code/perso/` (`includeIf`) ; le compte pro reste en HTTPS via `gh` |
@@ -332,7 +332,7 @@ Le planning GitHub ne tient pas ses horaires : du 21 au 23/11/2026, un seul pass
 | En-têtes | `Authorization: Bearer <jeton>`, `Accept: application/vnd.github+json`, `X-GitHub-Api-Version: 2026-03-10`, `Content-Type: application/json` |
 | Corps | `{"ref": "main", "inputs": {"source": "cron-job.org"}}` |
 | Horaires | deux tâches, fuseau Europe/Paris : saison `7 0,5-23 * 12,1-4 *` (toutes les heures sauf 1 h–4 h, déc.–avr.) ; hors saison `7 7 * 5-11 *` (7 h 07, de mai à novembre) |
-| Réponse attendue | `204 No Content` (cron-job.org la marque en succès) |
+| Réponse attendue | `204 No Content` (cron-job.org la marque en succès) : GitHub a seulement **accepté** le lancement (≈ 2 s) ; le relevé dure ensuite ~2 min et peut échouer sans que cron-job.org le sache (voir l'onglet Actions, GitHub mail les échecs) |
 
 - Jeton : GitHub → Settings → Developer settings → Fine-grained tokens ; dépôt `jor-di/ffcam-huts` seulement ; permission **Actions : Read and write** ; jeton actuel **sans expiration** (il ne peut que lancer les workflows de ce dépôt) ; s'il fuit ou est révoqué : Regenerate token, puis le recoller dans les deux tâches cron-job.org. Il n'est stocké que chez cron-job.org.
 - Le champ `source` est affiché sur /releves/ (« cron-job.org ») : on distingue ainsi ces passages des pushes et des lancements à la main.

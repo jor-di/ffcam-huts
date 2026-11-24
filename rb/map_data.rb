@@ -51,6 +51,18 @@ module MapData
     [site, booking]
   end
 
+  # The centrale gives no capacity for a « Non Gardé » room: its totalAvailability is the free beds
+  # again (13/13 one night, 8/8 the next once 5 are booked). Drop it, the map then shows « N pl. »
+  # like for Open System huts rather than a false « N / N ».
+  CENTRALE_PORTALS = %w[FFCAM VANOISE NEOUVIELLE BOREON].freeze
+  def drop_unguarded_capacity(huts)
+    huts.each_value do |h|
+      next unless h["type"] == "refuge_non_garde" && CENTRALE_PORTALS.include?(h["portal"])
+      h["nights"].each_value { |n| n["capacity"] = nil }
+    end
+    huts
+  end
+
   # One marker per building: the FFCAM « X Non Gardé » entries (winter room, booked under their own
   # id) are folded into their guarded hut (same Ffcam.norm name): each night of the guarded hut gets
   # a "winter" object, the map shows it when the guarded part is closed. Without a guarded

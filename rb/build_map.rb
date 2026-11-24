@@ -60,6 +60,7 @@ def main
   huts.each_value do |h|
     h["site"], h["booking"] = MapData.links(by_id.fetch(h["id"], {}), h.delete("url"), overrides)
   end
+  MapData.drop_unguarded_capacity(huts)
   MapData.merge_winter_rooms(huts)
   data = { "dates" => dates.sort, "fetchedAt" => fetched_at, "source" => File.basename(path), "huts" => huts.values,
            "ignKey" => args[:ign_key] }
