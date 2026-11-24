@@ -584,9 +584,10 @@ function renderList() {
   }).join('');
   typesEl.querySelectorAll('.tchip').forEach(b => b.onclick = () => toggle(state.types, b.dataset.type, Object.keys(TYPE_CHIPS)));
 
+  // bookable huts first, then on request, full, closed; in each group the closest to Chambéry first (h.km, bin/build-site)
   const gOrder = { bookable:0, request:1, full:2, closed:3 };
   const listed = state.visible.filter(r => state.searching || inView(r)).sort((a, b) => gOrder[GROUP[a.ds]] - gOrder[GROUP[b.ds]]
-    || (b.n?.free || 0) - (a.n?.free || 0) || a.h.name.localeCompare(b.h.name, 'fr'));
+    || a.h.km - b.h.km || a.h.name.localeCompare(b.h.name, 'fr'));
   document.getElementById('listTitle').textContent = state.searching ? 'Recherche' : 'Refuges';
   const hidden = state.visible.length - listed.length;
   const list = document.getElementById('list');

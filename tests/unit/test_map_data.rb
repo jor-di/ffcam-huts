@@ -7,6 +7,11 @@ class TestMapData < Minitest::Test
     [id, { "id" => id, "name" => name, "type" => type, "nights" => nights }]
   end
 
+  def test_km_from_chambery
+    assert_equal 0.0, MapData.km_from_chambery(*MapData::CHAMBERY)
+    assert_in_delta 45, MapData.km_from_chambery(45.1885, 5.7245), 1.5 # Grenoble
+  end
+
   def test_merge_winter_rooms
     huts = [
       hut("G", "Refuge Albert 1er  (FFCAM)", "refuge", { "d1" => { "opening" => "CLOSE" } }),

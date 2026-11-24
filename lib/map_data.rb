@@ -17,6 +17,17 @@ module MapData
     nil
   end
 
+  # Chambéry (station): the usual way into the Alps, the list is sorted by distance from there.
+  CHAMBERY = [45.5708, 5.9198].freeze
+
+  # Straight-line (great-circle) distance in km from Chambéry, to 0.1 km.
+  def km_from_chambery(lat, lon)
+    r = Math::PI / 180
+    lat0, lon0 = CHAMBERY
+    a = Math.sin((lat - lat0) * r / 2)**2 + Math.cos(lat0 * r) * Math.cos(lat * r) * Math.sin((lon - lon0) * r / 2)**2
+    (2 * 6371 * Math.asin(Math.sqrt(a))).round(1)
+  end
+
   # Hand-kept card links (catalog/manual/booking_links.json): {hut id => {"site", "booking"}}.
   def load_booking_links(file = BOOKING_LINKS_FILE)
     File.exist?(file) ? JSON.parse(File.read(file, encoding: "UTF-8"))["huts"] : {}
