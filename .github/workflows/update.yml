@@ -12,7 +12,7 @@ on:
         required: false
         default: "manuel (Actions)"
   push:
-    branches: [main] # rebuild the map after a code/data change
+    branches: [main] # rebuild the site after a code/data change, from the last fetch (no new fetch)
 
 permissions:
   contents: write # push the history to the `data` branch
@@ -51,10 +51,31 @@ jobs:
           ref: data
           path: history
 
+      # A push (code, map, docs) only rebuilds the site from the last fetch, kept in the Actions
+      # cache by every fetch below: online in ~30 s instead of ~3 min, and no extra load on the
+      # booking sites. No cached fetch (none in 7 days, first run): fetch anyway.
+      - name: Last fetch (push only)
+        id: last
+        if: github.event_name == 'push'
+        uses: actions/cache/restore@v6
+        with:
+          path: data/latest.csv
+          key: latest-csv-${{ github.run_id }}
+          restore-keys: latest-csv-
+
       - name: Fetch availability (and record history changes)
+        id: fetch
+        if: steps.last.outputs.cache-matched-key == ''
         run: |
-          mkdir -p data site
+          mkdir -p data
           bin/fetch-availability --history -o data/latest.csv
+
+      - name: Keep this fetch for the next push
+        if: steps.fetch.outcome == 'success'
+        uses: actions/cache/save@v6
+        with:
+          path: data/latest.csv
+          key: latest-csv-${{ github.run_id }}
 
       - name: Build the map
         run: bin/build-site data/latest.csv -o site/index.html
