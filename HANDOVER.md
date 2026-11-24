@@ -49,7 +49,7 @@ flowchart LR
   protect -- déploiement --> pages(["GitHub Pages<br/>dernierecouchette.fr"])
 ```
 
-Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (requêtes, portails, Open System, Refuge Pro, WP Booking System), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/map_data.rb` (parties non gardées FFCAM, pour la carte), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
+Les scripts sont dans `rb/` et s'y lancent directement (`rb/<script>.rb`, ligne `#!/usr/bin/env ruby`) ; ils lisent et écrivent leurs fichiers de données (`huts.json`, `history/`, `map.html`…) dans le dossier parent de `rb/`, la racine du dépôt, quel que soit le dossier courant ; seul le CSV par défaut de `rb/ffcam_availability.rb` (`ffcam_<date>.csv`) va dans le dossier courant : les lancer depuis la racine. Modules partagés : `rb/ffcam.rb` (module `Ffcam` : chemins, environnement, ligne de commande ; charge les autres), `rb/http.rb` (toutes les requêtes : politesse, essais, enregistrement / rejeu), `rb/clock.rb` (heure de Paris, `FFCAM_NOW`), `rb/sources.rb` (liste des refuges et aiguillage vers la source de chacun), `rb/sources/` (un fichier par système : `ffcam_centrale.rb`, `open_system.rb`, `refuge_pro.rb`, `wpbs.rb`), `rb/history.rb` (historique), `rb/fetch_log.rb` (journal des relevés), `rb/map_data.rb` (parties non gardées FFCAM, pour la carte), `rb/py.rb` (formats d'écriture des fichiers, voir [décisions](#pièges-connus-et-décisions)), `rb/difflib.rb` (similarité des noms).
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
@@ -90,7 +90,7 @@ Les places viennent de quatre systèmes de réservation, lus là où les refuges
 
 ## Récupérer les disponibilités : les requêtes
 
-Quatre systèmes, un appel par refuge et par relevé (par page pour WP Booking System), choisi selon le champ `portal` du refuge dans `huts.json` (code : `Ffcam.fetch_availability` dans `rb/ffcam.rb`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Ffcam.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
+Quatre systèmes, un appel par refuge et par relevé (par page pour WP Booking System), choisi selon le champ `portal` du refuge dans `huts.json` (code : `Ffcam.fetch_availability` dans `rb/sources.rb`, un fichier par système dans `rb/sources/`). Aucun ne demande de clé ni de cookie. Les requêtes passent toutes par `Ffcam.polite` : 2 simultanées au plus et 0,3 s entre deux départs par site.
 
 ### 1. Centrale FFCAM (portails FFCAM, VANOISE, NEOUVIELLE, BOREON)
 
@@ -159,7 +159,7 @@ Les méthodes de chaque système renvoient le même hash, ce qui permet au reste
 {"free": {"2026-11-21": 24, ...}, "capacity": {"2026-11-21": 24 ou None, ...}, "opening": {"2026-11-21": "OPEN", ...}}
 ```
 
-Pour ajouter un nouveau système : une méthode de `Ffcam` qui renvoie ce hash, un `portal` dédié dans `huts.json`, et une branche dans `Ffcam.fetch_availability`.
+Pour ajouter un nouveau système : un fichier dans `rb/sources/` (chargé par `rb/ffcam.rb`) avec une méthode de `Ffcam` qui renvoie ce hash, un `portal` dédié dans `huts.json`, et une branche dans `Ffcam.fetch_availability` (`rb/sources.rb`).
 
 ### Mode de réservation d'une nuit (`booking`)
 
@@ -417,7 +417,7 @@ Deux commandes, hors ligne, lancées aussi par GitHub Actions avant chaque relev
 - `tests/unit.sh` : tests unitaires minitest (`tests/unit/`, quelques secondes) : dates des week-ends, formats des fichiers, règles de réservation, lecture du calendrier WP Booking System (page enregistrée réduite, `tests/unit/fixtures/`), historique et journal, chiffrement des pages (`rb/protect_site.rb`), fusion des « Non Gardé » FFCAM et liens des fiches (`rb/map_data.rb`), alertes (`rb/check_fetch_alerts.rb` : 10 relevés de suite ; verdicts de `rb/check_links.rb` ; issue GitHub sans jeton), limiteur de politesse, erreurs HTTP, ligne de commande, et le fait que `rb/ffcam_availability.rb` n'écrit pas `history/` sans `--history`.
 - `tests/check.sh` (ou `tests/check.sh ruby`) : rejoue tout le pipeline (réponses HTTP enregistrées dans `tests/fixtures/`, corps compressés en gzip, horloge fixée par `FFCAM_NOW`) dans un dossier temporaire et compare octet par octet chaque fichier produit (JSON, CSV, `history/`, `map.html`, `releves/index.html`) à `tests/golden/`, les sorties de l'ancienne version Python.
 
-Toutes les requêtes passent par `Ffcam.fetch` (`rb/ffcam.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
+Toutes les requêtes passent par `Ffcam.fetch` (`rb/http.rb`), qui les enregistre (`FFCAM_RECORD_DIR`) ou les rejoue (`FFCAM_REPLAY_DIR`) ; sans ces variables, rien ne change. Format des enregistrements, scénarios, erreurs ajoutées à la main et façon de réenregistrer : [tests/README.md](tests/README.md).
 
 ## En suspens
 
@@ -443,7 +443,7 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 - Pas de base de données : fichiers JSON/CSV versionnés ; une base hébergée seulement si on affiche l'historique de façon interactive.
 - Hébergement GitHub Pages plutôt qu'un VPS (gratuit, sans maintenance) ; dépôt public accepté.
 - Une seule requête par refuge et par relevé (charge FFCAM ~3 000 requêtes/jour en saison) ; pas de 2e requête pour voir plus loin.
-- Politesse envers les sites interrogés (`Ffcam.polite` dans `rb/ffcam.rb`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (152 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
+- Politesse envers les sites interrogés (`Ffcam.polite` dans `rb/http.rb`) : au plus 2 requêtes simultanées et 0,3 s minimum entre deux départs par site, quel que soit le nombre d'ouvriers (`--workers`, 4 par défaut). Un relevé complet prend ~80 s (152 requêtes) ; en cas d'échec, 3 essais espacés de 2 puis 4 s, délai de 30 s par requête.
 - Clés : la clé d'exemple de la doc Skitour et les accès privés IGN n'ont pas été utilisés ; uniquement des clés personnelles.
 - Les noms « FFCAM » / « CAF » sont évités dans le nom du site (marques de la fédération).
 - Réécriture en Ruby (novembre 2026) : le code Python d'origine a été porté script par script dans `rb/`, vérifié en rejouant les mêmes réponses HTTP et en comparant chaque fichier produit octet par octet (`tests/check.sh`), puis supprimé. Toujours sans dépendance (bibliothèque standard seulement).
@@ -451,11 +451,11 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 
 ## Annexe : source de chaque refuge
 
-Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `rb/refresh_huts.rb` (liste des refuges) puis `rb/ffcam_availability.rb` (places), qui appellent les méthodes du module `Ffcam` (`rb/ffcam.rb`) indiquées.
+Chaque refuge de `huts.json` a un champ `portal` qui dit d'où vient sa liste et comment ses places sont relevées. Les deux scripts concernés sont toujours `rb/refresh_huts.rb` (liste des refuges) puis `rb/ffcam_availability.rb` (places), qui appellent les méthodes du module `Ffcam` indiquées (`rb/sources.rb` et `rb/sources/`).
 
-| `portal` | Refuges | Liste des refuges (dans `rb/refresh_huts.rb`) | Places (dans `rb/ffcam_availability.rb`) | Identifiant |
+| `portal` | Refuges | Liste des refuges (`rb/refresh_huts.rb` → `Ffcam.fetch_huts`) | Places (dans `rb/ffcam_availability.rb`) | Identifiant |
 | --- | --- | --- | --- | --- |
-| `FFCAM` | 115 | `Ffcam.fetch_huts` : `structuresList` de la centrale, `apporigin=FFCAM` | `Ffcam.fetch_availability` : POST `action=availability`, calendrier HTML | `BK_STRUCTURE:<n>` |
+| `FFCAM` | 115 | `Ffcam.fetch_centrale_huts` : `structuresList` de la centrale, `apporigin=FFCAM` | `Ffcam.fetch_centrale_availability` : POST `action=availability`, calendrier HTML | `BK_STRUCTURE:<n>` |
 | `VANOISE` | 9 | idem, `apporigin=VANOISE` (refuges absents du portail FFCAM) | idem, `apporigin=VANOISE` | `BK_STRUCTURE:<n>` |
 | `NEOUVIELLE` | 3 | idem, `apporigin=NEOUVIELLE` | idem | `BK_STRUCTURE:<n>` |
 | `BOREON` | 1 | idem, `apporigin=BOREON` | idem | `BK_STRUCTURE:<n>` |

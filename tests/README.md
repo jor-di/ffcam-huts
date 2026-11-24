@@ -30,7 +30,7 @@ Ils couvrent ce que les deux scénarios rejoués ne voient pas : nuits du week-e
 
 ## Variables d'environnement
 
-Lues par `rb/ffcam.rb` ; sans elles, rien ne change en production.
+Lues par `rb/http.rb` et `rb/clock.rb` ; sans elles, rien ne change en production.
 
 | Variable | Effet |
 | --- | --- |

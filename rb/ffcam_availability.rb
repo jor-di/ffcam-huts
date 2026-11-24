@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-# Fetch FFCAM hut availability for the huts listed in huts.json and store it in a CSV.
+# Fetch the availability of every hut of huts.json, whatever its booking system (FFCAM centrale,
+# Open System, Refuge Pro, WP Booking System: see Ffcam.fetch_availability in sources.rb), into a CSV.
 #
 # Run rb/refresh_huts.rb first to create huts.json.
 #
