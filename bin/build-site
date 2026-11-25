@@ -61,6 +61,8 @@ def main
   overrides = MapData.load_booking_links
   huts.each_value do |h|
     h["site"], h["booking"] = MapData.links(by_id.fetch(h["id"], {}), h.delete("url"), overrides)
+    beds = by_id.fetch(h["id"], {}).values_at("beds", "beds_unguarded") # from its FFCAM website (refresh-huts)
+    h["beds"], h["bedsUnguarded"] = beds if beds.any?
   end
   MapData.drop_unguarded_capacity(huts)
   MapData.merge_winter_rooms(huts)

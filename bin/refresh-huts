@@ -2,7 +2,8 @@
 # Refresh catalog/huts.json with the current list of FFCAM huts (ids, names, types...).
 #
 # Also finds each hut's own FFCAM website (https://<name>.ffcam.fr/): <name> is usually the
-# part before @ of the hut's email; "Non Gardé" winter rooms share their guarded hut's site.
+# part before @ of the hut's email; "Non Gardé" winter rooms share their guarded hut's site. Its home
+# page gives the hut's beds, guarded and unguarded ("beds", "beds_unguarded", see Couchette.site_beds).
 #
 # Huts come from several booking portals (default: FFCAM + VANOISE, see Couchette::DEFAULT_PORTALS).
 #
@@ -26,13 +27,17 @@ def main
   huts = Py.sorted(Couchette.fetch_huts(portals)) { |h| h["name"] }
 
   users = huts.map { |h| h["email_user"] }.select { |u| Py.truthy?(u) }.uniq.sort
-  sites = users.zip(Couchette.pool_map(users, 6) { |u| Couchette.hut_site(u) }).to_h
+  sites = users.zip(Couchette.pool_map(users, 6) { |u| Couchette.hut_site_info(u) }).to_h
   huts.each do |h|
-    h["site"] = Py.either(h["site"], sites[h["email_user"]]) # Open System huts already have theirs
+    info = sites[h["email_user"]]
+    h["site"] = Py.either(h["site"], info&.fetch("site")) # Open System huts already have theirs
+    h["beds"], h["beds_unguarded"] = info&.values_at("beds", "beds_unguarded") if info # beds of its FFCAM website
   end
   huts.each do |h| # winter rooms with a generic email: use the guarded hut's site
     next if Py.truthy?(h["site"])
-    h["site"] = huts.find { |o| Py.truthy?(o["site"]) && Couchette.norm(o["name"]) == Couchette.norm(h["name"]) }&.dig("site")
+    twin = huts.find { |o| Py.truthy?(o["site"]) && Couchette.norm(o["name"]) == Couchette.norm(h["name"]) }
+    h["site"] = twin&.dig("site")
+    h["beds"], h["beds_unguarded"] = twin.values_at("beds", "beds_unguarded") if twin&.key?("beds")
   end
   file = Couchette::HUTS_FILE
   old = File.exist?(file) ? JSON.parse(File.read(file, encoding: "UTF-8"))["huts"].map { |h| h["id"] } : []
