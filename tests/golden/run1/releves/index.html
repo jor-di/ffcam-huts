@@ -126,15 +126,15 @@ const app = document.getElementById('app');
 function linksHtml() {
   const L = LOG.links;
   if (!L) return '';
-  const c = L.counts, KIND = { site:'Site du refuge', booking:'Résa' };
+  const c = L.counts, KIND = { site:'Site du refuge', booking:'Résa', page:'Lien de la page' };
   const pill = c.err ? `<span class="pill err">${c.err} cassé${c.err > 1 ? 's' : ''}${c.warn ? ` · ${c.warn} à vérifier` : ''}</span>`
     : c.warn ? `<span class="pill warn">${c.warn} à vérifier</span>` : `<span class="pill ok">✓ ${L.checked}/${L.checked} liens</span>`;
   const rows = L.problems.slice().sort((a, b) => (a.state === 'err' ? 0 : 1) - (b.state === 'err' ? 0 : 1) || a.name.localeCompare(b.name, 'fr'))
     .map(r => `<tr class="${r.state === 'err' ? 'e' : 'w'}"><td><span class="pill ${r.state}">${r.state === 'err' ? 'Cassé' : 'À vérifier'}</span></td>
       <td><b>${esc(r.name)}</b></td><td class="src-c">${KIND[r.kind]}</td><td class="msg"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a></td><td class="msg">${esc(r.msg)}</td></tr>`).join('');
-  return `<div style="display:grid;gap:8px"><div class="label">Liens des fiches</div>
+  return `<div style="display:grid;gap:8px"><div class="label">Liens des fiches et des pages</div>
     <div class="runbar"><div><div class="when">Vérifiés le ${when(L.at)}</div><div class="facts">${L.checked} liens · contrôle hebdomadaire</div></div>${pill}</div>
-    ${rows ? `<div class="tablewrap"><table><thead><tr><th>État</th><th>Refuge</th><th>Lien</th><th>Adresse</th><th>Détail</th></tr></thead><tbody>${rows}</tbody></table></div>` : ''}</div>`;
+    ${rows ? `<div class="tablewrap"><table><thead><tr><th>État</th><th>Refuge / page</th><th>Lien</th><th>Adresse</th><th>Détail</th></tr></thead><tbody>${rows}</tbody></table></div>` : ''}</div>`;
 }
 
 if (!LOG.last_run) {

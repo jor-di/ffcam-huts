@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # Check the links of the huts' cards (« Site du refuge », « Résa » (icône calendrier), see MapData.links): each one
-# must answer, and a booking page of the FFCAM centrale must show this hut. Weekly (workflow
+# must answer, and a booking page of the FFCAM centrale must show this hut. Also the links written in
+# the pages themselves (<a href="https://..."> of templates/*.html: FFCAM guide, GitHub, map credits). Weekly (workflow
 # links.yml, started by cron-job.org) or by hand after bin/refresh-huts. About 250 requests,
 # with the same politeness limits as the availability fetch.
 #
@@ -32,6 +33,20 @@ module LinkCheck
       site, booking = MapData.links(h, MapData.hut_url(h, coords.dig(h["id"], "website")), overrides)
       name = h["name"].gsub("  ", " ").gsub(" (FFCAM)", "")
       [["site", site], ["booking", booking]].select { |_, u| u }.map { |k, u| { "id" => h["id"], "name" => name, "kind" => k, "url" => u } }
+    end
+  end
+
+  TEMPLATES_DIR = File.join(Couchette::ROOT, "templates")
+  PAGES = { "map" => "Carte", "a-propos" => "À propos", "releves" => "Relevés", "login" => "Connexion" }.freeze
+
+  # [{id, name, kind "page", url}]: the external links (<a href="https://...">) of the site's pages.
+  # Only anchors: stylesheets, fonts, tiles and the feedback form's API are not pages people open.
+  def page_targets(dir = TEMPLATES_DIR)
+    Dir[File.join(dir, "*.html")].sort.flat_map do |file|
+      page = File.basename(file, ".html")
+      File.read(file, encoding: "UTF-8").scan(/<a\b[^>]*\bhref="(https?:\/\/[^"$`{}]+)"/).flatten.uniq.map do |url|
+        { "id" => "page:#{page}", "name" => "Page « #{PAGES.fetch(page, page)} »", "kind" => "page", "url" => url }
+      end
     end
   end
 
@@ -76,10 +91,11 @@ module LinkCheck
   end
 
   def issue_body(errors)
-    rows = errors.map { |r| "| #{r['name']} | #{r['kind'] == 'site' ? 'Site du refuge' : 'Résa'} | #{r['url']} | #{r['msg'].gsub('|', '/')} |" }
-    ["#{errors.size} lien#{errors.size > 1 ? 's' : ''} cassé#{errors.size > 1 ? 's' : ''} sur les fiches des refuges.", "",
-     "| Refuge | Lien | URL | Erreur |", "| --- | --- | --- | --- |", *rows, "",
-     "À corriger dans `catalog/manual/booking_links.json` (ou `catalog/manual/manual_huts.json` pour un site). Détail : https://dernierecouchette.fr/releves/"].join("\n")
+    kinds = { "site" => "Site du refuge", "booking" => "Résa", "page" => "Lien de la page" }
+    rows = errors.map { |r| "| #{r['name']} | #{kinds.fetch(r['kind'], r['kind'])} | #{r['url']} | #{r['msg'].gsub('|', '/')} |" }
+    ["#{errors.size} lien#{errors.size > 1 ? 's' : ''} cassé#{errors.size > 1 ? 's' : ''} sur les fiches des refuges ou les pages du site.", "",
+     "| Refuge / page | Lien | URL | Erreur |", "| --- | --- | --- | --- |", *rows, "",
+     "À corriger dans `catalog/manual/booking_links.json` (ou `catalog/manual/manual_huts.json` pour un site), ou dans `templates/` pour un lien de page. Détail : https://dernierecouchette.fr/releves/"].join("\n")
   end
 end
 
@@ -92,7 +108,7 @@ def main
   Couchette.parse_args(parser)
   coords_file = File.join(Couchette::CATALOG_DIR, "hut_coordinates.json")
   coords = File.exist?(coords_file) ? JSON.parse(File.read(coords_file, encoding: "UTF-8")) : {}
-  results = LinkCheck.check(LinkCheck.targets(Couchette.load_huts["huts"], coords))
+  results = LinkCheck.check(LinkCheck.targets(Couchette.load_huts["huts"], coords) + LinkCheck.page_targets)
   sum = LinkCheck.summary(results, Couchette.local_now.strftime("%Y-%m-%dT%H:%M:%S"))
   sum["problems"].each { |r| puts "#{r['state'].ljust(4)} #{r['name']} [#{r['kind']}] #{r['url']} — #{r['msg']}" }
   warn "Links: #{sum['checked']} checked, #{sum['counts']}"

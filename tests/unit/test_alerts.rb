@@ -45,6 +45,22 @@ class TestAlerts < Minitest::Test
                  LinkCheck.targets([hut], {}, {}).map { |r| [r["kind"], r["url"]] }
   end
 
+  def test_page_targets
+    Dir.mktmpdir do |dir|
+      File.write(File.join(dir, "a-propos.html"), <<~HTML)
+        <link href="https://fonts.googleapis.com/css2?family=Inter" rel="stylesheet">
+        <a href="https://www.ffcam.fr/periode-hors-gardiennage.html" target="_blank">mode d'emploi</a>
+        <a class="gh" href="https://github.com/jor-di/ffcam-huts">code</a> <a href="../releves/">relevés</a>
+        <a href="https://www.ffcam.fr/periode-hors-gardiennage.html">encore</a> <a href="${esc(h.site)}">x</a>
+      HTML
+      got = LinkCheck.page_targets(dir)
+      assert_equal %w[https://www.ffcam.fr/periode-hors-gardiennage.html https://github.com/jor-di/ffcam-huts], got.map { |t| t["url"] }
+      assert_equal ["Page « À propos »", "page"], got.first.values_at("name", "kind")
+      assert_equal "ok", LinkCheck.verdict(got.first, "https://www.ffcam.fr/periode-hors-gardiennage.html", "")[0]
+    end
+    assert_includes LinkCheck.page_targets.map { |t| t["url"] }, "https://www.ffcam.fr/periode-hors-gardiennage.html" # the real templates
+  end
+
   def test_issue_sync_without_token_only_prints
     env = %w[GITHUB_TOKEN GITHUB_REPOSITORY].to_h { |k| [k, ENV.delete(k)] }
     out = capture_io { assert_equal :local, GitHubIssues.sync(label: "x", title: "X", body: "problème") }

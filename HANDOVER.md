@@ -349,13 +349,13 @@ Pas de service d'envoi : les alertes sont des **issues GitHub**, et GitHub envoi
 | Issue (étiquette) | Quand | Script, lancé par |
 | --- | --- | --- |
 | « Relevés en erreur » (`releves`) | un refuge en erreur (ou réponse vide) dans chacun des **10 derniers relevés** de `fetch_log.json` (en hiver ~10 h, de mai à novembre ~10 jours) | `bin/check-fetch-alerts`, après chaque relevé (`update.yml`) |
-| « Liens cassés » (`liens`) | un lien « Site du refuge » ou « Résa » (icône calendrier) ne répond pas, ou un sous-domaine `.ffcam.fr` inconnu renvoie vers www.ffcam.fr | `bin/check-links --history`, chaque semaine (`links.yml`) |
+| « Liens cassés » (`liens`) | un lien « Site du refuge » ou « Résa » (icône calendrier), ou un lien écrit dans une page du site, ne répond pas, ou un sous-domaine `.ffcam.fr` inconnu renvoie vers www.ffcam.fr | `bin/check-links --history`, chaque semaine (`links.yml`) |
 
 Un plantage du workflow lui-même (tests en échec, erreur Ruby) est signalé à part par GitHub (« Run failed »), au compte qui a créé le jeton de cron-job.org.
 
 ### Vérification des liens
 
-`bin/check-links` contrôle chaque lien des fiches (~300, ~45 s, mêmes limites de politesse que les relevés) : réponse HTTP 2xx (401 / 403 / 429 = « à vérifier » : certains sites, comme refugesclareethabor.com, refusent les adresses de GitHub Actions alors que la page marche dans un navigateur), et pour une page de réservation FFCAM (`reservation.html`, lien direct de la centrale), présence de l'id du refuge dans la page (sinon « à vérifier » : page sans widget, refuge fermé pour travaux…). Avec `--history`, il écrit `history/links.json` (branche `data` : date, nombre de liens, liens en problème), affiché sur /releves/ (section « Liens des fiches ») au relevé suivant, et tient l'issue « Liens cassés » à jour (seulement les liens cassés, pas les « à vérifier »).
+`bin/check-links` contrôle chaque lien des fiches, plus les liens externes écrits dans les pages (`<a href="https://…">` de `templates/*.html` : mode d'emploi hors gardiennage de la FFCAM, GitHub, crédits des fonds de carte ; pas les feuilles de style, polices, tuiles ni l'API du formulaire de retour) (~300, ~45 s, mêmes limites de politesse que les relevés) : réponse HTTP 2xx (401 / 403 / 429 = « à vérifier » : certains sites, comme refugesclareethabor.com, refusent les adresses de GitHub Actions alors que la page marche dans un navigateur), et pour une page de réservation FFCAM (`reservation.html`, lien direct de la centrale), présence de l'id du refuge dans la page (sinon « à vérifier » : page sans widget, refuge fermé pour travaux…). Avec `--history`, il écrit `history/links.json` (branche `data` : date, nombre de liens, liens en problème), affiché sur /releves/ (section « Liens des fiches et des pages ») au relevé suivant, et tient l'issue « Liens cassés » à jour (seulement les liens cassés, pas les « à vérifier »).
 
 Lancé par `.github/workflows/links.yml` (`workflow_dispatch`, même groupe de concurrence que les relevés : jamais en même temps) depuis une troisième tâche cron-job.org, avec le même jeton :
 
