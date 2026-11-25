@@ -46,8 +46,9 @@ def main
       "id" => r["hut_id"], "name" => r["name"], "type" => r["type"],
       "lat" => Py.float(r["lat"]), "lon" => Py.float(r["lon"]), "ele" => to_int(r["ele"]),
       "km" => MapData.km_from_chambery(Py.float(r["lat"]), Py.float(r["lon"])),
-      "maxPax" => to_int(r["max_pax_per_booking"]), "url" => Py.either(r["hut_url"], nil), "phone" => Py.either(r["phone"], nil),
-      "email" => Py.either(r["email"], nil), "c2c" => Py.either(r["c2c_url"], nil), "skitour" => Py.either(r["skitour_url"], nil),
+      "maxPax" => to_int(r["max_pax_per_booking"]), "url" => Py.either(r["hut_url"], nil),
+      # no phone / email on the map (not a directory: people go to the hut's site); they stay in the CSV
+      "c2c" => Py.either(r["c2c_url"], nil), "skitour" => Py.either(r["skitour_url"], nil),
       "portal" => Py.either(r["portal"], "FFCAM"), "nights" => {},
     }
     hut["nights"][r["date"]] = {

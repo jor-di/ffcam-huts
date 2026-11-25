@@ -189,6 +189,26 @@
     "website": null,
     "match": "override"
   },
+  "OPRF-73092": {
+    "name": "La Loge à Ponard",
+    "lat": 46.49432,
+    "lon": 6.05539,
+    "ele": 1182,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.lalogeaponard.com/contact-et-reservations/",
+    "match": "manual"
+  },
+  "OPRF-38275": {
+    "name": "Refuge Agnel",
+    "lat": 44.69085,
+    "lon": 6.97129,
+    "ele": 2585,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.montourduqueyras.fr/fr/il4-refuge_i38275-refuge-agnel.aspx",
+    "match": "manual"
+  },
   "BK_STRUCTURE:22": {
     "name": "Refuge Albert 1er  (FFCAM)",
     "lat": 45.996754,
@@ -208,6 +228,16 @@
     "osm_name": "Refuge Albert 1er",
     "website": "https://refugealbert1er.ffcam.fr/",
     "match": "name"
+  },
+  "OPRF-48837": {
+    "name": "Refuge Alfred Wills",
+    "lat": 46.00449,
+    "lon": 6.79135,
+    "ele": 1810,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-wills.com/module-reserv/",
+    "match": "manual"
   },
   "RP-refuge-buffere": {
     "name": "Refuge Buffère",
@@ -339,6 +369,16 @@
     "website": null,
     "match": "name"
   },
+  "OPRF-65730": {
+    "name": "Refuge d'En Beys",
+    "lat": 42.62669,
+    "lon": 1.94411,
+    "ele": 1980,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refuge-enbeys.com/fr/le-refuge-mode-d-emploi/reserver.html",
+    "match": "manual"
+  },
   "BK_STRUCTURE:111": {
     "name": "Refuge d'Espingo  (FFCAM)",
     "lat": 42.730519,
@@ -359,6 +399,16 @@
     "website": null,
     "match": "override"
   },
+  "OPRF-38259": {
+    "name": "Refuge de Basse Rua",
+    "lat": 44.62373,
+    "lon": 6.71805,
+    "ele": 1760,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.montourduqueyras.fr/fr/il4-refuge_i38259-refuge-de-basse-rua.aspx",
+    "match": "manual"
+  },
   "BK_STRUCTURE:107": {
     "name": "Refuge de Bayssellance  (FFCAM)",
     "lat": 42.7794,
@@ -368,6 +418,16 @@
     "osm_name": "Refuge de Bayssellance",
     "website": "https://refugebayssellance.ffcam.fr/",
     "match": "website"
+  },
+  "OPRF-128664": {
+    "name": "Refuge de Bostan",
+    "lat": 46.1234,
+    "lon": 6.7792,
+    "ele": 1770,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://prestataire.for-system.com/f128664_fr-.aspx",
+    "match": "manual"
   },
   "BK_STRUCTURE:113": {
     "name": "Refuge de Campana de Cloutou  (FFCAM)",
@@ -428,6 +488,16 @@
     "osm_name": "Refuge de Font-Turbat",
     "website": "https://www.fontturbat.com/",
     "match": "name"
+  },
+  "OPRF-38255": {
+    "name": "Refuge de Furfande",
+    "lat": 44.7277,
+    "lon": 6.71206,
+    "ele": 2291,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.montourduqueyras.fr/fr/il4-refuge_i38255-refuge-de-furfande.aspx",
+    "match": "manual"
   },
   "BK_STRUCTURE:94": {
     "name": "Refuge de Gialorgues  (FFCAM)",
@@ -618,6 +688,16 @@
     "osm_name": "Refuge de Rosuel",
     "website": "https://refuge-rosuel.vanoise.com",
     "match": "name"
+  },
+  "OPRF-102187": {
+    "name": "Refuge de Sant Guillem",
+    "lat": 42.4523,
+    "lon": 2.4955,
+    "ele": 1283,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refugesantguillem.com/contact/",
+    "match": "manual"
   },
   "BK_STRUCTURE:80": {
     "name": "Refuge de Temple Ecrins  (FFCAM)",
@@ -819,6 +899,16 @@
     "website": "https://refuge-orgere.vanoise.com",
     "match": "name"
   },
+  "OPRF-38260": {
+    "name": "Refuge de la Blanche",
+    "lat": 44.66636,
+    "lon": 6.94045,
+    "ele": 2499,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.montourduqueyras.fr/fr/il4-refuge_i38260-refuge-de-la-blanche.aspx",
+    "match": "manual"
+  },
   "BK_STRUCTURE:112": {
     "name": "Refuge de la Brèche de Roland - Les Sarradets (FFCAM)",
     "lat": 42.695912,
@@ -828,6 +918,16 @@
     "osm_name": "Refuge de la Breche de Roland",
     "website": "https://refugebrechederoland.ffcam.fr/",
     "match": "website"
+  },
+  "OPRF-38256": {
+    "name": "Refuge de la Cime",
+    "lat": 44.6441,
+    "lon": 6.80312,
+    "ele": 1822,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.montourduqueyras.fr/fr/il4-refuge_i38256-refuge-de-la-cime.aspx",
+    "match": "manual"
   },
   "WPBS-coire": {
     "name": "Refuge de la Coire",
@@ -878,6 +978,16 @@
     "osm_name": "Refuge de la Fournache",
     "website": null,
     "match": "name"
+  },
+  "OPRF-118005": {
+    "name": "Refuge de la Glière",
+    "lat": 45.43123,
+    "lon": 6.81403,
+    "ele": 2010,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.refugedelagliere.fr/reservations",
+    "match": "manual"
   },
   "BK_STRUCTURE:139": {
     "name": "Refuge de la Glère  (FFCAM)",
@@ -1009,6 +1119,16 @@
     "website": "https://refugedesbesines.ffcam.fr/",
     "match": "website"
   },
+  "OPRF-101222": {
+    "name": "Refuge des Camporells",
+    "lat": 42.62199,
+    "lon": 2.01114,
+    "ele": 2240,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://agrepy-mb-prestataire.for-system.com/f101222_fr-.aspx",
+    "match": "manual"
+  },
   "BK_STRUCTURE:34": {
     "name": "Refuge des Conscrits  (FFCAM)",
     "lat": 45.786956,
@@ -1068,6 +1188,26 @@
     "osm_name": "Refuge des Évettes",
     "website": "https://refugedesevettes.ffcam.fr/",
     "match": "website"
+  },
+  "OPRF-71503": {
+    "name": "Refuge des Fonts",
+    "lat": 46.02108,
+    "lon": 6.81101,
+    "ele": 1368,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.lesfonts.com/",
+    "match": "manual"
+  },
+  "OPRF-38263": {
+    "name": "Refuge des Fonts de Cervières",
+    "lat": 44.84465,
+    "lon": 6.8157,
+    "ele": 2040,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://www.montourduqueyras.fr/fr/il4-refuge_i38263-refuge-des-fonts.aspx",
+    "match": "manual"
   },
   "BK_STRUCTURE:28": {
     "name": "Refuge des Grands Mulets",
@@ -1299,6 +1439,16 @@
     "website": "https://refugeduglacierblanc.ffcam.fr/",
     "match": "website"
   },
+  "OPRF-130844": {
+    "name": "Refuge du Goléon",
+    "lat": 45.08131,
+    "lon": 6.35665,
+    "ele": 2472,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refugedugoleon.com/goleon/?page_id=773",
+    "match": "manual"
+  },
   "BK_STRUCTURE:xxx5wd7n2ct0": {
     "name": "Refuge du Goûter Non Gardé (FFCAM)",
     "lat": 45.851088,
@@ -1328,6 +1478,16 @@
     "osm_name": "Refuge du Grand Bec",
     "website": "https://refugedugrandbec.ffcam.fr/",
     "match": "name"
+  },
+  "OPRF-70785": {
+    "name": "Refuge du Grenairon",
+    "lat": 46.03229,
+    "lon": 6.79831,
+    "ele": 1974,
+    "osm": null,
+    "osm_name": null,
+    "website": "http://grenairon.com/tarifs-et-reservation/",
+    "match": "manual"
   },
   "BK_STRUCTURE:110": {
     "name": "Refuge du Maupas (FFCAM)",
@@ -1409,6 +1569,16 @@
     "website": "https://refugedupelvoux.ffcam.fr/",
     "match": "website"
   },
+  "OPRF-127248": {
+    "name": "Refuge du Pic du Mas de la Grave",
+    "lat": 45.08673,
+    "lon": 6.26012,
+    "ele": 1944,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refugedupicdumasdelagrave.fr/reservations/",
+    "match": "manual"
+  },
   "BK_STRUCTURE:69": {
     "name": "Refuge du Pigeonnier  (FFCAM)",
     "lat": 44.854909,
@@ -1479,6 +1649,16 @@
     "website": "https://refugepredelachaumette.ffcam.fr/",
     "match": "website"
   },
+  "OPRF-135092": {
+    "name": "Refuge du Requin",
+    "lat": 45.88463,
+    "lon": 6.9297,
+    "ele": 2516,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://refugedurequin.fr/reservation/",
+    "match": "manual"
+  },
   "BK_STRUCTURE:5a1njyztnljl": {
     "name": "Refuge du Roc",
     "lat": 45.3278498,
@@ -1488,6 +1668,26 @@
     "osm_name": "Refuge du Roc",
     "website": "https://www.refugeduroc.com/",
     "match": "override"
+  },
+  "OPRF-135180": {
+    "name": "Refuge du Ruitor",
+    "lat": 45.6257,
+    "lon": 6.94118,
+    "ele": 2038,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://ruitor.com/refuge_v2/accueil/accueil.php",
+    "match": "manual"
+  },
+  "OPRF-130670": {
+    "name": "Refuge du Rulhe",
+    "lat": 42.6381,
+    "lon": 1.7259,
+    "ele": 2185,
+    "osm": null,
+    "osm_name": null,
+    "website": "https://rulhe.com/contact/",
+    "match": "manual"
   },
   "BK_STRUCTURE:5a1nww29smum": {
     "name": "Refuge du Saut",

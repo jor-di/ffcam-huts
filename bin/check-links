@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Check the links of the huts' cards (« Site du refuge », « ⚡ Résa », see MapData.links): each one
+# Check the links of the huts' cards (« Site du refuge », « Résa » (icône calendrier), see MapData.links): each one
 # must answer, and a booking page of the FFCAM centrale must show this hut. Weekly (workflow
 # links.yml, started by cron-job.org) or by hand after bin/refresh-huts. About 250 requests,
 # with the same politeness limits as the availability fetch.

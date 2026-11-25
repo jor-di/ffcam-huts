@@ -61,8 +61,8 @@ fixtures/run1/bodies/<id>.gz     corps de la réponse (octets tels que reçus), 
 
 | Scénario | Requêtes enregistrées | Taille |
 | --- | --- | --- |
-| run1 | 401 (399 réponses + 2 échecs Overpass : `overpass.kumi.systems` délai dépassé, `overpass.private.coffee` 504) | 7,8 Mo (45 Mo décompressés) |
-| run2 | 152 (151 réponses dont 1 modifiée à la main, 1 échec ajouté à la main) | 5,9 Mo (36 Mo décompressés) |
+| run1 | 441 (439 réponses + 2 échecs Overpass : `overpass.kumi.systems` délai dépassé, `overpass.private.coffee` 504) | 7,8 Mo (45 Mo décompressés) |
+| run2 | 172 (171 réponses dont 1 modifiée à la main, 1 échec ajouté à la main) | 5,9 Mo (36 Mo décompressés) |
 
 À l'enregistrement de run1, `overpass-api.de` a d'abord répondu 502, puis a réussi au 2e tour : seul le succès est gardé, donc au rejeu le premier serveur répond tout de suite et les deux échecs enregistrés ne servent pas.
 
@@ -84,6 +84,12 @@ Toute nouvelle réception de run2 doit refaire ces deux modifications.
 ### Réponse ajoutée après coup : le calendrier de la Coire
 
 La page `GET https://www.refugedelacoire.fr/reservations-hiver/` (refuge `WPBS-coire`, entrée `c3721d0fc365cc4d11329c0a8e538d0e4a70c065`) a été enregistrée seule le 22/11/2026 au soir, puis copiée telle quelle dans les deux scénarios (même entrée d'index, même corps). Son calendrier montre novembre et décembre 2026 avec le 22/11 comme aujourd'hui : cohérent avec les horloges des deux scénarios (run2, le 23/11, ignore simplement le 22).
+
+### Réponses ajoutées après coup : les refuges Open System hors Vanoise
+
+Le Refuge du Goléon (`OPRF-130844`, Open System, ajouté dans `catalog/manual/manual_huts.json`) a trois réponses enregistrées seules le 24/11/2026 avec `Couchette.get_url` : son planning dans chaque scénario (`q=130844,2026-12-07` pour run1, entrée `95a190482a8e1715d56b2eb0bdb36ea25e15c8ef` ; `q=130844,2026-12-08` pour run2, entrée `1f65644dd685e295992a435d6d744b5e8beee640`) et la recherche Camptocamp autour du refuge pour `bin/refresh-links` (run1, entrée `af2d79220b34228cd7eaa2fd0903e9dbf58bf172`). Le refuge est fermé sur toute la fenêtre.
+
+De la même façon, le 25/11/2026, pour les 19 autres refuges Open System ajoutés à la main (Fonts, Grenairon, Alfred Wills, Requin, Bostan, Ruitor, Glière, Pic du Mas de la Grave, Agnel, Furfande, Fonts de Cervières, la Cime, Basse Rua, la Blanche, Loge à Ponard, Rulhe, En Beys, Camporells, Sant Guillem) : 38 réponses dans run1 (planning `q=<n>,2026-12-07` et recherche Camptocamp de chacun), 19 dans run2 (planning `q=<n>,2026-12-08`). Seule la Glière est ouverte (12 places) ; les autres sont fermés sur la fenêtre.
 
 Pour ajouter ainsi **une seule réponse** sans tout réenregistrer : l'enregistrer dans un dossier vide avec `COUCHETTE_RECORD_DIR` (dans une copie du projet, en appelant directement la méthode concernée), par exemple
 

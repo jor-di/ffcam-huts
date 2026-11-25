@@ -63,6 +63,14 @@
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=758968.2333303691,5673997.777779765,763318.2333303691,5678347.777779765&wtyp=hut,gite,shelter&limit=50"
  },
+ "05697fd9ebcbfa5fdaf3743e03fbf965b25204d6": {
+  "body": null,
+  "file": "bodies/05697fd9ebcbfa5fdaf3743e03fbf965b25204d6.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=118005,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=118005,2026-12-07"
+ },
  "06bc2aa4bc1655a5017295afe66182e9e5db1872": {
   "body": null,
   "file": "bodies/06bc2aa4bc1655a5017295afe66182e9e5db1872.gz",
@@ -78,6 +86,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=272233.33338074264,5239184.053085448,276583.33338074264,5243534.053085448&wtyp=hut,gite,shelter&limit=50"
+ },
+ "08a5d1581a908301ef61617b3e7c2280db9b1349": {
+  "body": null,
+  "file": "bodies/08a5d1581a908301ef61617b3e7c2280db9b1349.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=275622.78923594445,5226799.435400711,279972.78923594445,5231149.435400711&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=275622.78923594445,5226799.435400711,279972.78923594445,5231149.435400711&wtyp=hut,gite,shelter&limit=50"
  },
  "0a03ea4d5e13201246cce2b3e1eb9dbe4d10d4b2": {
   "body": null,
@@ -407,6 +423,14 @@
   "status": 200,
   "url": "https://refuge-pro.com/embed/calendrier/refuge-buffere"
  },
+ "2183740899972cc42a2c7ca45e6f51b42d5074be": {
+  "body": null,
+  "file": "bodies/2183740899972cc42a2c7ca45e6f51b42d5074be.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38275,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38275,2026-12-07"
+ },
  "22bb42c272b9acf571366b01d2cf92c568328865": {
   "body": null,
   "file": "bodies/22bb42c272b9acf571366b01d2cf92c568328865.gz",
@@ -479,6 +503,14 @@
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=761615.9674185185,5756820.887124305,765965.9674185185,5761170.887124305&wtyp=hut,gite,shelter&limit=50"
  },
+ "285e0c51787c014bcf1ef9cd7db7f3c117af5d24": {
+  "body": null,
+  "file": "bodies/285e0c51787c014bcf1ef9cd7db7f3c117af5d24.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=694698.3706077822,5633010.698615433,699048.3706077822,5637360.698615433&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=694698.3706077822,5633010.698615433,699048.3706077822,5637360.698615433&wtyp=hut,gite,shelter&limit=50"
+ },
  "28d7a754aa88aacb89524735e07dd02c6c6ade6d": {
   "body": null,
   "file": "bodies/28d7a754aa88aacb89524735e07dd02c6c6ade6d.gz",
@@ -510,6 +542,22 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=-38816.81226492255,5286393.366012969,-34466.81226492255,5290743.366012969&wtyp=hut,gite,shelter&limit=50"
+ },
+ "2c1c93bc946683d59e1389880dff6ebf63d2654e": {
+  "body": null,
+  "file": "bodies/2c1c93bc946683d59e1389880dff6ebf63d2654e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=769235.6752427667,5759705.331939167,773585.6752427667,5764055.331939167&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=769235.6752427667,5759705.331939167,773585.6752427667,5764055.331939167&wtyp=hut,gite,shelter&limit=50"
+ },
+ "2d633a6a9cf45ce283f0c0ce8739c1065f4903d1": {
+  "body": null,
+  "file": "bodies/2d633a6a9cf45ce283f0c0ce8739c1065f4903d1.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135092,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135092,2026-12-07"
  },
  "2dbac166daac34b29eb2d4cb6dd6a14eaee513c6": {
   "body": null,
@@ -567,6 +615,14 @@
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=762037.7569690755,5645119.571472784,766387.7569690755,5649469.571472784&wtyp=hut,gite,shelter&limit=50"
  },
+ "3309ee931ac063340fafb2816253e22e461419c4": {
+  "body": null,
+  "file": "bodies/3309ee931ac063340fafb2816253e22e461419c4.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38259,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38259,2026-12-07"
+ },
  "33603e972090f76897a572afb3c76f129a75843a": {
   "body": null,
   "file": "bodies/33603e972090f76897a572afb3c76f129a75843a.gz",
@@ -598,6 +654,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://chaletrefuge3fours.ffcam.fr/"
+ },
+ "347f0c1971e51899ccac6f23a1d3609d661af621": {
+  "body": null,
+  "file": "bodies/347f0c1971e51899ccac6f23a1d3609d661af621.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38263,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38263,2026-12-07"
  },
  "3637f4e68d678e94cbb1c1233eace997a4fd907e": {
   "body": null,
@@ -631,6 +695,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "37ecb1204b8806fd7920f4bd636bd8cc5d048bfd": {
+  "body": null,
+  "file": "bodies/37ecb1204b8806fd7920f4bd636bd8cc5d048bfd.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=773865.4528642144,5570807.742335847,778215.4528642144,5575157.742335847&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=773865.4528642144,5570807.742335847,778215.4528642144,5575157.742335847&wtyp=hut,gite,shelter&limit=50"
+ },
  "38075f0d4e7318cff670b4e13837955e186d49e5": {
   "body": null,
   "file": "bodies/38075f0d4e7318cff670b4e13837955e186d49e5.gz",
@@ -654,6 +726,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=692461.0714821304,5769579.172558298,696811.0714821304,5773929.172558298&wtyp=hut,gite,shelter&limit=50"
+ },
+ "38f1ce527fd9fd47f4fe02edf47f4cdfc1ba20aa": {
+  "body": null,
+  "file": "bodies/38f1ce527fd9fd47f4fe02edf47f4cdfc1ba20aa.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=127248,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=127248,2026-12-07"
  },
  "392ebb16542dca9e56ccc45e2c1d4e853ec7c5ea": {
   "body": null,
@@ -855,6 +935,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "447477bad579765996c3277d7cd786b7af15910d": {
+  "body": null,
+  "file": "bodies/447477bad579765996c3277d7cd786b7af15910d.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=756023.1648823521,5781552.94797134,760373.1648823521,5785902.94797134&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=756023.1648823521,5781552.94797134,760373.1648823521,5785902.94797134&wtyp=hut,gite,shelter&limit=50"
+ },
  "46159549f5a1a76c8a5ec3d52bd2bb77e09bb9ea": {
   "body": null,
   "file": "bodies/46159549f5a1a76c8a5ec3d52bd2bb77e09bb9ea.gz",
@@ -886,6 +974,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "46deb9ba41cd5bd2b963c24d728ec543bdf2a72c": {
+  "body": null,
+  "file": "bodies/46deb9ba41cd5bd2b963c24d728ec543bdf2a72c.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=756545.2532941,5594922.873227716,760895.2532941,5599272.873227716&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=756545.2532941,5594922.873227716,760895.2532941,5599272.873227716&wtyp=hut,gite,shelter&limit=50"
  },
  "47811edcda3d3a961f5cca321c2d69e51c9e9909": {
   "body": null,
@@ -1231,6 +1327,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "66f92f36de7345fcaab8daa68e2034bc47f266c1": {
+  "body": null,
+  "file": "bodies/66f92f36de7345fcaab8daa68e2034bc47f266c1.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=73092,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=73092,2026-12-07"
+ },
  "67528a784c4618ebcb6e8423c169f62596ded2de": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A126&productCategory=nomatter&pax=1&date=2026-11-22",
   "file": "bodies/67528a784c4618ebcb6e8423c169f62596ded2de.gz",
@@ -1311,6 +1415,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "6cbd113a6863250f979afd6513902b682bf625dc": {
+  "body": null,
+  "file": "bodies/6cbd113a6863250f979afd6513902b682bf625dc.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=745008.1012698913,5576579.807292772,749358.1012698913,5580929.807292772&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=745008.1012698913,5576579.807292772,749358.1012698913,5580929.807292772&wtyp=hut,gite,shelter&limit=50"
+ },
  "6ce8e3b21c404da2d9bcab9b33b89f43f128b8b8": {
   "body": null,
   "file": "bodies/6ce8e3b21c404da2d9bcab9b33b89f43f128b8b8.gz",
@@ -1334,6 +1446,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refugelacougourde.ffcam.fr/"
+ },
+ "6d6b45c0929049cca1014a8ecb34cd92470a2023": {
+  "body": null,
+  "file": "bodies/6d6b45c0929049cca1014a8ecb34cd92470a2023.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=745674.90501965,5560303.710979219,750024.90501965,5564653.710979219&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=745674.90501965,5560303.710979219,750024.90501965,5564653.710979219&wtyp=hut,gite,shelter&limit=50"
  },
  "6ddf0990a4958ed75472c36db181bf08626b9880": {
   "body": null,
@@ -1479,6 +1599,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "7637e64fcb6c1ce0d2f65d4308d9ca914854de23": {
+  "body": null,
+  "file": "bodies/7637e64fcb6c1ce0d2f65d4308d9ca914854de23.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=65730,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=65730,2026-12-07"
+ },
  "76e5e55894cfeaf8f3ef63ced5d76c4eab1439bd": {
   "body": null,
   "file": "bodies/76e5e55894cfeaf8f3ef63ced5d76c4eab1439bd.gz",
@@ -1486,6 +1614,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refuge-prariond.vanoise.com/"
+ },
+ "771a89842edc376a8b0fe316cefc75585d3135e0": {
+  "body": null,
+  "file": "bodies/771a89842edc376a8b0fe316cefc75585d3135e0.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=70785,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=70785,2026-12-07"
  },
  "786f2c2ca045a6105179b739a93ad5e5eb9bce0b": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A17&productCategory=nomatter&pax=1&date=2026-11-22",
@@ -1534,6 +1670,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "7b4b37999aa3f69c1de119296e986ff75432fa20": {
+  "body": null,
+  "file": "bodies/7b4b37999aa3f69c1de119296e986ff75432fa20.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=671907.9312608478,5857746.317500648,676257.9312608478,5862096.317500648&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=671907.9312608478,5857746.317500648,676257.9312608478,5862096.317500648&wtyp=hut,gite,shelter&limit=50"
  },
  "7b6155a04575a9f62400906f035545ade6e7b399": {
   "body": null,
@@ -1591,6 +1735,14 @@
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=789015.5902811069,5677545.763610997,793365.5902811069,5681895.763610997&wtyp=hut,gite,shelter&limit=50"
  },
+ "80aa8c4e89c75c2492e46839f894164d5bab015b": {
+  "body": null,
+  "file": "bodies/80aa8c4e89c75c2492e46839f894164d5bab015b.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135180,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135180,2026-12-07"
+ },
  "80c48f5040b551a2ab4449121309a493d54cd93a": {
   "body": null,
   "file": "bodies/80c48f5040b551a2ab4449121309a493d54cd93a.gz",
@@ -1598,6 +1750,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refugedespingo.ffcam.fr/"
+ },
+ "810bb646be38f1f0e98abbec2f5385ed8dcb8cce": {
+  "body": null,
+  "file": "bodies/810bb646be38f1f0e98abbec2f5385ed8dcb8cce.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38256,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38256,2026-12-07"
  },
  "812c2569d1ca92e216e00662ff97f2643de03c56": {
   "body": null,
@@ -1638,6 +1798,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=14531.829175928888,5290899.102021645,18881.829175928888,5295249.102021645&wtyp=hut,gite,shelter&limit=50"
+ },
+ "827de12e6e842cd14fcb43e4efff370b274a42be": {
+  "body": null,
+  "file": "bodies/827de12e6e842cd14fcb43e4efff370b274a42be.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=189951.30913336665,5254873.205575007,194301.30913336665,5259223.205575007&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=189951.30913336665,5254873.205575007,194301.30913336665,5259223.205575007&wtyp=hut,gite,shelter&limit=50"
  },
  "82928cfbce13f3138c02a0f6df48bed0d458e98d": {
   "body": null,
@@ -1735,6 +1903,14 @@
   "status": 200,
   "url": "https://refugedelapra.ffcam.fr/"
  },
+ "8df0bfe8089421e550d5e015566d87cbf68fed3d": {
+  "body": null,
+  "file": "bodies/8df0bfe8089421e550d5e015566d87cbf68fed3d.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=48837,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=48837,2026-12-07"
+ },
  "8f62b4bd3be81ee993aa291ec51d96f4c68e626c": {
   "body": null,
   "file": "bodies/8f62b4bd3be81ee993aa291ec51d96f4c68e626c.gz",
@@ -1750,6 +1926,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refugeava.ffcam.fr/"
+ },
+ "904a28299ba356644647a63b2ab46343a3ae9b5d": {
+  "body": null,
+  "file": "bodies/904a28299ba356644647a63b2ab46343a3ae9b5d.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130670,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130670,2026-12-07"
  },
  "90acf693c36e9b991c8e1623338c265b46043187": {
   "body": null,
@@ -1847,6 +2031,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "95a190482a8e1715d56b2eb0bdb36ea25e15c8ef": {
+  "body": null,
+  "file": "bodies/95a190482a8e1715d56b2eb0bdb36ea25e15c8ef.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130844,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130844,2026-12-07"
+ },
  "964b02190c5999a16f6c24ea9d213d00e67e3e2b": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A24&productCategory=nomatter&pax=1&date=2026-11-22",
   "file": "bodies/964b02190c5999a16f6c24ea9d213d00e67e3e2b.gz",
@@ -1902,6 +2094,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "9aa01ecb07908a05c2782a73e060478930e5c4dc": {
+  "body": null,
+  "file": "bodies/9aa01ecb07908a05c2782a73e060478930e5c4dc.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=755144.8541001156,5563490.255738545,759494.8541001156,5567840.255738545&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=755144.8541001156,5563490.255738545,759494.8541001156,5567840.255738545&wtyp=hut,gite,shelter&limit=50"
  },
  "9aab7d020fac5fa3e80330e85fe6b4f155cdc12c": {
   "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3Axxxld3htkpn&productCategory=nomatter&pax=1&date=2026-11-22",
@@ -2143,6 +2343,14 @@
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=69281.87168618178,5264281.201341151,73631.87168618178,5268631.201341151&wtyp=hut,gite,shelter&limit=50"
  },
+ "a931faaaf778d32acb9cb96e933c6c865f9c5d86": {
+  "body": null,
+  "file": "bodies/a931faaaf778d32acb9cb96e933c6c865f9c5d86.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=754609.4073494744,5783350.225339936,758959.4073494744,5787700.225339936&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=754609.4073494744,5783350.225339936,758959.4073494744,5787700.225339936&wtyp=hut,gite,shelter&limit=50"
+ },
  "aa9e25efb25b8bb7a61990287664ba20604cbace": {
   "body": null,
   "file": "bodies/aa9e25efb25b8bb7a61990287664ba20604cbace.gz",
@@ -2224,6 +2432,14 @@
   "method": "POST",
   "url": "https://overpass.kumi.systems/api/interpreter"
  },
+ "af2d79220b34228cd7eaa2fd0903e9dbf58bf172": {
+  "body": null,
+  "file": "bodies/af2d79220b34228cd7eaa2fd0903e9dbf58bf172.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=705444.0410525611,5632156.17653086,709794.0410525611,5636506.17653086&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=705444.0410525611,5632156.17653086,709794.0410525611,5636506.17653086&wtyp=hut,gite,shelter&limit=50"
+ },
  "b029ad3cba1794efb5df625980addedd77b2672d": {
   "body": null,
   "file": "bodies/b029ad3cba1794efb5df625980addedd77b2672d.gz",
@@ -2304,6 +2520,14 @@
   "status": 200,
   "url": "https://refugelalavey.ffcam.fr/"
  },
+ "b51d2af125d107cbeb61956decc3963221fe5e3f": {
+  "body": null,
+  "file": "bodies/b51d2af125d107cbeb61956decc3963221fe5e3f.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=128664,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=128664,2026-12-07"
+ },
  "b59f244cb0df88218bce902bb762f49bd0240645": {
   "body": null,
   "file": "bodies/b59f244cb0df88218bce902bb762f49bd0240645.gz",
@@ -2343,6 +2567,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=674158.3660864113,5850641.120130126,678508.3660864113,5854991.120130126&wtyp=hut,gite,shelter&limit=50"
+ },
+ "b7bf2290112fa9a3e890aea73e23c36592f72a7d": {
+  "body": null,
+  "file": "bodies/b7bf2290112fa9a3e890aea73e23c36592f72a7d.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38255,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38255,2026-12-07"
  },
  "b8b5b0f1a2e5194d01c862c752275b85b2531e87": {
   "body": null,
@@ -2431,6 +2663,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=755326.1935505925,5701295.255812412,759676.1935505925,5705645.255812412&wtyp=hut,gite,shelter&limit=50"
+ },
+ "befa74e158519dcef33fa27f0cdc569661b4d0dd": {
+  "body": null,
+  "file": "bodies/befa74e158519dcef33fa27f0cdc569661b4d0dd.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=756359.349744501,5687492.236203787,760709.349744501,5691842.236203787&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=756359.349744501,5687492.236203787,760709.349744501,5691842.236203787&wtyp=hut,gite,shelter&limit=50"
  },
  "bfbac7437f560ec919cbee193862b40112ded2a1": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A13&productCategory=nomatter&pax=1&date=2026-11-22",
@@ -2584,6 +2824,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "cc4b6901696ecbc0e877e326081e0f7a007a99c7": {
+  "body": null,
+  "file": "bodies/cc4b6901696ecbc0e877e326081e0f7a007a99c7.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38260,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38260,2026-12-07"
+ },
  "cc6ca9e50b2e454a98ec389c8a1fd94c55a8746d": {
   "body": null,
   "file": "bodies/cc6ca9e50b2e454a98ec389c8a1fd94c55a8746d.gz",
@@ -2729,6 +2977,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "d84821f9b278f4b4013b2fc780a40bf4ba2d80b3": {
+  "body": null,
+  "file": "bodies/d84821f9b278f4b4013b2fc780a40bf4ba2d80b3.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=752482.091880711,5797971.255737438,756832.091880711,5802321.255737438&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=752482.091880711,5797971.255737438,756832.091880711,5802321.255737438&wtyp=hut,gite,shelter&limit=50"
+ },
  "d9694351c955b4506bac9c0083a6283a23a5d3d0": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A28&productCategory=nomatter&pax=1&date=2026-11-22",
   "file": "bodies/d9694351c955b4506bac9c0083a6283a23a5d3d0.gz",
@@ -2736,6 +2992,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "da03ff79aa31a2646aa02b526dcb6fa4f7b1ef27": {
+  "body": null,
+  "file": "bodies/da03ff79aa31a2646aa02b526dcb6fa4f7b1ef27.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=101222,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=101222,2026-12-07"
  },
  "dac5c1a115bbd1dd90b4a99f039b04c8ade5865e": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A139&productCategory=nomatter&pax=1&date=2026-11-22",
@@ -2809,6 +3073,14 @@
   "status": 200,
   "url": "https://refugedesmerveilles.ffcam.fr/"
  },
+ "e1ec0d671d85a91ad0cea6aeb9ba42f3b46c452e": {
+  "body": null,
+  "file": "bodies/e1ec0d671d85a91ad0cea6aeb9ba42f3b46c452e.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=221704.08068282,5252435.724898599,226054.08068282,5256785.724898599&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=221704.08068282,5252435.724898599,226054.08068282,5256785.724898599&wtyp=hut,gite,shelter&limit=50"
+ },
  "e2a3487666f9641deeaea65c2380118360e63591": {
   "body": null,
   "file": "bodies/e2a3487666f9641deeaea65c2380118360e63591.gz",
@@ -2824,6 +3096,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refugedugrandbec.ffcam.fr/"
+ },
+ "e3bd9e4b889e75aabd6bcec5306e6fd4290c6134": {
+  "body": null,
+  "file": "bodies/e3bd9e4b889e75aabd6bcec5306e6fd4290c6134.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=102187,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=102187,2026-12-07"
  },
  "e3d7efb68b39c6aac65588de7819283219a95243": {
   "body": null,
@@ -2969,6 +3249,14 @@
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=783013.9112553138,5678436.624303001,787363.9112553138,5682786.624303001&wtyp=hut,gite,shelter&limit=50"
  },
+ "ed2058a94be08f53394d653eb9bc7d1682146758": {
+  "body": null,
+  "file": "bodies/ed2058a94be08f53394d653eb9bc7d1682146758.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=71503,2026-12-07",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=71503,2026-12-07"
+ },
  "ee0bd03599750dd04e73532c9fe6e3421e246c0a": {
   "body": null,
   "file": "bodies/ee0bd03599750dd04e73532c9fe6e3421e246c0a.gz",
@@ -3024,6 +3312,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refuge-vallonbrun.vanoise.com/"
+ },
+ "f02aeebf0f8f3dc5225c80a65309d5b3d3a14db6": {
+  "body": null,
+  "file": "bodies/f02aeebf0f8f3dc5225c80a65309d5b3d3a14db6.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=770432.3597686278,5566973.739001019,774782.3597686278,5571323.739001019&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=770432.3597686278,5566973.739001019,774782.3597686278,5571323.739001019&wtyp=hut,gite,shelter&limit=50"
  },
  "f0ecf19da14366275a09ce0c81e0481f51dde864": {
   "body": null,
@@ -3121,6 +3417,14 @@
   "status": 200,
   "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93151,2026-12-07"
  },
+ "f81cd0064fe9da11a0fd5c9e553e53f44b8ea3c8": {
+  "body": null,
+  "file": "bodies/f81cd0064fe9da11a0fd5c9e553e53f44b8ea3c8.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=770513.6229968955,5718393.933574527,774863.6229968955,5722743.933574527&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=770513.6229968955,5718393.933574527,774863.6229968955,5722743.933574527&wtyp=hut,gite,shelter&limit=50"
+ },
  "f8999780f394f4efd6c62bc3c61d9f1f18e8b911": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5ualjg1ab&productCategory=nomatter&pax=1&date=2026-11-22",
   "file": "bodies/f8999780f394f4efd6c62bc3c61d9f1f18e8b911.gz",
@@ -3136,6 +3440,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "f92a663ea5d0361070a9ca358b28c5a737a9267b": {
+  "body": null,
+  "file": "bodies/f92a663ea5d0361070a9ca358b28c5a737a9267b.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=214242.33521598557,5253146.780715218,218592.33521598557,5257496.780715218&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=214242.33521598557,5253146.780715218,218592.33521598557,5257496.780715218&wtyp=hut,gite,shelter&limit=50"
  },
  "f9c3708da3f17d44d2062871b61b24ff7216db1f": {
   "body": null,
@@ -3208,5 +3520,13 @@
   "method": "GET",
   "status": 200,
   "url": "https://api.camptocamp.org/waypoints?bbox=740649.943205941,5655506.537190509,744999.943205941,5659856.537190509&wtyp=hut,gite,shelter&limit=50"
+ },
+ "ff43f8c3dfc079d15bda406ca7cdb670611cc6ab": {
+  "body": null,
+  "file": "bodies/ff43f8c3dfc079d15bda406ca7cdb670611cc6ab.gz",
+  "final_url": "https://api.camptocamp.org/waypoints?bbox=753834.6236936612,5778893.774295866,758184.6236936612,5783243.774295866&wtyp=hut,gite,shelter&limit=50",
+  "method": "GET",
+  "status": 200,
+  "url": "https://api.camptocamp.org/waypoints?bbox=753834.6236936612,5778893.774295866,758184.6236936612,5783243.774295866&wtyp=hut,gite,shelter&limit=50"
  }
 }

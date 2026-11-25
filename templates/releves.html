@@ -126,7 +126,7 @@ const app = document.getElementById('app');
 function linksHtml() {
   const L = LOG.links;
   if (!L) return '';
-  const c = L.counts, KIND = { site:'Site du refuge', booking:'⚡ Résa' };
+  const c = L.counts, KIND = { site:'Site du refuge', booking:'Résa' };
   const pill = c.err ? `<span class="pill err">${c.err} cassé${c.err > 1 ? 's' : ''}${c.warn ? ` · ${c.warn} à vérifier` : ''}</span>`
     : c.warn ? `<span class="pill warn">${c.warn} à vérifier</span>` : `<span class="pill ok">✓ ${L.checked}/${L.checked} liens</span>`;
   const rows = L.problems.slice().sort((a, b) => (a.state === 'err' ? 0 : 1) - (b.state === 'err' ? 0 : 1) || a.name.localeCompare(b.name, 'fr'))

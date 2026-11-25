@@ -35,18 +35,24 @@ module Couchette
   end
 
   # Open System planning: 30 days from `date` (capacity unknown, so nil).
-  def fetch_opensystem_availability(hut_id, date)
+  # `guarded`: the keeper's seasons [["MM-DD", "MM-DD"], ...] (see guarded_on?) of a hut whose widget also sells its
+  # unguarded nights (Glière: winter room bookable, no keeper): an open night outside it with places
+  # left is UNGUARDED (shown « Non gardé ») with booking "online". nil: every open night is guarded.
+  def fetch_opensystem_availability(hut_id, date, guarded = nil)
     query = date + 15 # the answer covers query-15 .. query+14
     text = get_url(format(OPENSYSTEM_PLANNING, num: hut_id.split("-", 2)[1], date: query.iso8601))
     first, last = text.index("("), text.rindex(")") # callback({json})
     raise "no JSONP payload in the Open System planning of #{hut_id}" unless first && last && first < last
     data = Py.loads(text[(first + 1)...last])
-    out = { "free" => {}, "capacity" => {}, "opening" => {} }
+    out = { "free" => {}, "capacity" => {}, "opening" => {}, "booking" => {} }
     (Py.truthy?(data) ? data[0]["planning"] : []).each do |e|
       day = (query - e["d"]).iso8601
       out["free"][day] = e["s"]
       out["capacity"][day] = nil
       out["opening"][day] = Py.truthy?(e["f"]) ? "CLOSE" : "OPEN"
+      next unless guarded && out["opening"][day] == "OPEN" && Py.truthy?(e["s"]) && !guarded_on?(guarded, day)
+      out["opening"][day] = "UNGUARDED"
+      out["booking"][day] = "online"
     end
     out
   end

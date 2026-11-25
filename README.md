@@ -14,7 +14,7 @@ Carte : https://dernierecouchette.fr/
 | `bin/refresh-links` | liens Camptocamp / Skitour → `catalog/hut_links.json` (clé Skitour dans `secrets.env`) | après `bin/refresh-coordinates` |
 | `bin/fetch-availability` | places libres ; historique (`history/`) seulement avec `--history` | automatique (GitHub Actions) |
 | `bin/build-site` | génère la carte (`templates/map.html` → HTML), la page `/releves/` et la page `/a-propos/` | automatique |
-| `bin/check-links` | vérifie les liens « Site du refuge » / « ⚡ Résa » des fiches ; issue GitHub (mail) si un lien casse | chaque semaine (GitHub Actions) |
+| `bin/check-links` | vérifie les liens « Site du refuge » / « Résa » (icône calendrier) des fiches ; issue GitHub (mail) si un lien casse | chaque semaine (GitHub Actions) |
 | `bin/check-fetch-alerts` | issue GitHub (mail) quand un refuge échoue 10 relevés de suite | après chaque relevé |
 | `bin/protect-site` | chiffre les pages publiées : accès par prénom + mot de passe (secret `SITE_USERS`) | automatique |
 

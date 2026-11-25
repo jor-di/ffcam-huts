@@ -17,6 +17,8 @@ module Couchette
   # MANUAL: huts listed by hand in catalog/manual/manual_huts.json. Those with a "refugepro" slug book through
   # Refuge Pro (the hut's own booking software) and get availability (portal REFUGEPRO); those
   # with "wpbs" pages publish a WP Booking System calendar on their WordPress site (portal WPBS);
+  # those with "opensystem" embed an Open System widget (portal OPENSYSTEM, id OPRF-<product id>),
+  # with optional "guarded" seasons when the widget also sells the unguarded nights (see guarded_on?);
   # the others have no online booking we can read (phone / mail / form).
   MANUAL_HUTS_FILE = File.join(MANUAL_DIR, "manual_huts.json")
 
@@ -44,10 +46,18 @@ module Couchette
     end
   end
 
+  # Is `day` ("YYYY-MM-DD") in one of the keeper's seasons of a hut: [["MM-DD", "MM-DD"], ...], both ends
+  # included; a season may run over the new year (["12-12", "03-28"]). See "guarded" in manual_huts.json.
+  def guarded_on?(seasons, day)
+    md = day[5..]
+    seasons.any? { |from, to| from <= to ? from <= md && md <= to : md >= from || md <= to }
+  end
+
   # Portal of a hut of catalog/manual/manual_huts.json: the calendar it publishes, if any.
   def manual_portal(hut)
     return "REFUGEPRO" if Py.truthy?(hut["refugepro"])
     return "WPBS" if Py.truthy?(hut["wpbs"])
+    return "OPENSYSTEM" if Py.truthy?(hut["opensystem"]) # Open System widget outside the Vanoise park (id OPRF-<n>)
     "MANUAL"
   end
 
@@ -57,13 +67,13 @@ module Couchette
   end
 
   # Free beds / capacity / opening status / booking mode per day, for 2 months from date's month.
-  # `source`: the Refuge Pro slug (REFUGEPRO) or the "wpbs" pages (WPBS) of the hut.
+  # `source`: the Refuge Pro slug (REFUGEPRO), the "wpbs" pages (WPBS), or the "guarded" season (OPENSYSTEM) of the hut.
   def fetch_availability(hut_id, date, portal = "FFCAM", source = nil)
     case portal
     when "REFUGEPRO" then fetch_refugepro_availability(source)
     when "WPBS" then fetch_wpbs_availability(source)
     when "MANUAL" then nil # no online availability: shown as "Sur demande"
-    when "OPENSYSTEM" then fetch_opensystem_availability(hut_id, date)
+    when "OPENSYSTEM" then fetch_opensystem_availability(hut_id, date, source)
     else fetch_centrale_availability(hut_id, date, portal)
     end
   end

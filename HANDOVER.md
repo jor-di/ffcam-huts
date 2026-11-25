@@ -1,10 +1,10 @@
 # Dernière couchette — handover
 
-_État au 22/11/2026._
+_État au 25/11/2026._
 
 Dernière couchette est une carte des places libres dans les refuges de montagne pour le week-end en cours, en ligne sur [dernierecouchette.fr](https://dernierecouchette.fr/) et mise à jour automatiquement par GitHub Actions.
 
-- **Couverture** : 154 refuges, venant de 5 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro, WP Booking System) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
+- **Couverture** : 174 refuges, venant de 5 systèmes de réservation (centrale FFCAM, Open System, Refuge Pro, WP Booking System) ou ajoutés à la main ; détail par refuge en [annexe](#annexe--source-de-chaque-refuge).
 - **Code** : Ruby, bibliothèque standard seulement (aucune gem), scripts dans `bin/`, modules dans `lib/` + une page HTML Leaflet. Version : `.ruby-version` (4.0.10, utilisée par GitHub Actions) ; le code tourne aussi sur Ruby 3.1 à 3.3 (vérifié avec les tests).
 - **Fréquence** (heure de Paris, lancé par cron-job.org) : de décembre à avril, toutes les heures à la minute 7 sauf de 1 h à 5 h ; de mai à novembre, une fois par jour à 7h07.
 - **Historique** : chaque changement de places est conservé sur la branche `data`, pour de futures analyses (pas encore affiché).
@@ -55,7 +55,7 @@ Rangement : `bin/` (scripts), `lib/` (code partagé), `catalog/` (listes de refu
 
 | Fichier | Contenu | Produit par | Versionné |
 | --- | --- | --- | --- |
-| `catalog/huts.json` | 154 refuges : id, nom, type, portail, site (dont 28 « Non Gardé » FFCAM, fusionnés sur la carte : 131 marqueurs) | `bin/refresh-huts` | oui (main) |
+| `catalog/huts.json` | 174 refuges : id, nom, type, portail, site (dont 28 « Non Gardé » FFCAM, fusionnés sur la carte : 151 marqueurs) | `bin/refresh-huts` | oui (main) |
 | `catalog/hut_coordinates.json` | GPS, altitude, id OSM, site OSM | `bin/refresh-coordinates` | oui (main) |
 | `catalog/manual/coordinates_overrides.json` | 6 corrections GPS faites à la main | à la main | oui (main) |
 | `catalog/manual/manual_huts.json` | refuges ajoutés à la main : position, site, téléphone, email, et `refugepro` (slug du calendrier) ou `wpbs` (pages du calendrier WordPress) s'ils en ont un | à la main | oui (main) |
@@ -63,7 +63,7 @@ Rangement : `bin/` (scripts), `lib/` (code partagé), `catalog/` (listes de refu
 | `templates/map.html` | la carte (HTML, CSS, JS Leaflet) | à la main | oui (main) |
 | `history/` | historique des places + `fetch_log.json` (journal des relevés) | `bin/fetch-availability --history` | oui (branche `data`) |
 | `templates/releves.html` | page de suivi des relevés | à la main | oui (main) |
-| `catalog/manual/booking_links.json` | liens « Site du refuge » / « ⚡ Résa » qu'on ne peut pas deviner (voir [La carte](#la-carte)) | à la main | oui (main) |
+| `catalog/manual/booking_links.json` | liens « Site du refuge » / « Résa » (icône calendrier) qu'on ne peut pas deviner (voir [La carte](#la-carte)) | à la main | oui (main) |
 | `templates/a-propos.html` | page « À propos » pour le grand public (démarche, lecture de la carte, sources avec le nombre de refuges calculé à chaque build, lien GitHub) | à la main | oui (main) |
 | `templates/login.html` | écran de connexion qui enveloppe chaque page publiée (voir [Accès](#accès-prénom--mot-de-passe)) | à la main | oui (main) |
 | `secrets.env` | clé Skitour (et IGN éventuelle) | à la main | **jamais** |
@@ -80,13 +80,13 @@ Les places viennent de quatre systèmes de réservation, lus là où les refuges
 | --- | --- | --- | --- |
 | [Centrale FFCAM](https://centrale.ffcam.fr/index.php) | liste des refuges + places par nuit | sans clé | voir [les requêtes](#1-centrale-ffcam-portails-ffcam-vanoise-neouvielle-boreon) |
 | Portails de la centrale (`apporigin`) | refuges hors liste FFCAM | sans clé | FFCAM (115), VANOISE (+9), NEOUVIELLE (+3), BOREON (+1). Disponibles non utilisés : ENTREPYRPYRENEES (52, Espagne/Andorre), ITFFCAM (tout + Maroc). |
-| Open System (Alliance Réseaux) | 12 refuges du Parc de la Vanoise (Leisse, Fond des Fours…) | sans clé | voir [les requêtes](#2-open-system-12-refuges-du-parc-de-la-vanoise-portal--opensystem). **Pas de capacité.** |
+| Open System (Alliance Réseaux) | 12 refuges du Parc de la Vanoise (Leisse, Fond des Fours…) + 20 refuges ajoutés à la main (Goléon, Glière, Requin, Queyras, Haut-Giffre, Pyrénées… voir [annexe](#open-system-parc-de-la-vanoise-et-ajoutés-à-la-main)) | sans clé | voir [les requêtes](#2-open-system-12-refuges-du-parc-de-la-vanoise-portal--opensystem). **Pas de capacité.** |
 | [Refuge Pro](https://refuge-pro.com) | 11 refuges privés (Clarée, Vallée Étroite, Galibier, Maurienne…) : places, capacité, liste d'attente | sans clé | Calendrier « embed » que chaque refuge intègre à son site ; voir [les requêtes](#3-refuge-pro-11-refuges-portal--refugepro). ~1 an de nuits. |
 | WP Booking System | Refuge de la Coire : places par nuit | sans clé | Extension WordPress dont le calendrier est dans la page du site du refuge ; voir [les requêtes](#4-wp-booking-system-refuge-de-la-coire-portal--wpbs). Deux mois (le mois en cours et le suivant). **Pas de capacité.** |
 | OpenStreetMap (Overpass) | GPS, altitude, site web | sans clé | Souvent surchargé : le script essaie 3 serveurs et réessaie (jusqu'à plusieurs minutes). Appariement par site `*.ffcam.fr`, puis par nom, puis corrections manuelles. |
 | Nominatim (OSM) | recherche ponctuelle d'un refuge introuvable | sans clé | Utilisé à la main pour remplir `catalog/manual/coordinates_overrides.json`. |
-| [Camptocamp](https://www.camptocamp.org) | lien fiche refuge | API publique | Recherche dans un rayon de 1,5 km, acceptée si < 400 m ou nom proche. 150/154 trouvés. |
-| [Skitour](https://skitour.fr/api/) | lien fiche refuge | clé perso (gratuite, 1000 req/j) | `GET /api/refuges` avec en-tête `cle`. 125/154 trouvés. Les conditions demandent un lien vers skitour.fr. |
+| [Camptocamp](https://www.camptocamp.org) | lien fiche refuge | API publique | Recherche dans un rayon de 1,5 km, acceptée si < 400 m ou nom proche. 168/174 trouvés. |
+| [Skitour](https://skitour.fr/api/) | lien fiche refuge | clé perso (gratuite, 1000 req/j) | `GET /api/refuges` avec en-tête `cle`. 140/174 trouvés. Les conditions demandent un lien vers skitour.fr. |
 | IGN Géoplateforme | fonds Plan IGN, traces ski de rando | sans clé | Couche `TRACES.RANDO.HIVERNALE` (rouge, recolorée en bleu en CSS). SCAN 25 = clé privée : code prêt, jamais testé. |
 | Esri, OpenTopoMap, OSM France | fonds de carte | sans clé | `tile.openstreetmap.org` refuse les pages sans `Referer` (fichier local) : on utilise OSM France. CARTO exige désormais une clé : abandonné. |
 
@@ -204,7 +204,7 @@ C'est une page Next.js : ses données sont dans des blocs `self.__next_f.push([1
 - `booking` : complet + `waitlistEnabled` → `waitlist` ; nuit avant aujourd'hui + `bookingCutoffDays`, ou au-delà de `premiereNuit` tant que `ouvreLe` n'est pas passé → `phone` (places mises à 0) ; sinon `online`.
 - Le slug est l'adresse du calendrier ; il est noté dans `catalog/manual/manual_huts.json` (champ `refugepro`). Il n'y a pas de liste publique des refuges Refuge Pro : les 11 slugs ont été trouvés en essayant le nom du refuge (`chardonnet`, `refuge-du-clot-des-vaches`…) ; une page inexistante répond 404.
 - La page donne aussi le téléphone du refuge (`telephoneRefuge`) mais **pas sa position** : position et altitude viennent d'OpenStreetMap (Nominatim), notées dans `catalog/manual/manual_huts.json`.
-- Sur la carte : ce calendrier = bouton « ⚡ Résa » ; le site propre du refuge (champ `website`, quand il existe) = bouton « Site du refuge ».
+- Sur la carte : ce calendrier = bouton « Résa » (icône calendrier) ; le site propre du refuge (champ `website`, quand il existe) = bouton « Site du refuge ».
 - **Pas de vitrine tierce** : ces refuges sont aussi vendus sur refuge.camp (même éditeur), qu'on n'utilise pas ; on lit le calendrier du refuge.
 
 ### 4. WP Booking System (Refuge de la Coire, `portal = WPBS`)
@@ -231,11 +231,13 @@ GET https://www.refugedelacoire.fr/reservations-hiver/
 - Page sans calendrier `wpbs-container`, ou calendrier sans aucune case datée → erreur (`err` sur `/releves/`, « RuntimeError: no WP Booking System calendar on <url> » / « no day in the WP Booking System calendar of <url> »).
 - Configuration dans `catalog/manual/manual_huts.json`, champ `wpbs` : une liste de pages `[{"url": "…", "calendars": [14]}]` (`calendars` facultatif : sinon tous les calendriers de la page) ; un jour présent dans plusieurs calendriers ou pages est pris dans le premier. Une requête par page.
 - **Été pas encore lu** : la page [réservations été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers (14 et 15, à partir de juin 2027, autres numéros d'états : 70, 74, 76, 80). Il suffira d'ajouter la page à `wpbs` quand on saura comment combiner ses deux calendriers (aujourd'hui : le premier l'emporte, sans addition des places).
-- Sur la carte : la page de réservation = bouton « ⚡ Résa » ; le site du refuge (champ `website`) = « Site du refuge ».
+- Sur la carte : la page de réservation = bouton « Résa » (icône calendrier) ; le site du refuge (champ `website`) = « Site du refuge ».
 
 ### 5. Refuges sans réservation en ligne lisible (`portal = MANUAL`)
 
-Nant du Beurre, Selle : ajoutés à la main dans `catalog/manual/manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : toutes leurs nuits valent `request`.
+Nant du Beurre, Selle : ajoutés à la main dans `catalog/manual/manual_huts.json`, avec position (refuges.info), site, téléphone et email pris sur leur propre site. Pas de requête : leurs nuits valent `request` pendant leurs saisons de gardiennage (`"guarded"`), `CLOSE` en dehors (refuge d'hiver seulement).
+
+**Saisons de gardiennage (`"guarded"`)** : liste de périodes `[["MM-DD", "MM-DD"], ...]`, bornes comprises, une période pouvant passer le nouvel an (`["12-12", "03-28"]`) ; testée par `Couchette.guarded_on?` (`lib/sources.rb`). Deux usages : un refuge sans réservation en ligne (`MANUAL`) est fermé hors saison au lieu d'être « sur demande » ; un refuge Open System dont le widget vend aussi les nuits non gardées (la Glière) a ces nuits relevées `UNGUARDED` (« Non gardé », lit non garanti). Les dates changent un peu chaque année : à revoir (voir [En suspens](#en-suspens)).
 
 ## La carte
 
@@ -252,9 +254,9 @@ Une seule page HTML (`templates/map.html` + les données injectées par `bin/bui
 **Carte**
 
 - Marqueurs en talons de billet (places + pastille vert / orange / rouge, sablier violet pour la liste d'attente, ☎ pour téléphone / mail), fermés = point gris. Les refuges `MANUAL` (téléphone / mail seulement, jamais réservables en ligne) sont aussi un simple point gris sur la carte, mais restent « Sur demande » dans la liste et la fiche. Une nuit `UNGUARDED` de la centrale (refuge ouvert sans gardien) est libellée « Accès libre ».
-- Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons « Site du refuge » et « ⚡ Résa », puis Camptocamp, Skitour. Les deux liens sont calculés par `MapData.links` (`lib/map_data.rb`) :
+- Fiche refuge : type, altitude, max par résa, une ligne par nuit, boutons « Site du refuge » et « Résa » (icône calendrier), puis Camptocamp, Skitour. Ni téléphone ni mail : le site n'est pas un annuaire, on renvoie vers le site du refuge (les contacts restent dans `catalog/` et le CSV, pas dans la carte). Les deux liens sont calculés par `MapData.links` (`lib/map_data.rb`) :
   - **Site du refuge** : le vrai site du refuge, champ `website` de `catalog/manual/manual_huts.json` (refuges Refuge Pro, Coire, Selle), sinon le site FFCAM (`<nom>.ffcam.fr`), Open System ou OSM. Jamais refuge-pro.com : sans `website`, pas de bouton. Les 11 refuges Refuge Pro ont un `website` (Marches et Chardonnet : leur page sur refugesclareethabor.com ; le Chardonnet a aussi un site en construction, refugechardonnet.wpcomstaging.com, à reprendre quand il aura une vraie adresse).
-  - **⚡ Résa** (vérifié le 23/11/2026) : d'abord `catalog/manual/booking_links.json` (fait à la main : 19 refuges dont on ne peut pas deviner la page) ; sinon `<nom>.ffcam.fr/reservation.html` (widget de la centrale, refuge déjà choisi ; 80 sites sur 85 ; Platé, Étang Fourcat, Brèche de Roland, Lavey : page d'information ou fermeture pour travaux) ; pour une partie « Non Gardé », `reservation-hg.html` sur le site de son refuge gardé (widget `mode:'FORM_BOOK_HG'` avec l'id du **gardé**, que la centrale traduit en id de la partie non gardée ; alias `reservation-hors-gardiennage.html`) ; le calendrier Refuge Pro ou la page WP Booking System (`site` de `catalog/huts.json`) ; le site Open System (widget sur l'accueil) ; rien pour les refuges `MANUAL` ; en dernier recours le **lien direct de la centrale** `https://centrale.ffcam.fr/index.php?structure=<id>&mode=FORM&_lang=FR&init=1` (+ `&apporigin=VANOISE|NEOUVIELLE|BOREON` hors portail FFCAM ; marche pour tout id, page brute faite pour une iframe). Quand la nuit choisie montre la partie non gardée d'un refuge fusionné, le bouton mène à sa réservation (`winterBooking`).
+  - **Résa (icône calendrier)** (vérifié le 23/11/2026) : d'abord `catalog/manual/booking_links.json` (fait à la main : 19 refuges dont on ne peut pas deviner la page) ; sinon `<nom>.ffcam.fr/reservation.html` (widget de la centrale, refuge déjà choisi ; 80 sites sur 85 ; Platé, Étang Fourcat, Brèche de Roland, Lavey : page d'information ou fermeture pour travaux) ; pour une partie « Non Gardé », `reservation-hg.html` sur le site de son refuge gardé (widget `mode:'FORM_BOOK_HG'` avec l'id du **gardé**, que la centrale traduit en id de la partie non gardée ; alias `reservation-hors-gardiennage.html`) ; le calendrier Refuge Pro ou la page WP Booking System (`site` de `catalog/huts.json`) ; le site Open System (widget sur l'accueil) ; rien pour les refuges `MANUAL` ; en dernier recours le **lien direct de la centrale** `https://centrale.ffcam.fr/index.php?structure=<id>&mode=FORM&_lang=FR&init=1` (+ `&apporigin=VANOISE|NEOUVIELLE|BOREON` hors portail FFCAM ; marche pour tout id, page brute faite pour une iframe). Quand la nuit choisie montre la partie non gardée d'un refuge fusionné, le bouton mène à sa réservation (`winterBooking`).
   - `catalog/manual/booking_links.json` contient : Goûter et Tête Rousse non gardés (`montblanc.ffcam.fr/reservation-hg-vnmb.html`, page commune de la voie normale), Argentière et Leschaux non gardés (leur refuge gardé n'est pas dans la centrale ; `refugeleschaux`, pas `refugedeleschaux`), le site de l'Alpe de Villar d'Arène, le Sancy (pas de `reservation.html` : lien direct), et les fiches des portails Vanoise (refuges-vanoise.com), Néouvielle (visit-neouvielle.com) et Boréon (giteduboreon.com), qui portent le widget avec l'id du refuge (souvent sans le préfixe `BK_STRUCTURE:`).
 - Fonds : Topo clair Esri (défaut), OpenTopoMap, satellite Esri, Plan IGN, OSM France ; calque « Traces ski de rando (IGN) » ; SCAN 25 si clé IGN.
 - Vue de départ : Alpes, du Léman aux Hautes-Alpes.
@@ -347,7 +349,7 @@ Pas de service d'envoi : les alertes sont des **issues GitHub**, et GitHub envoi
 | Issue (étiquette) | Quand | Script, lancé par |
 | --- | --- | --- |
 | « Relevés en erreur » (`releves`) | un refuge en erreur (ou réponse vide) dans chacun des **10 derniers relevés** de `fetch_log.json` (en hiver ~10 h, de mai à novembre ~10 jours) | `bin/check-fetch-alerts`, après chaque relevé (`update.yml`) |
-| « Liens cassés » (`liens`) | un lien « Site du refuge » ou « ⚡ Résa » ne répond pas, ou un sous-domaine `.ffcam.fr` inconnu renvoie vers www.ffcam.fr | `bin/check-links --history`, chaque semaine (`links.yml`) |
+| « Liens cassés » (`liens`) | un lien « Site du refuge » ou « Résa » (icône calendrier) ne répond pas, ou un sous-domaine `.ffcam.fr` inconnu renvoie vers www.ffcam.fr | `bin/check-links --history`, chaque semaine (`links.yml`) |
 
 Un plantage du workflow lui-même (tests en échec, erreur Ruby) est signalé à part par GitHub (« Run failed »), au compte qui a créé le jeton de cron-job.org.
 
@@ -403,8 +405,9 @@ Au quotidien il n'y a rien à faire : cron-job.org lance le relevé, qui publie 
 | Vérifier la fusion gardé / « Non Gardé » (après `bin/refresh-huts`) | `ruby -Ilib -rjson -rmap_data -e 'h=JSON.parse(File.read("huts.json"))["huts"].to_h{\|x\| [x["id"], x.merge("nights"=>{})]}; MapData.merge_winter_rooms(h); puts h.values.select{\|x\| x["type"]=="refuge_non_garde"}.map{\|x\| x["name"]}'` | liste les « Non Gardé » restés seuls ; aujourd'hui 5 (Goûter, Tête Rousse, Argentière, Leschaux, Platé : leur refuge gardé n'est pas dans la centrale) |
 | Un refuge n'a pas de GPS | ajouter une entrée dans `catalog/manual/coordinates_overrides.json` (via Nominatim), relancer `bin/refresh-coordinates` | 6 corrections aujourd'hui |
 | Ajouter un refuge Refuge Pro | trouver le slug (`https://refuge-pro.com/embed/calendrier/<nom>` doit répondre), l'ajouter dans `catalog/manual/manual_huts.json` avec `refugepro`, position (Nominatim) et téléphone (`telephoneRefuge` de la page), puis `bin/refresh-huts && bin/refresh-links` | voir l'annexe |
+| Ajouter un refuge Open System hors Vanoise | site contenant un widget `ui:"OPRF-<n>"` (script `open-system.fr`) : entrée dans `catalog/manual/manual_huts.json` avec `"opensystem": true` (et `"guarded"`, ses saisons de gardiennage, si le widget vend aussi les nuits hors gardiennage, comme la Glière), id `OPRF-<n>`, position, `site` (page du widget, bouton « Résa » (icône calendrier)), `website`, téléphone, email, puis `bin/refresh-huts && bin/refresh-coordinates && bin/refresh-links` | ajouter aussi ses réponses (planning, Camptocamp) aux deux scénarios de `tests/fixtures/` (voir [tests/README.md](tests/README.md)) ; exemple : le Goléon (voir aussi la [recherche du 25/11/2026](#refuges-gardés-repérés-mais-non-ajoutés-recherche-du-25112026)) |
 | Ajouter un refuge WP Booking System | page du site contenant `wpbs-container` : entrée dans `catalog/manual/manual_huts.json` avec `"wpbs": [{"url": "<page>"}]`, id `WPBS-<nom>`, position, site, téléphone, email, puis `bin/refresh-huts && bin/refresh-links` | ajouter aussi sa réponse aux deux scénarios de `tests/fixtures/` (voir [tests/README.md](tests/README.md)) |
-| Ajouter un refuge réservable seulement par téléphone | entrée dans `catalog/manual/manual_huts.json` sans `refugepro` ni `wpbs` (position, site, téléphone, email) | |
+| Ajouter un refuge réservable seulement par téléphone | entrée dans `catalog/manual/manual_huts.json` sans `refugepro` ni `wpbs` (position, site, téléphone, email), avec `"guarded"` (ses saisons de gardiennage) si on les connaît : sinon il est « sur demande » toute l'année | |
 | Ajouter un portail de la centrale | `bin/refresh-huts --portals FFCAM VANOISE NEOUVIELLE BOREON OPENSYSTEM ENTREPYRPYRENEES` | ou modifier `Couchette::DEFAULT_PORTALS` dans `lib/couchette.rb` |
 | Récupérer l'historique | `git pull` dans `history/` | avant tout relevé local avec `--history` |
 | Tester une autre date | `bin/fetch-availability --date 2027-02-20 --nights 2` | |
@@ -428,6 +431,7 @@ Ce qui reste à décider ou à brancher. Retirer une ligne quand elle est régl�
 | Sujet | Ce qui manque | Pour le régler |
 | --- | --- | --- |
 | Refuge de la Coire : saison d’été | Seule la [page d’hiver](https://www.refugedelacoire.fr/reservations-hiver/) est lue. La [page d’été](https://www.refugedelacoire.fr/reservations-ete/) a deux calendriers WP Booking System (14 et 15, à partir de juin 2027) dont on ne sait pas encore à quoi chacun correspond (dortoir / bivouac ?). Aujourd’hui, si une page a plusieurs calendriers, un jour est pris dans le premier, sans additionner les places. | Décider comment combiner les deux calendriers (n’en garder qu’un avec `calendars`, ou additionner les places, ce qui demande une petite évolution de `Couchette.fetch_wpbs_availability`), puis ajouter `{"url": "https://www.refugedelacoire.fr/reservations-ete/"}` à la liste `wpbs` de la Coire dans `catalog/manual/manual_huts.json`. À faire au printemps, avant l’ouverture des réservations d’été. |
+| Saisons de gardiennage écrites à la main | Glière, Selle, Nant du Beurre : `"guarded"` dans `catalog/manual/manual_huts.json`, d'après leur site en novembre 2026 (Selle : dates de printemps 2026 ; Nant du Beurre : été inconnu). Le site du Nant du Beurre annonce une réservation en ligne « très prochainement ». | Revoir ces dates chaque saison sur leur site ; brancher le calendrier du Nant du Beurre quand il sera en ligne (s'il utilise Refuge Pro, WP Booking System ou Open System). |
 
 ## Pièges connus et décisions
 
@@ -461,7 +465,7 @@ Chaque refuge de `catalog/huts.json` a un champ `portal` qui dit d'où vient sa 
 | `VANOISE` | 9 | idem, `apporigin=VANOISE` (refuges absents du portail FFCAM) | idem, `apporigin=VANOISE` | `BK_STRUCTURE:<n>` |
 | `NEOUVIELLE` | 3 | idem, `apporigin=NEOUVIELLE` | idem | `BK_STRUCTURE:<n>` |
 | `BOREON` | 1 | idem, `apporigin=BOREON` | idem | `BK_STRUCTURE:<n>` |
-| `OPENSYSTEM` | 12 | `Couchette.fetch_opensystem_huts` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site | `Couchette.fetch_opensystem_availability` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
+| `OPENSYSTEM` | 32 | `Couchette.fetch_opensystem_huts` : menu de refuge-leisse.vanoise.com + widget `OPRF` de chaque site ; hors Vanoise (20) : `catalog/manual/manual_huts.json` (`opensystem`) | `Couchette.fetch_opensystem_availability` : JSONP `etape-rest.for-system.com` | `OPRF-<n>` |
 | `REFUGEPRO` | 11 | `catalog/manual/manual_huts.json` (entrées avec `refugepro`) | `Couchette.fetch_refugepro_availability` : page `refuge-pro.com/embed/calendrier/<slug>` | `RP-<slug>` |
 | `WPBS` | 1 | `catalog/manual/manual_huts.json` (entrées avec `wpbs`) | `Couchette.fetch_wpbs_availability` : calendrier WP Booking System de la page du site (`Couchette.parse_wpbs`) | `WPBS-<nom>` |
 | `MANUAL` | 2 | `catalog/manual/manual_huts.json` (entrées sans `refugepro` ni `wpbs`) | aucune requête : nuits « sur demande » | `MANUAL-<nom>` |
@@ -493,7 +497,7 @@ Les 115 refuges du portail FFCAM sont listés dans `catalog/huts.json` (nom, id,
 | Refuge de l'OULE | `BK_STRUCTURE:xxx5ylsjmuv1` |
 | Gîte du Boréon | `BK_STRUCTURE:5e92vrpttey6` |
 
-### Open System (Parc national de la Vanoise)
+### Open System (Parc de la Vanoise et ajoutés à la main)
 
 | Refuge | Identifiant (`ui:` du widget) |
 | --- | --- |
@@ -509,6 +513,53 @@ Les 115 refuges du portail FFCAM sont listés dans `catalog/huts.json` (nom, id,
 | Refuge du Bois | `OPRF-93150` |
 | Refuge du Col du Palet | `OPRF-93148` |
 | Refuge du Fond des Fours | `OPRF-93147` |
+
+Hors Vanoise, ajoutés à la main dans `catalog/manual/manual_huts.json` (`"opensystem": true`), position et altitude de refuges.info sauf pour le Goléon, contacts pris sur leur site. Les trois du Queyras classés gîtes d'étape sur refuges.info sont de vrais refuges, gardés et réservés comme les autres :
+
+| Refuge | Identifiant | Remarques |
+| --- | --- | --- |
+| Refuge du Goléon | `OPRF-130844` | Villar-d'Arêne (La Grave), 2472 m. Widget sur la page « Réserver » de [refugedugoleon.com](https://refugedugoleon.com/) ; 19 couchages ; position OSM way/116800177 ; ouvert l'hiver du 1/02 au 11/04 et l'été du 13/06 au 12/09 (2026). |
+| Refuge des Fonts | `OPRF-71503` | Sixt-Fer-à-Cheval (Haut-Giffre), 1368 m. Widget sur l'accueil de [lesfonts.com](https://www.lesfonts.com/). |
+| Refuge du Grenairon | `OPRF-70785` | Sixt-Fer-à-Cheval, 1974 m. Widget sur la page [« Tarifs et réservation »](http://grenairon.com/tarifs-et-reservation/). |
+| Refuge Alfred Wills | `OPRF-48837` | Lac d'Anterne, 1810 m. Widget sur la page [module-reserv](https://refuge-wills.com/module-reserv/). |
+| Refuge du Requin | `OPRF-135092` | Chamonix (Mer de Glace), 2516 m. Widget sur la page [« Réservation »](https://refugedurequin.fr/reservation/). |
+| Refuge de Bostan | `OPRF-128664` | Samoëns, 1770 m. Pas de widget : le site renvoie vers sa [page Open System](https://prestataire.for-system.com/f128664_fr-.aspx) ; le planning répond pour 128664. |
+| Refuge du Ruitor | `OPRF-135180` | Sainte-Foy-Tarentaise, 2038 m. Widget sur l'[accueil](https://ruitor.com/refuge_v2/accueil/accueil.php). |
+| Refuge de la Glière | `OPRF-118005` | Champagny-en-Vanoise, 2010 m. Widget (HTML intégré dans Wix) sur la page [« Réservations »](https://www.refugedelagliere.fr/reservations). Gardé de mi-juin à septembre (`"guarded": [["06-15", "09-30"]]`) ; le widget vend aussi les nuits non gardées, relevées `UNGUARDED` (« Non gardé », lit non garanti). Téléphone l'été seulement. |
+| Refuge du Pic du Mas de la Grave | `OPRF-127248` | La Grave, 1944 m. Widget sur la page [« Réservations »](https://refugedupicdumasdelagrave.fr/reservations/). |
+| Refuge Agnel | `OPRF-38275` | Molines-en-Queyras, 2585 m. Réservé via le site des refuges du Queyras ([montourduqueyras.fr](https://www.montourduqueyras.fr/fr/il4-refuge_i38275-refuge-agnel.aspx)). |
+| Refuge de Furfande | `OPRF-38255` | Arvieux, 2291 m. Widget sur [refugedefurfande.com](https://www.refugedefurfande.com/reservation) et sur [montourduqueyras.fr](https://www.montourduqueyras.fr/fr/il4-refuge_i38255-refuge-de-furfande.aspx). |
+| Refuge des Fonts de Cervières | `OPRF-38263` | Cervières, 2040 m. Via [montourduqueyras.fr](https://www.montourduqueyras.fr/fr/il4-refuge_i38263-refuge-des-fonts.aspx). |
+| Refuge de la Cime | `OPRF-38256` | Ceillac, 1822 m. Classé gîte d'étape sur refuges.info. Via [montourduqueyras.fr](https://www.montourduqueyras.fr/fr/il4-refuge_i38256-refuge-de-la-cime.aspx). |
+| Refuge de Basse Rua | `OPRF-38259` | Arvieux, 1760 m. Classé gîte d'étape sur refuges.info. Via [montourduqueyras.fr](https://www.montourduqueyras.fr/fr/il4-refuge_i38259-refuge-de-basse-rua.aspx). |
+| Refuge de la Blanche | `OPRF-38260` | Saint-Véran, 2499 m. Classé gîte d'étape sur refuges.info. Via [montourduqueyras.fr](https://www.montourduqueyras.fr/fr/il4-refuge_i38260-refuge-de-la-blanche.aspx). |
+| La Loge à Ponard | `OPRF-73092` | Haut-Jura, 1182 m. Widget sur la page [« Contact et réservations »](https://www.lalogeaponard.com/contact-et-reservations/). |
+| Refuge du Rulhe | `OPRF-130670` | Ariège, 2185 m. Widget sur la page [« Contact »](https://rulhe.com/contact/). |
+| Refuge d'En Beys | `OPRF-65730` | Orlu (Ariège), 1980 m. Widget sur la page [« Réserver »](https://refuge-enbeys.com/fr/le-refuge-mode-d-emploi/reserver.html). |
+| Refuge des Camporells | `OPRF-101222` | Capcir, 2240 m. Pas de site : [page Open System](https://agrepy-mb-prestataire.for-system.com/f101222_fr-.aspx) du réseau AGREPY ; ouvert l'hiver. |
+| Refuge de Sant Guillem | `OPRF-102187` | Vallespir, 1283 m. Widget sur la page [« Contact »](https://refugesantguillem.com/contact/). |
+
+### Refuges gardés repérés mais non ajoutés (recherche du 25/11/2026)
+
+Méthode : refuges.info, type « refuge gardé » (`https://www.refuges.info/api/bbox?bbox=-2,41.5,8,47&type_points=10&format=geojson&detail=complet&nb_points=all`) : 328 refuges, dont 230 absents du catalogue (à 600 m près ou par le nom) ; 86 en France, les autres en Suisse, Italie, Espagne, Andorre (non regardés). Pour chacun des 86, le site indiqué par refuges.info (accueil et jusqu'à 3 pages « réservation / tarifs / contact ») a été parcouru à la recherche d'un outil de réservation connu. Détection automatique : un outil chargé seulement plus loin dans le site a pu échapper. Les refuges Open System trouvés sont dans le tableau ci-dessus ; le reste :
+
+**Réservation en ligne, mais avec un outil que le code ne lit pas** (nouvelle source à écrire) :
+
+| Refuge | Outil | Remarques |
+| --- | --- | --- |
+| Refuge de La Tour de Borne (Drôme) | WP Simple Booking Calendar (`wpsbc`), pas WP Booking System | [page réservation](https://latourdeborne.org/reservation/) : jours vert / orange / rouge, mis à jour à la main, sans nombre de places ; seulement pour la gestion libre (septembre à juin). |
+| Refuge de la Combe Madame (Belledonne) | WP Booking Calendar (`wpbc`) | [combemadame.fr](https://www.combemadame.fr/) |
+| Refuge du Plan de l'Aiguille (Chamonix) | WP Booking Calendar (`wpbc`) | [refugeplandelaiguille.com](https://www.refugeplandelaiguille.com/) |
+| Refuge du Carrelet (Écrins) | MotoPress Hotel Booking (`mphb`) | [refugeducarrelet.com](https://refugeducarrelet.com/) |
+| Refuge Robert Blanc (Beaufortain) | HBook | [refugerobertblanc.fr](https://refugerobertblanc.fr/) |
+| Refuge des Cosmiques, Refuge de la Charpoua (Chamonix) | site de réservation de la Compagnie des guides | [reservation.chamonix-guides.com](https://reservation.chamonix-guides.com/refuge-de-la-charpoua.html) |
+| Refuge du Soreiller (Écrins) | HelloAsso | paiement seulement, pas de calendrier |
+
+**Refuges FFCAM absents de la centrale** (ils y apparaîtront seuls s'ils y entrent) : Durier, Gros Morond (réservation par téléphone) ; Croix du Bonhomme (fermé pour travaux) ; Pilatte (fermé par arrêté municipal) ; Bérarde, Châtelleret, Balaïtous (pas de réservation en ligne sur leur site) ; Nid d'Aigle (lien du site en 404) ; Bastan (fermé, en attente de travaux).
+
+**Site en panne ou absent** : Jean Collet (404), Plan Glacier (500), Lacs Merlet (403), Chardonnière (nom de domaine introuvable), Mas de la Barque (délai dépassé) ; une quinzaine sans site sur refuges.info.
+
+**Formulaire, téléphone ou rien de détectable** (candidats pour `MANUAL`, « sur demande », coordonnées à vérifier une par une) : Longon, Estrop, Gorgerette, Mont Chiran (04, 06) ; Bassiès, Estagnous (Ariège) ; Buron d'Eylac (Cantal) ; Ubine (Airbnb), Lessy, Spée, Vogealle, Folly (Haute-Savoie) ; Adèle Planchard, Chancel, Vallonpierre, Gîte des Trois Cols (Hautes-Alpes) ; Wallon-Marcadau, Migouélou, Espuguettes, Hospice du Rioumajou (Hautes-Pyrénées) ; Alpe du Pin, Muzelle (fiche du Parc des Écrins), Fare, Pierre du Carre (Isère) ; Arlet, Ayous (Pyrénées-Atlantiques) ; Ras de la Carança, Puigmal (Pyrénées-Orientales) ; Plan Lombardie, la Balme (Savoie).
 
 ### Refuge Pro (ajoutés dans `catalog/manual/manual_huts.json`)
 
@@ -536,5 +587,5 @@ Les 115 refuges du portail FFCAM sont listés dans `catalog/huts.json` (nom, id,
 
 | Refuge | Comment réserver |
 | --- | --- |
-| Refuge de la Selle | tél. 09 70 02 03 83 · [site](https://www.refugedelaselle.com/contact/) |
-| Refuge du Nant du Beurre | tél. 06 82 70 26 99 · refugedunantdubeurre@etik.com · [site](https://refugedunantdubeurre.fr/) |
+| Refuge de la Selle | tél. 09 70 02 03 83 · [site](https://www.refugedelaselle.com/contact/) ; gardé au printemps (21/03 → début mai) et l'été (6/06 → 6/09), fermé sur la carte en dehors (refuge d'hiver payé sur HelloAsso) |
+| Refuge du Nant du Beurre | tél. 06 82 70 26 99 · refugedunantdubeurre@etik.com · [site](https://refugedunantdubeurre.fr/) ; gardé du 12/12 au 28/03, fermé sur la carte en dehors (saison d'été pas annoncée) |

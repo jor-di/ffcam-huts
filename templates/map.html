@@ -141,9 +141,6 @@
   .tpin.req span:first-child { color:#6b5ca5; }
   .tpin svg { display:block; width:12px; height:12px; }
   .note { margin:10px 0 0; padding:7px 10px; border-radius:6px; background:#fbf3e6; color:#8a5414; font-size:12px; line-height:1.4; }
-  .contact { display:flex; flex-wrap:wrap; gap:4px 14px; margin-top:10px; font:500 12.5px/1.3 var(--mono); }
-  .contact a { color:var(--pine); text-decoration:none; }
-  .contact a:hover { text-decoration:underline; }
   .cpin { position:absolute; left:0; top:0; width:10px; height:10px; transform:translate(-50%,-50%); border-radius:50%;
     background:var(--closed); border:1.5px solid var(--paper); box-shadow:0 1px 3px rgba(0,0,0,.3); }
   .cpin.active { transform:translate(-50%,-50%) scale(1.5); }
@@ -170,7 +167,8 @@
   .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
   .actions a { flex:1; text-align:center; text-decoration:none; padding:8px; border-radius:8px; font-weight:600; font-size:13px; }
   .actions a.primary { flex:2; background:var(--pine); color:#fff !important; }
-  .actions a.resa { background:var(--paper); color:var(--pine) !important; border:1.5px solid var(--pine); }
+  .actions a.resa { background:var(--paper); color:var(--pine) !important; border:1.5px solid var(--pine); flex:0 0 auto; padding:8px 12px; }
+  .actions a.resa .ico { width:16px; height:16px; vertical-align:-3px; }
   .actions .break { flex-basis:100%; height:0; }
   .actions a.ghost { background:var(--ground); color:var(--ink) !important; border:1px solid var(--rule); }
 
@@ -307,7 +305,8 @@ const TYPE_CHIPS = { refuge:'Gardé', refuge_non_garde:'Non gardé', autre:'Autr
 const chipOf = (h, n) => n?.unguarded || h.type === 'refuge_non_garde' ? 'refuge_non_garde' : h.type === 'refuge' ? 'refuge' : 'autre';
 // the icon follows the night: a guarded hut in its unguarded period gets the winter-room icon
 const hutIcon = (h, n) => HUT_ICONS[n?.unguarded ? 'refuge_non_garde' : h.type in HUT_ICONS ? h.type : 'autre'];
-// FFCAM centrale portals: their unguarded nights follow the FFCAM rule (booking advised, bed not guaranteed)
+// FFCAM centrale portals (and Open System huts with a guarded season, like the Glière): their unguarded
+// nights follow the FFCAM rule (booking advised, bed not guaranteed)
 const CENTRALE = ['FFCAM', 'VANOISE', 'NEOUVIELLE', 'BOREON'];
 const GROUP = { ok:'bookable', low:'bookable', request:'request', full:'full', closed:'closed' };
 
@@ -421,12 +420,10 @@ function popup(h) {
         ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div></div>
     </div>
     <div class="card-body">${nights}
-      ${CENTRALE.includes(h.portal) && (h.type === 'refuge_non_garde' || dates.some(d => night(h, d)?.unguarded)) ? '<p class="note"><b>Non gardé</b> : réservation conseillée, lit non garanti.</p>' : ''}
-      ${h.phone || h.email ? `<div class="contact">${h.phone ? `<a href="tel:${esc(h.phone.replace(/[^+0-9]/g, ''))}">☎ ${esc(h.phone)}</a>` : ''}
-        ${h.email ? `<a href="mailto:${esc(h.email)}">${esc(h.email)}</a>` : ''}</div>` : ''}
+      ${(CENTRALE.includes(h.portal) || h.portal === 'OPENSYSTEM') && (h.type === 'refuge_non_garde' || dates.some(d => night(h, d)?.unguarded)) ? '<p class="note"><b>Non gardé</b> : réservation conseillée, lit non garanti.</p>' : ''}
       <div class="actions">
         ${h.site ? `<a class="primary" href="${esc(h.site)}" target="_blank" rel="noopener">Site du refuge</a>` : ''}
-        ${resa ? `<a class="resa" href="${esc(resa)}" target="_blank" rel="noopener" title="Page de réservation">⚡ Résa</a>` : ''}
+        ${resa ? `<a class="resa" href="${esc(resa)}" target="_blank" rel="noopener" title="Page de réservation" aria-label="Page de réservation"><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg></a>` : ''}
         <span class="break"></span>
         ${h.c2c ? `<a class="ghost" href="${esc(h.c2c)}" target="_blank" rel="noopener">Camptocamp</a>` : ''}
         ${h.skitour ? `<a class="ghost" href="${esc(h.skitour)}" target="_blank" rel="noopener">Skitour</a>` : ''}

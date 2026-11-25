@@ -73,7 +73,7 @@ def main
   work = lambda do |hut|
     t0 = Couchette.monotonic # durations are 0 with COUCHETTE_NOW (tests)
     begin
-      [hut, Couchette.fetch_availability(hut["id"], fetch_from, hut.fetch("portal", "FFCAM"), hut["refugepro"] || hut["wpbs"]), nil]
+      [hut, Couchette.fetch_availability(hut["id"], fetch_from, hut.fetch("portal", "FFCAM"), hut["refugepro"] || hut["wpbs"] || hut["guarded"]), nil]
     rescue StandardError => e # keep going, record the error
       [hut, nil, Couchette.error_text(e)]
     ensure
@@ -111,7 +111,11 @@ def main
       capacity = data && data["capacity"][key]
       opening = data && data["opening"][key]
       booking = data && Py.either(data["booking"], {})[key]
-      booking = "request" if hut["portal"] == "MANUAL" # no online booking: phone / mail / form
+      if hut["portal"] == "MANUAL" # no online booking: phone / mail / form, during the keeper's seasons if known
+        if hut["guarded"] && !Couchette.guarded_on?(hut["guarded"], key) then opening = "CLOSE"
+        else booking = "request"
+        end
+      end
       rows << {
         "date" => key,
         "weekday" => d.strftime("%A"),

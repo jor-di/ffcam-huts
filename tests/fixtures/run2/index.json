@@ -7,6 +7,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "015d62475d7b4bc410ae861636c902fd1e5c787c": {
+  "body": null,
+  "file": "bodies/015d62475d7b4bc410ae861636c902fd1e5c787c.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130670,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130670,2026-12-08"
+ },
  "0191afceb9d2dfb5465bf549eac3a4ef55c78725": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A78&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/0191afceb9d2dfb5465bf549eac3a4ef55c78725.gz",
@@ -22,6 +30,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "0404fdab78d725fb0a88b73570f6b97423032131": {
+  "body": null,
+  "file": "bodies/0404fdab78d725fb0a88b73570f6b97423032131.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38275,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38275,2026-12-08"
  },
  "0421ca4c807a2db9bcd36c7e9b28c93b9b677f58": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A82&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -47,6 +63,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "07553db6dc204fa6c98b729a783925315493bc31": {
+  "body": null,
+  "file": "bodies/07553db6dc204fa6c98b729a783925315493bc31.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=65730,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=65730,2026-12-08"
+ },
  "07b09b697341f083075ba5e3b57544c7e131cb85": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A17&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/07b09b697341f083075ba5e3b57544c7e131cb85.gz",
@@ -70,6 +94,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refuge-pro.com/embed/calendrier/galibier"
+ },
+ "0b91b251ad7f6d4326e63c038231d02a612b6b6c": {
+  "body": null,
+  "file": "bodies/0b91b251ad7f6d4326e63c038231d02a612b6b6c.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38263,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38263,2026-12-08"
  },
  "0c89f7a4456f656beafc97ee4c43fe52cf8a1e10": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A108&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -127,6 +159,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "14565901fd093b7b885e8f6a5fd0d3e3df09e25f": {
+  "body": null,
+  "file": "bodies/14565901fd093b7b885e8f6a5fd0d3e3df09e25f.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=73092,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=73092,2026-12-08"
+ },
  "164e5c8ca04992b0254abc7eaa92fba660f9b0e8": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A53&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/164e5c8ca04992b0254abc7eaa92fba660f9b0e8.gz",
@@ -182,6 +222,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "1f65644dd685e295992a435d6d744b5e8beee640": {
+  "body": null,
+  "file": "bodies/1f65644dd685e295992a435d6d744b5e8beee640.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130844,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=130844,2026-12-08"
  },
  "217daf6596695678a71f2ef8cc5e198d082572b4": {
   "body": null,
@@ -400,6 +448,14 @@
   "status": 200,
   "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92949,2026-12-08"
  },
+ "487c3b9344e00f90ac83150087c07787963847a4": {
+  "body": null,
+  "file": "bodies/487c3b9344e00f90ac83150087c07787963847a4.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=102187,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=102187,2026-12-08"
+ },
  "4b89a337ad30595034788418a48d4a8701c470c0": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A127&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/4b89a337ad30595034788418a48d4a8701c470c0.gz",
@@ -455,6 +511,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=92996,2026-12-08"
+ },
+ "55944f0de3f53cf2b820fdeb29021d88f0e1537c": {
+  "body": null,
+  "file": "bodies/55944f0de3f53cf2b820fdeb29021d88f0e1537c.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=118005,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=118005,2026-12-08"
  },
  "5896d722d1154dac4833320001d5bb39ec30f4dd": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A85&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -600,6 +664,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "7bb710a04c1c8b626b92320aa531a3bfe214f59b": {
+  "body": null,
+  "file": "bodies/7bb710a04c1c8b626b92320aa531a3bfe214f59b.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38256,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38256,2026-12-08"
+ },
  "7c9df5a769265af95277e25b5cdea18c1ff1d0f7": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8nnte7d&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/7c9df5a769265af95277e25b5cdea18c1ff1d0f7.gz",
@@ -631,6 +703,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "84caaa96f72ff51e3c62f2381ff6ff5e9fe3468d": {
+  "body": null,
+  "file": "bodies/84caaa96f72ff51e3c62f2381ff6ff5e9fe3468d.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=48837,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=48837,2026-12-08"
  },
  "870e0a6211fe0e94a287b0c87c656833aa7b98be": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A34&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -744,6 +824,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "995a060a039704676186cc287b9792cc238bbe64": {
+  "body": null,
+  "file": "bodies/995a060a039704676186cc287b9792cc238bbe64.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=101222,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=101222,2026-12-08"
+ },
  "9c1f944d64e4515ea1111d0dd80eb0da61d9708f": {
   "body": null,
   "file": "bodies/9c1f944d64e4515ea1111d0dd80eb0da61d9708f.gz",
@@ -751,6 +839,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://refuge-pro.com/embed/calendrier/ricou"
+ },
+ "9c5c6a7adcbc4a647cc724da4d7d98c6c3f6cb81": {
+  "body": null,
+  "file": "bodies/9c5c6a7adcbc4a647cc724da4d7d98c6c3f6cb81.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38260,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38260,2026-12-08"
  },
  "9d17157d28de5584dd5620846b3bccf153d1e7b4": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A71&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -784,6 +880,22 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "a05afa40fe8ac1bd51d610d398838ebfe5972415": {
+  "body": null,
+  "file": "bodies/a05afa40fe8ac1bd51d610d398838ebfe5972415.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=71503,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=71503,2026-12-08"
+ },
+ "a77038c884451e913efc92d2c66ae9b717bab513": {
+  "body": null,
+  "file": "bodies/a77038c884451e913efc92d2c66ae9b717bab513.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=127248,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=127248,2026-12-08"
+ },
  "a84e8bc5c1bab457403fcfee651a0b257d65f9d7": {
   "body": null,
   "file": "bodies/a84e8bc5c1bab457403fcfee651a0b257d65f9d7.gz",
@@ -792,6 +904,14 @@
   "status": 200,
   "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93147,2026-12-08"
  },
+ "ad0802b169bafe0504e25d090c1d782dd0dc611c": {
+  "body": null,
+  "file": "bodies/ad0802b169bafe0504e25d090c1d782dd0dc611c.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38255,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38255,2026-12-08"
+ },
  "adac3ee92b74a2f4d23edd6c6b90d076fc29cd23": {
   "body": "action=availability&apporigin=VANOISE&structure=BK_STRUCTURE%3A5a1ngkc39duv&productCategory=nomatter&pax=1&date=2026-11-23",
   "file": "bodies/adac3ee92b74a2f4d23edd6c6b90d076fc29cd23.gz",
@@ -799,6 +919,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "af29f31e0c5ab8996d6afb5d903d043b718ad07b": {
+  "body": null,
+  "file": "bodies/af29f31e0c5ab8996d6afb5d903d043b718ad07b.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135180,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135180,2026-12-08"
  },
  "af709205d9b092d9914cb4fa5de3fd47a7615333": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3A57&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -815,6 +943,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "b0fc19690dfa5b37f1226eb41f0768ffc6d5e7d9": {
+  "body": null,
+  "file": "bodies/b0fc19690dfa5b37f1226eb41f0768ffc6d5e7d9.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135092,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=135092,2026-12-08"
  },
  "b2298919b2bba296dde8852f7e39b29cd73b4007": {
   "body": null,
@@ -871,6 +1007,14 @@
   "method": "POST",
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
+ },
+ "bba066e85a977b146eb9aca53b530b1886c11281": {
+  "body": null,
+  "file": "bodies/bba066e85a977b146eb9aca53b530b1886c11281.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=70785,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=70785,2026-12-08"
  },
  "bc151b0ea99ebcdae316b50569bcd984269f3f2a": {
   "body": "action=availability&apporigin=FFCAM&structure=BK_STRUCTURE%3Axxx5u8l3ommd&productCategory=nomatter&pax=1&date=2026-11-23",
@@ -1040,6 +1184,14 @@
   "status": 200,
   "url": "https://centrale.ffcam.fr/index.php?"
  },
+ "e54757dca8cd0f67271381591101cec981e5c8e6": {
+  "body": null,
+  "file": "bodies/e54757dca8cd0f67271381591101cec981e5c8e6.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38259,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=38259,2026-12-08"
+ },
  "e98212946050bbb7dc2868a38ec11c5e1ed2a1f6": {
   "body": null,
   "file": "bodies/e98212946050bbb7dc2868a38ec11c5e1ed2a1f6.gz",
@@ -1071,6 +1223,14 @@
   "method": "GET",
   "status": 200,
   "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=93150,2026-12-08"
+ },
+ "ecb547327e5d01f4991597739d904d8eed2bb78e": {
+  "body": null,
+  "file": "bodies/ecb547327e5d01f4991597739d904d8eed2bb78e.gz",
+  "final_url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=128664,2026-12-08",
+  "method": "GET",
+  "status": 200,
+  "url": "https://etape-rest.for-system.com/index.aspx/index.aspx?ref=json-planning-refuge&q=128664,2026-12-08"
  },
  "ed4e8f858ea3aa6f93d84686524a31c841b7108f": {
   "body": null,

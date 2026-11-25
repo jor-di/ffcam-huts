@@ -1,5 +1,5 @@
 {
-  "refreshed_at": "2026-11-22T17:59:41",
+  "refreshed_at": "2026-11-25T09:56:45",
   "huts": [
     {
       "id": "BK_STRUCTURE:47ntr9jg1dif",
@@ -287,6 +287,48 @@
       "site": null
     },
     {
+      "id": "OPRF-73092",
+      "name": "La Loge à Ponard",
+      "short_name": "Loge à Ponard",
+      "type": "refuge",
+      "lat": 46.49432,
+      "lon": 6.05539,
+      "ele": 1182,
+      "site": "https://www.lalogeaponard.com/contact-et-reservations/",
+      "phone": "07 68 47 17 76",
+      "email": "lalogeaponard39@gmail.com",
+      "note": "Bois-d'Amont (Haut-Jura). Open System widget OPRF-73092 on the « Contact et réservations » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.lalogeaponard.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
+      "id": "OPRF-38275",
+      "name": "Refuge Agnel",
+      "short_name": "Agnel",
+      "type": "refuge",
+      "lat": 44.69085,
+      "lon": 6.97129,
+      "ele": 2585,
+      "site": "https://www.montourduqueyras.fr/fr/il4-refuge_i38275-refuge-agnel.aspx",
+      "phone": "06 60 79 83 90",
+      "email": null,
+      "note": "Molines-en-Queyras. Booked through the Queyras huts site (montourduqueyras.fr), Open System product 38275. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.refugeagnel.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:22",
       "portal": "FFCAM",
       "name": "Refuge Albert 1er  (FFCAM)",
@@ -315,6 +357,27 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugealbert1er.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-48837",
+      "name": "Refuge Alfred Wills",
+      "short_name": "Alfred Wills",
+      "type": "refuge",
+      "lat": 46.00449,
+      "lon": 6.79135,
+      "ele": 1810,
+      "site": "https://refuge-wills.com/module-reserv/",
+      "phone": "06 70 63 12 45",
+      "email": "refugealfredwills74@gmail.com",
+      "note": "Lac d'Anterne (Haut-Giffre). Open System widget OPRF-48837 on the « module-reserv » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://refuge-wills.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "RP-refuge-buffere",
@@ -543,6 +606,27 @@
       "site": null
     },
     {
+      "id": "OPRF-65730",
+      "name": "Refuge d'En Beys",
+      "short_name": "En Beys",
+      "type": "refuge",
+      "lat": 42.62669,
+      "lon": 1.94411,
+      "ele": 1980,
+      "site": "https://refuge-enbeys.com/fr/le-refuge-mode-d-emploi/reserver.html",
+      "phone": "05 61 64 24 24",
+      "email": null,
+      "note": "Orlu (Ariège). Open System widget OPRF-65730 on the « Réserver » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://refuge-enbeys.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:111",
       "portal": "FFCAM",
       "name": "Refuge d'Espingo  (FFCAM)",
@@ -573,6 +657,26 @@
       "site": null
     },
     {
+      "id": "OPRF-38259",
+      "name": "Refuge de Basse Rua",
+      "short_name": "Basse Rua",
+      "type": "refuge",
+      "lat": 44.62373,
+      "lon": 6.71805,
+      "ele": 1760,
+      "site": "https://www.montourduqueyras.fr/fr/il4-refuge_i38259-refuge-de-basse-rua.aspx",
+      "phone": "06 22 66 58 21",
+      "email": "refugebasserua@gmail.com",
+      "note": "Arvieux (Queyras). Listed as a gîte d'étape on refuges.info. Booked through the Queyras huts site (montourduqueyras.fr), Open System product 38259. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:107",
       "portal": "FFCAM",
       "name": "Refuge de Bayssellance  (FFCAM)",
@@ -586,6 +690,27 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugebayssellance.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-128664",
+      "name": "Refuge de Bostan",
+      "short_name": "Bostan",
+      "type": "refuge",
+      "lat": 46.1234,
+      "lon": 6.7792,
+      "ele": 1770,
+      "site": "https://prestataire.for-system.com/f128664_fr-.aspx",
+      "phone": "07 63 44 79 16",
+      "email": "lerefugedebostan@gmail.com",
+      "note": "Samoëns. The hut site links to its Open System page (prestataire f128664), not to an embedded widget; the planning answers for id 128664. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.refugedebostan.fr/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:113",
@@ -676,6 +801,27 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugefontturbat.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-38255",
+      "name": "Refuge de Furfande",
+      "short_name": "Furfande",
+      "type": "refuge",
+      "lat": 44.7277,
+      "lon": 6.71206,
+      "ele": 2291,
+      "site": "https://www.montourduqueyras.fr/fr/il4-refuge_i38255-refuge-de-furfande.aspx",
+      "phone": "06 16 56 23 79",
+      "email": null,
+      "note": "Arvieux (Queyras). Open System product 38255, on the hut site and the Queyras huts site (montourduqueyras.fr). Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.refugedefurfande.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:94",
@@ -951,6 +1097,27 @@
       "type": "refuge",
       "email_user": null,
       "site": "https://refuge-rosuel.vanoise.com/",
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
+      "id": "OPRF-102187",
+      "name": "Refuge de Sant Guillem",
+      "short_name": "Sant Guillem",
+      "type": "refuge",
+      "lat": 42.4523,
+      "lon": 2.4955,
+      "ele": 1283,
+      "site": "https://refugesantguillem.com/contact/",
+      "phone": "09 78 04 96 85",
+      "email": "refugesantguillem@gmail.com",
+      "note": "Le Tech (Vallespir, Pyrénées-Orientales). Open System widget OPRF-102187 on the « Contact » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://refugesantguillem.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
       "max_pax_per_booking": null,
       "max_nights": null,
       "booking_delay_days": null,
@@ -1262,6 +1429,27 @@
       "site": null
     },
     {
+      "id": "OPRF-38260",
+      "name": "Refuge de la Blanche",
+      "short_name": "La Blanche",
+      "type": "refuge",
+      "lat": 44.66636,
+      "lon": 6.94045,
+      "ele": 2499,
+      "site": "https://www.montourduqueyras.fr/fr/il4-refuge_i38260-refuge-de-la-blanche.aspx",
+      "phone": "04 83 43 83 80",
+      "email": "contact@refugedelablanche.com",
+      "note": "Saint-Véran (Queyras). Listed as a gîte d'étape on refuges.info. Booked through the Queyras huts site (montourduqueyras.fr), Open System product 38260. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.refugedelablanche.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:112",
       "portal": "FFCAM",
       "name": "Refuge de la Brèche de Roland - Les Sarradets (FFCAM)",
@@ -1275,6 +1463,26 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugebrechederoland.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-38256",
+      "name": "Refuge de la Cime",
+      "short_name": "La Cime",
+      "type": "refuge",
+      "lat": 44.6441,
+      "lon": 6.80312,
+      "ele": 1822,
+      "site": "https://www.montourduqueyras.fr/fr/il4-refuge_i38256-refuge-de-la-cime.aspx",
+      "phone": "09 87 40 00 60",
+      "email": "refuge@ceillac.com",
+      "note": "Ceillac (Queyras). Listed as a gîte d'étape on refuges.info. Booked through the Queyras huts site (montourduqueyras.fr), Open System product 38256. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "WPBS-coire",
@@ -1358,6 +1566,33 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": null
+    },
+    {
+      "id": "OPRF-118005",
+      "name": "Refuge de la Glière",
+      "short_name": "Glière",
+      "type": "refuge",
+      "lat": 45.43123,
+      "lon": 6.81403,
+      "ele": 2010,
+      "site": "https://www.refugedelagliere.fr/reservations",
+      "phone": "09 72 66 44 18",
+      "email": "contact@refugedelagliere.fr",
+      "note": "Champagny-en-Vanoise (Les Caves de la Plagne). Guarded from mid-June to September (the planning sells the unguarded nights up to 15 June 2027); outside, unguarded, the widget still sells the nights (booking strongly advised, bed not guaranteed). Open System widget OPRF-118005 on the « Réservations » page (Wix, embedded HTML). Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.refugedelagliere.fr/",
+      "guarded": [
+        [
+          "06-15",
+          "09-30"
+        ]
+      ],
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:139",
@@ -1456,8 +1691,18 @@
       "site": "https://www.refugedelaselle.com/contact/",
       "phone": "09 70 02 03 83",
       "email": null,
-      "note": "Écrins (Saint-Christophe-en-Oisans). Phone during staffed periods (hut site); spring ski touring also by WhatsApp / mail per the site.",
+      "note": "Écrins (Saint-Christophe-en-Oisans). Phone during staffed periods (hut site); spring ski touring also by WhatsApp / mail per the site. Guarded in spring (21 March to early May 2026) and summer (6 June to 6 September); outside, winter room only (paid on HelloAsso): shown closed.",
       "website": "https://www.refugedelaselle.com/",
+      "guarded": [
+        [
+          "03-21",
+          "05-10"
+        ],
+        [
+          "06-06",
+          "09-06"
+        ]
+      ],
       "portal": "MANUAL",
       "email_user": null,
       "max_pax_per_booking": null,
@@ -1557,6 +1802,26 @@
       "site": "https://refugedesbesines.ffcam.fr/"
     },
     {
+      "id": "OPRF-101222",
+      "name": "Refuge des Camporells",
+      "short_name": "Camporells",
+      "type": "refuge",
+      "lat": 42.62199,
+      "lon": 2.01114,
+      "ele": 2240,
+      "site": "https://agrepy-mb-prestataire.for-system.com/f101222_fr-.aspx",
+      "phone": "07 56 43 71 57",
+      "email": "refugedescamporells@pyrenees-catalanes.com",
+      "note": "Capcir (Pyrénées-Orientales). Booked on its Open System page (prestataire f101222, AGREPY network); no hut site. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:34",
       "portal": "FFCAM",
       "name": "Refuge des Conscrits  (FFCAM)",
@@ -1645,6 +1910,48 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugedesevettes.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-71503",
+      "name": "Refuge des Fonts",
+      "short_name": "Fonts",
+      "type": "refuge",
+      "lat": 46.02108,
+      "lon": 6.81101,
+      "ele": 1368,
+      "site": "https://www.lesfonts.com/",
+      "phone": "04 50 34 12 41",
+      "email": "refugedesfonts@gmail.com",
+      "note": "Sixt-Fer-à-Cheval (Haut-Giffre). Open System widget OPRF-71503 on the hut home page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.lesfonts.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
+      "id": "OPRF-38263",
+      "name": "Refuge des Fonts de Cervières",
+      "short_name": "Fonts de Cervières",
+      "type": "refuge",
+      "lat": 44.84465,
+      "lon": 6.8157,
+      "ele": 2040,
+      "site": "https://www.montourduqueyras.fr/fr/il4-refuge_i38263-refuge-des-fonts.aspx",
+      "phone": "06 01 13 75 03",
+      "email": "contact@refugedesfonts.com",
+      "note": "Cervières. Booked through the Queyras huts site (montourduqueyras.fr), Open System product 38263. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://www.refugedesfonts.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:28",
@@ -2010,6 +2317,27 @@
       "site": "https://refugeduglacierblanc.ffcam.fr/"
     },
     {
+      "id": "OPRF-130844",
+      "name": "Refuge du Goléon",
+      "short_name": "Goléon",
+      "type": "refuge",
+      "lat": 45.08131,
+      "lon": 6.35665,
+      "ele": 2472,
+      "site": "https://refugedugoleon.com/goleon/?page_id=773",
+      "phone": "06 87 26 46 54",
+      "email": "refugedugoleon@hotmail.com",
+      "note": "Villar-d'Arêne (La Grave). Open System widget OPRF-130844 on the hut site (« Réserver » page); 19 beds; position and altitude from OSM way/116800177.",
+      "opensystem": true,
+      "website": "https://refugedugoleon.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:xxx5wd7n2ct0",
       "portal": "FFCAM",
       "name": "Refuge du Goûter Non Gardé (FFCAM)",
@@ -2053,6 +2381,27 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugedugrandbec.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-70785",
+      "name": "Refuge du Grenairon",
+      "short_name": "Grenairon",
+      "type": "refuge",
+      "lat": 46.03229,
+      "lon": 6.79831,
+      "ele": 1974,
+      "site": "http://grenairon.com/tarifs-et-reservation/",
+      "phone": null,
+      "email": "grenairon@gmail.com",
+      "note": "Sixt-Fer-à-Cheval (Haut-Giffre). Open System widget OPRF-70785 on the « Tarifs et réservation » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "http://grenairon.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:110",
@@ -2110,7 +2459,13 @@
       "site": "https://refugedunantdubeurre.fr/",
       "phone": "06 82 70 26 99",
       "email": "refugedunantdubeurre@etik.com",
-      "note": "Beaufortain. Phone / mail only.",
+      "note": "Beaufortain. Phone / mail only. Guarded from 12 December to 28 March (2026-27, hut site; summer season not announced): shown closed outside. The site says online booking is coming soon.",
+      "guarded": [
+        [
+          "12-12",
+          "03-28"
+        ]
+      ],
       "portal": "MANUAL",
       "email_user": null,
       "max_pax_per_booking": null,
@@ -2177,6 +2532,27 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": "https://refugedupelvoux.ffcam.fr/"
+    },
+    {
+      "id": "OPRF-127248",
+      "name": "Refuge du Pic du Mas de la Grave",
+      "short_name": "Pic du Mas de la Grave",
+      "type": "refuge",
+      "lat": 45.08673,
+      "lon": 6.26012,
+      "ele": 1944,
+      "site": "https://refugedupicdumasdelagrave.fr/reservations/",
+      "phone": "06 74 92 29 15",
+      "email": "refugedupicdumasdelagrave@gmail.com",
+      "note": "La Grave (Romanche). Open System widget OPRF-127248 on the « Réservations » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://refugedupicdumasdelagrave.fr/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:69",
@@ -2284,6 +2660,27 @@
       "site": "https://refugepredelachaumette.ffcam.fr/"
     },
     {
+      "id": "OPRF-135092",
+      "name": "Refuge du Requin",
+      "short_name": "Requin",
+      "type": "refuge",
+      "lat": 45.88463,
+      "lon": 6.9297,
+      "ele": 2516,
+      "site": "https://refugedurequin.fr/reservation/",
+      "phone": "07 64 45 46 29",
+      "email": "contact@refugedurequin.fr",
+      "note": "Chamonix (Mer de Glace). Open System widget OPRF-135092 on the « Réservation » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://refugedurequin.fr/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
       "id": "BK_STRUCTURE:5a1njyztnljl",
       "portal": "VANOISE",
       "name": "Refuge du Roc",
@@ -2297,6 +2694,48 @@
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
       "site": null
+    },
+    {
+      "id": "OPRF-135180",
+      "name": "Refuge du Ruitor",
+      "short_name": "Ruitor",
+      "type": "refuge",
+      "lat": 45.6257,
+      "lon": 6.94118,
+      "ele": 2038,
+      "site": "https://ruitor.com/refuge_v2/accueil/accueil.php",
+      "phone": "04 79 06 92 12",
+      "email": "info@ruitor.com",
+      "note": "Sainte-Foy-Tarentaise. Open System widget OPRF-135180 on the hut home page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://ruitor.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
+    },
+    {
+      "id": "OPRF-130670",
+      "name": "Refuge du Rulhe",
+      "short_name": "Rulhe",
+      "type": "refuge",
+      "lat": 42.6381,
+      "lon": 1.7259,
+      "ele": 2185,
+      "site": "https://rulhe.com/contact/",
+      "phone": "05 61 65 65 01",
+      "email": "refuge@rulhe.com",
+      "note": "Ariège (Haute-Ariège). Open System widget OPRF-130670 on the « Contact » page. Position and altitude from refuges.info.",
+      "opensystem": true,
+      "website": "https://rulhe.com/",
+      "portal": "OPENSYSTEM",
+      "email_user": null,
+      "max_pax_per_booking": null,
+      "max_nights": null,
+      "booking_delay_days": null,
+      "product_categories": []
     },
     {
       "id": "BK_STRUCTURE:5a1nww29smum",

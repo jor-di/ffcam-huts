@@ -1,4 +1,4 @@
-154 huts, fetching availability for 2026-11-27, 2026-11-28, 2026-11-29, 2026-12-04, 2026-12-05, 2026-12-06...
-History: 12 changes appended to history/
-Fetch log: fetch_log.json (2 huts with a problem: {'OPENSYSTEM': {'total': 12, 'ok': 11, 'warn': 0, 'err': 1, 'skip': 0, 'seconds': 0.0}, 'REFUGEPRO': {'total': 11, 'ok': 10, 'warn': 0, 'err': 1, 'skip': 0, 'seconds': 0.0}})
-Wrote 924 rows to availability_2026-11-27.csv (209 bookable hut-nights, 2 errors)
+174 huts, fetching availability for 2026-11-27, 2026-11-28, 2026-11-29, 2026-12-04, 2026-12-05, 2026-12-06...
+History: 32 changes appended to history/
+Fetch log: fetch_log.json (2 huts with a problem: {'OPENSYSTEM': {'total': 32, 'ok': 31, 'warn': 0, 'err': 1, 'skip': 0, 'seconds': 0.0}, 'REFUGEPRO': {'total': 11, 'ok': 10, 'warn': 0, 'err': 1, 'skip': 0, 'seconds': 0.0}})
+Wrote 1044 rows to availability_2026-11-27.csv (215 bookable hut-nights, 2 errors)

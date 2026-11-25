@@ -109,8 +109,35 @@ class TestSources < Minitest::Test
     assert_equal %w[2028-02-15 2028-02-29], out["free"].keys
   end
 
+  def test_opensystem_guarded_season
+    # 2026-05-31 open (outside the season), 06-01 and 09-30 open (in it), 10-01 open but full, 10-02 closed
+    body = 'cb([{"planning":[{"s":4,"f":0,"d":15},{"s":4,"f":0,"d":14},{"s":4,"f":0,"d":-107},{"s":0,"f":0,"d":-108},{"s":0,"f":1,"d":-109}]}])'
+    out = with_page(body) { Couchette.fetch_opensystem_availability("OPRF-1", Date.new(2026, 5, 31), [%w[06-01 09-30]]) }
+    assert_equal({ "2026-05-31" => "UNGUARDED", "2026-06-01" => "OPEN", "2026-09-30" => "OPEN", "2026-10-01" => "OPEN", "2026-10-02" => "CLOSE" },
+                 out["opening"])
+    assert_equal({ "2026-05-31" => "online" }, out["booking"])
+    # no season: every open night is guarded
+    out = with_page(body) { Couchette.fetch_opensystem_availability("OPRF-1", Date.new(2026, 5, 31)) }
+    assert_equal ["OPEN"], out["opening"].values.uniq - ["CLOSE"]
+    assert_empty out["booking"]
+  end
+
+  def test_guarded_on
+    seasons = [%w[03-21 05-10], %w[06-06 09-06]]
+    assert Couchette.guarded_on?(seasons, "2027-03-21")
+    assert Couchette.guarded_on?(seasons, "2027-09-06")
+    refute Couchette.guarded_on?(seasons, "2027-05-20")
+    refute Couchette.guarded_on?(seasons, "2026-11-27")
+    winter = [%w[12-12 03-28]] # over the new year
+    assert Couchette.guarded_on?(winter, "2026-12-12")
+    assert Couchette.guarded_on?(winter, "2027-01-15")
+    assert Couchette.guarded_on?(winter, "2027-03-28")
+    refute Couchette.guarded_on?(winter, "2026-12-11")
+    refute Couchette.guarded_on?(winter, "2027-07-01")
+  end
+
   def test_opensystem_empty_and_broken_answers
-    empty = { "free" => {}, "capacity" => {}, "opening" => {} }
+    empty = { "free" => {}, "capacity" => {}, "opening" => {}, "booking" => {} }
     %w[cb([]) cb(null) cb([{"planning":[]}])].each do |body|
       assert_equal empty, with_page(body) { Couchette.fetch_opensystem_availability("OPRF-1", TODAY) }, body
     end
