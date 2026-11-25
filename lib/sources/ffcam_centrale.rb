@@ -39,30 +39,11 @@ module Couchette
 
   # Return https://<subdomain>.ffcam.fr/ if that hut website exists (unknown ones redirect to www.ffcam.fr).
   def hut_site(subdomain)
-    hut_site_info(subdomain)&.fetch("site")
-  end
-
-  # The hut website (see hut_site) and its beds, read on its home page: {"site", "beds", "beds_unguarded"},
-  # nil if there is no such site. Beds are nil when the page does not give them.
-  def hut_site_info(subdomain)
     return nil unless subdomain.to_s.match?(/\A[a-z0-9-]+\z/)
     url = "https://#{subdomain}.ffcam.fr/"
-    final_url, html = polite(url) { fetch(url, nil, HEADERS, 20) }
-    return nil unless final_url.start_with?(url)
-    { "site" => url }.merge(site_beds(utf8(html)))
+    polite(url) { fetch(url, nil, HEADERS, 20)[0].start_with?(url) ? url : nil }
   rescue StandardError
     nil
-  end
-
-  # Beds announced on a hut's FFCAM website, in two fields of its home page:
-  #   <div class="field-com_pg_nbcouchage"><label>Nombre de couchages : </label> 39</div>   (guarded period)
-  #   <div class="field-com_png_nbcouchage"><label>Nombre de couchages : </label> 12</div>  (unguarded: winter room)
-  # -> {"beds" => 39, "beds_unguarded" => 12}; nil for a field missing or not a positive number.
-  def site_beds(html)
-    %w[beds pg beds_unguarded png].each_slice(2).to_h do |key, field|
-      n = html[%r{<div class="field-com_#{field}_nbcouchage"><label>[^<]*</label>\s*(\d+)\s*</div>}, 1]&.to_i
-      [key, n&.positive? ? n : nil]
-    end
   end
 
   # Emails are obfuscated as `name<a></a><ff></ff><d></d><fr></fr>`: keep the part before @.

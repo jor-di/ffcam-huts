@@ -398,13 +398,6 @@ function icon(h, s, n) {
     html:`<div class="tpin${s === 'request' ? ' req' : ''}"><span>${label}</span><span style="color:${COLORS[s]}">●</span></div>` });
 }
 
-// beds announced on the hut's FFCAM website (guarded / unguarded), not the centrale's capacity of a night
-function bedsChip(h) {
-  const t = h.beds && h.bedsUnguarded ? `${h.beds} couchages · ${h.bedsUnguarded} non gardé`
-    : h.beds ? `${h.beds} couchages` : h.bedsUnguarded ? `${h.bedsUnguarded} couchages non gardé` : '';
-  return t ? `<span class="chip" title="Couchages annoncés sur le site du refuge">${esc(t)}</span>` : '';
-}
-
 function popup(h) {
   const cur = night(h, state.night), s = status(cur);
   // the selected night shows the winter room (« Non gardé »): book that one
@@ -424,7 +417,6 @@ function popup(h) {
       <div><h3>${esc(shortName(h))}</h3>
       <div class="chips"><span class="chip">${esc(cur?.unguarded ? 'Non gardé' : TYPES[h.type] || h.type)}</span>
         ${h.ele ? `<span class="chip">▲ ${h.ele} m</span>` : ''}
-        ${bedsChip(h)}
         ${h.maxPax ? `<span class="chip">max ${h.maxPax} pers./résa</span>` : ''}</div></div>
     </div>
     <div class="card-body">${nights}

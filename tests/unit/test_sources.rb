@@ -149,20 +149,6 @@ class TestSources < Minitest::Test
     assert_nil Couchette.fetch_availability("M-1", TODAY, "MANUAL")
   end
 
-  def test_site_beds
-    html = <<~HTML
-      <div class="field-com_pg_nbcouchage"><label>Nombre de couchages : </label> 39</div>
-      <div class="field-com_pg_nbdortoir"><label>Nombre de dortoirs : </label> 4</div>
-      <div class="field-com_png_nbcouchage"><label>Nombre de couchages : </label> 12</div>
-    HTML
-    assert_equal({ "beds" => 39, "beds_unguarded" => 12 }, Couchette.site_beds(html))
-    only = '<div class="field-com_pg_nbcouchage"><label>Nombre de couchages : </label> 76</div>'
-    assert_equal({ "beds" => 76, "beds_unguarded" => nil }, Couchette.site_beds(only))
-    zero = '<div class="field-com_png_nbcouchage"><label>Nombre de couchages : </label> 0</div>'
-    assert_equal({ "beds" => nil, "beds_unguarded" => nil }, Couchette.site_beds(zero))
-    assert_equal({ "beds" => nil, "beds_unguarded" => nil }, Couchette.site_beds("<html></html>"))
-  end
-
   def test_norm_and_email_user
     assert_equal "gouter", Couchette.norm("Refuge du Goûter")
     assert_equal Couchette.norm("Refuge de l'Aigle"), Couchette.norm("Refuge de l'Aigle (Non Gardé)")

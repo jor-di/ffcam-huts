@@ -14,9 +14,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletleychauda.ffcam.fr/",
-      "beds": 76,
-      "beds_unguarded": null
+      "site": "https://chaletleychauda.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:46",
@@ -46,9 +44,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletdegourette.ffcam.fr/",
-      "beds": 32,
-      "beds_unguarded": null
+      "site": "https://chaletdegourette.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:98",
@@ -63,9 +59,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletmaljasset.ffcam.fr/",
-      "beds": 39,
-      "beds_unguarded": null
+      "site": "https://chaletmaljasset.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:103",
@@ -80,9 +74,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugestguilhemledesert.ffcam.fr/",
-      "beds": 18,
-      "beds_unguarded": null
+      "site": "https://refugestguilhemledesert.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:104",
@@ -97,9 +89,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletvauchignon.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": 24
+      "site": "https://chaletvauchignon.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:87",
@@ -114,9 +104,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletmadonedefenestre.ffcam.fr/",
-      "beds": 62,
-      "beds_unguarded": 22
+      "site": "https://chaletmadonedefenestre.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:100",
@@ -131,9 +119,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletlamaline.ffcam.fr/",
-      "beds": 44,
-      "beds_unguarded": null
+      "site": "https://chaletlamaline.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:4m2wkebwwg2f",
@@ -148,9 +134,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletdescontamines.ffcam.fr/",
-      "beds": 20,
-      "beds_unguarded": null
+      "site": "https://chaletdescontamines.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:9",
@@ -165,9 +149,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletlestuffes.ffcam.fr/",
-      "beds": 43,
-      "beds_unguarded": null
+      "site": "https://chaletlestuffes.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:15",
@@ -182,9 +164,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletdegraydon.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": 18
+      "site": "https://chaletdegraydon.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:5",
@@ -199,9 +179,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletlangenberg.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": 26
+      "site": "https://chaletlangenberg.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:4",
@@ -216,9 +194,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletplainducanon.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": 12
+      "site": "https://chaletplainducanon.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:36",
@@ -233,9 +209,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletplandelalai.ffcam.fr/",
-      "beds": 19,
-      "beds_unguarded": 19
+      "site": "https://chaletplandelalai.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:101",
@@ -250,9 +224,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletdusancy.ffcam.fr/",
-      "beds": 39,
-      "beds_unguarded": null
+      "site": "https://chaletdusancy.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:116",
@@ -267,9 +239,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletlagrangedeholle.ffcam.fr/",
-      "beds": 62,
-      "beds_unguarded": null
+      "site": "https://chaletlagrangedeholle.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:2",
@@ -284,9 +254,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletrefuge3fours.ffcam.fr/",
-      "beds": 40,
-      "beds_unguarded": null
+      "site": "https://chaletrefuge3fours.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:11",
@@ -373,9 +341,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugealbert1er.ffcam.fr/",
-      "beds": 140,
-      "beds_unguarded": 30
+      "site": "https://refugealbert1er.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u87ub79d",
@@ -390,9 +356,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugealbert1er.ffcam.fr/",
-      "beds": 140,
-      "beds_unguarded": 30
+      "site": "https://refugealbert1er.ffcam.fr/"
     },
     {
       "id": "OPRF-48837",
@@ -549,9 +513,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedambin.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": null
+      "site": "https://refugedambin.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8838n0j",
@@ -581,9 +543,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedarremoulit.ffcam.fr/",
-      "beds": 44,
-      "beds_unguarded": 18
+      "site": "https://refugedarremoulit.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u884qc8h",
@@ -598,9 +558,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedarremoulit.ffcam.fr/",
-      "beds": 44,
-      "beds_unguarded": 18
+      "site": "https://refugedarremoulit.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:53",
@@ -615,9 +573,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedaverole.ffcam.fr/",
-      "beds": 85,
-      "beds_unguarded": 12
+      "site": "https://refugedaverole.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxxl0tm6umg",
@@ -632,9 +588,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedaverole.ffcam.fr/",
-      "beds": 85,
-      "beds_unguarded": 12
+      "site": "https://refugedaverole.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5ybjcpt6a",
@@ -685,9 +639,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedespingo.ffcam.fr/",
-      "beds": 60,
-      "beds_unguarded": 15
+      "site": "https://refugedespingo.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:iyuctdomm9k",
@@ -737,9 +689,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugebayssellance.ffcam.fr/",
-      "beds": 58,
-      "beds_unguarded": 19
+      "site": "https://refugebayssellance.ffcam.fr/"
     },
     {
       "id": "OPRF-128664",
@@ -775,9 +725,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugecampanadecloutou.ffcam.fr/",
-      "beds": 36,
-      "beds_unguarded": 16
+      "site": "https://refugecampanadecloutou.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8934wt7",
@@ -792,9 +740,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugecampanadecloutou.ffcam.fr/",
-      "beds": 36,
-      "beds_unguarded": 16
+      "site": "https://refugecampanadecloutou.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:63",
@@ -809,9 +755,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugechabourneou.ffcam.fr/",
-      "beds": 40,
-      "beds_unguarded": 32
+      "site": "https://refugechabourneou.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:97",
@@ -826,9 +770,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeduchambeyron.ffcam.fr/",
-      "beds": 69,
-      "beds_unguarded": 20
+      "site": "https://refugeduchambeyron.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:91",
@@ -843,9 +785,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugelacougourde.ffcam.fr/",
-      "beds": 40,
-      "beds_unguarded": 7
+      "site": "https://refugelacougourde.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:71",
@@ -860,9 +800,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugefontturbat.ffcam.fr/",
-      "beds": 39,
-      "beds_unguarded": 12
+      "site": "https://refugefontturbat.ffcam.fr/"
     },
     {
       "id": "OPRF-38255",
@@ -898,9 +836,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedegialorgues.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": 12
+      "site": "https://refugedegialorgues.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:18",
@@ -915,9 +851,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugelapointepercee.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": null
+      "site": "https://refugelapointepercee.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8nnte7d",
@@ -932,9 +866,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugelapointepercee.ffcam.fr/",
-      "beds": null,
-      "beds_unguarded": null
+      "site": "https://refugelapointepercee.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:121",
@@ -949,9 +881,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedelarribet.ffcam.fr/",
-      "beds": 60,
-      "beds_unguarded": 19
+      "site": "https://refugedelarribet.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8l3ommd",
@@ -981,9 +911,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedenice.ffcam.fr/",
-      "beds": 54,
-      "beds_unguarded": 20
+      "site": "https://refugedenice.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8mjvfvz",
@@ -998,9 +926,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedenice.ffcam.fr/",
-      "beds": 54,
-      "beds_unguarded": 20
+      "site": "https://refugedenice.ffcam.fr/"
     },
     {
       "id": "OPRF-93151",
@@ -1057,9 +983,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedeplate.ffcam.fr/",
-      "beds": 34,
-      "beds_unguarded": 5
+      "site": "https://refugedeplate.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:106",
@@ -1075,9 +999,7 @@
         "BK_PRODUCTCATEGORY:BIVOUAC",
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedepombie.ffcam.fr/",
-      "beds": 45,
-      "beds_unguarded": 15
+      "site": "https://refugedepombie.ffcam.fr/"
     },
     {
       "id": "OPRF-93152",
@@ -1105,9 +1027,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedepresset.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 18
+      "site": "https://refugedepresset.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8xp8y6e",
@@ -1122,9 +1042,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedepresset.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 18
+      "site": "https://refugedepresset.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:50",
@@ -1139,9 +1057,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugepecletpolset.ffcam.fr/",
-      "beds": 84,
-      "beds_unguarded": 16
+      "site": "https://refugepecletpolset.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8mon63z",
@@ -1156,9 +1072,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugepecletpolset.ffcam.fr/",
-      "beds": 84,
-      "beds_unguarded": 16
+      "site": "https://refugepecletpolset.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:93",
@@ -1173,9 +1087,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugederabuons.ffcam.fr/",
-      "beds": 36,
-      "beds_unguarded": 20
+      "site": "https://refugederabuons.ffcam.fr/"
     },
     {
       "id": "OPRF-93149",
@@ -1224,9 +1136,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugetempleecrins.ffcam.fr/",
-      "beds": 48,
-      "beds_unguarded": 25
+      "site": "https://refugetempleecrins.ffcam.fr/"
     },
     {
       "id": "RP-refuge-de-terre-rouge",
@@ -1303,9 +1213,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedevenasque.ffcam.fr/",
-      "beds": 36,
-      "beds_unguarded": 12
+      "site": "https://refugedevenasque.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8xycgku",
@@ -1320,9 +1228,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedevenasque.ffcam.fr/",
-      "beds": 36,
-      "beds_unguarded": 12
+      "site": "https://refugedevenasque.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:85",
@@ -1338,9 +1244,7 @@
         "BK_PRODUCTCATEGORY:NUITEE",
         "BK_PRODUCTCATEGORY:RESTAURATION"
       ],
-      "site": "https://refugedelaigle.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 30
+      "site": "https://refugedelaigle.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u84snc9p",
@@ -1355,9 +1259,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedelaigle.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 30
+      "site": "https://refugedelaigle.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:74",
@@ -1403,9 +1305,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugelenversdesaiguilles.ffcam.fr/",
-      "beds": 46,
-      "beds_unguarded": 12
+      "site": "https://refugelenversdesaiguilles.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8jmexys",
@@ -1420,9 +1320,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugelenversdesaiguilles.ffcam.fr/",
-      "beds": 46,
-      "beds_unguarded": 12
+      "site": "https://refugelenversdesaiguilles.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:126",
@@ -1437,9 +1335,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeetangfourcat.ffcam.fr/",
-      "beds": 37,
-      "beds_unguarded": 12
+      "site": "https://refugeetangfourcat.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:127",
@@ -1454,9 +1350,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeetangpinet.ffcam.fr/",
-      "beds": 54,
-      "beds_unguarded": 18
+      "site": "https://refugeetangpinet.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:128",
@@ -1471,9 +1365,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeetangdaraing.ffcam.fr/",
-      "beds": 52,
-      "beds_unguarded": 12
+      "site": "https://refugeetangdaraing.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:57",
@@ -1488,9 +1380,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedeletendard.ffcam.fr/",
-      "beds": 70,
-      "beds_unguarded": 14
+      "site": "https://refugedeletendard.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5ylsjmuv1",
@@ -1520,9 +1410,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedelolan.ffcam.fr/",
-      "beds": 54,
-      "beds_unguarded": 10
+      "site": "https://refugedelolan.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:5a1nrby5i831",
@@ -1574,9 +1462,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugebrechederoland.ffcam.fr/",
-      "beds": 38,
-      "beds_unguarded": 14
+      "site": "https://refugebrechederoland.ffcam.fr/"
     },
     {
       "id": "OPRF-38256",
@@ -1636,9 +1522,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeladentparrachee.ffcam.fr/",
-      "beds": 42,
-      "beds_unguarded": 24
+      "site": "https://refugeladentparrachee.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:13",
@@ -1653,9 +1537,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeladentdoche.ffcam.fr/",
-      "beds": 45,
-      "beds_unguarded": null
+      "site": "https://refugeladentdoche.ffcam.fr/"
     },
     {
       "id": "OPRF-92951",
@@ -1725,9 +1607,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedelaglere.ffcam.fr/",
-      "beds": 60,
-      "beds_unguarded": 20
+      "site": "https://refugedelaglere.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:76",
@@ -1742,9 +1622,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugelalavey.ffcam.fr/",
-      "beds": 44,
-      "beds_unguarded": 20
+      "site": "https://refugelalavey.ffcam.fr/"
     },
     {
       "id": "OPRF-92948",
@@ -1785,9 +1663,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedelapra.ffcam.fr/",
-      "beds": 76,
-      "beds_unguarded": 18
+      "site": "https://refugedelapra.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8l09uta",
@@ -1802,9 +1678,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedelapra.ffcam.fr/",
-      "beds": 76,
-      "beds_unguarded": 18
+      "site": "https://refugedelapra.ffcam.fr/"
     },
     {
       "id": "MANUAL-selle",
@@ -1865,9 +1739,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedevalmasque.ffcam.fr/",
-      "beds": 52,
-      "beds_unguarded": 9
+      "site": "https://refugedevalmasque.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8xxgiou",
@@ -1882,9 +1754,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedevalmasque.ffcam.fr/",
-      "beds": 52,
-      "beds_unguarded": 9
+      "site": "https://refugedevalmasque.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:58",
@@ -1899,9 +1769,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesaiguillesdarves.ffcam.fr/",
-      "beds": 39,
-      "beds_unguarded": 24
+      "site": "https://refugedesaiguillesdarves.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:68",
@@ -1916,9 +1784,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesbans.ffcam.fr/",
-      "beds": 22,
-      "beds_unguarded": 22
+      "site": "https://refugedesbans.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:125",
@@ -1933,9 +1799,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesbesines.ffcam.fr/",
-      "beds": 56,
-      "beds_unguarded": 16
+      "site": "https://refugedesbesines.ffcam.fr/"
     },
     {
       "id": "OPRF-101222",
@@ -1970,9 +1834,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesconscrits.ffcam.fr/",
-      "beds": 90,
-      "beds_unguarded": 10
+      "site": "https://refugedesconscrits.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:129",
@@ -1987,9 +1849,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedescortalets.ffcam.fr/",
-      "beds": 105,
-      "beds_unguarded": 19
+      "site": "https://refugedescortalets.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:59",
@@ -2004,9 +1864,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesdrayeres.ffcam.fr/",
-      "beds": 60,
-      "beds_unguarded": 24
+      "site": "https://refugedesdrayeres.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:82",
@@ -2021,9 +1879,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesecrins.ffcam.fr/",
-      "beds": 98,
-      "beds_unguarded": 24
+      "site": "https://refugedesecrins.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:47",
@@ -2038,9 +1894,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesevettes.ffcam.fr/",
-      "beds": 48,
-      "beds_unguarded": 16
+      "site": "https://refugedesevettes.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxxualkeru9",
@@ -2055,9 +1909,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesevettes.ffcam.fr/",
-      "beds": 48,
-      "beds_unguarded": 16
+      "site": "https://refugedesevettes.ffcam.fr/"
     },
     {
       "id": "OPRF-71503",
@@ -2114,9 +1966,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesgrandsmulets.ffcam.fr/",
-      "beds": 68,
-      "beds_unguarded": 16
+      "site": "https://refugedesgrandsmulets.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8kr9qqd",
@@ -2131,9 +1981,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesgrandsmulets.ffcam.fr/",
-      "beds": 68,
-      "beds_unguarded": 16
+      "site": "https://refugedesgrandsmulets.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:95",
@@ -2148,9 +1996,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedevens.ffcam.fr/",
-      "beds": 45,
-      "beds_unguarded": 26
+      "site": "https://refugedevens.ffcam.fr/"
     },
     {
       "id": "RP-marches",
@@ -2186,9 +2032,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedesmerveilles.ffcam.fr/",
-      "beds": 79,
-      "beds_unguarded": 19
+      "site": "https://refugedesmerveilles.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:117",
@@ -2203,9 +2047,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeoulettesdegaube.ffcam.fr/",
-      "beds": 95,
-      "beds_unguarded": 24
+      "site": "https://refugeoulettesdegaube.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8mmakxx",
@@ -2220,9 +2062,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeoulettesdegaube.ffcam.fr/",
-      "beds": 95,
-      "beds_unguarded": 24
+      "site": "https://refugeoulettesdegaube.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:65",
@@ -2237,9 +2077,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedessouffles.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 18
+      "site": "https://refugedessouffles.ffcam.fr/"
     },
     {
       "id": "OPRF-93150",
@@ -2267,9 +2105,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeducarro.ffcam.fr/",
-      "beds": 61,
-      "beds_unguarded": 14
+      "site": "https://refugeducarro.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5ualjg1ab",
@@ -2284,9 +2120,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeducarro.ffcam.fr/",
-      "beds": 61,
-      "beds_unguarded": 14
+      "site": "https://refugeducarro.ffcam.fr/"
     },
     {
       "id": "RP-chardonnet",
@@ -2322,9 +2156,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://chaletduclot.ffcam.fr/",
-      "beds": 40,
-      "beds_unguarded": 8
+      "site": "https://chaletduclot.ffcam.fr/"
     },
     {
       "id": "RP-refuge-du-clot-des-vaches",
@@ -2360,9 +2192,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugecoldelavanoise.ffcam.fr/",
-      "beds": 129,
-      "beds_unguarded": 26
+      "site": "https://refugecoldelavanoise.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5snuwv3sr",
@@ -2377,9 +2207,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugecoldelavanoise.ffcam.fr/",
-      "beds": 129,
-      "beds_unguarded": 26
+      "site": "https://refugecoldelavanoise.ffcam.fr/"
     },
     {
       "id": "OPRF-93148",
@@ -2407,9 +2235,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeducouvercle.ffcam.fr/",
-      "beds": 64,
-      "beds_unguarded": 20
+      "site": "https://refugeducouvercle.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8jh7i7h",
@@ -2424,9 +2250,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeducouvercle.ffcam.fr/",
-      "beds": 64,
-      "beds_unguarded": 20
+      "site": "https://refugeducouvercle.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:51",
@@ -2441,9 +2265,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugefonddaussois.ffcam.fr/",
-      "beds": 52,
-      "beds_unguarded": 20
+      "site": "https://refugefonddaussois.ffcam.fr/"
     },
     {
       "id": "OPRF-93147",
@@ -2492,9 +2314,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeduglacierblanc.ffcam.fr/",
-      "beds": 131,
-      "beds_unguarded": 35
+      "site": "https://refugeduglacierblanc.ffcam.fr/"
     },
     {
       "id": "OPRF-130844",
@@ -2545,9 +2365,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedugrandbec.ffcam.fr/",
-      "beds": 32,
-      "beds_unguarded": 12
+      "site": "https://refugedugrandbec.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8koph3e",
@@ -2562,9 +2380,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedugrandbec.ffcam.fr/",
-      "beds": 32,
-      "beds_unguarded": 12
+      "site": "https://refugedugrandbec.ffcam.fr/"
     },
     {
       "id": "OPRF-70785",
@@ -2600,9 +2416,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedumaupas.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 30
+      "site": "https://refugedumaupas.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:38",
@@ -2617,9 +2431,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedumontpourri.ffcam.fr/",
-      "beds": 39,
-      "beds_unguarded": 39
+      "site": "https://refugedumontpourri.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:60",
@@ -2634,9 +2446,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedumontthabor.ffcam.fr/",
-      "beds": 46,
-      "beds_unguarded": 24
+      "site": "https://refugedumontthabor.ffcam.fr/"
     },
     {
       "id": "MANUAL-nant-du-beurre",
@@ -2676,9 +2486,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeduparmelan.ffcam.fr/",
-      "beds": 49,
-      "beds_unguarded": 10
+      "site": "https://refugeduparmelan.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:84",
@@ -2693,9 +2501,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedupave.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": null
+      "site": "https://refugedupave.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8mnoqrq",
@@ -2710,9 +2516,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedupave.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": null
+      "site": "https://refugedupave.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:79",
@@ -2727,9 +2531,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedupelvoux.ffcam.fr/",
-      "beds": 54,
-      "beds_unguarded": 10
+      "site": "https://refugedupelvoux.ffcam.fr/"
     },
     {
       "id": "OPRF-127248",
@@ -2765,9 +2567,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedupigeonnier.ffcam.fr/",
-      "beds": 52,
-      "beds_unguarded": 20
+      "site": "https://refugedupigeonnier.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:40",
@@ -2782,9 +2582,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeplandesgouilles.ffcam.fr/",
-      "beds": 40,
-      "beds_unguarded": 28
+      "site": "https://refugeplandesgouilles.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8mueov1",
@@ -2799,9 +2597,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeplandesgouilles.ffcam.fr/",
-      "beds": 40,
-      "beds_unguarded": 28
+      "site": "https://refugeplandesgouilles.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:109",
@@ -2816,9 +2612,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeduportillon.ffcam.fr/",
-      "beds": 80,
-      "beds_unguarded": 30
+      "site": "https://refugeduportillon.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:75",
@@ -2833,9 +2627,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedupromontoire.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 18
+      "site": "https://refugedupromontoire.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5u8xqew2j",
@@ -2850,9 +2642,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugedupromontoire.ffcam.fr/",
-      "beds": 30,
-      "beds_unguarded": 18
+      "site": "https://refugedupromontoire.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:61",
@@ -2867,9 +2657,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugepredelachaumette.ffcam.fr/",
-      "beds": 60,
-      "beds_unguarded": 14
+      "site": "https://refugepredelachaumette.ffcam.fr/"
     },
     {
       "id": "OPRF-135092",
@@ -2979,9 +2767,7 @@
         "BK_PRODUCTCATEGORY:NUITEE",
         "BK_PRODUCTCATEGORY:RESTAURATION"
       ],
-      "site": "https://refugedusele.ffcam.fr/",
-      "beds": 76,
-      "beds_unguarded": 20
+      "site": "https://refugedusele.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:96",
@@ -2996,9 +2782,7 @@
       "product_categories": [
         "BK_PRODUCTCATEGORY:NUITEE"
       ],
-      "site": "https://refugeduviso.ffcam.fr/",
-      "beds": 65,
-      "beds_unguarded": 17
+      "site": "https://refugeduviso.ffcam.fr/"
     },
     {
       "id": "BK_STRUCTURE:xxx5xjr51ovb",

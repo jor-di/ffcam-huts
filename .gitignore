@@ -15,3 +15,4 @@ site/
 /availability_*.csv
 # old name (before bin/fetch-availability)
 /ffcam_*.csv
+.playwright-mcp/
